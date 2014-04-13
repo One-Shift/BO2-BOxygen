@@ -1,0 +1,291 @@
+@import url("./body-style.css");
+@import url("./frames-style.css");
+
+@import url("./article-add.css");
+@import url("./article-list.css");
+
+@import url("./product-list.css");
+
+@import url("./user-list.css");
+
+@import url("./category-list.css");
+
+* {
+	margin: 0;
+	padding: 0;
+	font: 13px/21px "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+html {
+	min-height: 100%;
+}
+
+body {
+	width: 900px;
+	margin: auto;
+	background-color: rgb(75,75,75);
+    background: url('./images/bg_02.jpg') center fixed;
+}
+
+/* SISTEMA DE LOGIN */
+#wrapper {
+	height: 25%;
+}
+
+#login {
+	width: 440px;
+	margin: auto;
+	background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#login #header {
+	height: 118px;
+	background-image: url(./images/logo.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+#login #container #sucess {
+	background-image: url(./images/Check-icon.png);
+	background-position: 7px center;
+	background-repeat: no-repeat;
+	line-height: 48px;
+	padding-left: 48px;
+	padding-right: 10px;
+	color: #FFFFFF;
+}
+
+#login #container #error {
+	background-color: pink;
+	background-image: url(./images/Delete-icon.png);
+	background-position: 7px center;
+	background-repeat: no-repeat;
+	line-height: 48px;
+	padding-left: 48px;
+	padding-right: 10px;
+	border-top: 1px solid #FFECEC;
+	border-bottom: 1px solid #FF4F4F;
+}
+
+#login #container #fields div {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#login #container #fields div input {
+	margin: 0 45px 0 45px;
+	width: 350px;
+	height: 40px;
+	padding-left: 150px;
+	border: none;
+	border-radius: 15px;
+}
+
+#login #container #fields div input[name=loginUsername] {
+	background-image: url(./images/loginUsername.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+#login #container #fields div input[name=loginPassword] {
+	background-image: url(./images/loginPassword.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+#login #container #buttons {
+	display: inline-block;
+	width: 100%;
+	border-top: 1px solid #CCC;
+	background-image: url(./images/buttonsLoginBackground.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+#login #container #buttons #buttonlogin {
+	float: left;
+	width: 50%;
+}
+
+#login #container #buttons #buttonreset {
+	float: right;
+	width: 50%;
+}
+
+#login #container #buttons button {
+	width: 100%;
+	height: 85px;
+	background-color: transparent;
+	border: none;
+	text-transform: uppercase;
+	font-size: 15pt;
+	font-weight: bold;
+	color: #CCCCCC;
+    cursor: pointer;
+}
+
+#login #container #buttons button:hover {
+	color: #fff;
+    text-shadow: 0 2px 3px black;
+}
+
+/* sistema de backoffice*/
+#site {
+	width: 100%;
+	min-height: 100%;
+	margin: auto;
+	/*background-color: rgb(255,255,255);*/
+	/*box-shadow: 0 0 20px black;*/
+}
+
+#site #header {
+	height: 118px;
+	background-image: url(./images/logoBO2.png);
+	background-color: rgb(34, 34, 34);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+#site #container {
+	background-repeat: repeat-x;
+	background-position: left top;
+	display: inline-block;
+	width: 900px;
+    margin: 1px 0 0 0;
+}
+
+#site #container #title-bar {
+	display: inline-block;
+	clear: both;
+	width: 100%;
+	background: rgb(34, 34, 34);
+}
+
+#site #container #title-bar div {
+	line-height: 50px;
+	font-size: 13pt;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#site #container #title-bar #site-title {
+	float: left;
+	width: 605px;
+	padding-left: 60px;
+	padding-right: 20px;
+	color: rgb(255,147,0);
+    cursor: pointer;
+}
+
+#site #container #title-bar #menu-title {
+	float: right;
+	width: 175px;
+	padding-left: 15px;
+	padding-right: 10px;
+	color: #fff;
+}
+
+#site #container #page {
+	float: left;
+	width: 670px;
+	margin: 10px 0 0 0; padding: 10px;
+	background-color: rgb(255,255,255);
+	font-size: 10pt;
+}
+
+#site #container #page div.separator30 {
+    display: block;
+    height: 30px;
+}
+
+#site #container #menu {
+	float: right;
+    margin: 10px 0 0 0;
+	width: 200px;
+	font-size: 12px;
+}
+
+#site #container #menu h3 {
+	font-weight: normal;
+    background-color: rgb(34, 34, 34);
+    color: #fff;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    padding: 1rem;
+    margin: 10px 0 10px;
+}
+
+#site #container #menu ul {
+	list-style-type: none;
+    background-color: #fff;
+}
+
+#site #container #menu ul li {
+	line-height: 40px;
+	padding-left: 15px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+#site #container #menu ul li:hover {
+	background-color: rgb(250, 162, 38);
+    color: #fff;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+#site #container #menu ul li.selected {
+	border-left: 4px solid rgb(250, 162, 38);
+	border-right: 4px solid rgb(250, 162, 38);
+}
+
+#site #wrap {
+	clear: both;
+	height: 60px;
+}
+
+body #footer {
+	clear: both;
+	display: inline-block;
+	margin-top: -50px;
+	background-color: rgb(34, 34, 34);
+	width: 100%;
+}
+
+body #footer #copyright {
+	float: left;
+	width: 625px;
+	padding-left: 20px;
+	font-size: 10pt;
+	color: rgb(154,154,154);
+    margin-top: 12px;
+}
+
+body #footer #copyright span:hover {
+	cursor: pointer;
+	color: rgb(200,200,200);
+}
+
+body #footer #c {
+	float: right;
+	width: 175px;
+	padding-left: 15px;
+	padding-right: 10px;
+	line-height: 50px;
+	font-size: pt;
+	color: rgb(154,154,154);
+    border-left: 1px solid #d35400;
+	background-position: left top;
+	background-repeat: repeat-y;
+}
+
+body #footer #c span {
+	font-weight: bold;
+}
+
+iframe.ads {
+    border: none;
+    width: 728px;
+    height: 90px;
+    margin: 5px 86px;
+}

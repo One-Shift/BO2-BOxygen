@@ -1,0 +1,27 @@
+.user-list {}
+
+.user-list table {
+	width: 100%;
+	border-spacing: 0;
+}
+
+.user-list table tr {}
+
+.user-list table tr th {
+    text-align: left;
+}
+
+.user-list table tr td {}
+
+.user-list table tr td:nth-child(1) {
+    width: 20px;
+}
+
+.user-list table tr td:nth-child(3) {
+    width: 80px;
+}
+
+.user-list table tr td:nth-child(4) {
+    text-align: center;
+    width: 20px;
+}

@@ -1,0 +1,24 @@
+.product-list {}
+
+.product-list table {
+	width: 100%;
+	border-spacing: 0;
+}
+
+.product-list table tr {}
+
+.product-list table tr th {
+    text-align: left;
+}
+
+.product-list table tr td {}
+
+.product-list table tr td:nth-child(1) {
+    width: 20px;
+}
+.product-list table tr td:nth-child(4),
+.product-list table tr td:nth-child(5),
+.product-list table tr td:nth-child(6) {
+    text-align: center;
+    width: 20px;
+}
