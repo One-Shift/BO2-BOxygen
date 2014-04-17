@@ -5,9 +5,9 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 
 Principais funcionalidades
 
-*[adicionar/editar/eliminar] Utilizadores
-*[adicionar/editar/eliminar] Categorias
-*[adicionar/editar/eliminar] Artigos
-*[adicionar/editar/eliminar] Produtos
-*[upload] Imagens .JPG .PNG .GIF
-*[upload] Documentos .DOC .XLS .ZIP entre outros
+**[adicionar/editar/eliminar] Utilizadores
+**[adicionar/editar/eliminar] Categorias
+**[adicionar/editar/eliminar] Artigos
+**[adicionar/editar/eliminar] Produtos
+**[upload] Imagens .JPG .PNG .GIF
+**[upload] Documentos .DOC .XLS .ZIP entre outros
