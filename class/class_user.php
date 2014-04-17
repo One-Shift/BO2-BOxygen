@@ -30,7 +30,6 @@
 		
 		public function setRank ($r) {
 			switch ($r) {
-				case 'owner': $this->rank = 'owner'; break;
 				case 'manager': $this->rank = 'manager'; break;
 				case 'member': $this->rank = 'member'; break;
 				default: $this->rank = 'member';
