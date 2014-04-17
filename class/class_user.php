@@ -65,11 +65,16 @@
         	global $configuration;
         	global $mysqli;
         	
-        	$query = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+        	$query[0] = sprintf("SELECT id FROM %_users WHERE id = '%s' AND rank = 'owner' LIMIT %s", $configuration['mysql-prefix'], $this->id, 1);
+        	$source[0] = mysqli->query($query[0]);
+        	
+        	while ($data[0] = $source[0]->fetch_array(MYSQLI_ASSOC)) {
+        		return false;
+        	}
+        	
+        	$query[1] = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
         	
         	return $mysqli->query($query);
-        	
-        	$this->__destruct();
         }
         
         public function returnObject () {
