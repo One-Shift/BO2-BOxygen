@@ -52,7 +52,6 @@
         'lang_6_name'           => "sample_6",
         
         //analytics
-        'analytics-bo'          => "",
         'analytics-site'        => "",
         
        'category_sections'      => array("products","articles","user"),
