@@ -50,6 +50,7 @@
         'lang_6_state'          => true,
         'lang_6_acronym'        => "6",
         'lang_6_name'           => "sample_6",
+	'store'			=> true,	
         
         //analytics
         'analytics-site'        => "",
