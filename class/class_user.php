@@ -5,8 +5,10 @@
 		protected $password;
 		protected $email;
 		protected $rank;
-		
-		public function __construct () {}
+        protected $code;
+
+
+        public function __construct () {}
 		
 		public function setUsername ($u) {
 			$this->username = $u;
@@ -16,7 +18,7 @@
 			$this->password = sha1(md5(sha1(md5($p))));
 		}
         
-                public function setOldPassword ($p) {
+        public function setOldPassword ($p) {
     		$this->password = $p;
 		}
 		
@@ -35,13 +37,17 @@
 				default: $this->rank = 'member';
 			}
 		}
+        
+        public function setCode ($c) {
+			$this->code = $c;
+		}
 		
 		public function insert() {
             global $configuration;
         	global $mysqli;
             
-            $query = sprintf("INSERT INTO %s_users (name, password, email, rank) 
-                VALUES ('%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank);
+            $query = sprintf("INSERT INTO %s_users (name, password, email, rank, code) 
+                VALUES ('%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code);
             
 			$toReturn = $mysqli->query($query);
 			
@@ -54,8 +60,8 @@
         	global $configuration;
         	global $mysqli;
         	
-        	$query = sprintf("UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s' 
-            WHERE id = '%s'", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->id);
+        	$query = sprintf("UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s' 
+            WHERE id = '%s'", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->id);
         	
         	return $mysqli->query($query);
         }
@@ -64,16 +70,11 @@
         	global $configuration;
         	global $mysqli;
         	
-        	$query[0] = sprintf("SELECT id FROM %_users WHERE id = '%s' AND rank = 'owner' LIMIT %s", $configuration['mysql-prefix'], $this->id, 1);
-        	$source[0] = mysqli->query($query[0]);
-        	
-        	while ($data[0] = $source[0]->fetch_array(MYSQLI_ASSOC)) {
-        		return false;
-        	}
-        	
-        	$query[1] = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+        	$query = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
         	
         	return $mysqli->query($query);
+        	
+        	$this->__destruct();
         }
         
         public function returnObject () {
@@ -96,7 +97,7 @@
         }
         
         public function existUserByName () {
-                global $configuration;
+            global $configuration;
         	global $mysqli;
         	
         	$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->username);
