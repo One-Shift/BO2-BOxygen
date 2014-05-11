@@ -5,7 +5,6 @@
         'site-name'             => ' :: versão demo :: ',
         'site-slogan'           => '',
         'site-owner'            => 'Carlos Santos',
-        'donate'                => 55,
         
         //front-end info
         "per-page"              => 30,
@@ -58,4 +57,3 @@
        'category_sections'      => array("products","articles","user"),
         
 	);
-?>
