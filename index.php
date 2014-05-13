@@ -58,9 +58,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-		<link type="text/css" rel="stylesheet" href="./site-assets/style.css">
+		<link type="text/css" rel="stylesheet" href="./site-assets/css/style.css">
         
-		<script type="text/javascript" src="./site-assets/script.js"></script>
+		<script type="text/javascript" src="./site-assets/js/script.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
 		<title><?php echo $configuration["BO2-name"]; ?></title>
 	</head>
