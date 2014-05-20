@@ -24,7 +24,7 @@ body {
 	width: 900px;
 	margin: auto;
 	background-color: rgb(75,75,75);
-    background: url('./images/bg_02.jpg') center fixed;
+    background: url('./../images/bg_02.jpg') center fixed;
 }
 
 /* SISTEMA DE LOGIN */
@@ -41,13 +41,13 @@ body {
 
 #login #header {
 	height: 118px;
-	background-image: url(./images/logo.png);
+	background-image: url(./../images/logo.png);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 }
 
 #login #container #sucess {
-	background-image: url(./images/Check-icon.png);
+	background-image: url(./../images/Check-icon.png);
 	background-position: 7px center;
 	background-repeat: no-repeat;
 	line-height: 48px;
@@ -58,7 +58,7 @@ body {
 
 #login #container #error {
 	background-color: pink;
-	background-image: url(./images/Delete-icon.png);
+	background-image: url(./../images/Delete-icon.png);
 	background-position: 7px center;
 	background-repeat: no-repeat;
 	line-height: 48px;
@@ -83,13 +83,13 @@ body {
 }
 
 #login #container #fields div input[name=loginUsername] {
-	background-image: url(./images/loginUsername.png);
+	background-image: url(./../images/loginUsername.png);
 	background-position: left center;
 	background-repeat: no-repeat;
 }
 
 #login #container #fields div input[name=loginPassword] {
-	background-image: url(./images/loginPassword.png);
+	background-image: url(./../images/loginPassword.png);
 	background-position: left center;
 	background-repeat: no-repeat;
 }
@@ -98,7 +98,7 @@ body {
 	display: inline-block;
 	width: 100%;
 	border-top: 1px solid #CCC;
-	background-image: url(./images/buttonsLoginBackground.png);
+	background-image: url(./../images/buttonsLoginBackground.png);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 }
@@ -135,8 +135,6 @@ body {
 	width: 100%;
 	min-height: 100%;
 	margin: auto;
-	/*background-color: rgb(255,255,255);*/
-	/*box-shadow: 0 0 20px black;*/
 }
 
 #site #header {
