@@ -121,8 +121,6 @@
     	</div>
         
         </form>
-
-
 <?php 
     	}else{
     		$article = new article();
@@ -141,6 +139,7 @@
                 $_REQUEST['code']
             );
             $article->setCategory($_REQUEST['category']);
+            $article->setDateUpdate();
             $article->setPublished($_REQUEST['published']);
             $article->setonHome($_REQUEST['onhome']);
             
