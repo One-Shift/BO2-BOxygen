@@ -12,4 +12,4 @@
 
     // OUTROS
 	include './functions.php';
-	include './languages/'.$configuration['language'].'.php'
+	include './languages/'.$configuration['language'].'.php';
