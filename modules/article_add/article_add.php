@@ -113,9 +113,10 @@
             $_REQUEST['title_6'], $_REQUEST['content_6'],
             $_REQUEST['code']
         );
-        $article->setUser($account['name']);
+        $article->setUserId($account['name']);
         $article->setCategory($_REQUEST['category']);
         $article->setDate();
+        $article->setDateUpdate();
         $article->setPublished($_REQUEST['published']);
         $article->setonHome($_REQUEST['onhome']);
         
