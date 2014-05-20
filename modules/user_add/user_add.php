@@ -6,6 +6,7 @@
         <span id="label">Rank</span>
     	<select name="rank">
             <option value="null">Selecione um rank de utilizador</option>
+            <option value="owner">Owner</option>
             <option value="manager">Mananger</option>
             <option value="member">Member</option>
         </select>
@@ -46,4 +47,3 @@
             print'<script type="text/javascript">setTimeout(goBack(),2000);</script>';
         }
     }
-    ?>
