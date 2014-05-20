@@ -73,8 +73,6 @@
         	$query = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
         	
         	return $mysqli->query($query);
-        	
-        	$this->__destruct();
         }
         
         public function returnObject () {
@@ -124,4 +122,3 @@
         	return $toReturn;
         }
 	}
-?>
