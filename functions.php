@@ -108,8 +108,6 @@
         return $randomString;
     }
 
-    print generateRandomString (50);
-
     
 /**
  * Get either a Gravatar URL or complete image tag for a specified email address.
