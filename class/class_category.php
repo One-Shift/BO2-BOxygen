@@ -54,6 +54,14 @@
             $this->published = $p;
         }
         
+        public function setDate($d) {
+            $this->date = $d;
+        }
+        
+        public function setDateUpdate($d) {
+            $this->date_update = $d;
+        }
+        
         public function insert() {
             global $configuration;
         	global $mysqli;
