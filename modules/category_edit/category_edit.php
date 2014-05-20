@@ -9,7 +9,6 @@
             $category = $object_category->returnOneCategory();
         ?>
         <form action="" method="post">
-            <?php returnEditorInit(); ?>
             <div class="separator30"></div>
             
             <div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
@@ -66,7 +65,7 @@
             
             <div>
 				<span id="label">Descrição</span>
-				<?php returnEditor('description',$category['description']); ?>
+				<?php print returnEditor('description',$category['description']); ?>
 				<div class="separator30"></div>
 			</div>
 			
