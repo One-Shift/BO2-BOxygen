@@ -1,7 +1,7 @@
 <div class="product-add">
     <h1><?php echo $language["mod-product-add-title"]; ?></h1>
-    <?php if (!isset($_REQUEST['save'])) { 
-        returnEditorInit();
+    <?php
+    if (!isset($_REQUEST['save'])) {
     ?>  
     <form action="" method="post">
         <div class="separator30"></div>
@@ -12,7 +12,7 @@
             <span id="label">Referencia</span>
             <input type="text" name="reference"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_1",null); ?>
+            <?php print returnEditor("content_1",null); ?>
             <div class="separator30"></div>
         </div>
         <div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
@@ -20,7 +20,7 @@
             <span id="label">Artigo</span>
             <input type="text" name="title_2"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_2",null); ?>
+            <?php print returnEditor("content_2",null); ?>
             <div class="separator30"></div>
         </div>
         <div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
@@ -28,7 +28,7 @@
             <span id="label">Titulo</span>
             <input type="text" name="title_3"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_3",null); ?>
+            <?php print returnEditor("content_3",null); ?>
             <div class="separator30"></div>
         </div>
         <div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
@@ -36,7 +36,7 @@
             <span id="label">Titulo</span>
             <input type="text" name="title_4"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_4",null); ?>
+            <?php print returnEditor("content_4",null); ?>
             <div class="separator30"></div>
         </div>
         <div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
@@ -44,7 +44,7 @@
             <span id="label">Titulo</span>
             <input type="text" name="title_5"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_5",null); ?>
+            <?php print returnEditor("content_5",null); ?>
             <div class="separator30"></div>
         </div>
         <div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
@@ -52,7 +52,7 @@
             <span id="label">Titulo</span>
             <input type="text" name="title_6"/>
             <span id="label">Descrição</span>
-            <?php returnEditor("content_6",null); ?>
+            <?php print returnEditor("content_6",null); ?>
             <div class="separator30"></div>
         </div>
         
