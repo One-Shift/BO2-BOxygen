@@ -2,7 +2,6 @@
 	<h1><?php echo $language["mod-news-add-title"]; ?></h1>
     <?php if (!isset($_REQUEST['save'])) { ?>
     <form action="" method="post">
-	<?php returnEditorInit(); ?>
     <div class="separator30"></div>
     
     <div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
@@ -10,7 +9,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_1"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_1',null); ?>
+		<?php print returnEditor('content_1',null); ?>
         
         <div class="separator30"></div>
     </div>
@@ -20,7 +19,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_2"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_2',null); ?>
+		<?php print returnEditor('content_2',null); ?>
 		
         <div class="separator30"></div>
     </div>
@@ -30,7 +29,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_3"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_3',null); ?>
+		<?php print returnEditor('content_3',null); ?>
 		
         <div class="separator30"></div>
     </div>
@@ -40,7 +39,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_4"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_4',null); ?>
+		<?php print returnEditor('content_4',null); ?>
         
         <div class="separator30"></div>
     </div>
@@ -50,7 +49,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_5"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_5',null); ?>
+		<?php print returnEditor('content_5',null); ?>
         
         <div class="separator30"></div>
     </div>
@@ -60,7 +59,7 @@
 		<span id="label">Titulo</span>
 		<input type="text" name="title_6"/>
 		<span id="label">Conteudo</span>
-		<?php returnEditor('content_6',null); ?>
+		<?php print returnEditor('content_6',null); ?>
         
         <div class="separator30"></div>
     </div>
