@@ -11,7 +11,8 @@
         "nr-links"              => 4,
         
         //back-end info
-        'BO2-version'		=> '1.0.2',
+        'BO2-version'		=> '1.1.0',
+        'BO2-subversion'	=> 'b',
         'BO2-name'			=> 'BOxygen :: BO²',
         'language'			=> 'en',
         
