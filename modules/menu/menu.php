@@ -5,6 +5,7 @@
 	<li onclick="goTo('./backoffice.php?pg=article-list');"><?php echo $language["menu-articles"]; ?></li>
 	<!--li onclick="goTo('./backoffice.php?pg=archive');">Archive (Soon)</li-->
 	<li onclick="goTo('./backoffice.php?pg=product-list');"><?php echo $language["menu-products"]; ?></li>
+	<li onclick="goTo('./backoffice.php?pg=newsletters');"><?php echo $language["menu-newsletters"]; ?></li>
 </ul>
 <h3><?php echo $language["menu-account"]; ?></h3>
 <ul>
