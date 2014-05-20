@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.8
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2014 at 01:22 PM
--- Server version: 5.5.36-cll
--- PHP Version: 5.4.23
+-- Generation Time: May 20, 2014 at 11:23 
+-- Server version: 5.5.36
+-- PHP Version: 5.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `serverne_dev_bo2`
+-- Database: `test`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `test_multi_sets`()
+    DETERMINISTIC
+begin
+        select user() as first_col;
+        select user() as first_col, now() as second_col;
+        select user() as first_col, now() as second_col, now() as third_col;
+        end$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -44,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
+  `date_update` varchar(255) NOT NULL,
   `published` tinyint(1) DEFAULT NULL,
   `onhome` tinyint(1) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
@@ -54,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
 -- Dumping data for table `prefix_articles`
 --
 
-INSERT INTO `prefix_articles` (`id`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `user_id`, `category_id`, `date`, `published`, `onhome`, `priority`) VALUES
-(1, '1st Article', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', 3, 1, '2014-03-15 01:48:54', 1, 0, NULL);
+INSERT INTO `prefix_articles` (`id`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `user_id`, `category_id`, `date`, `date_update`, `published`, `onhome`, `priority`) VALUES
+(1, '1st Article', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', 3, 1, '2014-03-15 01:48:54', '', 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,13 +81,20 @@ INSERT INTO `prefix_articles` (`id`, `title_1`, `content_1`, `title_2`, `content
 CREATE TABLE IF NOT EXISTS `prefix_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name_1` varchar(255) DEFAULT NULL,
+  `description_1` text,
   `name_2` varchar(255) DEFAULT NULL,
+  `description_2` int(11) DEFAULT NULL,
   `name_3` varchar(255) DEFAULT NULL,
+  `description_3` int(11) DEFAULT NULL,
   `name_4` varchar(255) DEFAULT NULL,
+  `description_4` int(11) DEFAULT NULL,
   `name_5` varchar(255) DEFAULT NULL,
+  `description_5` int(11) DEFAULT NULL,
   `name_6` varchar(255) DEFAULT NULL,
-  `description` text,
+  `description_6` int(11) DEFAULT NULL,
   `category_type` varchar(255) DEFAULT NULL,
+  `date` date NOT NULL,
+  `date_update` datetime NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `code` text,
   `published` tinyint(1) DEFAULT NULL,
@@ -85,9 +107,9 @@ CREATE TABLE IF NOT EXISTS `prefix_categories` (
 -- Dumping data for table `prefix_categories`
 --
 
-INSERT INTO `prefix_categories` (`id`, `name_1`, `name_2`, `name_3`, `name_4`, `name_5`, `name_6`, `description`, `category_type`, `user_id`, `code`, `published`) VALUES
-(1, '1st Article Category', '', '', '', '', '', '<br>', 'articles', 0, '', 1),
-(2, '1st Product Category', '', '', '', '', '', '<br>', 'products', 0, '', 1);
+INSERT INTO `prefix_categories` (`id`, `name_1`, `description_1`, `name_2`, `description_2`, `name_3`, `description_3`, `name_4`, `description_4`, `name_5`, `description_5`, `name_6`, `description_6`, `category_type`, `date`, `date_update`, `user_id`, `code`, `published`) VALUES
+(1, '1st Article Category', '<br>', '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, 'articles', '0000-00-00', '0000-00-00 00:00:00', 0, '', 1),
+(2, '1st Product Category', '<br>', '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, 'products', '0000-00-00', '0000-00-00 00:00:00', 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -115,9 +137,9 @@ CREATE TABLE IF NOT EXISTS `prefix_documents` (
 --
 
 CREATE TABLE IF NOT EXISTS `prefix_files_type` (
-  `type` varchar(255) NOT NULL,
-  `extension` varchar(255) NOT NULL,
-  `upload_format` enum('image','document') NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `extension` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `upload_format` enum('image','document') CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `type` (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -149,6 +171,20 @@ INSERT INTO `prefix_files_type` (`type`, `extension`, `upload_format`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prefix_history`
+--
+
+CREATE TABLE IF NOT EXISTS `prefix_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `descrition` text CHARACTER SET utf8,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prefix_images`
 --
 
@@ -168,11 +204,28 @@ CREATE TABLE IF NOT EXISTS `prefix_images` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prefix_newsletters`
+--
+
+CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `code` text CHARACTER SET utf8 NOT NULL,
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prefix_products`
 --
 
 CREATE TABLE IF NOT EXISTS `prefix_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reference` varchar(255) NOT NULL,
   `title_1` varchar(255) DEFAULT NULL,
   `content_1` text,
   `title_2` varchar(255) DEFAULT NULL,
@@ -186,14 +239,26 @@ CREATE TABLE IF NOT EXISTS `prefix_products` (
   `title_6` varchar(255) DEFAULT NULL,
   `content_6` text,
   `code` text,
+  `price` double NOT NULL DEFAULT '0',
+  `vat` double NOT NULL DEFAULT '0',
+  `discount` double NOT NULL DEFAULT '0',
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
+  `date_update` datetime NOT NULL,
   `published` tinyint(1) DEFAULT NULL,
   `onhome` tinyint(1) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `prefix_products`
+--
+
+INSERT INTO `prefix_products` (`id`, `reference`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `price`, `vat`, `discount`, `user_id`, `category_id`, `date`, `date_update`, `published`, `onhome`, `priority`) VALUES
+(5, '', 'aqui referencia', 'produto de teste', 'alguma descrição<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', 1, 23, 0, 3, 0, '2014-05-10 19:12:56', '0000-00-00 00:00:00', 1, 0, NULL),
+(6, '', 'nome', 'aqui texto<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', '', 1.23, 23.25, 0, 3, 2, '2014-05-18 14:53:40', '2014-05-18 14:53:40', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -206,8 +271,8 @@ CREATE TABLE IF NOT EXISTS `prefix_users` (
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `rank` enum('owner','manager','member') DEFAULT NULL,
-  `code` text,
   `email` varchar(255) DEFAULT NULL,
+  `code` text,
   PRIMARY KEY (`id`),
   KEY `fk_prefix_users_prefix_products1` (`id`),
   KEY `fk_prefix_users_prefix_articles1` (`id`)
@@ -217,9 +282,9 @@ CREATE TABLE IF NOT EXISTS `prefix_users` (
 -- Dumping data for table `prefix_users`
 --
 
-INSERT INTO `prefix_users` (`id`, `name`, `password`, `rank`, `code`, `email`) VALUES
-(1, 'system', 'cf0c5ad9322d0ee3add71eeedc3305734a243823', 'owner', NULL, 'suporte@nexus-pt.eu'),
-(3, 'demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'manager', NULL, 'demo@nexus-pt.eu');
+INSERT INTO `prefix_users` (`id`, `name`, `password`, `rank`, `email`, `code`) VALUES
+(1, 'system', 'cf0c5ad9322d0ee3add71eeedc3305734a243823', 'owner', 'suporte@nexus-pt.eu', NULL),
+(3, 'demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'manager', 'demo@nexus-pt.eu', NULL);
 
 -- --------------------------------------------------------
 
@@ -228,8 +293,8 @@ INSERT INTO `prefix_users` (`id`, `name`, `password`, `rank`, `code`, `email`) V
 --
 
 CREATE TABLE IF NOT EXISTS `prefix_variables` (
-  `variable` varchar(50) NOT NULL,
-  `value` varchar(50) NOT NULL,
+  `variable` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `value` varchar(50) CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `variable` (`variable`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
