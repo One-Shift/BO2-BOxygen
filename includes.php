@@ -1,9 +1,10 @@
-<?php 
+<?php
 	if ($account["login"]) {
 		switch($pg) {
 			case 'home':
 				include "./modules/home/home.php";
 				break;
+			// --
 			case 'article-add':
 				include "./modules/article_add/article_add.php";
 				break;
@@ -16,6 +17,7 @@
 			case 'article-list':
 				include "./modules/article_list/article_list.php";
 				break;
+			// --
 			case 'product-add':
 				include "./modules/product_add/product_add.php";
 				break;
@@ -28,6 +30,7 @@
 			case 'product-list':
 				include "./modules/product_list/product_list.php";
 				break;
+			// --
 			case 'category-add':
 				include "./modules/category_add/category_add.php";
 				break;
@@ -40,6 +43,7 @@
 			case 'category-list':
 				include "./modules/category_list/category_list.php";
 				break;
+			// --
 			case 'user-add':
 				include "./modules/user_add/user_add.php";
 				break;
@@ -52,11 +56,15 @@
 			case 'user-list':
 				include "./modules/user_list/user_list.php";
 				break;
-                
+            // --
+			case 'newsletters':
+				include "./modules/newsletters/newsletters.php";
+				break;
+			// --
             case 'logout':
                 include "./modules/logout/logout.php";
                 break;
-                
+
 			default:
 				include "./modules/not_found/not-found.php";
 				break;
@@ -64,5 +72,3 @@
 	} else {
 		echo "<script>goTo('./');</script>";
 	}
-
-?>
