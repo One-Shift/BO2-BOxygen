@@ -17,6 +17,7 @@
         protected $user_id = 0;
         protected $category_id;
         protected $date;
+        protected $date_update;
         protected $published = false;
         protected $onhome = false;
         
@@ -42,7 +43,7 @@
             $this->id = $i;
         }
         
-        public function setUser($w) {
+        public function setUserId($w) {
             $this->user_id = $w;
         }
         
@@ -52,6 +53,10 @@
         
         public function setDate() {
             $this->date = date('Y-m-d H:i:s',time());
+        }
+        
+        public function setDateUpdate() {
+            $this->date_update = date('Y-m-d H:i:s',time());
         }
         
         public function setPublished($p) {
@@ -163,4 +168,3 @@
 			return $mysqli->query($query);
 		}
     }
-?>
