@@ -12,22 +12,22 @@
         
         //back-end info
         'BO2-version'		=> '1.0.2',
-        'BO2-name'		=> 'BOxygen :: BO²',
-        'language'		=> 'en',
+        'BO2-name'			=> 'BOxygen :: BO²',
+        'language'			=> 'en',
         
         //MySql configuration
         'mysql-user'		=> 'username',
         'mysql-password'	=> 'password',
         'mysql-host'		=> '127.0.0.1',
         'mysql-database'	=> 'database',
-        'mysql-prefix'		=> 'prefix',
+        'mysql-prefix'		 => 'prefix',
         
         //Cookie info 
-        'cookie'		=> 'cookie',
+        'cookie'			=> 'cookie',
         'cookie-time'		=> 320,
         
         //contact info
-        'email'			=> 'geral@nexus-pt.eu',
+        'email'					=> 'geral@nexus-pt.eu',
         'email-support'         => 'suporte@nexus-pt.eu',
         
         //Language conf
@@ -49,7 +49,7 @@
         'lang_6_state'          => true,
         'lang_6_acronym'        => "6",
         'lang_6_name'           => "sample_6",
-	'store'			=> true,	
+		'store'					=> true,	
         
         //analytics
         'analytics-site'        => "",
