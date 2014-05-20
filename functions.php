@@ -117,27 +117,27 @@
 		return mail($to, $subject, $message, $headers);
 	}
 
-    // *************************************
-    // *************************************
-    // GUEST BOOK
-    // *************************************
-    // *************************************
-    function returnTagName($id) {
-        global $configuration;
-
-        $query = "SELECT name FROM ".$configuration["mysql-prefix"]."_guestobook_tags WHERE id = '".$id."' LIMIT 1";
-        $source = mysql_query($query);
-        $nr = mysql_num_rows($source);
-
-        if ($nr > 0) {
-                $data = mysql_fetch_array($source);
-
-                return $data["name"];
+    function generateRandomString($length = 10) {
+    	
+    	// work 100%
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        
+        // in beta testing
+        $characters = '!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~';
+        
+        $randomString = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
         }
-        return null;
+        
+        return $randomString;
     }
+
+    print generateRandomString (50);
+
     
-    /**
+/**
  * Get either a Gravatar URL or complete image tag for a specified email address.
  *
  * @param string $email The email address
