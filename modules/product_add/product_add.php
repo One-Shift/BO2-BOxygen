@@ -63,29 +63,47 @@
             $category = new category();
             
             foreach($category->returnAllCategories() as $cat) {
-                if ($cat['section'] == 'products' || $cat['section'] == 'animes' || $cat['section'] == 'manga') {
+                if ($cat['category_type'] === 'products') {
                     print '<option value="'.$cat['id'].'">'.$cat['name_1'].'</option>';
                 }
             }
-            
         ?>
         </select>
         
         <div class="separator30"></div>
         
         <div>
-        <span id="label">Code</span>
-		<textarea name="code"></textarea>
-        <div class="separator30"></div>
+        	<span id="label">Code</span>
+			<textarea name="code"></textarea>
+			<button id="code_spr" type="button">[spr]</button> <button id="code_slash" type="button">[/]</button>
+        	<div class="separator30"></div>
+        </div>
+        
+        <div>
+        	<span id="label">Price</span>
+			<input type="text" step="any" placeholder="ex.: 1.23" name="price"/>
+        	<div class="separator30"></div>
+        </div>
+        
+        <div>
+        	<span id="label">VAT</span>
+			<input type="text" step="any" placeholder="ex.: 23.0" name="vat"/>
+        	<div class="separator30"></div>
+        </div>
+        
+        <div>
+        	<span id="label">Discount</span>
+			<input type="text" step="any" placeholder="ex.: 1.10" name="discount"/>
+        	<div class="separator30"></div>
         </div>
         
         <div class="bottom-area">  
-    	  <input type="checkbox" name="published"/> Publicado
-    	  </br>
-    	  <input type="checkbox" name="onhome"/> Pagina Inicial
-    	  </br>
-    	  <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-    	  <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+    	  	<input type="checkbox" name="published"/> Publicado
+    	  	</br>
+    	  	<input type="checkbox" name="onhome"/> Pagina Inicial
+    	  	</br>
+    	  	<button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
+    	  	<button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
     	</div>
      </form>
     <?php
@@ -94,8 +112,8 @@
         if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
         
         $product = new product();
+        $product->setReference($_REQUEST['reference']);
         $product->setContent(
-            $_REQUEST['reference'],
             $_REQUEST['title_1'], $_REQUEST['content_1'],
             $_REQUEST['title_2'], $_REQUEST['content_2'],
             $_REQUEST['title_3'], $_REQUEST['content_3'],
@@ -104,16 +122,22 @@
             $_REQUEST['title_6'], $_REQUEST['content_6'],
             $_REQUEST['code']
         );
-        $product->setWriter($account['name']);
+        
+        $product->setPrice($_REQUEST['price']);
+        $product->setVAT($_REQUEST['vat']);
+        $product->setDiscount($_REQUEST['discount']);
+        
+        $product->setUserId($account['name']);
         $product->setCategory($_REQUEST['category']);
         $product->setDate();
+        $product->setDateUpdate();
         $product->setPublished($_REQUEST['published']);
         $product->setonHome($_REQUEST['onhome']);
         
         if ($product->insert()) {
             print 'sucess';
             
-            $id = mysql_insert_id();
+            $id = $mysqli->insert_id;
     ?>
             <div class="separator30"></div>
         
