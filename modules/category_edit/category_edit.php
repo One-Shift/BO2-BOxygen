@@ -15,36 +15,48 @@
                 <h2>Lingua 1</h2>
         		<span id="label">Categoria</span>
         		<input type="text" name="title_1" value="<?php print $category['name_1']; ?>" />
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_1',$category['content_1']); ?>
                 <div class="separator30"></div> 
             </div>
             <div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 2</h2>
             	<span id="label">Categoria</span>
         		<input type="text" name="title_2" value="<?php print $category['name_2']; ?>"/>
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_2',$category['content_2']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 3</h2>
             	<span id="label">Categoria</span>
         		<input type="text" name="title_3" value="<?php print $category['name_3']; ?>"/>
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_3',$category['content_3']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 4</h2>
             	<span id="label">Categoria</span>
         		<input type="text" name="title_4" value="<?php print $category['name_4']; ?>"/>
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_4',$category['content_4']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 5</h2>
             	<span id="label">Categoria</span>
         		<input type="text" name="title_5" value="<?php print $category['name_5']; ?>"/>
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_5',$category['content_5']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 6</h2>
             	<span id="label">Categoria</span>
         		<input type="text" name="title_6" value="<?php print $category['name_6']; ?>"/>
+        		<span id="label">Descrição</span>
+				<?php print returnEditor('content_6',$category['content_6']); ?>
                 <div class="separator30"></div>
             </div>
             <div>
@@ -105,16 +117,23 @@
             $category->setId(intval($_REQUEST['i']));
             $category->setContent(
                 $_REQUEST['title_1'],
+                $_REQUEST['content_1'],
                 $_REQUEST['title_2'],
+                $_REQUEST['content_2'],
                 $_REQUEST['title_3'],
+                $_REQUEST['content_3'],
                 $_REQUEST['title_4'],
+                $_REQUEST['content_4'],
                 $_REQUEST['title_5'],
+                $_REQUEST['content_5'],
                 $_REQUEST['title_6'],
+                $_REQUEST['content_6'],
                 $_REQUEST['code'],
-                $_REQUEST['description']
                 );
+            $category->setDateUpdate();
             $category->setPublished($_REQUEST['published']);
             $category->setCategoryType($_REQUEST['category_type']);
+            
             if ($category->update()) {
                 print 'sucess';
             } else {
