@@ -3,7 +3,7 @@
     	<h1>Edit Article</h1>
         <?php if (!isset($_REQUEST['save'])) { ?>
         <form method="post">
-    	<?php returnEditorInit();
+    	<?php
     	$object_article = new article();
     	$object_article->setId(intval($_REQUEST['i']));
     	$article = $object_article->returnOneArticle();
@@ -15,7 +15,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_1" value="<?php print $article['title_1']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_1',$article['content_1']); ?>
+    		<?php print returnEditor('content_1',$article['content_1']); ?>
             
             <div class="separator30"></div>
         </div>
@@ -25,7 +25,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_2" value="<?php print $article['title_2']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_2',$article['content_2']); ?>
+    		<?php print returnEditor('content_2',$article['content_2']); ?>
     		
             <div class="separator30"></div>
         </div>
@@ -35,7 +35,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_3" value="<?php print $article['title_3']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_3',$article['content_3']); ?>
+    		<?php print returnEditor('content_3',$article['content_3']); ?>
     		
             <div class="separator30"></div>
         </div>
@@ -45,7 +45,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_4" value="<?php print $article['title_4']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_4',$article['content_4']); ?>
+    		<?php print returnEditor('content_4',$article['content_4']); ?>
             
             <div class="separator30"></div>
         </div>
@@ -55,7 +55,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_5" value="<?php print $article['title_5']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_5',$article['content_5']); ?>
+    		<?php print returnEditor('content_5',$article['content_5']); ?>
             
             <div class="separator30"></div>
         </div>
@@ -65,7 +65,7 @@
     		<span id="label">Titulo</span>
     		<input type="text" name="title_6" value="<?php print $article['title_6']; ?>"/>
     		<span id="label">Conteudo</span> 
-    		<?php returnEditor('content_6',$article['content_6']); ?>
+    		<?php print returnEditor('content_6',$article['content_6']); ?>
             
             <div class="separator30"></div>
         </div>
