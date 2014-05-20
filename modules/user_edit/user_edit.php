@@ -43,7 +43,7 @@
     </form>    
     <?php
         
-    }else{
+    } else {
         
         if(checkEmail($_REQUEST['email'])){ 
             $user = new user();
@@ -77,7 +77,6 @@
             //print'<script type="text/javascript">setTimeout(goBack(),2000);</script>';
         }
     }
-}else{
+} else {
     print 'error';
 }
-    ?>
