@@ -1,18 +1,17 @@
 <?php
-    function returnFilesList($id,$module) {
-        print '<iframe src="./modules/upload/upload_list.php?mdl='.$module.'&i='.$id.'">Your Browser do not support iframe method!</iframe>';
+    function returnFilesList ( $id, $module) {
+        return sprintf ('<iframe src="./modules/upload/upload_list.php?mdl=%s&i=%s">Your Browser do not support iframe method!</iframe>',
+        $module, $id);
     }
 
-    function returnImgUploader($button,$id,$module,$width,$height) {
-        print '<button type="button" onclick="popUp(\'./modules/upload/upload_script_img.php?mdl='.$module.'&i='.$id.'\',\''.$width.'\',\''.$height.'\'); return false;">'.$button.'</button>';
+    function returnImgUploader ( $button, $id, $module, $width, $height) {
+        return sprintf ('<button type="button" onclick="popUp(\'./modules/upload/upload_script_img.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">'.$button.'</button>', 
+        $module, $id, $width, $height);
     }
 
-    function returnDocsUploader($button,$id,$module,$width,$height) {
-        print '<button type="button" onclick="popUp(\'./modules/upload/upload_script_docs.php?mdl='.$module.'&i='.$id.'\',\''.$width.'\',\''.$height.'\'); return false;">'.$button.'</button>';
-    }
-
-    function returnVideosUploader($id,$module) {
-        include "./modules/upload_videos/upload_videos_frame.php";
+    function returnDocsUploader ( $button, $id, $module, $width, $height) {
+        return sprintf ('<button type="button" onclick="popUp(\'./modules/upload/upload_script_docs.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">'.$button.'</button>',
+        $module, $id, $width, $height);
     }
     
     function returnEditorInit () {
@@ -21,11 +20,9 @@
     }
     
    function returnEditor($textareanema,$content) {
-        print "<textarea name=\"".$textareanema."\" id=\"".$textareanema."\" style=\"width: 100%;\">"
-                    .$content
-                ."</textarea>";
-                
-        printf("<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema);
+        return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 100%;\">%s</textarea>"
+        ."<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>",
+        $textareanema, $textareanema, $content, $textareanema);
     }
     
     function getBrowser() {
@@ -60,29 +57,6 @@
                     return null;
                     break;
         }
-    }
-
-    function returnUserName($id) {
-        global $configuration;
-
-        $query = "SELECT name FROM ".$configuration["mysql-prefix"]."_users WHERE id = '".$id."' LIMIT 1";
-        $source = mysql_query($query);
-        $nr = mysql_num_rows($source);
-
-        if ($nr > 0) {
-                $data = mysql_fetch_array($source);
-
-                return $data["name"];
-        }
-        return null;
-    }
-    
-    function checkEmail($email) {
-	  if(preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/",$email)){
-	    list($username,$domain) = explode('@',$email);
-	    return true;
-	  }
-	  return false;
     }
   
     function sendEmail ($from, $to, $subject, $message) {
@@ -150,15 +124,20 @@
  * @source http://gravatar.com/site/implement/images/php/
  */
 function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = array() ) {
+	
 	$url = 'http://www.gravatar.com/avatar/';
+	
 	$url .= md5( strtolower( trim( $email ) ) );
+	
 	$url .= "?s=$s&d=$d&r=$r";
+	
 	if ( $img ) {
 		$url = '<img src="' . $url . '"';
 		foreach ( $atts as $key => $val )
 			$url .= ' ' . $key . '="' . $val . '"';
 		$url .= ' />';
 	}
+	
 	return $url;
 }
 ?>
