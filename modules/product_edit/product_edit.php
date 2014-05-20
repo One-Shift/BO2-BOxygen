@@ -2,7 +2,6 @@
     <?php if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){ ?>
         <h1><?php echo $language["mod-product-edit-title"]; ?></h1>
         <?php if (!isset($_REQUEST['save'])) {
-            returnEditorInit();
             $product = new product();
             $product->setId(intval($_REQUEST['i']));
             $item = $product->returnOneProduct();
@@ -14,7 +13,7 @@
                 <span id="label">Artigo</span>
                 <input type="text" name="title_1" value="<?php print $item['title_1'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_1",$item['content_1']); ?>
+                <?php print returnEditor("content_1",$item['content_1']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
@@ -22,7 +21,7 @@
                 <span id="label">Artigo</span>
                 <input type="text" name="title_2" value="<?php print $item['title_2'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_2",$item['content_2']); ?>
+                <?php print returnEditor("content_2",$item['content_2']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
@@ -30,7 +29,7 @@
                 <span id="label">Titulo</span>
                 <input type="text" name="title_3" value="<?php print $item['title_3'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_3",$item['content_3']); ?>
+                <?php print returnEditor("content_3",$item['content_3']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
@@ -38,7 +37,7 @@
                 <span id="label">Titulo</span>
                 <input type="text" name="title_4" value="<?php print $item['title_4'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_4",$item['content_4']); ?>
+                <?php print returnEditor("content_4",$item['content_4']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
@@ -46,7 +45,7 @@
                 <span id="label">Titulo</span>
                 <input type="text" name="title_5" value="<?php print $item['title_5'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_5",$item['content_5']); ?>
+                <?php print returnEditor("content_5",$item['content_5']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
@@ -54,7 +53,7 @@
                 <span id="label">Titulo</span>
                 <input type="text" name="title_6" value="<?php print $item['title_6'] ?>"/>
                 <span id="label">Descrição</span>
-                <?php returnEditor("content_6",$item['content_6']); ?>
+                <?php print returnEditor("content_6",$item['content_6']); ?>
                 <div class="separator30"></div>
             </div>
 
