@@ -2,7 +2,6 @@
     <h1><?php echo $language["mod-category-add-title"]; ?></h1>
     <?php if (!isset($_REQUEST['save'])) { ?>
     <form action="" method="post">
-	<?php returnEditorInit(); ?>
     <div class="separator30"></div>
     
     <div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
@@ -55,7 +54,7 @@
     </div>
     <div>
         <span id="label">Descrição</span>
-		<?php returnEditor('description',null); ?>
+		<?php print returnEditor('description',null); ?>
         <div class="separator30"></div>
     </div>
     <div>
