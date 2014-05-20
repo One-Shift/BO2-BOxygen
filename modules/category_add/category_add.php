@@ -87,17 +87,17 @@
         $object_category = new category();
         $object_category->setContent(
             $_REQUEST['title_1'],
-            $_REQUEST['content_1']
+            $_REQUEST['content_1'],
             $_REQUEST['title_2'],
-            $_REQUEST['content_2']
+            $_REQUEST['content_2'],
             $_REQUEST['title_3'],
-            $_REQUEST['content_3']
+            $_REQUEST['content_3'],
             $_REQUEST['title_4'],
-            $_REQUEST['content_4']
+            $_REQUEST['content_4'],
             $_REQUEST['title_5'],
-            $_REQUEST['content_5']
+            $_REQUEST['content_5'],
             $_REQUEST['title_6'],
-            $_REQUEST['content_6']
+            $_REQUEST['content_6'],
             $_REQUEST['code'],
             );
             
