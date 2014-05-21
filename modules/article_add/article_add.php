@@ -127,14 +127,14 @@
             <div class="separator30"></div>
         
             <span id="label">Lista de ficheiros</span>
-            <?php returnFilesList($id,'article'); ?>
+            <?php print returnFilesList($id,'article'); ?>
             
             <div class="separator30"></div>
             
             <?php
-                returnImgUploader('IMG Uploader',$id,'article','290',350);
+                print returnImgUploader('IMG Uploader',$id,'article','290',350);
                 print ' ';
-                returnDocsUploader('DOCS Uploader',$id,'article','290',350);
+                print returnDocsUploader('DOCS Uploader',$id,'article','290',350);
             ?>
     <?php 
         } else {
