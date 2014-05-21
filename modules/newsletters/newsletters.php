@@ -1,5 +1,4 @@
 <?php
-<?php
     $object_newsletters = new newsletters();
     $newsletters = $object_newsletters->returnAllregistries();
 ?>
