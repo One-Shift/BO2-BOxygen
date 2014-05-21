@@ -20,7 +20,7 @@
     }
     
    function returnEditor($textareanema,$content) {
-        return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 100%;\">%s</textarea>"
+        return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 670px;\">%s</textarea>"
         ."<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>",
         $textareanema, $textareanema, $content, $textareanema);
     }
