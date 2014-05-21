@@ -139,7 +139,7 @@ body {
 
 #site #header {
 	height: 118px;
-	background-image: url(./images/logoBO2.png);
+	background-image: url(./../images/logoBO2.png);
 	background-color: rgb(34, 34, 34);
 	background-position: center bottom;
 	background-repeat: no-repeat;
