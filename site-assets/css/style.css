@@ -82,17 +82,9 @@ body {
 	border-radius: 15px;
 }
 
-#login #container #fields div input[name=loginUsername] {
-	background-image: url(./../images/loginUsername.png);
-	background-position: left center;
-	background-repeat: no-repeat;
-}
+#login #container #fields div input[name=loginUsername] {}
 
-#login #container #fields div input[name=loginPassword] {
-	background-image: url(./../images/loginPassword.png);
-	background-position: left center;
-	background-repeat: no-repeat;
-}
+#login #container #fields div input[name=loginPassword] {}
 
 #login #container #buttons {
 	display: inline-block;
