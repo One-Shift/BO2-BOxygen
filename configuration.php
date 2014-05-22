@@ -1,5 +1,6 @@
 <?php
         // system   wr8wruwE
+        // demo demo
 	$configuration = array(
         //Site info
         'site-name'             => ' :: versão demo :: ',
