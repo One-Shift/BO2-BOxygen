@@ -80,8 +80,8 @@
 				<?php if ($showForm) { ?>
 				<form action="./index.php" method="post" name="loginForm">
 					<div id="fields">
-						<div id="username"><input type="text" name="loginUsername" placeholder="demo"></div>
-						<div id="password"><input type="password" name="loginPassword" placeholder="demo"></div>			
+						<div id="username"><input type="text" name="loginUsername" placeholder="username"></div>
+						<div id="password"><input type="password" name="loginPassword" placeholder="password"></div>			
 					</div>
 					<div id="buttons">
 						<div id="buttonlogin"><button type="submit" name="loginSubmit"><?php echo $language["login-b-login"]; ?></button></div>
