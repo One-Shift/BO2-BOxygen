@@ -97,9 +97,9 @@
         <div class="separator30"></div>
         
         <?php
-            returnImgUploader('IMG Uploader',$article['id'],'article','290',350);
+            print returnImgUploader('IMG Uploader',$article['id'],'article','290',350);
             print ' ';
-            returnDocsUploader('DOCS Uploader',$article['id'],'article','290',350);
+            print returnDocsUploader('DOCS Uploader',$article['id'],'article','290',350);
         ?>
         
         <?php unset($category); ?>
