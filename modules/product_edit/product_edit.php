@@ -84,9 +84,9 @@
             <div class="separator30"></div>
 
             <?php
-                returnImgUploader('IMG Uploader',$item['id'],'product','290',350);
+                print returnImgUploader('IMG Uploader',$item['id'],'product','290',350);
                 print ' ';
-                returnDocsUploader('DOCS Uploader',$item['id'],'product','290',350);
+                print returnDocsUploader('DOCS Uploader',$item['id'],'product','290',350);
             ?>
 
             <div class="separator30"></div>
