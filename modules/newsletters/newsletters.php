@@ -1,6 +1,6 @@
 <?php
     $object_newsletters = new newsletters();
-    $newsletters = $object_newsletters->returnAllregistries();
+    $newsletters_list = $object_newsletters->returnAllregistries();
 ?>
 <div class="category-list">
     <div class="button-area">
@@ -17,16 +17,16 @@
             <th>Date</th>
         </tr>
         <?php
-            foreach($category_list as $category){
-                if ($category['published']) {$published = '<img src="./site-assets/images/icon_on.png" alt="on" />';}
-                    else {$published = '<img src="./site-assets/images/icon_off.png" alt="off" />';}
+            foreach($newsletters_list as $newsletter_entry){
+                if ($newsletter_entry['published']) { $published = '<img src="./site-assets/images/icon_on.png" alt="on" />'; }
+                    else { $published = '<img src="./site-assets/images/icon_off.png" alt="off" />'; }
                 print
                 '<tr>'.
-                '<td>'.$newsletters['id'].'</td>'.
-                '<td>'.$newsletters['email'].'</td>'.
-                '<td>'.$newsletters['code'].'</td>'.
-                '<td>'.$newsletters['date'].'</td>'.
-                '<td><input type="radio" name="category" value="'.$category['id'].'"/></td>'.
+                '<td>'.$newsletter_entry['id'].'</td>'.
+                '<td>'.$newsletter_entry['email'].'</td>'.
+                '<td>'.$newsletter_entry['code'].'</td>'.
+                '<td>'.$newsletter_entry['date'].'</td>'.
+                '<td><input type="radio" name="category" value="'.$newsletter_entry['id'].'"/></td>'.
                 '</tr>';
 
             }
