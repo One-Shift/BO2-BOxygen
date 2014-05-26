@@ -128,7 +128,7 @@
                 $_REQUEST['content_5'],
                 $_REQUEST['title_6'],
                 $_REQUEST['content_6'],
-                $_REQUEST['code'],
+                $_REQUEST['code']
                 );
             $category->setDateUpdate();
             $category->setPublished($_REQUEST['published']);
