@@ -16,7 +16,7 @@
         		<span id="label">Categoria</span>
         		<input type="text" name="title_1" value="<?php print $category['name_1']; ?>" />
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_1',$category['content_1']); ?>
+				<?php print returnEditor('description_1',$category['description_1']); ?>
                 <div class="separator30"></div> 
             </div>
             <div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
@@ -24,7 +24,7 @@
             	<span id="label">Categoria</span>
         		<input type="text" name="title_2" value="<?php print $category['name_2']; ?>"/>
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_2',$category['content_2']); ?>
+				<?php print returnEditor('description_2',$category['description_2']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
@@ -32,7 +32,7 @@
             	<span id="label">Categoria</span>
         		<input type="text" name="title_3" value="<?php print $category['name_3']; ?>"/>
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_3',$category['content_3']); ?>
+				<?php print returnEditor('description_3',$category['description_3']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
@@ -40,7 +40,7 @@
             	<span id="label">Categoria</span>
         		<input type="text" name="title_4" value="<?php print $category['name_4']; ?>"/>
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_4',$category['content_4']); ?>
+				<?php print returnEditor('description_4',$category['description_4']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
@@ -48,7 +48,7 @@
             	<span id="label">Categoria</span>
         		<input type="text" name="title_5" value="<?php print $category['name_5']; ?>"/>
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_5',$category['content_5']); ?>
+				<?php print returnEditor('description_5',$category['description_5']); ?>
                 <div class="separator30"></div>
             </div>
             <div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
@@ -56,7 +56,7 @@
             	<span id="label">Categoria</span>
         		<input type="text" name="title_6" value="<?php print $category['name_6']; ?>"/>
         		<span id="label">Descrição</span>
-				<?php print returnEditor('content_6',$category['content_6']); ?>
+				<?php print returnEditor('description_6',$category['description_6']); ?>
                 <div class="separator30"></div>
             </div>
             <div>
@@ -74,22 +74,16 @@
                 
                 <div class="separator30"></div>
             </div>
-            
-            <div>
-				<span id="label">Descrição</span>
-				<?php print returnEditor('description',$category['description']); ?>
-				<div class="separator30"></div>
-			</div>
 			
 			<span id="label">Lista de ficheiros</span>
-            <?php returnFilesList($category['id'],'category'); ?>
+            <?php print returnFilesList($category['id'],'category'); ?>
             
             <div class="separator30"></div>
             
             <?php
-                returnImgUploader('IMG Uploader',$category['id'],'category','290',350);
+                print returnImgUploader('IMG Uploader',$category['id'],'category','290',350);
                 print ' ';
-                returnDocsUploader('DOCS Uploader',$category['id'],'category','290',350);
+                print returnDocsUploader('DOCS Uploader',$category['id'],'category','290',350);
             ?>
             
             
@@ -111,23 +105,27 @@
         
 <?php
         }else{
-            if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
+            if (isset($_REQUEST['published'])) {
+            	$_REQUEST['published'] = true;
+            } else {
+            	$_REQUEST['published'] = false;
+            }
             
             $category = new category();
             $category->setId(intval($_REQUEST['i']));
             $category->setContent(
                 $_REQUEST['title_1'],
-                $_REQUEST['content_1'],
+                $_REQUEST['description_1'],
                 $_REQUEST['title_2'],
-                $_REQUEST['content_2'],
+                $_REQUEST['description_2'],
                 $_REQUEST['title_3'],
-                $_REQUEST['content_3'],
+                $_REQUEST['description_3'],
                 $_REQUEST['title_4'],
-                $_REQUEST['content_4'],
+                $_REQUEST['description_4'],
                 $_REQUEST['title_5'],
-                $_REQUEST['content_5'],
+                $_REQUEST['description_5'],
                 $_REQUEST['title_6'],
-                $_REQUEST['content_6'],
+                $_REQUEST['description_6'],
                 $_REQUEST['code']
                 );
             $category->setDateUpdate();
