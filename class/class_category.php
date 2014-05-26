@@ -54,12 +54,12 @@
             $this->published = $p;
         }
         
-        public function setDate($d) {
-            $this->date = $d;
+        public function setDate() {
+            $this->date = date("Y-m-d H:i:s", time());
         }
         
-        public function setDateUpdate($d) {
-            $this->date_update = $d;
+        public function setDateUpdate() {
+            $this->date_update = date("Y-m-d H:i:s", time());
         }
         
         public function insert() {
