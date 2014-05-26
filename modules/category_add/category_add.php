@@ -101,7 +101,7 @@
             $_REQUEST['code']
             );
             
-        $object_category->setUserId();
+        $object_category->setUserId($account["name"]);
         $object_category->setDate();
         $object_category->setDateUpdate();
         $object_category->setPublished($_REQUEST['published']);
