@@ -92,7 +92,7 @@
         <div class="separator30"></div>
         
         <span id="label">Lista de ficheiros</span>
-        <?php returnFilesList($article['id'],'article'); ?>
+        <?php print returnFilesList($article['id'],'article'); ?>
         
         <div class="separator30"></div>
         
