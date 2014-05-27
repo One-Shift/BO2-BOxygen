@@ -15,6 +15,7 @@
             protected $title_6;
             protected $content_6;
             protected $code;
+            protected $service = false;
             protected $price;
             protected $vat;
             protected $discount;
@@ -49,6 +50,10 @@
 
     public function setReference ($r) {
         $this->reference = $r;
+    }
+    
+    public function setService ($s) {
+        $this->service = $s;
     }
 
     public function setPrice($p) {
@@ -91,7 +96,7 @@
         global $configuration;
         global $mysqli;
 
-        $query = "INSERT INTO ".$configuration['mysql-prefix']."_products (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, price, vat, discount, user_id, category_id, date, date_update, published, onhome) VALUES ('".$mysqli->real_escape_string($this->title_1)."', '".$mysqli->real_escape_string($this->content_1)."', '".$mysqli->real_escape_string($this->title_2)."', '".$mysqli->real_escape_string($this->content_2)."', '".$mysqli->real_escape_string($this->title_3)."', '".$mysqli->real_escape_string($this->content_3)."', '".$mysqli->real_escape_string($this->title_4)."', '".$mysqli->real_escape_string($this->content_4)."', '".$mysqli->real_escape_string($this->title_5)."', '".$mysqli->real_escape_string($this->content_5)."', '".$mysqli->real_escape_string($this->title_6)."', '".$mysqli->real_escape_string($this->content_6)."', '".$this->code."', '".$mysqli->real_escape_string($this->price)."', '".$mysqli->real_escape_string($this->vat)."', '".$mysqli->real_escape_string($this->discount)."', '".$this->user_id."', '".$this->category_id."', '".$this->date."', '".$this->date_update."', '".$this->published."', '".$this->onhome."')";
+        $query = "INSERT INTO ".$configuration['mysql-prefix']."_products (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, service, price, vat, discount, user_id, category_id, date, date_update, published, onhome) VALUES ('".$mysqli->real_escape_string($this->title_1)."', '".$mysqli->real_escape_string($this->content_1)."', '".$mysqli->real_escape_string($this->title_2)."', '".$mysqli->real_escape_string($this->content_2)."', '".$mysqli->real_escape_string($this->title_3)."', '".$mysqli->real_escape_string($this->content_3)."', '".$mysqli->real_escape_string($this->title_4)."', '".$mysqli->real_escape_string($this->content_4)."', '".$mysqli->real_escape_string($this->title_5)."', '".$mysqli->real_escape_string($this->content_5)."', '".$mysqli->real_escape_string($this->title_6)."', '".$mysqli->real_escape_string($this->content_6)."', '".$this->code."', '".$this->service."', '".$mysqli->real_escape_string($this->price)."', '".$mysqli->real_escape_string($this->vat)."', '".$mysqli->real_escape_string($this->discount)."', '".$this->user_id."', '".$this->category_id."', '".$this->date."', '".$this->date_update."', '".$this->published."', '".$this->onhome."')";
 
         $toReturn = $mysqli->query($query);
 
@@ -104,7 +109,7 @@
         global $configuration;
         global $mysqli;
 
-        print $query = sprintf("UPDATE %s_products SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s',  title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', price = '%s', vat = '%s', discount = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], $mysqli->real_escape_string($this->title_1), $mysqli->real_escape_string($this->content_1), $mysqli->real_escape_string($this->title_2), $mysqli->real_escape_string($this->content_2), $mysqli->real_escape_string($this->title_3), $mysqli->real_escape_string($this->content_3), $mysqli->real_escape_string($this->title_4), $mysqli->real_escape_string($this->content_4), $mysqli->real_escape_string($this->title_5), $mysqli->real_escape_string($this->content_5), $mysqli->real_escape_string($this->title_6), $mysqli->real_escape_string($this->content_6), $this->code, $mysqli->real_escape_string($this->price), $mysqli->real_escape_string($this->vat), $mysqli->real_escape_string($this->discount), $this->category_id, $this->date_update, $this->published, $this->published, $this->onhome, $this->id);
+        print $query = sprintf("UPDATE %s_products SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s',  title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', service = '%s', price = '%s', vat = '%s', discount = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], $mysqli->real_escape_string($this->title_1), $mysqli->real_escape_string($this->content_1), $mysqli->real_escape_string($this->title_2), $mysqli->real_escape_string($this->content_2), $mysqli->real_escape_string($this->title_3), $mysqli->real_escape_string($this->content_3), $mysqli->real_escape_string($this->title_4), $mysqli->real_escape_string($this->content_4), $mysqli->real_escape_string($this->title_5), $mysqli->real_escape_string($this->content_5), $mysqli->real_escape_string($this->title_6), $mysqli->real_escape_string($this->content_6), $this->code, $this->code, $mysqli->real_escape_string($this->price), $mysqli->real_escape_string($this->vat), $mysqli->real_escape_string($this->discount), $this->category_id, $this->date_update, $this->published, $this->published, $this->onhome, $this->id);
 
         return $mysqli->query($query);
     }
