@@ -22,9 +22,9 @@ html {
 
 body {
 	width: 900px;
-	margin: auto;
+	margin: 0 auto 50px;
 	background-color: rgb(75,75,75);
-    background: url('./../images/bg_02.jpg') center fixed;
+	background: url('./../images/bg_02.jpg') center fixed;
 }
 
 /* SISTEMA DE LOGIN */
