@@ -116,9 +116,11 @@
 		    </div>
 
             <div class="bottom-area">
-                <input type="checkbox" <?php if($item['published']){ print 'checked="yes"';} ?> name="published"/> Publicado
+            	<input type="checkbox" <?php if($item['published']){ print 'checked="yes"';} ?> name="service" /> Serviço
     	        </br>
-    	        <input type="checkbox" <?php if($item['onhome']){ print 'checked="yes"';} ?>  name="onhome"/> Pagina Inicial
+                <input type="checkbox" <?php if($item['published']){ print 'checked="yes"';} ?> name="published" /> Publicado
+    	        </br>
+    	        <input type="checkbox" <?php if($item['onhome']){ print 'checked="yes"';} ?>  name="onhome" /> Pagina Inicial
     	        </br>
     	        <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
     	        <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
@@ -129,8 +131,12 @@
         }else{
             $product = new product();
             $product->setId(intval($_GET['i']));
-
+			
+			// convert to bool the service box
+			if (isset($_REQUEST['service'])) $_REQUEST['service'] = true; else $_REQUEST['service'] = false;
+			// convert to bool the published box
             if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
+            // convert to bool the onhome box
             if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
 
             $product->setContent(
