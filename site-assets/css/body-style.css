@@ -25,10 +25,10 @@
 
 #site #container #page input[type=text],
 #site #container #page input[type=email],
-#site #container #page input[type=password]{
+#site #container #page input[type=password],
+#site #container #page input[type=number] {
 	display: block;
-	min-width: 100%;
-	max-width: 100%;
+	min-width: 650px; max-width: 650px;
 	border: 1px solid #CCCCCC;
 	margin-bottom: 5px; padding: 0px 8px;
     vertical-align: top;
@@ -151,8 +151,7 @@
 
 #site #container #page textarea {
 	display: block;
-	min-width: 100%;
-	max-width: 100%;
+	min-width: 650px; max-width: 650px;
 	min-height: 200px;
 	max-height: 300px;
     
