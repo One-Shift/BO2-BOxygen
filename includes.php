@@ -4,7 +4,7 @@
 			case 'home':
 				include "./modules/home/home.php";
 				break;
-			// --
+			// -- Article
 			case 'article-add':
 				include "./modules/article_add/article_add.php";
 				break;
@@ -17,7 +17,7 @@
 			case 'article-list':
 				include "./modules/article_list/article_list.php";
 				break;
-			// --
+			// -- Products
 			case 'product-add':
 				include "./modules/product_add/product_add.php";
 				break;
@@ -30,7 +30,7 @@
 			case 'product-list':
 				include "./modules/product_list/product_list.php";
 				break;
-			// --
+			// -- Categories
 			case 'category-add':
 				include "./modules/category_add/category_add.php";
 				break;
@@ -43,7 +43,7 @@
 			case 'category-list':
 				include "./modules/category_list/category_list.php";
 				break;
-			// --
+			// -- User Info
 			case 'user-add':
 				include "./modules/user_add/user_add.php";
 				break;
@@ -56,11 +56,11 @@
 			case 'user-list':
 				include "./modules/user_list/user_list.php";
 				break;
-            // --
+            		// -- Newsletters
 			case 'newsletters':
 				include "./modules/newsletters/newsletters.php";
 				break;
-			// --
+			// -- Session
             case 'logout':
                 include "./modules/logout/logout.php";
                 break;
