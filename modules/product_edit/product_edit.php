@@ -137,7 +137,7 @@
 			}
 			
 			// convert to bool the service box
-			if (isset($_REQUEST['service'])) $_REQUEST['service'] = true; else $_REQUEST['service'] = false;
+			if (isset($_REQUEST['service'])) $service = true; else $service = false;
 			// convert to bool the published box
             if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
             // convert to bool the onhome box
@@ -159,6 +159,7 @@
 
             $product->setCategory($_REQUEST['category']);
             $product->setDateUpdate();
+			$product->setService($service);
             $product->setPublished($_REQUEST['published']);
             $product->setonHome($_REQUEST['onhome']);
 
