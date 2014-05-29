@@ -132,16 +132,12 @@
             $product = new product();
             $product->setId(intval($_GET['i']));
 			
-			if (isset($_POST['service'])) {
-				print "<script>alert(\"ON\");</script>"
-			}
-			
 			// convert to bool the service box
 			if (isset($_REQUEST['service'])) $service = true; else $service = false;
 			// convert to bool the published box
-            if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
+            if (isset($_REQUEST['published'])) $published = true; else $published = false;
             // convert to bool the onhome box
-            if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
+            if (isset($_REQUEST['onhome'])) $onhome = true; else $onhome = false;
 
             $product->setContent(
                 $_REQUEST['title_1'], $_REQUEST['content_1'],
@@ -160,8 +156,8 @@
             $product->setCategory($_REQUEST['category']);
             $product->setDateUpdate();
 			$product->setService($service);
-            $product->setPublished($_REQUEST['published']);
-            $product->setonHome($_REQUEST['onhome']);
+            $product->setPublished($published);
+            $product->setonHome($onhome);
 
             if ($product->update()) {
                 print 'sucess';
