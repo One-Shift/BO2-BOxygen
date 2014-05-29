@@ -1,15 +1,15 @@
 <?php
-    // CONFIGURAÇÕES
+	// CONFIGURAÇÕES
 	include './configuration.php';
 	include './connect.php';
 
-    // CLASSES
+	// CLASSES
 	include './class/class_article.php';
 	include './class/class_product.php';
-    include './class/class_category.php';
-    include './class/class_user.php';
-    include './class/class_newsletters.php';
+	include './class/class_category.php';
+	include './class/class_user.php';
+	include './class/class_newsletters.php';
 
-    // OUTROS
+	// OUTROS
 	include './functions.php';
 	include './languages/'.$configuration['language'].'.php';
