@@ -47,8 +47,7 @@
                 <script type="text/javascript" src="./site-assets/js/nicEdit.js"></script>
 		<script type="text/javascript" src="./site-assets/js/script.js"></script>
         <link href="./site-assets/images/favicon.ico" rel="shortcut icon" />
-                
-		<title><?php echo $configuration["BO2-name"]; ?></title>
+                <title><?php echo $configuration["BO2-name"]; ?></title>
 	</head>
 	<body>
         <iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
@@ -70,7 +69,7 @@
 		</div>
 		<div id="footer">
 			<div id="copyright"><span onClick="goToNWin('http://www.nexus-pt.eu/');">NexuS-Pt , work team</span></div>
-			<div id="c"><span>©</span> <?php print date('Y'); ?></div>
+			<div id="c"><span>©</span><?php print date('Y'); ?></div>
 		</div>
         <iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
 	</body>
