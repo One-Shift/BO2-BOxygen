@@ -20,7 +20,7 @@ function popUp (link, width, height) {
 }
 
 /*
-    FUNÃ‡ÃƒO QUE CRIA UM COOKIE COM OS VALORES PRETENDIDOS
+    FUNÇÃO QUE CRIA UM COOKIE COM OS VALORES PRETENDIDOS
 */
 function createCookie(name,value,days) {
     if (days) {
@@ -33,7 +33,7 @@ function createCookie(name,value,days) {
 }
 
 /*
-    FUNçãoO QUE FAZ A LEITURA DE UM COOKIE DESEJADO
+    FUNÇÃO QUE FAZ A LEITURA DE UM COOKIE DESEJADO
 */
 function readCookie(name) {
 	var nameEQ = name + "=";
@@ -47,7 +47,7 @@ function readCookie(name) {
 }
 
 /*
-    FUNÃ‡ÃƒO QUE APAGA UM COOKIE DESEJADO
+    FUNÇÃO QUE APAGA UM COOKIE DESEJADO
 */
 function eraseCookie(name) {
 	createCookie(name,null,-1);
@@ -60,3 +60,19 @@ function buttonAction (c,p) {
         }
     }
 }
+
+
+$(window).ready(function () {
+	var code = $("textarea[name=code]");
+	var buttonspr = $("button#code_spr");
+	var buttonslash = $("button#code_slash");
+	
+	buttonspr.on("click", function () {
+		code.val(code.val() + "[spr]");
+	});
+	
+	buttonslash.on("click", function () {
+		code.val(code.val() + "[/]");
+	})
+
+});
