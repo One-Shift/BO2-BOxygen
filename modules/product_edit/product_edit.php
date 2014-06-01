@@ -79,7 +79,7 @@
             <div class="separator30"></div>
 
             <span id="label">Lista de ficheiros</span>
-            <?php returnFilesList($item['id'],'product'); ?>
+            <?php print returnFilesList($item['id'],'product'); ?>
 
             <div class="separator30"></div>
 
