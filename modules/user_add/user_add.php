@@ -26,7 +26,7 @@
     </form>    
     <?php
     }else{
-        if(checkEmail($_REQUEST['email'])){        
+        if(filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)){        
             $user = new user();
             $user->setUsername($_REQUEST['username']);
             $user->setPassword($_REQUEST['password']);
