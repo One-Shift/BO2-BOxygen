@@ -1,6 +1,6 @@
 <?php
-        // system   wr8wruwE
-        // demo demo
+    // system   wr8wruwE
+    // demo demo
 	$configuration = array(
         //Site info
         'site-name'             => ' :: versão demo :: ',
@@ -10,7 +10,8 @@
         //front-end info
         "per-page"              => 30,
         "nr-links"              => 4,
-        
+        "path" => "Path-here ex.: /new or /old"
+		
         //back-end info
         'BO2-version'		=> '1.1.0',
         'BO2-subversion'	=> 'b',
@@ -30,7 +31,6 @@
         
         //contact info
         'email'					=> 'geral@nexus-pt.eu',
-        'email-support'         => 'suporte@nexus-pt.eu',
         
         //Language conf
         'lang_1_state'          => true,
