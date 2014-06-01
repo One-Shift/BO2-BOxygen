@@ -41,7 +41,7 @@
             }else{
                 print 'O username ja existe';
             }
-        }else{
+        } else {
             print'Email invalido';
             print'<script type="text/javascript">setTimeout(goBack(),2000);</script>';
         }
