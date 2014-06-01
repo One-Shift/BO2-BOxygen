@@ -6,6 +6,8 @@
             "add"   => "Adicionar",
             "edit"  => "Editar",
             "del"   => "Eliminar",
+            "enable"   => "Ativar",
+            "disable"   => "Desactivar",
         ),
 
         "actions" => array(
