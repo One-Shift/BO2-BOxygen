@@ -10,7 +10,7 @@
         //front-end info
         "per-page"              => 30,
         "nr-links"              => 4,
-        "path" => "Path-here ex.: /new or /old"
+        "path" => "Path-here ex.: /new or /old",
 		
         //back-end info
         'BO2-version'		=> '1.1.0',
