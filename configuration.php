@@ -54,7 +54,7 @@
 		'store'					=> true,	
         
         //analytics
-        'analytics-site'        => "",
+        'analytics'        => "",
         
        'category_sections'      => array("products","articles","user"),
         
