@@ -76,7 +76,7 @@
 				if ($showError)
 					echo "<div id=\"error\">".$language["login-error"]."</div>";
 				?>
-				<?php if ($showForm) { ?>
+				<?php if ($showForm) {?>
 				<form action="./index.php" method="post" name="loginForm">
 					<div id="fields">
 						<div id="username"><input type="text" name="loginUsername" placeholder="username"></div>
