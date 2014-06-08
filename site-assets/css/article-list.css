@@ -1,0 +1,22 @@
+.article-list {}
+
+.article-list table {
+	width: 100%;
+	border-spacing: 0;
+}
+
+.article-list table tr {}
+
+.article-list table tr th {
+    text-align: left;
+}
+
+.article-list table tr td {}
+
+.article-list table tr td:nth-child(1) {
+    width: 20px;
+}
+
+.article-list table tr td:nth-child(4) {
+    text-align: center;
+}

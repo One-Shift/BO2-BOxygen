@@ -1,0 +1,220 @@
+#site #container #page {
+	color: #666666;
+}
+
+#site #container #page h1 {
+	border-left: 5px solid #F47000;
+	font-size: 13pt;
+	padding-left: 7px;
+	margin-bottom: 7px;
+}
+
+#site #container #page h2 {
+	border-left: 5px solid #FF9132;
+	font-size: 12pt;
+	padding-left: 7px;
+	margin-bottom: 7px;
+}
+
+#site #container #page h3 {
+	border-left: 5px solid #FFCA9E;
+	font-size: 11pt;
+	padding-left: 7px;
+	margin-bottom: 7px;
+}
+
+#site #container #page input[type=text],
+#site #container #page input[type=email],
+#site #container #page input[type=password],
+#site #container #page input[type=number] {
+	display: block;
+	min-width: 650px; max-width: 650px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 5px; padding: 0px 8px;
+    vertical-align: top;
+    height: 33px;
+    line-height: 19px;
+    border-radius: 2px;
+    color: rgb(60, 60, 60);
+    background: none repeat scroll 0% 0% white;
+    border: 2px solid rgb(217, 217, 217);
+    outline: medium none;
+}
+
+#site #container #page span#label {
+	display: block;
+    line-height: 35px;
+    padding: 0px 14px;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.3);
+    background: none repeat scroll 0% 0% #eee;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#site #container #page button {
+    color: rgb(36, 49, 64);
+    background: none repeat scroll 0% 0% rgb(229, 231, 237);
+    line-height: 1;
+    height: 33px;
+    padding: 0px 16px;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.2);
+    border: 0px none;
+    border-radius: 2px;
+    cursor: pointer;
+    -moz-box-sizing: border-box;
+}
+
+#site #container #page  .button-area {
+	text-align: right;
+	padding: 5px 0;
+}
+
+#site #container #page  .button-area select {
+    min-width: 250px; max-width: 250px;
+    display: inline-block;
+}
+
+#site #container #page  .button-area button {
+    color: rgb(36, 49, 64);
+    background: none repeat scroll 0% 0% rgb(229, 231, 237);
+    line-height: 1;
+    height: 33px;
+    padding: 0px 16px;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.2);
+    border: 0px none;
+    border-radius: 2px;
+    cursor: pointer;
+    -moz-box-sizing: border-box;
+}
+
+#site #container #page  .button-area button:hover {
+    background: none repeat scroll 0% 0% rgb(220, 223, 231);
+}
+
+#site #container #page button.green {
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
+    background: none repeat scroll 0% 0% rgb(78, 189, 74);
+    color: #fff;
+}
+
+#site #container #page button.green:hover {
+    background: none repeat scroll 0% 0% rgb(107, 200, 104);
+}
+
+#site #container #page button.orange {
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
+    background: none repeat scroll 0% 0% rgb(250, 162, 38);
+    color: #fff;
+}
+
+#site #container #page button.orange:hover {
+    background: none repeat scroll 0% 0% rgb(251, 179, 78);
+}
+
+#site #container #page button.red {
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
+    background: none repeat scroll 0% 0% rgb(238, 79, 61);
+    color: #fff;
+}
+
+#site #container #page button.red:hover {
+    background: none repeat scroll 0% 0% rgb(241, 113, 99);
+}
+
+#site #container #page input[type=checkbox] {
+
+}
+
+#site #container #page input[type=radio] {
+
+}
+
+#site #container #page select {
+	display: block;
+	min-width: 100%;
+	border: 1px solid #CCCCCC;
+	background-color: transparent;
+	margin-bottom: 5px;
+    
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 17px;
+    margin: 0px;
+    padding: 6px 6px 6px 9px;
+    color: rgb(98, 98, 98);
+    background: rgb(245, 245, 245);
+    border: 0px none;
+    -moz-box-sizing: border-box;
+}
+
+#site #container #page textarea {
+	display: block;
+	min-width: 650px; max-width: 650px;
+	min-height: 200px;
+	max-height: 300px;
+    
+	border: 1px solid #CCCCCC;
+	margin-bottom: 5px; padding: 4px 8px;
+    vertical-align: top;
+    border-radius: 2px;
+    color: rgb(60, 60, 60);
+    background: none repeat scroll 0% 0% white;
+    border: 2px solid rgb(217, 217, 217);
+    outline: medium none;
+}
+
+#site #container #page blockquote#textarea {
+	margin-top: -5px;
+	margin-bottom: 5px;
+	padding-left:10px;
+	padding-right: 10px; 
+	border-radius: 0 0 3px 3px;
+	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	background-color: rgb(240,240,240);
+	color: grey;
+}
+
+#site #container #page iframe {
+	display: block;
+	min-width: 100%;
+	max-width: 100%;
+	overflow-y: auto;
+	margin-bottom: 5px;
+    
+    border: 1px solid #CCCCCC;
+	margin-bottom: 5px;
+    vertical-align: top;
+    border-radius: 2px;
+    color: rgb(60, 60, 60);
+    background: none repeat scroll 0% 0% white;
+    border: 2px solid rgb(217, 217, 217);
+    outline: medium none;
+}
+
+#site #container #page table.db-list {
+    border: 2px solid #eee;
+    border-radius: 2px;
+}
+
+#site #container #page table.db-list tr:hover {
+    background: #ddd;
+}
+
+#site #container #page table.db-list tr th {
+    background: #eee;
+    line-height: 1;
+    height: 33px;
+    font-weight: bold;
+    color: #444;
+    padding: 0px 11px 2px;
+}
+
+#site #container #page table.db-list tr td {
+    line-height: 1;
+    padding: 0px 11px 2px;
+    height: 33px;
+}
