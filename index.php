@@ -13,7 +13,7 @@
 			// verifica se o loginUsername e loginPassword foram preenchidos correctamente
 			if (!empty($_POST["loginUsername"]) && !empty($_POST["loginPassword"])) {
 				// procurar na base de dados se existe uma entrada com os dados introduzidos
-				$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $_POST["loginUsername"],sha1(md5(sha1(md5($_POST["loginPassword"])))));
+				$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $_POST["loginUsername"], sha1(md5(sha1(md5($_POST["loginPassword"])))));
 				$source = $mysqli->query($query);
 				$nr = $source->num_rows;
 				
@@ -59,10 +59,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-		<link type="text/css" rel="stylesheet" href="./site-assets/css/style.css">
-        
+		<link type="text/css" rel="stylesheet" href="./site-assets/css/style.css" />
 		<script type="text/javascript" src="./site-assets/js/script.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
 		<title><?php echo $configuration["BO2-name"]; ?></title>
 	</head>
 	<body>
