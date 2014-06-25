@@ -8,8 +8,8 @@
 <html>
     <head>
         <title>IMG Uploader</title>
-        <script type="text/javascript" src="./../../site-assets/jquery.js"></script>
-        <script type="text/javascript" src="./../../site-assets/script.js"></script>
+        <script type="text/javascript" src="./../../site-assets/js/jquery.js"></script>
+        <script type="text/javascript" src="./../../site-assets/js/script.js"></script>
         <style type="text/css">
             * {
                 font-family: Sans-Serif;
