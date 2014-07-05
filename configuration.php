@@ -17,6 +17,7 @@
         'BO2-subversion'	=> 'b',
         'BO2-name'			=> 'BOxygen :: BO²',
         'language'			=> 'en',
+        "secret-key" => "GJTBpKregE9WgXc",
         
         //MySql configuration
         'mysql-user'		=> 'username',
