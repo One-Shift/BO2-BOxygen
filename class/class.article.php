@@ -150,21 +150,57 @@
         	return $toReturn;
         }
         
-		public function increasePriority() {
-			global $configuration;
-        	global $mysqli;
-			
-			$query = sprintf("UPDATE %s_articles SET priority += 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
-			
-			return $mysqli->query($query);
+        public function returnImages ($order) {
+        	global $configuration;
+		global $mysqli;
+		
+		$query = sprintf("SELECT * FROM %s_images WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
+		$source = $mysqli->query($query);
+		
+		$toReturn = array();
+        	$i = 0;
+		
+		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+			$toReturn[$i] = $data;
+        		$i++;
 		}
 		
-		public function decreasePriority() {
-			global $configuration;
-        	global $mysqli;
-			
-			$query = sprintf("UPDATE %s_articles SET priority -= 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
-			
-			return $mysqli->query($query);
+		return $toReturn;
+        }
+        
+        public function returnDocs ($order) {
+        	global $configuration;
+		global $mysqli;
+		
+		$query = sprintf("SELECT * FROM %s_documents WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
+		$source = $mysqli->query($query);
+		
+		$toReturn = array();
+        	$i = 0;
+		
+		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+			$toReturn[$i] = $data;
+        		$i++;
 		}
+		
+		return $toReturn;
+        }
+        
+	public function increasePriority() {
+		global $configuration;
+		global $mysqli;
+		
+		$query = sprintf("UPDATE %s_articles SET priority += 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+		
+		return $mysqli->query($query);
+	}
+	
+	public function decreasePriority() {
+		global $configuration;
+		global $mysqli;
+		
+		$query = sprintf("UPDATE %s_articles SET priority -= 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+		
+		return $mysqli->query($query);
+	}
     }
