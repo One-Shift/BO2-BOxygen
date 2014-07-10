@@ -13,7 +13,7 @@
 			// verifica se o loginUsername e loginPassword foram preenchidos correctamente
 			if (!empty($_POST["loginUsername"]) && !empty($_POST["loginPassword"])) {
 				// procurar na base de dados se existe uma entrada com os dados introduzidos
-				$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $_POST["loginUsername"], sha1(md5(sha1(md5($_POST["loginPassword"])))));
+				$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $mysqli->real_escape_string($_POST["loginUsername"]), sha1(md5(sha1(md5($_POST["loginPassword"])))));
 				$source = $mysqli->query($query);
 				$nr = $source->num_rows;
 				
