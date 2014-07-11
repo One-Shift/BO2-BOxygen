@@ -5,8 +5,8 @@
 <div class="article-list">
 	<div class="button-area">
 		<button onclick="goTo('./backoffice.php?pg=article-add');" class="green"><?php print $language["template"]["add"] ?></button>  
-    	<button onclick="buttonAction ('Confirma?','article-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('Confirma?','article-del');" class="red"><?php print $language["template"]["del"] ?></button>
+    	<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','article-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
+		<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','article-del');" class="red"><?php print $language["template"]["del"] ?></button>
 	</div>
 	<table class="db-list">
 	  <tr>
@@ -40,7 +40,7 @@
 	</table>
 	<div class="button-area">
 		<button onclick="goTo('./backoffice.php?pg=article-add');" class="green"><?php print $language["template"]["add"] ?></button>  
-    	<button onclick="buttonAction ('Confirma?','article-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('Confirma?','article-del');" class="red"><?php print $language["template"]["del"] ?></button>
+    	<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','article-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
+		<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','article-del');" class="red"><?php print $language["template"]["del"] ?></button>
 	</div>
 </div>

@@ -2,12 +2,13 @@
 	$language = array (
         "system" => array(),
 
-        "template"  => array(
-            "add"   => "Add",
-            "edit"  => "Edit",
-            "del"   => "Del",
-            "enable"   => "Enable",
-            "disable"   => "Disable",
+        "template" => array(
+            "add" => "Add",
+            "edit" => "Edit",
+            "del" => "Del",
+            "enable" => "Enable",
+            "disable" => "Disable",
+            "are-you-sure" => "Are you sure?",
         ),
 
         "actions" => array(
@@ -16,7 +17,7 @@
             "error" => "An internal error occurred. Talk to your webmaster and explain the situation well.",
         ),
 
-        "article"   => array(),
+        "article" => array(),
 
         // general
         "confirm" => "Are you sure?",
@@ -24,14 +25,14 @@
         "cancel" => "Cancel",
 
 		// login
-		"login-b-login" =>	"Login",
-		"login-b-reset" =>	"Reset",
-		"login-sucess" =>	"Your session has been initiated!",
-		"login-error" =>	"Error! Something are wrong!",
+		"login-b-login" => "Login",
+		"login-b-reset" => "Reset",
+		"login-sucess" => "Your session has been initiated!",
+		"login-error" => "Error! Something are wrong!",
 
 		//backoffice
-        "mysql-connection-error" =>	"Error! Cannot connect to database!",
-        "mysql-connection-sucess" =>	"Your connection to the database has been successfully",
+        "mysql-connection-error" => "Error! Cannot connect to database!",
+        "mysql-connection-sucess" => "Your connection to the database has been successfully",
 
         // other
         "menu" => "Menu",

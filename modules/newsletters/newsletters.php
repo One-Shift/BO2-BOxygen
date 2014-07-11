@@ -5,7 +5,7 @@
 <div class="category-list">
     <div class="button-area">
         <button onclick="goTo('./backoffice.php?pg=category-add');" class="green"><?php print $language["template"]["enable"] ?></button>
-        <button onclick="buttonAction ('Confirma?','category-edit');" class="red"><?php print $language["template"]["disable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','category-edit');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
 
     <table class="db-list">
