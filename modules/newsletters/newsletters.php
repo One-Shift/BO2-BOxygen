@@ -1,11 +1,26 @@
 <?php
+    // enable && disable
+    switch ($lg) {
+        case "newsletters-enable":
+            $object_newsletters = new newsletters();
+            $object_newsletters->setId(intval($_GET["i"]));
+            $object_newsletters->enable();
+            break;
+        case "newsletters-disable":
+            $object_newsletters = new newsletters();
+            $object_newsletters->setId(intval($_GET["i"]));
+            $object_newsletters->disable();
+            break;
+    }
+
+    // get list
     $object_newsletters = new newsletters();
     $newsletters_list = $object_newsletters->returnAllregistries();
 ?>
 <div class="category-list">
     <div class="button-area">
-        <button onclick="goTo('./backoffice.php?pg=category-add');" class="green"><?php print $language["template"]["enable"] ?></button>
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','category-edit');" class="red"><?php print $language["template"]["disable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
 
     <table class="db-list">
@@ -38,8 +53,8 @@
     </table>
 
     <div class="button-area">
-        <button onclick="goTo('./backoffice.php?pg=category-add');" class="green"><?php print $language["template"]["enable"] ?></button>
-        <button onclick="buttonAction ('Confirma?','category-edit');" class="red"><?php print $language["template"]["disable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
 
 </div>
