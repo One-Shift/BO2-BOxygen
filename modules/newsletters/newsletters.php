@@ -1,6 +1,6 @@
-<?php
+ ex<?php
     // enable && disable
-    switch ($lg) {
+    switch ($pg) {
         case "newsletters-enable":
             $object_newsletters = new newsletters();
             $object_newsletters->setId(intval($_GET["i"]));
