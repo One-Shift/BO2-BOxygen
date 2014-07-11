@@ -24,20 +24,6 @@
         ."<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>",
         $textareanema, $textareanema, $content, $textareanema);
     }
-    
-    function getBrowser() {
-        $browser = $_SERVER['HTTP_USER_AGENT'];
-
-        if (strpos($browser, "MSIE 6.0") > -1) {
-            return false;
-        } else if (strpos($browser, "MSIE 7.0") > -1) {
-            return false;
-        } else if (strpos($browser, "MSIE 8.0") > -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     function returnImageExt($filetype) {
         switch ($filetype) {
