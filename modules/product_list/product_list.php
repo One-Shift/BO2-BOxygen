@@ -25,8 +25,8 @@
             
         </select>
         <button onclick="goTo('./backoffice.php?pg=product-add');" class="green"><?php print $language["template"]["add"] ?></button>  
-    	<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
+    	<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
+		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
 	</div>
     <table class="db-list">
       <tr>
@@ -66,8 +66,8 @@
     </table>
     <div class="button-area">        
         <button onclick="goTo('./backoffice.php?pg=product-add');" class="green"><?php print $language["template"]["add"] ?></button>  
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
+		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
 	</div>
 </div>
 

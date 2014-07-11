@@ -56,8 +56,14 @@
 			case 'user-list':
 				include "./modules/user_list/user_list.php";
 				break;
-            		// -- Newsletters
+            // -- Newsletters
 			case 'newsletters':
+				include "./modules/newsletters/newsletters.php";
+				break;
+            case 'newsletters-enable':
+				include "./modules/newsletters/newsletters.php";
+				break;
+            case 'newsletters-disable':
 				include "./modules/newsletters/newsletters.php";
 				break;
 			// -- Session

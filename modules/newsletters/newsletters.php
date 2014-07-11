@@ -19,8 +19,8 @@
 ?>
 <div class="category-list">
     <div class="button-area">
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
 
     <table class="db-list">
@@ -33,7 +33,7 @@
         </tr>
         <?php
             foreach($newsletters_list as $newsletter_entry){
-                if ($newsletter_entry['active']) {
+                if ($newsletter_entry['state']) {
                     $active = '<img src="./site-assets/images/icon_on.png" alt="on" />';
                 } else {
                     $active = '<img src="./site-assets/images/icon_off.png" alt="off" />'; 
@@ -53,8 +53,8 @@
     </table>
 
     <div class="button-area">
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
-        <button onclick="buttonAction ('<?php print $language["system"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
 
 </div>
