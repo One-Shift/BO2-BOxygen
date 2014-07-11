@@ -5,6 +5,7 @@
         protected $code;
         protected $date;
         protected $date_update;
+        protected $state;
 
 
         public function __construct () {}
@@ -120,5 +121,21 @@
             }
 
             return $toReturn;
+        }
+
+        public function enable () {
+            global $configuration;
+            global $mysqli;
+
+            $query = sprintf("UPDATE %s_newsletters SET state = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], true, $this->id);
+            return $mysqli->query($query);
+        }
+
+        public function disable () {
+            global $configuration;
+            global $mysqli;
+
+            $query = sprintf("UPDATE %s_newsletters SET state = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], false, $this->id);
+            return $mysqli->query($query);
         }
     }
