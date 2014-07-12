@@ -154,6 +154,7 @@
                 $_REQUEST['code']
             );
 
+			$product->setReference($_REQUEST['reference']);
             $product->setPrice($_REQUEST['price']);
         	$product->setVAT($_REQUEST['vat']);
         	$product->setDiscount($_REQUEST['discount']);
