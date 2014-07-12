@@ -8,6 +8,11 @@
         ?>
         <form action="" method="post">
             <div class="separator30"></div>
+			<div>
+				<span id="label">Referencia</span>
+				<input type="text" name="reference" value="<?php print $item['reference'] ?>" />
+			</div>
+            <div class="separator30"></div>
             <div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
                 <h2>Lingua 1</h2>
                 <span id="label">Artigo</span>
