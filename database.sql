@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2014 at 03:45 PM
+-- Generation Time: Jul 12, 2014 at 08:59 PM
 -- Server version: 5.5.37-cll
 -- PHP Version: 5.4.23
 
@@ -227,31 +227,16 @@ INSERT INTO `prefix_newsletters` (`id`, `email`, `code`, `date`, `date_update`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prefix_order`
---
-
-CREATE TABLE IF NOT EXISTS `prefix_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `cart` text NOT NULL,
-  `date` datetime NOT NULL,
-  `date_update` datetime NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `prefix_orders`
 --
 
 CREATE TABLE IF NOT EXISTS `prefix_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `code` text NOT NULL,
+  `cart` text NOT NULL,
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
