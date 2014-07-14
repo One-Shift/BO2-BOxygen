@@ -281,8 +281,8 @@ CREATE TABLE IF NOT EXISTS `prefix_products` (
 --
 
 INSERT INTO `prefix_products` (`id`, `reference`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `service`, `price`, `vat`, `discount`, `user_id`, `category_id`, `date`, `date_update`, `published`, `onhome`, `priority`) VALUES
-(5, '', 'aqui referencia', 'produto de teste', 'alguma descrição<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', 0, 1, 23, 0, 3, 0, '2014-05-10 19:12:56', '0000-00-00 00:00:00', 1, 0, NULL),
-(6, '', 'nome', 'aqui texto<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', '', 0, 1.23, 23.25, 0, 3, 2, '2014-05-18 14:53:40', '2014-05-18 14:53:40', 0, 0, NULL);
+(5, '', 'reference', 'produto de teste', 'alguma descrição<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', 0, 1, 23, 0, 3, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00', 1, 0, NULL),
+(6, '', 'nome', 'aqui texto<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', '', 0, 1.23, 23.25, 0, 3, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -309,8 +309,8 @@ CREATE TABLE IF NOT EXISTS `prefix_users` (
 --
 
 INSERT INTO `prefix_users` (`id`, `name`, `password`, `rank`, `email`, `code`, `date`, `date_update`) VALUES
-(1, 'system', 'cf0c5ad9322d0ee3add71eeedc3305734a243823', 'owner', 'suporte@nexus-pt.eu', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'manager', 'demo@nexus-pt.eu', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 'system', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'owner', 'suporte@nexus-pt.eu', NULL, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
+(3, 'demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'manager', 'demo@nexus-pt.eu', NULL, '2012-01-01 00:00:00', '2012-01-01 00:00:00');
 
 -- --------------------------------------------------------
 
