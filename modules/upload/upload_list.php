@@ -72,7 +72,7 @@
             $module = $mysqli->real_escape_string($_REQUEST['mdl']);
             $id = $mysqli->real_escape_string(intval($_REQUEST['i']));
             
-            if (isset($_REQUEST[$configuration['cookie']])) {
+            if (isset($_COOKIE[$configuration['cookie']])) {
                 print 
                 '<div id="toolbar">'.
                     '<button onclick="if ($(\'input[type=radio]:checked\').val() != null) {if (confirm(\'Are You Sure?\')) {var code = $(\'input[type=radio]:checked\').val().split(\'.\'); goTo(\''.$_SERVER["REQUEST_URI"].'&tp=\' + code[1] + \'&vl=\' + code[0]);}} else {alert(\'Seleccione um ficheiro!\'); return false;}"><img src="./../../site-assets/images/icon_wrong.png" alt="del" valign="middle"/> Delete</button>'.
