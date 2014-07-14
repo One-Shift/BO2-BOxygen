@@ -63,7 +63,7 @@
             $module = $mysqli->real_escape_string($_REQUEST['mdl']);
             $id = $mysqli->real_escape_string(intval($_REQUEST['i']));
             
-            if (isset($_REQUEST[$configuration['cookie']])) {
+            if (isset($_COOKIE[$configuration['cookie']])) {
                 if (!isset($_REQUEST['submit'])) {
                     
                     $query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'document'", $configuration['mysql-prefix']);
