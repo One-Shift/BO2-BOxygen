@@ -15,6 +15,9 @@
     include "./class/class.productsearch.php";
     include "./class/class.user.php";
 
+	//PHPMailer
+	include "./class/PHPMailer/class.phpmailer.php";
+
     // OUTROS
     include './functions.php';
     include './languages/'.$configuration['language'].'.php';
