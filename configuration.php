@@ -30,6 +30,10 @@
 
 		//contact info
 		"email" => "geral@nexus-pt.eu",
+		"mail-smtp"                 => "mail.yourdomain.here",
+        "mail-username"             => "your@email.here",
+        "mail-password"             => "yourpassword",
+        "mail-secure"               => "connection-type eg.: plain",
 
 		//Language conf
 		"lang_1_state" => true,
