@@ -25,11 +25,32 @@
         $textareanema, $textareanema, $content, $textareanema);
     }
   
-    function sendEmail ($from, $to, $subject, $message) {
-        $headers = 'From: '.$from."\r\n" .
-    	'Reply-To: '.$from;
-    
-        return mail($to, $subject, $message, $headers);
+    function sendEmailTo ($from, $to, $subject, $message) {
+        global $configuration;
+
+            $fName              = $configuration["website-name"];
+            $lName              = $configuration["website-slogan"];
+
+            $mail               = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->CharSet      = "UTF-8";
+            $mail->Host         = $configuration["mail-smtp"]; // SMTP server example
+            $mail->SMTPDebug    = 0;                     // enables SMTP debug information (for    testing)
+            $mail->SMTPAuth     = true;                  // enable SMTP authentication
+            $mail->Port         = 25;                    // set the SMTP port for the GMAIL server
+            $mail->SMTPSecure   = $configuration["mail-secure"];
+            $mail->Username     = $configuration["mail-username"]; // SMTP account username example
+            $mail->Password     = $configuration["mail-password"];
+            $mail->SetFrom($from, $fName.' : '.$lName);
+            $mail->Subject      = $subject;
+            $mail->AddAddress($to, "User");
+            $mail->MsgHTML($body);
+
+            if(!$mail->Send()) {
+                 return false;
+            } else {
+                return true;
+            }
     }
     
     function sendEmailHTML($from,$to,$subject,$message) {
