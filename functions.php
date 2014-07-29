@@ -44,7 +44,7 @@
             $mail->SetFrom($from, $fName.' : '.$lName);
             $mail->Subject      = $subject;
             $mail->AddAddress($to, "User");
-            $mail->MsgHTML($body);
+            $mail->MsgHTML($message);
 
             if(!$mail->Send()) {
                  return false;
