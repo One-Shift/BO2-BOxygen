@@ -12,7 +12,7 @@
     include "./class/class.newsletters.php";
     include "./class/class.orders.php";
     include "./class/class.product.php";
-    include "./class/class.productsearch.php";
+    include "./class/class.search.php";
     include "./class/class.user.php";
 
 	//PHPMailer
