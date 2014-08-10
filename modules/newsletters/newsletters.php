@@ -1,4 +1,4 @@
- ex<?php
+ <?php
     // enable && disable
     switch ($pg) {
         case "newsletters-enable":
