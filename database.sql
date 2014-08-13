@@ -1,25 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.1.8
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jul 12, 2014 at 08:59 PM
--- Server version: 5.5.37-cll
--- PHP Version: 5.4.23
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
---
--- Database: `serverne_dev_bo2`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_articles`
---
-
 CREATE TABLE IF NOT EXISTS `prefix_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title_1` varchar(255) DEFAULT NULL,
@@ -45,18 +23,8 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `prefix_articles`
---
-
 INSERT INTO `prefix_articles` (`id`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `user_id`, `category_id`, `date`, `date_update`, `published`, `onhome`, `priority`) VALUES
 (1, '1st Article', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', 3, 1, '2014-03-15 01:48:54', '', 1, 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_cart`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -67,12 +35,6 @@ CREATE TABLE IF NOT EXISTS `prefix_cart` (
   `date_update` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_categories`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -99,19 +61,9 @@ CREATE TABLE IF NOT EXISTS `prefix_categories` (
   KEY `fk_prefix_categories_prefix_products1` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `prefix_categories`
---
-
 INSERT INTO `prefix_categories` (`id`, `name_1`, `description_1`, `name_2`, `description_2`, `name_3`, `description_3`, `name_4`, `description_4`, `name_5`, `description_5`, `name_6`, `description_6`, `category_type`, `date`, `date_update`, `user_id`, `code`, `published`) VALUES
 (1, '1st Article Category', '<br>', '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, 'articles', '0000-00-00', '0000-00-00 00:00:00', 0, '', 1),
 (2, '1st Product Category', '<br>', '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, 'products', '0000-00-00', '0000-00-00 00:00:00', 0, '', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_documents`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -126,22 +78,12 @@ CREATE TABLE IF NOT EXISTS `prefix_documents` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='<' AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_files_type`
---
-
 CREATE TABLE IF NOT EXISTS `prefix_files_type` (
   `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `extension` varchar(255) CHARACTER SET utf8 NOT NULL,
   `upload_format` enum('image','document') CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `type` (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `prefix_files_type`
---
 
 INSERT INTO `prefix_files_type` (`type`, `extension`, `upload_format`) VALUES
 ('application/mac-compactpro', 'cpt', 'document'),
@@ -165,12 +107,6 @@ INSERT INTO `prefix_files_type` (`type`, `extension`, `upload_format`) VALUES
 ('image/tiff', 'tiff', 'document'),
 ('image/vnd.adobe.photoshop', 'psd', 'document');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_history`
---
-
 CREATE TABLE IF NOT EXISTS `prefix_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -180,12 +116,6 @@ CREATE TABLE IF NOT EXISTS `prefix_history` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_images`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -200,12 +130,6 @@ CREATE TABLE IF NOT EXISTS `prefix_images` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_newsletters`
---
-
 CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -217,18 +141,8 @@ CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `prefix_newsletters`
---
-
 INSERT INTO `prefix_newsletters` (`id`, `email`, `code`, `date`, `date_update`, `state`) VALUES
 (1, 'geral@nexus-pt.eu', '@codehere@', '2014-07-08 00:00:00', '2014-07-09 00:00:00', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_orders`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -239,12 +153,6 @@ CREATE TABLE IF NOT EXISTS `prefix_orders` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_products`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -276,19 +184,9 @@ CREATE TABLE IF NOT EXISTS `prefix_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
---
--- Dumping data for table `prefix_products`
---
-
 INSERT INTO `prefix_products` (`id`, `reference`, `title_1`, `content_1`, `title_2`, `content_2`, `title_3`, `content_3`, `title_4`, `content_4`, `title_5`, `content_5`, `title_6`, `content_6`, `code`, `service`, `price`, `vat`, `discount`, `user_id`, `category_id`, `date`, `date_update`, `published`, `onhome`, `priority`) VALUES
 (5, '', 'reference', 'produto de teste', 'alguma descrição<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', '', '<br>', 0, 1, 23, 0, 3, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00', 1, 0, NULL),
 (6, '', 'nome', 'aqui texto<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', 'nome', '<br>', '', 0, 1.23, 23.25, 0, 3, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00', 0, 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_users`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -304,19 +202,9 @@ CREATE TABLE IF NOT EXISTS `prefix_users` (
   KEY `fk_prefix_users_prefix_articles1` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
---
--- Dumping data for table `prefix_users`
---
-
 INSERT INTO `prefix_users` (`id`, `name`, `password`, `rank`, `email`, `code`, `date`, `date_update`) VALUES
 (1, 'system', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'owner', 'suporte@nexus-pt.eu', NULL, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
 (3, 'demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'manager', 'demo@nexus-pt.eu', NULL, '2012-01-01 00:00:00', '2012-01-01 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `prefix_variables`
---
 
 CREATE TABLE IF NOT EXISTS `prefix_variables` (
   `variable` varchar(50) CHARACTER SET utf8 NOT NULL,
