@@ -28,8 +28,8 @@
     function sendEmailTo ($from, $to, $subject, $message) {
         global $configuration;
 
-            $fName              = $configuration["website-name"];
-            $lName              = $configuration["website-slogan"];
+            $fName              = $configuration["site-name"];
+            $lName              = $configuration["site-slogan"];
 
             $mail               = new PHPMailer();
             $mail->IsSMTP();
