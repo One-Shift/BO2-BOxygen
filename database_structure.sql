@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `prefix_articles` (
+CREATE TABLE IF NOT EXISTS `am_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title_1` varchar(255) DEFAULT NULL,
   `content_1` text,
@@ -23,7 +23,17 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_categories` (
+CREATE TABLE IF NOT EXISTS `am_cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT '1',
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `am_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name_1` varchar(255) DEFAULT NULL,
   `description_1` text,
@@ -44,11 +54,11 @@ CREATE TABLE IF NOT EXISTS `prefix_categories` (
   `code` text,
   `published` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_prefix_categories_prefix_articles` (`id`),
-  KEY `fk_prefix_categories_prefix_products1` (`id`)
+  KEY `fk_am_categories_am_articles` (`id`),
+  KEY `fk_am_categories_am_products1` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_documents` (
+CREATE TABLE IF NOT EXISTS `am_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file` varchar(255) DEFAULT NULL,
   `alt_1` varchar(255) DEFAULT NULL,
@@ -61,14 +71,14 @@ CREATE TABLE IF NOT EXISTS `prefix_documents` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='<' AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_files_type` (
+CREATE TABLE IF NOT EXISTS `am_files_type` (
   `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `extension` varchar(255) CHARACTER SET utf8 NOT NULL,
   `upload_format` enum('image','document') CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `type` (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `prefix_history` (
+CREATE TABLE IF NOT EXISTS `am_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -76,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `prefix_history` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_images` (
+CREATE TABLE IF NOT EXISTS `am_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file` varchar(255) DEFAULT NULL,
   `alt_1` varchar(255) DEFAULT NULL,
@@ -89,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `prefix_images` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
+CREATE TABLE IF NOT EXISTS `am_newsletters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
   `code` text CHARACTER SET utf8 NOT NULL,
@@ -100,17 +110,17 @@ CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_order` (
+CREATE TABLE IF NOT EXISTS `am_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `cart` text NOT NULL,
+  `cart` text CHARACTER SET utf8 NOT NULL,
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_products` (
+CREATE TABLE IF NOT EXISTS `am_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(255) NOT NULL,
   `title_1` varchar(255) DEFAULT NULL,
@@ -140,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `prefix_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_users` (
+CREATE TABLE IF NOT EXISTS `am_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -152,11 +162,11 @@ CREATE TABLE IF NOT EXISTS `prefix_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `email` (`email`),
-  KEY `fk_prefix_users_prefix_products1` (`id`),
-  KEY `fk_prefix_users_prefix_articles1` (`id`)
+  KEY `fk_am_users_am_products1` (`id`),
+  KEY `fk_am_users_am_articles1` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_variables` (
+CREATE TABLE IF NOT EXISTS `am_variables` (
   `variable` varchar(50) CHARACTER SET utf8 NOT NULL,
   `value` varchar(50) CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `variable` (`variable`)
