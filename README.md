@@ -17,5 +17,7 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 
 * Gestão de registos em newsletters + exportação de .CSV (Em desenvolvimento)
 * Suporte a loja online (Em desenvolvimento)
+* Gestor de Documentos carregados
+* Gestor de Imagens carregados
 
 Novas sugestões poderão ser enviadas para o endereço [geral@nexus-pt.eu](mailto:geral@nexus-pt.eu)
