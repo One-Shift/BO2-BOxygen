@@ -99,7 +99,7 @@
                     
                     '</form>';
                 } else {
-                    $query = 'SELECT * FROM '.$configuration['mysql-prefix'].'_files_type WHERE upload_format = \'image\' AND type = \''.$_FILES['file']['type'].'\'';
+                    $query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'", $configuration['mysql-prefix'], $_FILES['file']['type']);
                     $source = $mysqli->query($query);
                     $nr = $source->num_rows;
                     
