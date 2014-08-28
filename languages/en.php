@@ -8,6 +8,7 @@
             "del" => "Del",
             "enable" => "Enable",
             "disable" => "Disable",
+            "export" => "Export",
             "are-you-sure" => "Are you sure?",
         ),
 
