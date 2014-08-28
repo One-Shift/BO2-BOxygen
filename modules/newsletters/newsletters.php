@@ -19,6 +19,7 @@
 ?>
 <div class="category-list">
     <div class="button-area">
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-export');" class="green"><?php print $language["template"]["export"] ?></button>
         <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
         <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
@@ -53,6 +54,7 @@
     </table>
 
     <div class="button-area">
+        <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-export');" class="green"><?php print $language["template"]["export"] ?></button>
         <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
         <button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
     </div>
