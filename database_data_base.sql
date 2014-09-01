@@ -1,4 +1,4 @@
-INSERT INTO `am_files_type` (`type`, `extension`, `upload_format`) VALUES
+INSERT INTO `prefix_files_type` (`type`, `extension`, `upload_format`) VALUES
 ('application/mac-compactpro', 'cpt', 'document'),
 ('application/msword', 'doc', 'document'),
 ('application/octet-stream', 'dwg', 'document'),
