@@ -88,7 +88,7 @@
             global $mysqli;
 
             $query = sprintf("SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1",
-                $configuration['mysql-prefix'], $this->username);
+                $configuration['mysql-prefix'], $this->email);
             $source = $mysqli->query($query);
 
             return $source->num_rows;
