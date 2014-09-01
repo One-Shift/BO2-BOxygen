@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Install Me</title>
 	<style>
 		* {
 			font: 13px/21px "Lucida Grande",Verdana,Arial,sans-serif;
