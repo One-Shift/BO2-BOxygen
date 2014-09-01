@@ -246,12 +246,15 @@ body #footer #copyright {
 	float: left;
 	width: 625px;
 	padding-left: 20px;
-	font-size: 10pt;
-	color: rgb(154,154,154);
     margin-top: 12px;
 }
 
-body #footer #copyright span:hover {
+body #footer #copyright a {
+	font-size: 10pt;
+	color: rgb(154,154,154);
+}
+
+body #footer #copyright a:hover {
 	cursor: pointer;
 	color: rgb(200,200,200);
 }

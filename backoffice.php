@@ -69,7 +69,7 @@
 			<div id="wrap"></div>
 		</div>
 		<div id="footer">
-			<div id="copyright"><span onClick="goToNWin('http://www.nexus-pt.eu/');">NexuS-Pt , work team</span></div>
+			<div id="copyright"><a href="http://www.nexus-pt.eu/" target="_blank">NexuS-Pt , work team</a> | <a target="_blank" href="https://github.com/NexuS-Pt/BO2-BOxygen">GitHub</a></div></div>
 			<div id="c"><span>©</span><?php print date('Y'); ?></div>
 		</div>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
