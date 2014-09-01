@@ -9,7 +9,7 @@
 				include "./modules/article_add/article_add.php";
 				break;
 			case 'article-edit':
-		    	include "./modules/article_edit/article_edit.php";
+				include "./modules/article_edit/article_edit.php";
 				break;
 			case 'article-del':
 				include "./modules/article_del/article_del.php";
@@ -56,7 +56,7 @@
 			case 'user-list':
 				include "./modules/user_list/user_list.php";
 				break;
-            // -- Newsletters
+			// -- Newsletters
 			case 'newsletters':
 				include "./modules/newsletters/newsletters.php";
 				break;

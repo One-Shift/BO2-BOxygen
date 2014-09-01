@@ -8,20 +8,20 @@
 .user-list table tr {}
 
 .user-list table tr th {
-    text-align: left;
+	text-align: left;
 }
 
 .user-list table tr td {}
 
 .user-list table tr td:nth-child(1) {
-    width: 20px;
+	width: 20px;
 }
 
 .user-list table tr td:nth-child(3) {
-    width: 80px;
+	width: 80px;
 }
 
 .user-list table tr td:nth-child(4) {
-    text-align: center;
-    width: 20px;
+	text-align: center;
+	width: 20px;
 }

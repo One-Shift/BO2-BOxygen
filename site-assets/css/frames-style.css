@@ -45,13 +45,9 @@
 	
 }
 
-#iframe input[type=checkbox] {
+#iframe input[type=checkbox] {}
 
-}
-
-#iframe input[type=radio] {
-
-}
+#iframe input[type=radio] {}
 
 #iframe select {
 	display: block;

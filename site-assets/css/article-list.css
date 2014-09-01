@@ -8,15 +8,15 @@
 .article-list table tr {}
 
 .article-list table tr th {
-    text-align: left;
+	text-align: left;
 }
 
 .article-list table tr td {}
 
 .article-list table tr td:nth-child(1) {
-    width: 20px;
+	width: 20px;
 }
 
 .article-list table tr td:nth-child(4) {
-    text-align: center;
+	text-align: center;
 }

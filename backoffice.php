@@ -1,6 +1,6 @@
 <?php
-    date_default_timezone_set('Europe/Lisbon');
-    ini_set('display_errors', true);
+	date_default_timezone_set('Europe/Lisbon');
+	ini_set('display_errors', true);
     
 	include("./header.php");
 	
@@ -18,22 +18,23 @@
 			$account["login"] = true;
 		} else {
 			$account["login"] = false;
+			setcookie($configuration['cookie'], null, time() - 3600);
 		}
 	} else {$account["login"] = false;}
 	
 	//get page
 	if (isset($_GET["pg"])) {$pg = $_GET["pg"];} else {$pg = "home";}
     
-    //logout
-    $logout = false;
-    if ($pg == 'logout') {
-        if (isset($_COOKIE[$configuration["cookie"]])) {
-            setcookie($configuration['cookie'], null, time() - 3600);
-            $logout = true;
-        }
-    }
+	//logout
+	$logout = false;
+	if ($pg == 'logout') {
+		if (isset($_COOKIE[$configuration["cookie"]])) {
+			setcookie($configuration['cookie'], null, time() - 3600);
+			$logout = true;
+		}
+	}
     
-    include './languages/'.$configuration["language"].'.php';
+	include './languages/'.$configuration["language"].'.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,13 +45,13 @@
 		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
                 
 		<script type="text/javascript" src="./site-assets/js/jquery.js"></script>
-                <script type="text/javascript" src="./site-assets/js/nicEdit.js"></script>
+		<script type="text/javascript" src="./site-assets/js/nicEdit.js"></script>
 		<script type="text/javascript" src="./site-assets/js/script.js"></script>
-        <link href="./site-assets/images/favicon.ico" rel="shortcut icon" />
-                <title><?php echo $configuration["BO2-name"]; ?></title>
+		<link href="./site-assets/images/favicon.ico" rel="shortcut icon" />
+		<title><?php echo $configuration["BO2-name"]; ?></title>
 	</head>
 	<body>
-        <iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
 		<div id="site">
 			<div id="header"></div>
 			<div id="container">
@@ -71,6 +72,6 @@
 			<div id="copyright"><span onClick="goToNWin('http://www.nexus-pt.eu/');">NexuS-Pt , work team</span></div>
 			<div id="c"><span>©</span><?php print date('Y'); ?></div>
 		</div>
-        <iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
 	</body>
 </html>

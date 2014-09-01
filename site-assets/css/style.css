@@ -185,8 +185,8 @@ body {
 }
 
 #site #container #page div.separator30 {
-    display: block;
-    height: 30px;
+	display: block;
+	height: 30px;
 }
 
 #site #container #menu {
@@ -198,12 +198,12 @@ body {
 
 #site #container #menu h3 {
 	font-weight: normal;
-    background-color: rgb(34, 34, 34);
-    color: #fff;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    padding: 1rem;
-    margin: 10px 0 10px;
+	background-color: rgb(34, 34, 34);
+	color: #fff;
+	font-size: 1.4em;
+	text-transform: uppercase;
+	padding: 1rem;
+	margin: 10px 0 10px;
 }
 
 #site #container #menu ul {
@@ -220,8 +220,8 @@ body {
 
 #site #container #menu ul li:hover {
 	background-color: rgb(250, 162, 38);
-    color: #fff;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
+	color: #fff;
+	text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
 }
 
 #site #container #menu ul li.selected {
@@ -274,8 +274,8 @@ body #footer #c span {
 }
 
 iframe.ads {
-    border: none;
-    width: 728px;
-    height: 90px;
-    margin: 5px 86px;
+	border: none;
+	width: 728px;
+	height: 90px;
+	margin: 5px 86px;
 }

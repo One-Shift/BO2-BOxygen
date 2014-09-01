@@ -3,7 +3,7 @@ function goTo (link) {
 }
 
 function goToAfter(link, time) {
-    setTimeout(function() {window.location = link;}, time);
+	setTimeout(function() {window.location = link;}, time);
 }
 
 function goBack () {
@@ -23,8 +23,8 @@ function popUp (link, width, height) {
     FUNÇÃO QUE CRIA UM COOKIE COM OS VALORES PRETENDIDOS
 */
 function createCookie(name,value,days) {
-    if (days) {
-    	var date = new Date();
+	if (days) {
+		var date = new Date();
 		date.setTime(date.getTime()+(days*24*60*60*1000));
 		var expires = "; expires="+date.toGMTString();
 	}
@@ -33,7 +33,7 @@ function createCookie(name,value,days) {
 }
 
 /*
-    FUNÇÃO QUE FAZ A LEITURA DE UM COOKIE DESEJADO
+	FUNÇÃO QUE FAZ A LEITURA DE UM COOKIE DESEJADO
 */
 function readCookie(name) {
 	var nameEQ = name + "=";
@@ -47,18 +47,18 @@ function readCookie(name) {
 }
 
 /*
-    FUNÇÃO QUE APAGA UM COOKIE DESEJADO
+	FUNÇÃO QUE APAGA UM COOKIE DESEJADO
 */
 function eraseCookie(name) {
 	createCookie(name,null,-1);
 }
 
 function buttonAction (c,p) {
-    if ($('input[type=radio]:checked').val() > 0) {
-        if (confirm(c)) {
-            goTo('./backoffice.php?pg='+p+'&i='+$('input[type=radio]:checked').val());
-        }
-    }
+	if ($('input[type=radio]:checked').val() > 0) {
+		if (confirm(c)) {
+			goTo('./backoffice.php?pg='+p+'&i='+$('input[type=radio]:checked').val());
+		}
+	}
 }
 
 
@@ -66,13 +66,12 @@ $(window).ready(function () {
 	var code = $("textarea[name=code]");
 	var buttonspr = $("button#code_spr");
 	var buttonslash = $("button#code_slash");
-	
+
 	buttonspr.on("click", function () {
 		code.val(code.val() + "[spr]");
 	});
-	
+
 	buttonslash.on("click", function () {
 		code.val(code.val() + "[/]");
-	})
-
+	});
 });

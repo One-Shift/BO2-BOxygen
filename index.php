@@ -1,6 +1,6 @@
 <?php
 	include("./header.php");
-	
+
 	$showForm = true;
 	$showError = false;
 	$showSucess = false;
@@ -49,11 +49,11 @@
 		$showSucess = true;
 	}
     
-    if (isset($_COOKIE[$configuration["cookie"]])) {
-        $data = explode('.',$_REQUEST[$configuration["cookie"]]);
-        $account['id'] = $data[0];
-        unset($data);
-    }
+	if (isset($_COOKIE[$configuration["cookie"]])) {
+		$data = explode('.',$_REQUEST[$configuration["cookie"]]);
+		$account['id'] = $data[0];
+		unset($data);
+	}
 ?>
 <!DOCTYPE html>
 <html>
