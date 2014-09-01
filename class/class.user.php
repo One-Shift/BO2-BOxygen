@@ -47,7 +47,7 @@
         	global $mysqli;
             
             $query = sprintf("INSERT INTO %s_users (name, password, email, rank, code) 
-                VALUES ('%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code);
+                VALUES ('%s','%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code);
             
 			$toReturn = $mysqli->query($query);
 			
