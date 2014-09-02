@@ -24,3 +24,9 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 * Gestor de Imagens carregados
 
 Novas sugestões poderão ser enviadas para o endereço [geral@nexus-pt.eu](mailto:geral@nexus-pt.eu)
+
+
+## License
+
+Copyright (c) 2012-2014 GitHub, Inc. See the LICENSE file for license rights and
+limitations (MIT).
