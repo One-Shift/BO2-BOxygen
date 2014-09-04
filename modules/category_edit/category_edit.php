@@ -1,11 +1,11 @@
 <div class="category-add">
 <?php 
-	if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){
+	if(isset($_GET['i']) && !empty($_GET['i'])){
 ?>
 		<h1><?php echo $language["mod-category-edit-title"]; ?></h1>
-		<?php if (!isset($_REQUEST['save'])) {
+		<?php if (!isset($_POST['save'])) {
 			$object_category = new category();
-			$object_category->setId(intval($_REQUEST['i']));
+			$object_category->setId(intval($_GET['i']));
 			$category = $object_category->returnOneCategory();
 		?>
 		<form action="" method="post">
@@ -105,32 +105,33 @@
         
 <?php
 		} else {
-			if (isset($_REQUEST['published'])) {
-				$_REQUEST['published'] = true;
+			if (isset($_POST['published'])) {
+				$_POST['published'] = true;
 			} else {
-				$_REQUEST['published'] = false;
+				$_POST['published'] = false;
 			}
 
 			$category = new category();
-			$category->setId(intval($_REQUEST['i']));
+			$category->setId(intval($_GET['i']));
 			$category->setContent(
-				$_REQUEST['title_1'],
-				$_REQUEST['description_1'],
-				$_REQUEST['title_2'],
-				$_REQUEST['description_2'],
-				$_REQUEST['title_3'],
-				$_REQUEST['description_3'],
-				$_REQUEST['title_4'],
-				$_REQUEST['description_4'],
-				$_REQUEST['title_5'],
-				$_REQUEST['description_5'],
-				$_REQUEST['title_6'],
-				$_REQUEST['description_6'],
-				$_REQUEST['code']
+				$_POST['title_1'],
+				$_POST['description_1'],
+				$_POST['title_2'],
+				$_POST['description_2'],
+				$_POST['title_3'],
+				$_POST['description_3'],
+				$_POST['title_4'],
+				$_POST['description_4'],
+				$_POST['title_5'],
+				$_POST['description_5'],
+				$_POST['title_6'],
+				$_POST['description_6'],
+				$_POST['code']
 				);
+			$category->setUserId($account["name"]);
 			$category->setDateUpdate();
-			$category->setPublished($_REQUEST['published']);
-			$category->setCategoryType($_REQUEST['category_type']);
+			$category->setPublished($_POST['published']);
+			$category->setCategoryType($_POST['category_type']);
 
 			if ($category->update()) {
 				print 'sucess';
