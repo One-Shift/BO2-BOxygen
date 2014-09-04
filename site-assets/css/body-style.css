@@ -122,9 +122,13 @@
 	background: none repeat scroll 0% 0% rgb(241, 113, 99);
 }
 
-#site #container #page input[type=checkbox] {}
+#site #container #page input[type=checkbox] {
+	vertical-align: middle;
+}
 
-#site #container #page input[type=radio] {}
+#site #container #page input[type=radio] {
+	vertical-align: middle;
+}
 
 #site #container #page select {
 	display: block;
