@@ -44,7 +44,7 @@
 
 	} else {
 
-		if(checkEmail($_REQUEST['email'])){
+		if(filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)){
 			$user = new user();
 			$user->setId($_REQUEST['i']);
 			$tmp = $user->returnOneUser();
