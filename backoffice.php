@@ -40,14 +40,14 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-		<link type="text/css" rel="stylesheet" href="./site-assets/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="<?php print $configuration["path-bo"] ?>/site-assets/css/style.css" />
                
 		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
                 
-		<script type="text/javascript" src="./site-assets/js/jquery.js"></script>
-		<script type="text/javascript" src="./site-assets/js/nicEdit.js"></script>
-		<script type="text/javascript" src="./site-assets/js/script.js"></script>
-		<link href="./site-assets/images/favicon.ico" rel="shortcut icon" />
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
+		<link href="<?php print $configuration["path-bo"] ?>/site-assets/images/favicon.ico" rel="shortcut icon" />
 		<title><?php echo $configuration["BO2-name"]; ?></title>
 	</head>
 	<body>
@@ -56,7 +56,7 @@
 			<div id="header"></div>
 			<div id="container">
 				<div id="title-bar">
-					<div id="site-title" onclick="goTo('./backoffice.php');"><?php echo $configuration["site-name"]; ?></div>
+					<div id="site-title"><a href="<?php print $configuration["path-bo"] ?>/0/"><?php echo $configuration["site-name"]; ?></a></div>
 					<div id="menu-title"><?php echo $language["menu"]; ?></div>
 				</div>
 				<div id="page">

@@ -75,7 +75,7 @@
 	display: inline-block;
 }
 
-#site #container #page  .button-area button {
+a.grey {
 	color: rgb(36, 49, 64);
 	background: none repeat scroll 0% 0% rgb(229, 231, 237);
 	line-height: 1;
@@ -86,39 +86,67 @@
 	border-radius: 2px;
 	cursor: pointer;
 	-moz-box-sizing: border-box;
+	display: inline-block;
 }
 
-#site #container #page  .button-area button:hover {
+a.grey:hover {
 	background: none repeat scroll 0% 0% rgb(220, 223, 231);
 }
 
-#site #container #page button.green {
+a.green {
 	text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
 	background: none repeat scroll 0% 0% rgb(78, 189, 74);
 	color: #fff;
+	line-height: 1;
+	height: 33px;
+	padding: 0px 16px;
+	border: 0px none;
+	border-radius: 2px;
+	cursor: pointer;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	line-height: 33px;
 }
 
-#site #container #page button.green:hover {
+a.green:hover {
 	background: none repeat scroll 0% 0% rgb(107, 200, 104);
 }
 
-#site #container #page button.orange {
+a.orange {
 	text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
 	background: none repeat scroll 0% 0% rgb(250, 162, 38);
 	color: #fff;
+	line-height: 1;
+	height: 33px;
+	padding: 0px 16px;
+	border: 0px none;
+	border-radius: 2px;
+	cursor: pointer;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	line-height: 33px;
 }
 
-#site #container #page button.orange:hover {
+a.orange:hover {
 	background: none repeat scroll 0% 0% rgb(251, 179, 78);
 }
 
-#site #container #page button.red {
+a.red {
 	text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
 	background: none repeat scroll 0% 0% rgb(238, 79, 61);
 	color: #fff;
+	line-height: 1;
+	height: 33px;
+	padding: 0px 16px;
+	border: 0px none;
+	border-radius: 2px;
+	cursor: pointer;
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	line-height: 33px;
 }
 
-#site #container #page button.red:hover {
+a.red:hover {
 	background: none repeat scroll 0% 0% rgb(241, 113, 99);
 }
 

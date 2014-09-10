@@ -1,7 +1,15 @@
-Options +FollowSymLinks
-RewriteEngine On
- 
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
- 
-RewriteRule ^backoffice/(\d+)*$ ./backoffice.php?pg=$1
+AddDefaultCharset utf-8
+
+SetEnv TZ Europe/Lisbon
+
+<IfModule mod_php5.c>
+	php_value display_errors off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule ^0/$ ./backoffice.php [QSA,L]
+	RewriteRule ^0/([^/]*)/$ ./backoffice.php?pg=$1 [QSA,L]
+	RewriteRule ^0/([^/]*)/([0-9]+)$ ./backoffice.php?pg=$1&i=$2 [QSA,L]
+	RewriteRule ^0/([^/]*)/([0-9]+)/([^/]*)$ ./backoffice.php?pg=$1&i=$2&a=$3 [QSA,L]
+</IfModule>

@@ -27,6 +27,10 @@ body {
 	background: url('./../images/bg_02.jpg') center fixed;
 }
 
+a {
+	text-decoration: none;
+}
+
 /* SISTEMA DE LOGIN */
 #wrapper {
 	height: 150px;
@@ -164,8 +168,12 @@ body {
 	width: 605px;
 	padding-left: 60px;
 	padding-right: 20px;
+}
+
+#site #container #title-bar #site-title a {
 	color: rgb(255,147,0);
-    cursor: pointer;
+	font-weight: bold;
+	font-size: 13pt;
 }
 
 #site #container #title-bar #menu-title {
@@ -211,14 +219,16 @@ body {
     background-color: #fff;
 }
 
-#site #container #menu ul li {
+#site #container #menu a {
+	display: block;
 	line-height: 40px;
 	padding-left: 15px;
 	padding-right: 10px;
-	cursor: pointer;
+	text-decoration: none;
+	color: #000;
 }
 
-#site #container #menu ul li:hover {
+#site #container #menu a:hover {
 	background-color: rgb(250, 162, 38);
 	color: #fff;
 	text-shadow: 0px 1px rgba(0, 0, 0, 0.08);
