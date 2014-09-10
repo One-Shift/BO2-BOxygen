@@ -10,7 +10,7 @@
 <h3><?php echo $language["menu-account"]; ?></h3>
 <ul>
 	<li onclick="goTo('<?= $configuration["path-bo"] ?>');"><?php echo $language["menu-begin"]; ?></li>
-	<li onclick="if (confirm('Are You Sure?')) {goTo('./backoffice/logout/');}"><?php echo $language["menu-logout"]; ?></li>
+	<li onclick="if (confirm('Are You Sure?')) {goTo('<?= $configuration["path-bo"] ?>/logout/');}"><?php echo $language["menu-logout"]; ?></li>
 </ul>
 
 <?php } ?>
