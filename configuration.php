@@ -9,6 +9,7 @@
 		"per-page" => 30,
 		"nr-links" => 4,
 		"path" => "Path-here ex.: /new or /old",
+		"path-bo" => "Path-above + bo folder ex.: /new/backoffice"
 
 		//back-end info
 		"BO2-version" => "1.1.0",
