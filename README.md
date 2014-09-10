@@ -1,6 +1,9 @@
 BO2 || BOxygen
 ===
-v1.1.0c 20140820
+v1.1.0d 20140910
+
+v1.1.0c 20140820 (Stable version) use this version, download it (here!)[http://nexus-pt.eu/share/bo2/BO2_v_1_1_0_c.zip]
+
 v1.1.0b 20140520
 
 O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com poucos conhecimentos de programação ou para programadores mais avançados poderem se dedicar mais ao front-end.
