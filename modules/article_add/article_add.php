@@ -99,28 +99,28 @@
 	</form>
 	<?php } else {
 
-		if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
-		if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
+		if (isset($_POST['published'])) $_POST['published'] = true; else $_POST['published'] = false;
+		if (isset($_POST['onhome'])) $_POST['onhome'] = true; else $_POST['onhome'] = false;
 
 		$article = new article();
 		$article->setContent(
-			$_REQUEST['title_1'], $_REQUEST['content_1'],
-			$_REQUEST['title_2'], $_REQUEST['content_2'],
-			$_REQUEST['title_3'], $_REQUEST['content_3'],
-			$_REQUEST['title_4'], $_REQUEST['content_4'],
-			$_REQUEST['title_5'], $_REQUEST['content_5'],
-			$_REQUEST['title_6'], $_REQUEST['content_6'],
-			$_REQUEST['code']
+			$_POST['title_1'], $_POST['content_1'],
+			$_POST['title_2'], $_POST['content_2'],
+			$_POST['title_3'], $_POST['content_3'],
+			$_POST['title_4'], $_POST['content_4'],
+			$_POST['title_5'], $_POST['content_5'],
+			$_POST['title_6'], $_POST['content_6'],
+			$_POST['code']
 		);
 		$article->setUserId($account['name']);
-		$article->setCategory($_REQUEST['category']);
+		$article->setCategory($_POST['category']);
 		$article->setDate();
 		$article->setDateUpdate();
-		$article->setPublished($_REQUEST['published']);
-		$article->setonHome($_REQUEST['onhome']);
+		$article->setPublished($_POST['published']);
+		$article->setonHome($_POST['onhome']);
 
 		if ($article->insert()) {
-			print 'sucess';
+			print $langauge["actions"]["success"];
 
 			$id = $mysqli->insert_id;
 	?>
@@ -138,7 +138,7 @@
 			?>
 	<?php
 		} else {
-			print 'failure';
+			print $langauge["actions"]["failure"];
 		}
 	} ?>
 </div>
