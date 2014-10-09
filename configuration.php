@@ -14,7 +14,7 @@
 		//back-end info
 		"BO2-version" => "1.1.0",
 		"BO2-subversion" => "d",
-		"BO2-name" => "BOxygen :: BO²",
+		"BO2-name" => "BO2 / BOxygen",
 		"language" => "en",
 		"secret-key" => "GJTBpKregE9WgXc",
 
