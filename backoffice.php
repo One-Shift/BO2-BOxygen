@@ -1,7 +1,4 @@
 <?php
-	date_default_timezone_set('Europe/Lisbon');
-	ini_set('display_errors', true);
-    
 	include("./header.php");
 	
 	//get user
