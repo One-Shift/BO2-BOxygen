@@ -83,8 +83,8 @@
 
 					'<div class="spacer30"></div>'.
 
-					'<label>Alt _2:</label>'.
-					'<input type="text" name="alt_2" maxlength="255"/>'.
+					'<label>Code:</label>'.
+					'<textarea name="alt_2"></textarea>'.
 
 					'<div class="spacer30"></div>'.
 
