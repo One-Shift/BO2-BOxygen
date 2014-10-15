@@ -60,5 +60,5 @@
 		//analytics
 		"analytics" => "",
 
-		"category_sections" => array("products","articles","user"),
+		"category_sections" => array("products","articles"),
 	);
