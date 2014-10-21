@@ -108,6 +108,9 @@
 		if (preg_match("/\<html/i",$buffer) == 1 && preg_match("/\<\/html\>/i",$buffer) == 1) {
 			$buffer = preg_replace($search, $replace, $buffer);
 		}
+		
+		$buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
+		
 		return $buffer;
 	}
     
