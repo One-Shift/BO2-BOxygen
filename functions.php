@@ -98,7 +98,18 @@
 		$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 		return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 	}
-
+	
+	/* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
+	function minifyHTML($buffer) {
+		$search = array( '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
+		
+		$replace = array( '>', '<', '\\1');
+		
+		if (preg_match("/\<html/i",$buffer) == 1 && preg_match("/\<\/html\>/i",$buffer) == 1) {
+			$buffer = preg_replace($search, $replace, $buffer);
+		}
+		return $buffer;
+	}
     
 	/**
 	* Get either a Gravatar URL or complete image tag for a specified email address.
