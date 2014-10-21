@@ -1,5 +1,8 @@
 <?php
 	$configuration = array(
+		// system
+		"minify" => true,
+		
 		//Site info
 		"site-name" => " :: versão demo :: ",
 		"site-slogan" => "",
@@ -60,5 +63,5 @@
 		//analytics
 		"analytics" => "",
 
-		"category_sections" => array("products","articles"),
+		"category_sections" => array("products","articles")
 	);
