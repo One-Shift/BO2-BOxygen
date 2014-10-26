@@ -50,7 +50,7 @@
 	}
     
 	if (isset($_COOKIE[$configuration["cookie"]])) {
-		$data = explode('.',$_REQUEST[$configuration["cookie"]]);
+		$data = explode('.',$_COOKIE[$configuration["cookie"]]);
 		$account['id'] = $data[0];
 		unset($data);
 	}
