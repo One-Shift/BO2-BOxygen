@@ -76,5 +76,5 @@
 				break;
 		}
 	} else {
-		echo "<script>goTo('./');</script>";
+		printf("<script>goTo('%s');</script>", $configuration["path-bo"]);
 	}
