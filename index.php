@@ -58,11 +58,53 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-		<link type="text/css" rel="stylesheet" href="./site-assets/css/style.css" />
-		<script type="text/javascript" src="./site-assets/js/script.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
 		<title><?php echo $configuration["BO2-name"]; ?></title>
+
+		<!-- begin favicon -->
+		<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
+
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_16.png"  sizes="16x16"   type="image/png" />
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png"  sizes="32x32"   type="image/png" />
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_48.png"  sizes="48x48"   type="image/png" />
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_64.png"  sizes="64x64"   type="image/png" />
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" sizes="128x128" type="image/png" />
+
+		<link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png" />
+		<!--[if IE]><link rel="shortcut icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon.ico"><![endif]-->
+
+		<meta name="msapplication-TileColor" content="#ebffe3" />
+		<meta name="msapplication-TileImage" content="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
+		<!-- end favicon -->
+
+		<meta property="og:site_name" content="{c2r-sitename}" />
+		<meta property="og:type" content="website" /> 
+		<meta property="og:url" content="<?php print $configuration["path-bo"] ?>" /> 
+		<meta property="og:image" content="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" />
+		<meta property="og:title" content="{c2r-sitename}" />
+		<meta property="og:description" content="{c2r-description}" />
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta name="keywords" content="{c2r-keywords}" />
+		<meta name="description" content="{c2r-description}" />
+		<meta name="robots" content="index" />
+		<meta name="author" content="NexuS-Pt, work team" />
+		<meta name="author-code" content="#someone#" />
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+		<link type="text/css" rel="stylesheet" href="<?php print $configuration["path-bo"] ?>/site-assets/css/style.css" />
+               
+		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
+		
+		<script type="text/javascript">
+			var path_bo = "<?php print $configuration["path-bo"] ?>";
+		</script>
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
+		<script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 	</head>
 	<body>
 		<!-- SPACER - ESPAÇO DEIXADO ACIMA DO LOGIN -->
