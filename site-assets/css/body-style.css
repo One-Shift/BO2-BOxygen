@@ -26,7 +26,8 @@
 #site #container #page input[type=text],
 #site #container #page input[type=email],
 #site #container #page input[type=password],
-#site #container #page input[type=number] {
+#site #container #page input[type=number],
+#site #container #page input[type=date] {
 	display: block;
 	min-width: 650px; max-width: 650px;
 	border: 1px solid #CCCCCC;
