@@ -51,34 +51,8 @@
 			return true;
 		}
 	}
-    
-	function sendEmailHTML($from,$to,$subject,$message) {
-
-		// subject -> Argumento
-
-		// message -> Argumento
-		$message = "
-		<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\" dir=\"ltr\">
-		<head></head>
-		<body>".$message."</body>
-		</html>";
-		
-		$message =  utf8_decode($message);
-		
-
-		// To send HTML mail, the Content-type header must be set
-		$headers  = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-		// Additional headers
-		$headers .= "From: ".$from." <".$from.">" . "\r\n";
-
-		// Mail it
-		return mail($to, $subject, $message, $headers);
-	}
 
 	function generateRandomString($length = 10) {
-
 		// work 100%
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         
