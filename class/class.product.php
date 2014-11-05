@@ -1,30 +1,30 @@
 <?php
     class product {
-            protected $id;
-            protected $reference;
-            protected $title_1;
-            protected $content_1;
-            protected $title_2;
-            protected $content_2;
-            protected $title_3;
-            protected $content_3;
-            protected $title_4;
-            protected $content_4;
-            protected $title_5;
-            protected $content_5;
-            protected $title_6;
-            protected $content_6;
-            protected $code;
-            protected $service = false;
-            protected $price;
-            protected $vat;
-            protected $discount;
-            protected $user_id;
-            protected $category_id;
-            protected $date;
-            protected $date_update;
-            protected $published = false;
-            protected $onhome = false;
+		protected $id;
+		protected $reference;
+		protected $title_1;
+		protected $content_1;
+		protected $title_2;
+		protected $content_2;
+		protected $title_3;
+		protected $content_3;
+		protected $title_4;
+		protected $content_4;
+		protected $title_5;
+		protected $content_5;
+		protected $title_6;
+		protected $content_6;
+		protected $code;
+		protected $service = false;
+		protected $price;
+		protected $vat;
+		protected $discount;
+		protected $user_id;
+		protected $category_id;
+		protected $date;
+		protected $date_update;
+		protected $published = false;
+		protected $onhome = false;
 
     public function __construct() {}
 
@@ -148,7 +148,7 @@
 
     public function returnOneProduct() {
         global $configuration;
-            global $mysqli;
+		global $mysqli;
 
         $query = sprintf("SELECT * FROM %s_products WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
         $source = $mysqli->query($query);
@@ -158,7 +158,7 @@
 
     public function returnAllProducts() {
         global $configuration;
-                global $mysqli;
+		global $mysqli;
 
         $query = sprintf("SELECT * FROM %s_products WHERE true ORDER BY id DESC", $configuration['mysql-prefix']);
         $source = $mysqli->query($query);

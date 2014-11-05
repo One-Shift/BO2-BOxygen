@@ -22,12 +22,12 @@
             $this->code = sha1(md5(sha1(md5(time()."_".$c))));
         }
 
-        public function setDate($d = null) {
-            $this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+        public function setDate() {
+            $this->date = date('Y-m-d H:i:s',time());
         }
-        
-        public function setDateUpdate($d = null) {
-            $this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+
+        public function setDateUpdate() {
+            $this->date_update = date('Y-m-d H:i:s',time());
         }
 
         public function insert() {
@@ -127,7 +127,7 @@
             global $configuration;
             global $mysqli;
 
-            $query = sprintf("UPDATE %s_newsletters SET state = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], true, $this->id);
+            $query = sprintf("UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], true, $this->id);
             return $mysqli->query($query);
         }
 
@@ -135,7 +135,7 @@
             global $configuration;
             global $mysqli;
 
-            $query = sprintf("UPDATE %s_newsletters SET state = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], false, $this->id);
+            $query = sprintf("UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], false, $this->id);
             return $mysqli->query($query);
         }
     }

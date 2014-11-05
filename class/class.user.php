@@ -32,9 +32,9 @@
 		
 		public function setRank ($r) {
 			switch ($r) {
-				case 'manager': $this->rank = 'manager'; break;
-				case 'member': $this->rank = 'member'; break;
-				default: $this->rank = 'member';
+				case "manager": $this->rank = "manager"; break;
+				case "member": $this->rank = "member"; break;
+				default: $this->rank = "member";
 			}
 		}
         
@@ -77,10 +77,10 @@
         
         public function returnObject () {
         	return array(
-        		'name' => $this->username,
-        		'password' => $this->password,
-        		'email' => $this->email,
-        		'rank' => $this->rank
+        		"name" => $this->username,
+        		"password" => $this->password,
+        		"email" => $this->email,
+        		"rank" => $this->rank
         	);
         }
         

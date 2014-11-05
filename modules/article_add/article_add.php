@@ -1,11 +1,11 @@
 <div class="article-add">
-	<h1><?php echo $language["mod-news-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?php echo $language["mod-news-add-title"]; ?></h1>
 	<?php if (!isset($_REQUEST['save'])) { ?>
 	<form action="" method="post">
 	<div class="separator30"></div>
 
 	<div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 1</h2>
+		<h2 class="sectionTitle">Lingua 1</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_1"/>
 		<span id="label">Conteudo</span>
@@ -15,7 +15,7 @@
 	</div>
 
 	<div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 2</h2>
+		<h2 class="sectionTitle">Lingua 2</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_2"/>
 		<span id="label">Conteudo</span>
@@ -25,7 +25,7 @@
 	</div>
 
 	<div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 3</h2>
+		<h2 class="sectionTitle">Lingua 3</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_3"/>
 		<span id="label">Conteudo</span>
@@ -35,7 +35,7 @@
 	</div>
 
 	<div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 4</h2>
+		<h2 class="sectionTitle">Lingua 4</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_4"/>
 		<span id="label">Conteudo</span>
@@ -45,7 +45,7 @@
 	</div>
 
 	<div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 5</h2>
+		<h2 class="sectionTitle">Lingua 5</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_5"/>
 		<span id="label">Conteudo</span>
@@ -55,11 +55,19 @@
 	</div>
 
 	<div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
-		<h2>Lingua 6</h2>
+		<h2 class="sectionTitle">Lingua 6</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_6"/>
 		<span id="label">Conteudo</span>
 		<?php print returnEditor('content_6',null); ?>
+
+		<div class="separator30"></div>
+	</div>
+
+	<div>
+		<h2 class="sectionTitle">Data</h2>
+		<span id="label">Data</span>
+		<input type="date" name="date" value="<?php print date("Y-m-d H:i:s"); ?>"/>
 
 		<div class="separator30"></div>
 	</div>
@@ -92,8 +100,8 @@
 	  </br>
 	  <input type="checkbox" name="onhome" value="1"/> Pagina Inicial
 	  </br>
-	  <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-	  <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+	  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+	  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 	</div>
 
 	</form>
@@ -114,13 +122,13 @@
 		);
 		$article->setUserId($account['name']);
 		$article->setCategory($_POST['category']);
-		$article->setDate();
-		$article->setDateUpdate();
+		$article->setDate($_POST['date']);
+		$article->setDateUpdate($_POST['date']);
 		$article->setPublished($_POST['published']);
 		$article->setonHome($_POST['onhome']);
 
 		if ($article->insert()) {
-			print $langauge["actions"]["success"];
+			print $language["actions"]["success"];
 
 			$id = $mysqli->insert_id;
 	?>

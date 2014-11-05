@@ -1,6 +1,7 @@
 <div class="article-add">
 	<?php if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){ ?>
-		<h1>Edit Article</h1>
+		
+                <h1 class="pageTitle">Edit Article</h1>
 		<?php if (!isset($_REQUEST['save'])) { ?>
 		<form method="post">
 		<?php
@@ -70,6 +71,13 @@
 			<div class="separator30"></div>
 		</div>
 
+		<div>
+			<span id="label">Data</span>
+			<input type="date" name="date_update" value="<?php print $article["date_update"]; ?>"/>
+
+			<div class="separator30"></div>
+		</div>
+
 		<span id="label">Categoria</span>
 		<?php
 
@@ -116,8 +124,8 @@
 		  </br>
 		  <input type="checkbox" <?php if($article['onhome']){ print 'checked="yes"';} ?>  name="onhome"/> Pagina Inicial
 		  </br>
-		  <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-		  <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+		  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+		  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 		</div>
 
 		</form>
@@ -125,32 +133,32 @@
 		} else {
 			$article = new article();
 			$article->setId(intval($_REQUEST['i']));
-			if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
-			if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
+			if (isset($_POST['published'])) $_POST['published'] = true; else $_POST['published'] = false;
+			if (isset($_POST['onhome'])) $_POST['onhome'] = true; else $_POST['onhome'] = false;
 
 
 			$article->setContent(
-				$_REQUEST['title_1'], $_REQUEST['content_1'],
-				$_REQUEST['title_2'], $_REQUEST['content_2'],
-				$_REQUEST['title_3'], $_REQUEST['content_3'],
-				$_REQUEST['title_4'], $_REQUEST['content_4'],
-				$_REQUEST['title_5'], $_REQUEST['content_5'],
-				$_REQUEST['title_6'], $_REQUEST['content_6'],
-				$_REQUEST['code']
+				$_POST['title_1'], $_POST['content_1'],
+				$_POST['title_2'], $_POST['content_2'],
+				$_POST['title_3'], $_POST['content_3'],
+				$_POST['title_4'], $_POST['content_4'],
+				$_POST['title_5'], $_POST['content_5'],
+				$_POST['title_6'], $_POST['content_6'],
+				$_POST['code']
 			);
-			$article->setCategory($_REQUEST['category']);
-			$article->setDateUpdate();
-			$article->setPublished($_REQUEST['published']);
-			$article->setonHome($_REQUEST['onhome']);
+			$article->setCategory($_POST['category']);
+			$article->setDateUpdate($_POST["date_update"]);
+			$article->setPublished($_POST['published']);
+			$article->setonHome($_POST['onhome']);
 
 			if ($article->update()) {
-				print 'sucess';
+				print $language["actions"]["success"];
 			} else {
-				print 'failure';
+				print $language["actions"]["failure"];
 			}
 		}
 	} else {
-		print 'error';
+		print $language["actions"]["error"];
 	}
 ?>
 </div>

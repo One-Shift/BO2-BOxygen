@@ -1,5 +1,5 @@
 <?php if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){ ?>
-<h1><?php echo $language["mod-user-edit-title"]; ?></h1>
+<h1 class="pageTitle"><?php echo $language["mod-user-edit-title"]; ?></h1>
 	<?php if (!isset($_REQUEST['save'])) {
 	$user_edit= new user();
 		$user_edit->setId(intval($_REQUEST['i']));
@@ -36,8 +36,8 @@
 		?>
 
 		<div class="bottom-area">
-			<button type="submit" name="save" onclick="if ($('input[name=password]').val() != '') {if ($('input[name=password]').val() == $('input[name=confirm_password]').val()) {return true;} else {alert('Passowrds não coincidem!'); return false;}} else {return true;}"><?php echo $language['save']; ?></button>
-			<button type="reset" name="cancel"><?php echo $language['cancel']; ?></button>
+			<button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() != '') {if ($('input[name=password]').val() == $('input[name=confirm_password]').val()) {return true;} else {alert('Passowrds não coincidem!'); return false;}} else {return true;}"><i class="fa fa-floppy-o"></i></button>
+			<button class="red" title="cancel" type="reset" name="cancel"><i class="fa fa-times"></i></button>
 		</div>
 	</form>
 	<?php

@@ -1,6 +1,6 @@
 <script>
-	function teste(variable) {
-		goTo('./backoffice.php?pg=product-list&i=' + $(variable).val());
+	function otherCategory(variable) {
+		goTo('<?php print $configuration["path-bo"] ?>/0/product-list/' + $(variable).val());
 	}
 </script>
 <?php
@@ -10,9 +10,10 @@
 	$object_product = new product();
 	$product_list = $object_product->returnProducts(sprintf("WHERE category_id = %s ORDER BY %s ASC", intval($_GET["i"]), 'title_1'));
 ?>
+<h1 class="pageTitle">Product List</h1>
 <div class="product-list">
 	<div class="button-area">
-		<select id="category" onchange="teste(this);">
+		<select id="category" onchange="otherCategory(this);">
 			<option>Seleccionar uma categoria</option>
 			<?php
 				$object_category = new category();
@@ -24,9 +25,7 @@
 			?>
 
 		</select>
-		<button onclick="goTo('./backoffice.php?pg=product-add');" class="green"><?php print $language["template"]["add"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/product-add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 	<table class="db-list">
 	  <tr>
@@ -45,9 +44,9 @@
 			$category = $object_category->returnOneCategory();
 
 			if ($product['published']) {
-				$published = '<img src="./site-assets/images/icon_on.png" alt="on" />';
+				$published = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_on.png" alt="on" />';
 			} else {
-				$published = '<img src="./site-assets/images/icon_off.png" alt="off" />';
+				$published = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_off.png" alt="off" />';
 			}
 
 			print
@@ -56,7 +55,7 @@
 				'<td>'.$product['title_1'].'</td>'.
 				'<td>'.$category['name_1'].'</td>'.
 				'<td>'.$published.'</td>'.
-				'<td><input type="radio" name="product" value="'.$product['id'].'"/></td>'.
+				'<td><a href="'.$configuration["path-bo"].'/0/product-edit/'.$product['id'].'" onclick="return confirm(\''.$language["template"]["are-you-sure"].'\')" class="orange"><i class="fa fa-pencil-square-o"></i></a> <a href="'.$configuration["path-bo"].'/0/product-del/'.$product['id'].'" onclick="return confirm(\''.$language["template"]["are-you-sure"].'\')" class="red"><i class="fa fa-trash"></i></a></td>'.
 			'</tr>';
 
 			  $i_last = $product['id'];
@@ -65,9 +64,7 @@
 	  ?>
 	</table>
 	<div class="button-area">
-		<button onclick="goTo('./backoffice.php?pg=product-add');" class="green"><?php print $language["template"]["add"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','product-del');" class="red"><?php print $language["template"]["del"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/product-add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 

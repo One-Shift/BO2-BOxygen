@@ -1,5 +1,5 @@
 <div class="article-add">
-	<h1><?php echo $language["mod-category-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?php echo $language["mod-category-add-title"]; ?></h1>
 	<?php if (!isset($_REQUEST['save'])) { ?>
 	<form action="" method="post">
 	<div class="separator30"></div>
@@ -73,8 +73,8 @@
 	<div class="bottom-area">
 	  <input type="checkbox" name="published" value="1"/> Publicado
 	  </br>
-	  <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-	  <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+	  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+	  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 	</div>
 
 	</form>

@@ -1,6 +1,6 @@
 <div class="product-edit">
-	<?php if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){ ?>
-		<h1><?php echo $language["mod-product-edit-title"]; ?></h1>
+	<?php if(isset($_GET['i']) && !empty($_GET['i'])){ ?>
+		<h1 class="pageTitle"><?php echo $language["mod-product-edit-title"]; ?></h1>
 		<?php if (!isset($_REQUEST['save'])) {
 			$product = new product();
 			$product->setId(intval($_REQUEST['i']));
@@ -127,8 +127,8 @@
 				<br />
 				<input type="checkbox" <?php if ($item['onhome']) { print 'checked="yes"';} ?>  name="onhome" /> Pagina Inicial
 				<br />
-				<button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-				<button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+				<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+				<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 			</div>
 		</form>
 		<?php

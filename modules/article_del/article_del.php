@@ -1,9 +1,9 @@
+<h1 class="pageTitle">Article Del</h1>
 <?php
-	if (isset($_REQUEST['i']) && !empty($_REQUEST['i'])) {
+	if (isset($_GET['i']) && !empty($_GET['i'])) {
 		$object_article = new article();
 		$object_article->setId($_REQUEST['i']);
-		if($object_article->delete()) print 'sucess'; else print 'error';
+		if($object_article->delete()) print $language["actions"]["success"]; else print $language["actions"]["failure"];
 	}else{
-		print 'error';
+		print $language["actions"]["error"];
 	}
-?>

@@ -11,17 +11,20 @@
 	text-align: left;
 }
 
-.user-list table tr td {}
+.user-list table tr td {
+    padding: 2px 0 2px !important;
+}
 
 .user-list table tr td:nth-child(1) {
 	width: 20px;
-}
-
-.user-list table tr td:nth-child(3) {
-	width: 80px;
+        text-align: center;
 }
 
 .user-list table tr td:nth-child(4) {
+	width: 80px;
+}
+
+.user-list table tr td:nth-child(5) {
 	text-align: center;
-	width: 20px;
+	width: 100px;
 }

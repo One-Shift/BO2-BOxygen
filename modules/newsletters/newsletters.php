@@ -17,11 +17,10 @@
 	$object_newsletters = new newsletters();
 	$newsletters_list = $object_newsletters->returnAllregistries();
 ?>
+<h1 class="pageTitle">Newsletter Subscriptions</h1>
 <div class="category-list">
 	<div class="button-area">
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-export');" class="green"><?php print $language["template"]["export"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/newsletters-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
 	</div>
 
 	<table class="db-list">
@@ -34,10 +33,10 @@
 		</tr>
 		<?php
 			foreach($newsletters_list as $newsletter_entry){
-				if ($newsletter_entry['state']) {
-					$active = '<img src="./site-assets/images/icon_on.png" alt="on" />';
+				if ($newsletter_entry['active']) {
+					$active = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_on.png" alt="on" />';
 				} else {
-					$active = '<img src="./site-assets/images/icon_off.png" alt="off" />';
+					$active = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_off.png" alt="off" />';
 				}
 
 				print
@@ -46,7 +45,10 @@
 				'<td>'.$newsletter_entry['email'].'</td>'.
 				'<td>'.$newsletter_entry['code'].'</td>'.
 				'<td>'.$active.'</td>'.
-				'<td><input type="radio" name="category" value="'.$newsletter_entry['id'].'"/></td>'.
+				'<td>'.
+					'<a href="'.$configuration["path-bo"].'/0/newsletters-enable/'.$newsletter_entry['id'].'" class="green" title="enable"><i class="fa fa-check-circle-o"></i></a> '.
+					'<a href="'.$configuration["path-bo"].'/0/newsletters-disable/'.$newsletter_entry['id'].'" class="red" title="disable"><i class="fa fa-circle-o"></i></i></a>'.
+				'</td>'.
 				'</tr>';
 
 			}
@@ -54,8 +56,6 @@
 	</table>
 
 	<div class="button-area">
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-export');" class="green"><?php print $language["template"]["export"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-enable');" class="green"><?php print $language["template"]["enable"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','newsletters-disable');" class="red"><?php print $language["template"]["disable"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/newsletters-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
 	</div>
 </div>

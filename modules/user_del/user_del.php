@@ -1,3 +1,4 @@
+<h1 class="pageTitle">User Del</h1>
 <?php
 	if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){
 		$user = new user();

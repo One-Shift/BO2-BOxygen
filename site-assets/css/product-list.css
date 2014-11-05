@@ -22,3 +22,7 @@
 	text-align: center;
 	width: 20px;
 }
+
+.product-list table tr td:nth-child(5) {
+  width: 100px;
+}

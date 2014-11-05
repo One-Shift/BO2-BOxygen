@@ -19,4 +19,5 @@
 
 .article-list table tr td:nth-child(4) {
 	text-align: center;
+        width: 45px;
 }

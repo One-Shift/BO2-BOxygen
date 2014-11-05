@@ -1,3 +1,4 @@
+<h1 class="pageTitle">Category Del</h1>
 <?php
 	if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){
 		$object_category = new category();
@@ -6,4 +7,3 @@
 	}else{
 		print 'error';
 	}
-?>

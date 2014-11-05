@@ -3,7 +3,7 @@ AddDefaultCharset utf-8
 SetEnv TZ Europe/Lisbon
 
 <IfModule mod_php5.c>
-	php_value display_errors off
+	php_value display_errors true
 </IfModule>
 
 <IfModule mod_rewrite.c>

@@ -21,8 +21,12 @@
 	width: 80px;
 }
 
-.category-list table tr td:nth-child(4),
+.category-list table tr td:nth-child(4) {
+    width: 20px;
+    text-align: center;
+}
+
 .category-list table tr td:nth-child(5) {
 	text-align: center;
-	width: 20px;
+	width: 100px;
 }

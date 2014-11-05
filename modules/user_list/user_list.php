@@ -2,17 +2,17 @@
 	$object_user = new user();
 	$user_list = $object_user->returnAllUsers();
 ?>
+<h1 class="pageTitle">User List</h1>
 <div class="user-list">
 	<div class="button-area">
-		<button onclick="goTo('./backoffice.php?pg=user-add');" class="green"><?php print $language["template"]["add"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','user-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','user-del');" class="red"><?php print $language["template"]["del"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/user-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
     
 	<table class="db-list">
 		<tr>
 			<th>#</th>
 			<th>Nome</th>
+			<th>Email</th>
 			<th>Rank</th>
 			<th>Sel.</th>
 		</tr>
@@ -22,17 +22,17 @@
 				'<tr>'.
 				'<td>'.$user['id'].'</td>'.
 				'<td>'.$user['name'].'</td>'.
+				'<td>'.$user['email'].'</td>'.
 				'<td>'.$user['rank'].'</td>'.
-				'<td><input type="radio" name="user" value="'.$user['id'].'"/></td>'.
+				'<td><a  class="orange" href="'.$configuration["path-bo"].'/0/user-edit/'.$user['id'].'" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a  class="red" href="'.$configuration["path-bo"].'/0/user-edit/'.$user['id'].'" title="delete"><i class="fa fa-trash"></i></a>
+</td>'.
 				'</tr>';
 			}
 		?>
 	</table>
     
 	<div class="button-area">
-		<button onclick="goTo('./backoffice.php?pg=user-add');" class="green"><?php print $language["template"]["add"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','user-edit');" class="orange"><?php print $language["template"]["edit"] ?></button>
-		<button onclick="buttonAction ('<?php print $language["template"]["are-you-sure"]; ?>','user-del');" class="red"><?php print $language["template"]["del"] ?></button>
+		<a href="<?php print $configuration["path-bo"] ?>/0/user-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 
 </div>

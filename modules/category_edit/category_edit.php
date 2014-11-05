@@ -2,7 +2,7 @@
 <?php 
 	if(isset($_GET['i']) && !empty($_GET['i'])){
 ?>
-		<h1><?php echo $language["mod-category-edit-title"]; ?></h1>
+		<h1 class="pageTitle"><?php echo $language["mod-category-edit-title"]; ?></h1>
 		<?php if (!isset($_POST['save'])) {
 			$object_category = new category();
 			$object_category->setId(intval($_GET['i']));
@@ -98,8 +98,8 @@
 			<div class="bottom-area">
 			  <input type="checkbox" <?php if($category['published']){ print 'checked="yes"';} ?> name="published"/> Publicado
 			  </br>
-			  <button type="submit" name="save" class="green"><?php echo $language['save']; ?></button>
-			  <button type="reset" name="cancel" class="red"><?php echo $language['cancel']; ?></button>
+			  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+			  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 			</div>
 		</form>
         

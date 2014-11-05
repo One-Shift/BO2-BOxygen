@@ -1,16 +1,9 @@
-<?php if ($account["login"]){ ?>
-<ul>
-	<a href="<?php print $configuration["path-bo"] ?>/0/user-list/"><?php echo $language["menu-users"]; ?></a>
-	<a href="<?php print $configuration["path-bo"] ?>/0/category-list/"><?php echo $language["menu-categories"]; ?></a>
-	<a href="<?php print $configuration["path-bo"] ?>/0/article-list/"><?php echo $language["menu-articles"]; ?></a>
-	<!--li onclick="goTo('<?php print $configuration["path-bo"] ?>/archive/');">Archive (Soon)</li-->
-	<a href="<?php print $configuration["path-bo"] ?>/0/product-list/"><?php echo $language["menu-products"]; ?></a>
-	<a href="<?php print $configuration["path-bo"] ?>/0/newsletters/"><?php echo $language["menu-newsletters"]; ?></a>
-</ul>
-<h3><?php echo $language["menu-account"]; ?></h3>
-<ul>
-	<a href="<?php print $configuration["path-bo"] ?>/"><?php echo $language["menu-begin"]; ?></a>
-	<a onclick="return confirm('Are You Sure?'))" href="<?php print $configuration["path-bo"] ?>/0/logout/"><?php echo $language["menu-logout"]; ?></a>
-</ul>
-
-<?php } ?>
+<a href="{c2r-path-bo}/0/user-list/">{c2r-menu-users}</a>
+<a href="{c2r-path-bo}/0/category-list/">{c2r-menu-categories}</a>
+<a href="{c2r-path-bo}/0/article-list/">{c2r-menu-articles}</a>
+<a href="{c2r-path-bo}/0/product-list/">{c2r-menu-products}</a>
+<a href="{c2r-path-bo}/0/orders/">{c2r-menu-order}</a>
+<a href="{c2r-path-bo}/0/newsletters/">{c2r-menu-newsletters}</a>
+<h3>{c2r-menu-account}</h3>
+<a href="{c2r-path-bo}/0/">{c2r-menu-begin}</a>
+<a onclick="return confirm('Are You Sure?'))" href="{c2r-path-bo}/0/logout/">{c2r-menu-logout}</a>
