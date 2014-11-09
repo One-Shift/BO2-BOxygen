@@ -3,39 +3,39 @@ include("./header.php");
 
 //get user
 if (isset($_COOKIE[$configuration["cookie"]])) {
-	$account = explode(".", $_COOKIE[$configuration["cookie"]]);
+    $account = explode(".", $_COOKIE[$configuration["cookie"]]);
 
-	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s'", $configuration["mysql-prefix"], $account[0], $account[1]);
-	$source = $mysqli->query($query);
-	$nr = $source->num_rows;
-	if ($nr == 1) {
-		$account["name"] = $account[0];
-		$account["password"] = $account[1];
-		unset($account[0]);
-		unset($account[1]);
-		$account["login"] = true;
-	} else {
-		$account["login"] = false;
-		setcookie($configuration['cookie'], null, time() - 3600);
-	}
+    $query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s'", $configuration["mysql-prefix"], $account[0], $account[1]);
+    $source = $mysqli->query($query);
+    $nr = $source->num_rows;
+    if ($nr == 1) {
+        $account["name"] = $account[0];
+        $account["password"] = $account[1];
+        unset($account[0]);
+        unset($account[1]);
+        $account["login"] = true;
+    } else {
+        $account["login"] = false;
+        setcookie($configuration['cookie'], null, time() - 3600);
+    }
 } else {
-	$account["login"] = false;
+    $account["login"] = false;
 }
 
 //get page
 if (isset($_GET["pg"])) {
-	$pg = $_GET["pg"];
+    $pg = $_GET["pg"];
 } else {
-	$pg = "home";
+    $pg = "home";
 }
 
 //logout
 $logout = false;
 if ($pg == 'logout') {
-	if (isset($_COOKIE[$configuration["cookie"]])) {
-		setcookie($configuration['cookie'], null, time() - 3600);
-		$logout = true;
-	}
+    if (isset($_COOKIE[$configuration["cookie"]])) {
+        setcookie($configuration['cookie'], null, time() - 3600);
+        $logout = true;
+    }
 }
 
 include './languages/' . $configuration["language"] . '.php';
@@ -101,22 +101,22 @@ include './languages/' . $configuration["language"] . '.php';
                     <div id="menu-title"><?php print $language["system"]["menu"]; ?></div>
                 </div>
                 <div id="page">
-					<?php
-					include "./includes.php";
-					?>
+                    <?php
+                    include "./includes.php";
+                    ?>
                 </div>
                 <div id="menu">
-					<?php
-					if ($account["login"]) {
-						$menu = file_get_contents("./modules/menu/menu.php");
-						$menu = str_replace(
-								array("{c2r-menu-users}", "{c2r-menu-categories}", "{c2r-menu-articles}", "{c2r-menu-products}", "{c2r-menu-order}", "{c2r-menu-newsletters}", "{c2r-menu-account}", "{c2r-menu-begin}", "{c2r-menu-logout}"), $language["menu"], $menu
-						);
+                    <?php
+                    if ($account["login"]) {
+                        $menu = file_get_contents("./modules/menu/menu.php");
+                        $menu = str_replace(
+                                array("{c2r-menu-users}", "{c2r-menu-categories}", "{c2r-menu-articles}", "{c2r-menu-products}", "{c2r-menu-order}", "{c2r-menu-newsletters}", "{c2r-menu-account}", "{c2r-menu-begin}", "{c2r-menu-logout}"), $language["menu"], $menu
+                        );
 
-						print str_replace("{c2r-path-bo}", $configuration["path-bo"], $menu);
-						//include "./modules/menu/menu.php";
-					}
-					?>
+                        print str_replace("{c2r-path-bo}", $configuration["path-bo"], $menu);
+                        //include "./modules/menu/menu.php";
+                    }
+                    ?>
                 </div>
             </div>
             <div id="wrap"></div>
