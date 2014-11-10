@@ -27,32 +27,38 @@ function returnEditor($textareanema, $content) {
             . "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema, $textareanema, $content, $textareanema);
 }
 
-function sendEmailTo($from, $to, $subject, $message) {
-    global $configuration;
+function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
+	global $configuration;
 
-    $fName = $configuration["site-name"];
-    $lName = $configuration["site-slogan"];
+	$fName = $configuration["site-name"];
+	$lName = $configuration["site-slogan"];
 
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->CharSet = "UTF-8";
-    $mail->Host = $configuration["mail-smtp"]; // SMTP server example
-    $mail->SMTPDebug = 0;      // enables SMTP debug information (for    testing)
-    $mail->SMTPAuth = true;      // enable SMTP authentication
-    $mail->Port = 25;     // set the SMTP port for the GMAIL server
-    $mail->SMTPSecure = $configuration["mail-secure"];
-    $mail->Username = $configuration["mail-username"]; // SMTP account username example
-    $mail->Password = $configuration["mail-password"];
-    $mail->SetFrom($from, $fName . ' : ' . $lName);
-    $mail->Subject = $subject;
-    $mail->AddAddress($to, "User");
-    $mail->MsgHTML($message);
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->CharSet = "UTF-8";
+	$mail->Host = $configuration["mail-smtp"]; // SMTP server example
+	$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
+	$mail->SMTPAuth = true; // enable SMTP authentication
+	$mail->Port = 25; // set the SMTP port for the GMAIL server
+	$mail->SMTPSecure = $configuration["mail-secure"];
+	$mail->Username = $configuration["mail-username"]; // SMTP account username example
+	$mail->Password = $configuration["mail-password"];
+	$mail->SetFrom($from, $fName . ' : ' . $lName);
+	$mail->Subject = $subject;
+	$mail->AddAddress($to, "User");
+	$mail->MsgHTML($message);
 
-    if (!$mail->Send()) {
-        return false;
-    } else {
-        return true;
-    }
+	if (count($attach) > 0) {
+		foreach ($attach as $file) {
+			$mail->addAttachment($file[0],$file[1]);
+		}
+	}
+	
+	if (!$mail->Send()) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
 function generateRandomString($length = 10) {
