@@ -22,7 +22,7 @@ function returnEditorInit() {
     //print "<script type=\"text/javascript\">bkLib.onDomLoaded(function() { nicEditors.allTextAreas({fullPanel : true}) });</script>";
 }
 
-function returnEditor($textareanema, $content) {
+function returnEditor($textareanema, $content = "<div><br/><div>") {
     return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 670px;\">%s</textarea>"
             . "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema, $textareanema, $content, $textareanema);
 }
