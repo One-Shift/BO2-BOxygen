@@ -1,6 +1,6 @@
 <?php
 
-class product {
+class search {
 
 	protected $id;
 	protected $tags;
