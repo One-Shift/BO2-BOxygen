@@ -33,11 +33,12 @@ class orders {
 		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
-	public function insert() {
+	public function insert($u, $c) {
 		global $configuration;
 		global $mysqli;
 
-		$query[0] = sprintf("INSERT INTO %s_orders () VALUES ()", $configuration["mysql-prefix"]);
+		$query[0] = sprintf("INSERT INTO %s_order (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $u, $c, $this->date, $this->date_update);
+
 		return $mysqli->query($query[0]);
 	}
 
@@ -84,15 +85,31 @@ class orders {
 	}
 
 	public function cartToArray($cart) {
+		// seprador por áreas
 		$tmp = explode("[spr]", $cart);
 
-		$toReturn["adress"] = explode("\n", $tmp[0]);
-		
-		$toReturn["list"] = "";
-		
-		$toReturn["price"] = explode("\n", $tmp[2]);
-		$toReturn["price"][2] = $toReturn["price"][0] + $toReturn["price"][0];
-		
+		// seprador de endereços
+		$toReturn["address"] = explode("\n", $tmp[0]);
+
+		// separador de compras
+		$toReturn["list"] = explode("\n", $tmp[1]);
+
+		$toReturn["list"][0] = null; // evitar conteudo desconhecido do index 0
+		$toReturn["list"] = array_filter($toReturn["list"]); // filtro para eliminar todos os elementos desnecessários do array
+
+		$i = 0;
+		$tmpList = null;
+
+		foreach ($toReturn["list"] as $item) {
+			$tmpList[$i] = explode("[/]", $item); // separação do item pelo [/]
+			$i++;
+		}
+
+		$toReturn["list"] = $tmpList; // 0 -> id do produto, 1 -> quantidade, 2 -> valor, 3 -> iva
+		// separador de valores
+		$toReturn["price"] = explode("\n", $tmp[2]); // 0 -> valor sem iva, 1 -> valor do iva
+		$toReturn["price"][3] = $toReturn["price"][1] + $toReturn["price"][2]; // soma de valor + iva
+
 		return $toReturn;
 	}
 
