@@ -146,7 +146,7 @@
 			?>
 	<?php
 		} else {
-			print $langauge["actions"]["failure"];
+			print $language["actions"]["failure"];
 		}
 	} ?>
 </div>
