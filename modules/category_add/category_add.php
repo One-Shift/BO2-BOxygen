@@ -108,9 +108,9 @@
 		$object_category->setCategoryType($_REQUEST['section']);
 
 		if ($object_category->insert()) {
-			print 'sucess';
+			print $language["actions"]["success"];
 		} else {
-			print 'failure';
+			print $language["actions"]["failure"];
 		}
 	}
 	?>
