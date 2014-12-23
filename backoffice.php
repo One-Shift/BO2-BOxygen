@@ -6,9 +6,10 @@ include("./header.php");
 if (isset($_COOKIE[$configuration["cookie"]])) {
 	$account = explode(".", $_COOKIE[$configuration["cookie"]]);
 
-	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s'", $configuration["mysql-prefix"], $account[0], $account[1]);
+	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s')", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager");
 	$source = $mysqli->query($query);
 	$nr = $source->num_rows;
+	
 	if ($nr == 1) {
 		$account["name"] = $account[0];
 		$account["password"] = $account[1];
@@ -32,14 +33,13 @@ if (isset($_GET["pg"])) {
 
 //logout
 $logout = false;
-if ($pg == 'logout') {
+if ($pg == "logout") {
 	if (isset($_COOKIE[$configuration["cookie"]])) {
-		setcookie($configuration['cookie'], null, time() - 3600);
+		setcookie($configuration["cookie"], null, time() - 3600);
 		$logout = true;
 	}
 }
 
-include './languages/' . $configuration["language"] . '.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,15 +70,11 @@ include './languages/' . $configuration["language"] . '.php';
         <meta property="og:url" content="<?= $configuration["path-bo"] ?>" /> 
         <meta property="og:image" content="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" />
         <meta property="og:title" content="<?= $configuration["BO2-name"]; ?>" />
-        <meta property="og:description" content="{c2r-description}" />
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=9" />
-        <meta name="keywords" content="{c2r-keywords}" />
-        <meta name="description" content="{c2r-description}" />
         <meta name="robots" content="index" />
         <meta name="author" content="NexuS-Pt, work team" />
-        <meta name="author-code" content="#someone#" />
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
         <link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
