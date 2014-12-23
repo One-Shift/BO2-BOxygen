@@ -1,8 +1,8 @@
 <?php
 
 // CONFIGURAÇÕES
-include './configuration.php';
-include './connect.php';
+include "./configuration.php";
+include "./connect.php";
 
 // CLASSES
 include "./class/class.article.php";
@@ -20,5 +20,6 @@ include "./class/class.user.php";
 include "./class/PHPMailer/class.phpmailer.php";
 
 // OUTROS
-include './functions.php';
-include './languages/' . $configuration['language'] . '.php';
+include "./functions.php";
+
+$language = parse_ini_file("./languages/".$configuration["language"].".ini");

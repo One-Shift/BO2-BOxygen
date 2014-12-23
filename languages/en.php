@@ -1,10 +1,10 @@
 <?php
 
-$language = array(
-	"system" => array(
+$language = [
+	"system" => [
 		"menu" => "Menu",
-	),
-	"template" => array(
+	],
+	"template" => [
 		"add" => "Add",
 		"edit" => "Edit",
 		"del" => "Del",
@@ -12,13 +12,13 @@ $language = array(
 		"disable" => "Disable",
 		"export" => "Export",
 		"are-you-sure" => "Are you sure?",
-	),
-	"actions" => array(
+	],
+	"actions" => [
 		"success" => "All functions were executed successfully.",
 		"failure" => "Something went wrong. Try again, if the error persists contact your webmaster and explain the situation well.",
 		"error" => "An internal error occurred. Talk to your webmaster and explain the situation well.",
-	),
-	"menu" => array(
+	],
+	"menu" => [
 		"users" => "Users",
 		"categories" => "Categories",
 		"articles" => "Articles",
@@ -28,8 +28,8 @@ $language = array(
 		"account" => "Account",
 		"begin" => "Home",
 		"logout" => "Logout",
-	),
-	"article" => array(),
+	],
+	"article" => [],
 	// general
 	"confirm" => "Are you sure?",
 	"save" => "Save",
@@ -75,4 +75,4 @@ $language = array(
 	"suport-subject" => "Support",
 	//404
 	"not_found" => "The page you are search do not exist!",
-);
+];
