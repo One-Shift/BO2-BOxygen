@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_order` (
+CREATE TABLE IF NOT EXISTS `prefix_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `cart` text CHARACTER SET utf8 NOT NULL,
