@@ -97,11 +97,37 @@ class product {
 	}
 
 	public function insert() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
-		$query = "INSERT INTO " . $configuration['mysql-prefix'] . "_products (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, service, price, vat, discount, user_id, category_id, date, date_update, published, onhome) VALUES ('" . $mysqli->real_escape_string($this->title_1) . "', '" . $mysqli->real_escape_string($this->content_1) . "', '" . $mysqli->real_escape_string($this->title_2) . "', '" . $mysqli->real_escape_string($this->content_2) . "', '" . $mysqli->real_escape_string($this->title_3) . "', '" . $mysqli->real_escape_string($this->content_3) . "', '" . $mysqli->real_escape_string($this->title_4) . "', '" . $mysqli->real_escape_string($this->content_4) . "', '" . $mysqli->real_escape_string($this->title_5) . "', '" . $mysqli->real_escape_string($this->content_5) . "', '" . $mysqli->real_escape_string($this->title_6) . "', '" . $mysqli->real_escape_string($this->content_6) . "', '" . $this->code . "', '" . $this->service . "', '" . $mysqli->real_escape_string($this->price) . "', '" . $mysqli->real_escape_string($this->vat) . "', '" . $mysqli->real_escape_string($this->discount) . "', '" . $this->user_id . "', '" . $this->category_id . "', '" . $this->date . "', '" . $this->date_update . "', '" . $this->published . "', '" . $this->onhome . "')";
-
+		$query = sprintf(
+				"INSERT INTO %s_products (reference, title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, service, price, vat, discount, user_id, category_id, date, date_update, published, onhome) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+				$configuration["mysql-prefix"],
+				$mysqli->real_escape_string($this->reference),
+				$mysqli->real_escape_string($this->title_1),
+				$mysqli->real_escape_string($this->content_1),
+				$mysqli->real_escape_string($this->title_2),
+				$mysqli->real_escape_string($this->content_2),
+				$mysqli->real_escape_string($this->title_3),
+				$mysqli->real_escape_string($this->content_3),
+				$mysqli->real_escape_string($this->title_4),
+				$mysqli->real_escape_string($this->content_4),
+				$mysqli->real_escape_string($this->title_5),
+				$mysqli->real_escape_string($this->content_5),
+				$mysqli->real_escape_string($this->title_6),
+				$mysqli->real_escape_string($this->content_6),
+				$this->code,
+				$this->service,
+				$mysqli->real_escape_string($this->price),
+				$mysqli->real_escape_string($this->vat),
+				$mysqli->real_escape_string($this->discount),
+				$this->user_id,
+				$this->category_id,
+				$this->date,
+				$this->date_update,
+				$this->published,
+				$this->onhome
+				);
+		
 		$toReturn = $mysqli->query($query);
 
 		$this->id = $mysqli->insert_id;
@@ -110,8 +136,7 @@ class product {
 	}
 
 	public function update() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_products SET reference = '%s', title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s',  title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', service = '%s', price = '%s', vat = '%s', discount = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'", 
 				$configuration['mysql-prefix'], 
@@ -143,8 +168,7 @@ class product {
 	}
 
 	public function delete() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("DELETE FROM %s_products WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
@@ -153,30 +177,30 @@ class product {
 
 	public function returnObject() {
 		return array(
-			'title_1' => $this->title_1,
-			'content_1' => $this->content_1,
-			'title_2' => $this->title_2,
-			'content_2' => $this->content_2,
-			'title_3' => $this->title_3,
-			'content_3' => $this->content_3,
-			'title_4' => $this->title_4,
-			'content_4' => $this->content_4,
-			'title_5' => $this->title_5,
-			'content_5' => $this->content_5,
-			'title_6' => $this->title_6,
-			'content_6' => $this->content_6,
-			'code' => $this->code,
-			'user_id' => $this->user_id,
-			'category' => $this->category_id,
-			'date' => $this->date,
-			'published' => $this->published,
-			'onHome' => $this->onHome
+			"reference" => $this->reference,
+			"title_1" => $this->title_1,
+			"content_1" => $this->content_1,
+			"title_2" => $this->title_2,
+			"content_2" => $this->content_2,
+			"title_3" => $this->title_3,
+			"content_3" => $this->content_3,
+			"title_4" => $this->title_4,
+			"content_4" => $this->content_4,
+			"title_5" => $this->title_5,
+			"content_5" => $this->content_5,
+			"title_6" => $this->title_6,
+			"content_6" => $this->content_6,
+			"code" => $this->code,
+			"user_id" => $this->user_id,
+			"category" => $this->category_id,
+			"date" => $this->date,
+			"published" => $this->published,
+			"onHome" => $this->onHome
 		);
 	}
 
 	public function returnOneProduct() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_products WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
@@ -185,8 +209,7 @@ class product {
 	}
 
 	public function returnAllProducts() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_products WHERE true ORDER BY id DESC", $configuration['mysql-prefix']);
 		$source = $mysqli->query($query);
@@ -203,8 +226,7 @@ class product {
 	}
 
 	public function returnProducts($part_of_query) {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_products %s", $configuration['mysql-prefix'], $part_of_query);
 		$source = $mysqli->query($query);
@@ -221,8 +243,7 @@ class product {
 	}
 
 	public function increasePriority() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_products SET priority += 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
@@ -230,8 +251,7 @@ class product {
 	}
 
 	public function decreasePriority() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_products SET priority -= 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
