@@ -1,26 +1,26 @@
 <?php
 
 function returnFilesList($id, $module) {
-    global $configuration;
+	global $configuration;
 
-    return sprintf('<iframe src="%s/modules/upload/upload_list.php?mdl=%s&i=%s">Your Browser do not support iframe method!</iframe>', $configuration["path-bo"], $module, $id);
+	return sprintf('<iframe src="%s/modules/upload/upload_list.php?mdl=%s&i=%s">Your Browser do not support iframe method!</iframe>', $configuration["path-bo"], $module, $id);
 }
 
 function returnImgUploader($button, $id, $module, $width, $height) {
-    global $configuration;
+	global $configuration;
 
-    return sprintf('<button type="button" onclick="popUp(\'%s/modules/upload/upload_script_img.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">' . $button . '</button>', $configuration["path-bo"], $module, $id, $width, $height);
+	return sprintf('<button type="button" onclick="popUp(\'%s/modules/upload/upload_script_img.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">' . $button . '</button>', $configuration["path-bo"], $module, $id, $width, $height);
 }
 
 function returnDocsUploader($button, $id, $module, $width, $height) {
-    global $configuration;
+	global $configuration;
 
-    return sprintf('<button type="button" onclick="popUp(\'%s/modules/upload/upload_script_docs.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">' . $button . '</button>', $configuration["path-bo"], $module, $id, $width, $height);
+	return sprintf('<button type="button" onclick="popUp(\'%s/modules/upload/upload_script_docs.php?mdl=%s&i=%s\',\'%s\',\'%s\'); return false;">' . $button . '</button>', $configuration["path-bo"], $module, $id, $width, $height);
 }
 
 function returnEditor($textareanema, $content = "<div><br/><div>") {
-    return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 670px;\">%s</textarea>"
-            . "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema, $textareanema, $content, $textareanema);
+	return sprintf("<textarea name=\"%s\" id=\"%s\" style=\"width: 670px;\">%s</textarea>"
+			. "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema, $textareanema, $content, $textareanema);
 }
 
 function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
@@ -58,40 +58,40 @@ function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
 }
 
 function generateRandomString($length = 10) {
-    // work 100%
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	// work 100%
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    // in beta testing
-    $characters = '!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~';
+	// in beta testing
+	$characters = '!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{|}~';
 
-    $randomString = '';
+	$randomString = '';
 
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, strlen($characters) - 1)];
-    }
+	for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, strlen($characters) - 1)];
+	}
 
-    return $randomString;
+	return $randomString;
 }
 
 function clean($string) {
-    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+	$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+	return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 }
 
 /* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
 
 function minifyHTML($buffer) {
-    $search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
+	$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
 
-    $replace = array('>', '<', '\\1');
+	$replace = array('>', '<', '\\1');
 
-    if (preg_match("/\<html/i", $buffer) == 1 && preg_match("/\<\/html\>/i", $buffer) == 1) {
-        $buffer = preg_replace($search, $replace, $buffer);
-    }
+	if (preg_match("/\<html/i", $buffer) == 1 && preg_match("/\<\/html\>/i", $buffer) == 1) {
+		$buffer = preg_replace($search, $replace, $buffer);
+	}
 
-    $buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
+	$buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
 
-    return $buffer;
+	return $buffer;
 }
 
 /**
@@ -107,16 +107,16 @@ function minifyHTML($buffer) {
  * @source http://gravatar.com/site/implement/images/php/
  */
 function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = array()) {
-    $url = 'http://www.gravatar.com/avatar/';
-    $url .= md5(strtolower(trim($email)));
-    $url .= "?s=$s&d=$d&r=$r";
+	$url = 'http://www.gravatar.com/avatar/';
+	$url .= md5(strtolower(trim($email)));
+	$url .= "?s=$s&d=$d&r=$r";
 
-    if ($img) {
-        $url = '<img src="' . $url . '"';
-        foreach ($atts as $key => $val)
-            $url .= ' ' . $key . '="' . $val . '"';
-        $url .= ' />';
-    }
+	if ($img) {
+		$url = '<img src="' . $url . '"';
+		foreach ($atts as $key => $val)
+			$url .= ' ' . $key . '="' . $val . '"';
+		$url .= ' />';
+	}
 
-    return $url;
+	return $url;
 }
