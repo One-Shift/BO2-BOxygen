@@ -310,3 +310,15 @@ iframe.ads {
     margin-bottom: 7px;
     font-weight: 400;
 }
+
+.taleft {
+    text-align: left;
+}
+
+.tacenter {
+    text-align: center;
+}
+
+.taright {
+    text-align: right;
+}
