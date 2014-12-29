@@ -128,8 +128,8 @@ if ($pg == "logout") {
 									"{c2r-menu-products}",
 									"{c2r-menu-order}",
 									"{c2r-menu-newsletters}",
-									"{c2r-menu-account}",
 									"{c2r-menu-controller-files}",
+									"{c2r-menu-account}",
 									"{c2r-menu-begin}",
 									"{c2r-menu-logout}"
 								),
