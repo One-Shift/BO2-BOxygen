@@ -1,9 +1,14 @@
 <h1 class="pageTitle">Category Del</h1>
 <?php
-	if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){
+	if($id !== null){
 		$object_category = new category();
-		$object_category->setId($_REQUEST['i']);
-		if($object_category->delete()) print 'sucess'; else print 'error';
+		$object_category->setId($id);
+
+		if ($object_category->delete()) {
+			print $language["actions"]["success"];
+		} else {
+			print $language["actions"]["failure"];
+		}
 	}else{
-		print 'error';
+		print $language["actions"]["error"];
 	}
