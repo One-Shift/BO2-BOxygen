@@ -41,7 +41,7 @@
 						$configuration["path-bo"],
 						$language["template"]["are-you-sure"]
 					),
-					file_get_contents($configuration["path-bo"]."/modules/category_list/templates-e/line.html");
+					file_get_contents($configuration["path-bo"]."/modules/category_list/templates-e/line.html")
 				);
 			}
 		?>
