@@ -96,7 +96,7 @@
 			</div>
 
 			<div class="bottom-area">
-			  <input type="checkbox" <?php if($category["published"]){ print "checked=\"yes\"";} ?> name="published"/> Publicado
+			  <input type="checkbox" <?php if ($category["published"]) { print "checked=\"yes\"";} ?> name="published"/> Publicado
 			  </br>
 			  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 			  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
