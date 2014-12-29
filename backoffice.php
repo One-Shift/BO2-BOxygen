@@ -1,6 +1,6 @@
 <?php
 
-include("./header.php");
+include "./header.php";
 
 //get user
 if (isset($_COOKIE[$configuration["cookie"]])) {
@@ -125,7 +125,6 @@ if ($pg == "logout") {
 						);
 
 						print str_replace("{c2r-path-bo}", $configuration["path-bo"], $menu);
-						//include "./modules/menu/menu.php";
 					}
 					?>
                 </div>
