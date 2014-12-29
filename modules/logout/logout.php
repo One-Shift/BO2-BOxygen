@@ -1,8 +1,8 @@
 <h1 class="pageTitle">Logout</h1>
 <?php
-	if($logout) {
-		print '<p>Session terminated with success.</p>';
-		print "<script>goToAfter('".$configuration["path-bo"]."/', 2000);</script>";
+	if ($logout) {
+		print $language["actions"]["success"];
+		printf("<script>goToAfter('%s', 2000);</script>", $configuration["path-bo"]);
 	} else {
-		print '<p>Error: Session not terminated.</p>';
+		print $language["actions"]["failure"];
 	}
