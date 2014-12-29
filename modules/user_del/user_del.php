@@ -1,10 +1,14 @@
 <h1 class="pageTitle">User Del</h1>
 <?php
-	if(isset($_REQUEST['i']) && !empty($_REQUEST['i'])){
+	if ($id !== null) {
 		$user = new user();
-		$user->setId($_REQUEST['i']);
-		if($user->delete()) print 'sucess'; else print 'error';
+		$user->setId($id);
+
+		if ($user->delete()) {
+			print  $language["actions"]["success"];
+		} else {
+			print  $language["actions"]["failure"];
+		}
 	}else{
-		print 'error';
+		print  $language["actions"]["error"];
 	}
-?>
