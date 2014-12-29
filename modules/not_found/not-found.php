@@ -1,2 +1,2 @@
-<h1 class="pageTitle">404 #</h1>
-<p><?php echo $language["not_found"]; ?></p>
+<h1 class="pageTitle"><?= $language[404]["title"] ?> #</h1>
+<p><?= $language[404]["not_found"]; ?></p>

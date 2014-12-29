@@ -4,7 +4,7 @@
 	<form action="" method="post">
 	<div class="separator30"></div>
 
-	<div <?php if (!$configuration["lang_1_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_1_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 1</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_1"/>
@@ -14,7 +14,7 @@
 		<div class="separator30"></div>
 	</div>
 
-	<div <?php if (!$configuration["lang_2_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_2_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 2</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_2"/>
@@ -24,7 +24,7 @@
 		<div class="separator30"></div>
 	</div>
 
-	<div <?php if (!$configuration["lang_3_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_3_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 3</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_3"/>
@@ -34,7 +34,7 @@
 		<div class="separator30"></div>
 	</div>
 
-	<div <?php if (!$configuration["lang_4_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_4_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 4</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_4"/>
@@ -44,7 +44,7 @@
 		<div class="separator30"></div>
 	</div>
 
-	<div <?php if (!$configuration["lang_5_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_5_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 5</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_5"/>
@@ -54,7 +54,7 @@
 		<div class="separator30"></div>
 	</div>
 
-	<div <?php if (!$configuration["lang_6_state"]) {echo 'style="display: none;"';} ?>>
+	<div <?php if (!$configuration["lang_6_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle">Lingua 6</h2>
 		<span id="label">Titulo</span>
 		<input type="text" name="title_6"/>
