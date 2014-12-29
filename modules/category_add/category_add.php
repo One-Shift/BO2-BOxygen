@@ -1,8 +1,7 @@
 <div class="article-add">
-	<h1 class="pageTitle"><?= $language["mod-category-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?= $language["mod_category"]["add-title"]; ?></h1>
 	<?php if (!isset($_POST["save"])) { ?>
 	<form action="" method="post">
-	<div class="separator30"></div>
 
 	<div <?php if (!$configuration["lang_1_state"]) {echo "style=\"display: none;\"";} ?>>
 		<h2>Lingua 1</h2>
