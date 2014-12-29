@@ -5,7 +5,7 @@
 <h1 class="pageTitle">Article List</h1>
 <div class="article-list">
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/article-add/" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/article-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 	<table class="db-list">
 	  <tr>
@@ -18,29 +18,42 @@
 	  <?php
 		foreach ($article_list as $article) {
 			$object_category = new category();
-			$object_category->setId($article['category_id']);
+			$object_category->setId($article["category_id"]);
 			$category = $object_category->returnOneCategory();
 
-			if ($article['published']) {$published = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_on.png" alt="on" title="publicado"/>';}
-			else {$published = '<img src="'.$configuration["path-bo"].'/site-assets/images/icon_off.png" alt="off"  title="não publicado"/>';}
+			if ($article["published"]) {
+				$published = sprintf("<img src=\"%s/site-assets/images/icon_on.png\" alt=\"on\" title=\"publicado\"/>", $configuration["path-bo"]);
+			} else {
+				$published = sprintf("<img src=\"%s/site-assets/images/icon_off.png\" alt=\"off\"  title=\"não publicado\"/>", $configuration["path-bo"]);
+			}
 
-			print
-			'<tr>'.
-			'<td>'.$article['id'].'</td>'.
-			'<td title="date : '.$article["date_update"].'">'.$article['title_1'].'</td>'.
-			'<td>'.$category['name_1'].'</td>'.
-			'<td>'.$published.'</td>';
-			printf("<td style=\"text-align: right;\"><a href=\"%s/0/article-edit/%s\" onclick=\"return confirm('%s')\" class=\"orange\"><i class=\"fa fa-pencil-square-o\"></i></a> <a href=\"%s/0/article-del/%s\" onclick=\"return confirm('%s')\" class=\"red\"><i class=\"fa fa-trash\"></a></td>",
-				$configuration["path-bo"], $article['id'], $language["template"]["are-you-sure"],
-				$configuration["path-bo"], $article['id'], $language["template"]["are-you-sure"]
-				  );
-
-			print '</tr>';
+			print str_replace(
+					array(
+						"{c2r-id}",
+						"{c2r-date}",
+						"{c2r-title}",
+						"{c2r-category}",
+						"{c2r-published}",
+						"{c2r-published}",
+						"{c2r-path-bo}",
+						"{c2r-confirm}"
+					), 
+					array(
+						$article["id"],
+						$article["date_update"],
+						$article["title_1"],
+						$category["name_1"],
+						$published,
+						$configuration["path-bo"],
+						$language["template"]["are-you-sure"]
+					), 
+					file_get_contents($configuration["path-bo"]."/modules/article_list/templats-e/line.html")
+				);
 		}
 
 	  ?>
 	</table>
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/article-add/" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/article-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
