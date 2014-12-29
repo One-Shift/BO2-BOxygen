@@ -2,7 +2,7 @@
 	<?php if ($id !== null) { ?>
 		<h1 class="pageTitle">Responder</h1>
 		<?php
-		if (!isset($_POST['save'])) {
+		if (!isset($_POST["save"])) {
 			$template = file_get_contents("./modules/orders/templates/answer.html");
 			$tableTemplate = file_get_contents("./modules/orders/templates-e/answer-table.html");
 			$itemTemplate = file_get_contents("./modules/orders/templates-e/answer-line.html");
@@ -22,13 +22,14 @@
 			$code = $user->codeToArray($userData["code"]);
 
 			$codeToPrint = "";
+
 			foreach ($code as $userItem) {
 				$tmp = explode("[/]", $userItem);
 				if ($tmp[0] === "company" || $tmp[0] === "phone" || $tmp[0] === "cellphone") {
 					$codeToPrint .= isset($tmp[1]) ? $tmp[1] . "<br/>" : null;
 				}
 			}
-			
+
 			// adicionar e-mail às informações da encomenda
 			$codeToPrint .= $userData["email"];
 						
@@ -39,14 +40,14 @@
 				$product = new product();
 				$product->setId($item[0]);
 				$product = $product->returnOneProduct();
-				
+
 				// calcular valor com IVA
 				// valor na altura da compra
 				$value_w_vat = $item[2] * (($product["vat"] / 100) + 1);
 				
 				$list .= str_replace(
 						array("{c2r-id}", "{c2r-pathbo}", "{c2r-ref}", "{c2r-name}", "{c2r-qtd}", "{c2r-value}", "{c2r-vat}"), 
-						array($item[0], $configuration["path-bo"], $product["reference"], $product["title_1"], $item[1], number_format($value_w_vat, 2, '.', ' '), $item[3]), $itemTemplate);
+						array($item[0], $configuration["path-bo"], $product["reference"], $product["title_1"], $item[1], number_format($value_w_vat, 2, ".", " "), $item[3]), $itemTemplate);
 			}
 
 			$tableTemplate = str_replace(
@@ -68,9 +69,9 @@
 						$cart["address"][1], 
 						$cart["store"],
 						$list, 
-						number_format($cart["price"][2], 2, '.', ' '), 
-						number_format($cart["price"][1], 2, '.', ' '), 
-						number_format($cart["price"][3], 2, '.', ' ')
+						number_format($cart["price"][2], 2, ".", " "),
+						number_format($cart["price"][1], 2, ".", " "),
+						number_format($cart["price"][3], 2, ".", " ")
 						), 
 					$tableTemplate
 					);
