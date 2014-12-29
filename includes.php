@@ -1,6 +1,6 @@
 <?php
 
-if ($account["login"]) {
+if ($account["login"]) { // verificar se está autenticado
     switch ($pg) {
         case "home":
             include "./modules/home/home.php";
