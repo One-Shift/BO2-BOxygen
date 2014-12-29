@@ -31,6 +31,20 @@ if (isset($_GET["pg"])) {
 	$pg = "home";
 }
 
+// controlador de ID
+if (isset($_GET["i"]) && !empty($_GET["i"])) {
+    $id = intval($_GET["i"]);
+} else {
+    $id = null;
+}
+
+// controlador de acção
+if (isset($_GET["a"]) && !empty($_GET["a"])) {
+    $a = $mysqli->real_escape_string($_GET["a"]);
+} else {
+    $a = null;
+}
+
 //logout
 $logout = false;
 if ($pg == "logout") {
