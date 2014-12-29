@@ -18,6 +18,7 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 * [adicionar/editar/eliminar] Produtos
 * [loja online] Produtos com price + vat + discount
 * [loja online] Produtos como serviço
+* [loja online] Gestão base de encomendas
 * [upload] Imagens .JPG .PNG .GIF
 * [upload] Documentos .DOC .XLS .ZIP entre outros
 
