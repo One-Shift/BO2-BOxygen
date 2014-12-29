@@ -1,10 +1,14 @@
 <h1 class="pageTitle">Product Del</h1>
 <?php
-	if(isset($_GET['i']) && !empty($_GET['i'])){
+	if($id !== null){
 		$product = new product();
-		$product->setId($_REQUEST['i']);
-		if($product->delete()) print 'sucess'; else print 'error';
+		$product->setId($id);
+
+		if ($product->delete()) {
+			print  $language["actions"]["success"];
+		} else {
+			print  $language["actions"]["failure"];
+		}
 	}else{
-		print 'error';
+		print  $language["actions"]["error"];
 	}
-?>
