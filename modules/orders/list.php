@@ -4,7 +4,7 @@
 ?>
 <h1 class="pageTitle">Lista de Encomendas</h1>
 <div class="button-area">
-	<a href="<?php print $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>	
+	<a href="<?= $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>
 </div>
 <table class="db-list">
 	<tr>
@@ -16,30 +16,38 @@
 	</tr>
 	<?php
 	foreach ($orders_list as $order) {
-		if ($order['status']) {
-			$published = '<img src="' . $configuration["path-bo"] . '/site-assets/images/icon_on.png" alt="on" />';
+		if ($order["status"]) {
+			$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_on.png\" alt=\"on\" />";
 		} else {
-			$published = '<img src="' . $configuration["path-bo"] . '/site-assets/images/icon_off.png" alt="off" />';
+			$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_off.png\" alt=\"off\" />";
 		}
 		
 		$object_user = new user();
-		$object_user->setId($order['user_id']);
+		$object_user->setId($order["user_id"]);
 		$user = $object_user->returnOneUser();
 		
-		print
-				'<tr>' .
-				'<td>' . $order['id'] . '</td>' .
-				'<td>' . $user["name"] . '</td>' .
-				'<td>' . $order['date_update'] . '</td>' .
-				'<td>' . $published . '</td>' .
-				'<td>'
-			. '<a href="' . $configuration["path-bo"] . '/0/orders/' . $order['id'] . '/answer" onclick="return confirm(\'' . $language["template"]["are-you-sure"] . '\')" class="orange"><i class="fa fa-eye"></i></a> '
-			. '<a href="' . $configuration["path-bo"] . '/0/orders/' . $order['id'] . '/disable" onclick="return confirm(\'' . $language["template"]["are-you-sure"] . '\')" class="red"><i class="fa fa-trash"></i></a></td>' .
-				'</tr>';
-	}
+		print str_replace(
+			array(
+				"{c2r-id}",
+				"{c2r-user-name}",
+				"{c2r-date-update}",
+				"{c2r-published}",
+				"{c2r-path-bo}",
+				"{c2r-confirm}"
+			),
+			array(
+				$order["id"],
+				$user["name"],
+				$order["date_update"],
+				$published,
+				$configuration["path-bo"],
+				$language["template"]["are-you-sure"]
+			),
+			$configuration["path-bo"]."./modules/orders/templates-e/line.html"
+		);
 	?>
 </table>
 
 <div class="button-area">
-	<a href="<?php print $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>
+	<a href="<?= $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>
 </div>
