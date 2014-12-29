@@ -1,7 +1,7 @@
 <div class="product-add">
-	<h1 class="pageTitle"><?php echo $language["mod-product-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?= $language["mod-product-add-title"]; ?></h1>
 	<?php
-	if (!isset($_REQUEST['save'])) {
+	if (!isset($_POST["save"])) {
 	?>
 	<form action="" method="post">
 		<div class="separator30"></div>
@@ -10,52 +10,52 @@
 			<input type="text" name="reference"/>
 		</div>
 		<div class="separator30"></div>
-		<div <?php if (!$configuration['lang_1_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_1_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 1</h2>
 			<span id="label">Artigo</span>
 			<input type="text" name="title_1"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_1",null); ?>
+			<?= returnEditor("content_1"); ?>
 			<div class="separator30"></div>
 		</div>
-		<div <?php if (!$configuration['lang_2_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_2_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 2</h2>
 			<span id="label">Artigo</span>
 			<input type="text" name="title_2"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_2",null); ?>
+			<?= returnEditor("content_2"); ?>
 			<div class="separator30"></div>
 		</div>
-		<div <?php if (!$configuration['lang_3_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_3_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 3</h2>
 			<span id="label">Titulo</span>
 			<input type="text" name="title_3"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_3",null); ?>
+			<?= returnEditor("content_3"); ?>
 			<div class="separator30"></div>
 		</div>
-		<div <?php if (!$configuration['lang_4_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_4_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 4</h2>
 			<span id="label">Titulo</span>
 			<input type="text" name="title_4"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_4",null); ?>
+			<?= returnEditor("content_4"); ?>
 			<div class="separator30"></div>
 		</div>
-		<div <?php if (!$configuration['lang_5_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_5_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 5</h2>
 			<span id="label">Titulo</span>
 			<input type="text" name="title_5"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_5",null); ?>
+			<?= returnEditor("content_5"); ?>
 			<div class="separator30"></div>
 		</div>
-		<div <?php if (!$configuration['lang_6_state']) {echo 'style="display: none;"';} ?>>
+		<div <?php if (!$configuration["lang_6_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 6</h2>
 			<span id="label">Titulo</span>
 			<input type="text" name="title_6"/>
 			<span id="label">Descrição</span>
-			<?php print returnEditor("content_6",null); ?>
+			<?= returnEditor("content_6"); ?>
 			<div class="separator30"></div>
 		</div>
 
@@ -66,8 +66,8 @@
 			$category = new category();
 
 			foreach($category->returnAllCategories() as $cat) {
-				if ($cat['category_type'] === 'products') {
-					print '<option value="'.$cat['id'].'">'.$cat['name_1'].'</option>';
+				if ($cat["category_type"] === "products") {
+					printf("<option value=\"%s\">%s</option>", $cat["id"], $cat["name_1"]);
 				}
 			}
 		?>
@@ -114,56 +114,68 @@
 	<?php
 	} else {
 		// convert to bool the service box
-		if (isset($_REQUEST['service'])) $_REQUEST['service'] = true; else $_REQUEST['service'] = false;
+		if (isset($_POST["service"])) {
+			$_POST["service"] = true;
+		} else {
+			$_POST["service"] = false;
+		}
 		// convert to bool the published box
-		if (isset($_REQUEST['published'])) $_REQUEST['published'] = true; else $_REQUEST['published'] = false;
+		if (isset($_POST["published"])) {
+			$_POST["published"] = true;
+		} else {
+			$_POST["published"] = false;
+		}
 		// convert to bool the onhome box
-		if (isset($_REQUEST['onhome'])) $_REQUEST['onhome'] = true; else $_REQUEST['onhome'] = false;
+		if (isset($_POST["onhome"])) {
+			$_POST["onhome"] = true;
+		} else {
+			$_POST["onhome"] = false;
+		}
 
 		$product = new product();
-		$product->setReference($_REQUEST['reference']);
+		$product->setReference($_POST["reference"]);
 		$product->setContent(
-			$_REQUEST['title_1'], $_REQUEST['content_1'],
-			$_REQUEST['title_2'], $_REQUEST['content_2'],
-			$_REQUEST['title_3'], $_REQUEST['content_3'],
-			$_REQUEST['title_4'], $_REQUEST['content_4'],
-			$_REQUEST['title_5'], $_REQUEST['content_5'],
-			$_REQUEST['title_6'], $_REQUEST['content_6'],
-			$_REQUEST['code']
+			$_POST["title_1"], $_POST["content_1"],
+			$_POST["title_2"], $_POST["content_2"],
+			$_POST["title_3"], $_POST["content_3"],
+			$_POST["title_4"], $_POST["content_4"],
+			$_POST["title_5"], $_POST["content_5"],
+			$_POST["title_6"], $_POST["content_6"],
+			$_POST["code"]
 		);
 
-		$product->setService($_REQUEST['service']);
-		$product->setPrice($_REQUEST['price']);
-		$product->setVAT($_REQUEST['vat']);
-		$product->setDiscount($_REQUEST['discount']);
+		$product->setService($_POST["service"]);
+		$product->setPrice($_POST["price"]);
+		$product->setVAT($_POST["vat"]);
+		$product->setDiscount($_POST["discount"]);
 
-		$product->setUserId($account['name']);
-		$product->setCategory($_REQUEST['category']);
+		$product->setUserId($account["name"]);
+		$product->setCategory($_POST["category"]);
 		$product->setDate();
 		$product->setDateUpdate();
-		$product->setPublished($_REQUEST['published']);
-		$product->setonHome($_REQUEST['onhome']);
+		$product->setPublished($_POST["published"]);
+		$product->setonHome($_POST["onhome"]);
 
 		if ($product->insert()) {
-			print 'sucess';
+			print $language["actions"]["success"];
 
 			$id = $mysqli->insert_id;
 	?>
 			<div class="separator30"></div>
 
 			<span id="label">Lista de ficheiros</span>
-			<?php print returnFilesList($id,'product'); ?>
+			<?= returnFilesList($id, "product"); ?>
 
 			<div class="separator30"></div>
 
 			<?php
-				print returnImgUploader('IMG Uploader',$id,'product','290',350);
-				print ' ';
-				print returnDocsUploader('DOCS Uploader',$id,'product','290',350);
+				print returnImgUploader("IMG Uploader", $id, "product", 290, 350);
+				print " ";
+				print returnDocsUploader("DOCS Uploader", $id, "product", 290, 350);
 			?>
 	<?php
 		} else {
-			print 'failure';
+			print $language["actions"]["failure"];
 		}
 	}
 	?>
