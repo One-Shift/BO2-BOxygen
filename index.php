@@ -7,132 +7,134 @@ $showSucess = false;
 
 // verificar existência de cookie
 if (!isset($_COOKIE[$configuration["cookie"]])) {
-    // verificar se o botão loginSubmit foi clicado
-    if (isset($_POST["loginSubmit"])) {
-        // codigo para efectuar o login
-        // verifica se o loginUsername e loginPassword foram preenchidos correctamente
-        if (!empty($_POST["loginUsername"]) && !empty($_POST["loginPassword"])) {
-            // procurar na base de dados se existe uma entrada com os dados introduzidos
-            $query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $mysqli->real_escape_string($_POST["loginUsername"]), sha1(md5(sha1(md5($_POST["loginPassword"])))));
-            $source = $mysqli->query($query);
-            $nr = $source->num_rows;
+	// verificar se o botão loginSubmit foi clicado
+	if (isset($_POST["loginSubmit"])) {
+		// codigo para efectuar o login
+		// verifica se o loginUsername e loginPassword foram preenchidos correctamente
+		if (!empty($_POST["loginUsername"]) && !empty($_POST["loginPassword"])) {
+			// procurar na base de dados se existe uma entrada com os dados introduzidos
+			$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager')", $configuration["mysql-prefix"], $mysqli->real_escape_string($_POST["loginUsername"]), sha1(md5(sha1(md5($_POST["loginPassword"])))));
+			$source = $mysqli->query($query);
+			$nr = $source->num_rows;
 
-            // caso exista 1 registo, inicia o processo de criação de sessão
-            if ($nr == 1) {
-                $data = $source->fetch_array(MYSQLI_ASSOC);
-                // criar o cookie com os dados de sessão
-                if (setcookie($configuration["cookie"], $data["id"] . "." . $data["password"], time() + ($configuration["cookie-time"] * 60))) {
-                    // login efectuado com sucesso
-                    $showForm = false;
-                    $showError = false;
-                    $showSucess = true;
-                } else {
-                    // erro ao iniciar sessão por causa do cookie
-                    $showError = true;
-                    $showForm = true;
-                }
-            } else {
-                // não existe nenhum registo na base de dados, com os dados introduzidos
-                $showError = true;
-                $showForm = true;
-            }
-        } else {
-            // caso o username ou password não sejam preenchidos
-            $showError = true;
-            $showForm = true;
-        }
-    }
+			// caso exista 1 registo, inicia o processo de criação de sessão
+			if ($nr == 1) {
+				$data = $source->fetch_array(MYSQLI_ASSOC);
+				// criar o cookie com os dados de sessão
+				if (setcookie($configuration["cookie"], $data["id"] . "." . $data["password"], time() + ($configuration["cookie-time"] * 60))) {
+					// login efectuado com sucesso
+					$showForm = false;
+					$showError = false;
+					$showSucess = true;
+				} else {
+					// erro ao iniciar sessão por causa do cookie
+					$showError = true;
+					$showForm = true;
+				}
+			} else {
+				// não existe nenhum registo na base de dados, com os dados introduzidos
+				$showError = true;
+				$showForm = true;
+			}
+		} else {
+			// caso o username ou password não sejam preenchidos
+			$showError = true;
+			$showForm = true;
+		}
+	}
 } else {
-    // caso o botão loginSubmit não tenha sido clicado
-    $showForm = false;
-    $showError = false;
-    $showSucess = true;
+	// caso o botão loginSubmit não tenha sido clicado
+	$showForm = false;
+	$showError = false;
+	$showSucess = true;
 }
 
 if (isset($_COOKIE[$configuration["cookie"]])) {
-    $data = explode('.', $_COOKIE[$configuration["cookie"]]);
-    $account['id'] = $data[0];
-    unset($data);
+	$data = explode(".", $_COOKIE[$configuration["cookie"]]);
+	$account["id"] = $data[0];
+	unset($data);
 }
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><?php echo $configuration["BO2-name"]; ?></title>
+	<head>
+		<title><?= $configuration["BO2-name"]; ?></title>
 
-        <!-- begin favicon -->
-        <link rel="apple-touch-icon-precomposed" sizes="57x57"   href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_57.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_114.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="72x72"   href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_72.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
+		<!-- begin favicon -->
+		<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
 
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_16.png"  sizes="16x16"   type="image/png" />
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png"  sizes="32x32"   type="image/png" />
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_48.png"  sizes="48x48"   type="image/png" />
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_64.png"  sizes="64x64"   type="image/png" />
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" sizes="128x128" type="image/png" />
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_16.png"  sizes="16x16"   type="image/png" />
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png"  sizes="32x32"   type="image/png" />
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_48.png"  sizes="48x48"   type="image/png" />
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_64.png"  sizes="64x64"   type="image/png" />
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" sizes="128x128" type="image/png" />
 
-        <link rel="icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png" />
-        <!--[if IE]><link rel="shortcut icon" href="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon.ico"><![endif]-->
+		<link rel="icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_32.png" />
+		<!--[if IE]><link rel="shortcut icon" href="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon.ico"><![endif]-->
 
-        <meta name="msapplication-TileColor" content="#ebffe3" />
-        <meta name="msapplication-TileImage" content="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
-        <!-- end favicon -->
+		<meta name="msapplication-TileColor" content="#ebffe3" />
+		<meta name="msapplication-TileImage" content="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
+		<!-- end favicon -->
 
-        <meta property="og:site_name" content="{c2r-sitename}" />
-        <meta property="og:type" content="website" /> 
-        <meta property="og:url" content="<?php print $configuration["path-bo"] ?>" /> 
-        <meta property="og:image" content="<?php print $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" />
-        <meta property="og:title" content="{c2r-sitename}" />
-        <meta property="og:description" content="{c2r-description}" />
+		<meta property="og:site_name" content="{c2r-sitename}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="<?= $configuration["path-bo"] ?>" />
+		<meta property="og:image" content="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" />
+		<meta property="og:title" content="{c2r-sitename}" />
+		<meta property="og:description" content="{c2r-description}" />
 
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=9" />
-        <meta name="keywords" content="{c2r-keywords}" />
-        <meta name="description" content="{c2r-description}" />
-        <meta name="robots" content="index" />
-        <meta name="author" content="NexuS-Pt, work team" />
-        <meta name="author-code" content="#someone#" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta name="keywords" content="{c2r-keywords}" />
+		<meta name="description" content="{c2r-description}" />
+		<meta name="robots" content="index" />
+		<meta name="author" content="NexuS-Pt, work team" />
+		<meta name="author-code" content="#someone#" />
 
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-        <link type="text/css" rel="stylesheet" href="<?php print $configuration["path-bo"] ?>/site-assets/css/style.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
 
-        <link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
+		<link href="http://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet" type="text/css" />
 
-        <script type="text/javascript">
-            var path_bo = "<?php print $configuration["path-bo"] ?>";
-        </script>
-        <script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
-        <script type="text/javascript" src="<?php print $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
-    </head>
-    <body>
-        <!-- SPACER - ESPAÇO DEIXADO ACIMA DO LOGIN -->
-        <div id="wrapper"></div>
-        <div id="login">
-            <div id="header"></div>
-            <div id="container">
-                <?php
-                if ($showSucess)
-                    echo "<div id=\"sucess\" onClick=\"goTo('./backoffice.php');\">" . $language["login-sucess"] . "</div><script>setTimeout(function(){goTo('./backoffice.php');},1000);</script>";
-                if ($showError)
-                    echo "<div id=\"error\">" . $language["login-error"] . "</div>";
-                ?>
-                <?php if ($showForm) { ?>
-                    <form action="./index.php" method="post" name="loginForm">
-                        <div id="fields">
-                            <div id="username"><input type="text" name="loginUsername" placeholder="username"></div>
-                            <div id="password"><input type="password" name="loginPassword" placeholder="password"></div>			
-                        </div>
-                        <div id="buttons">
-                            <div id="buttonlogin"><button type="submit" name="loginSubmit"><?php echo $language["login-b-login"]; ?></button></div>
-                            <div id="buttonreset"><button type="reset" name="loginReset"><?php echo $language["login-b-reset"]; ?></button></div>
-                        </div>
-                    </form>
-                <?php } ?>
-            </div>
-        </div>
-        <iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
-    </body>
+		<script type="text/javascript">
+			var path_bo = "<?= $configuration["path-bo"] ?>";
+		</script>
+		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
+		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
+	</head>
+	<body>
+		<!-- SPACER - ESPAÇO DEIXADO ACIMA DO LOGIN -->
+		<div id="wrapper"></div>
+		<div id="login">
+			<div id="header"></div>
+			<div id="container">
+				<?php
+				if ($showSucess) {
+					printf("<div id=\"sucess\" onClick=\"goTo('./backoffice.php');\">%s</div><script>setTimeout(function(){goTo('./backoffice.php');},1000);</script>", $language["login"]["sucess"]);
+				}
+				if ($showError) {
+					printf("<div id=\"error\">%s</div>", $language["login"]["error"]);
+				}
+				?>
+				<?php if ($showForm) { ?>
+					<form action="./index.php" method="post" name="loginForm">
+						<div id="fields">
+							<div id="username"><input type="text" name="loginUsername" placeholder="username"></div>
+							<div id="password"><input type="password" name="loginPassword" placeholder="password"></div>
+						</div>
+						<div id="buttons">
+							<div id="buttonlogin"><button type="submit" name="loginSubmit"><?= $language["login"]["b-login"]; ?></button></div>
+							<div id="buttonreset"><button type="reset" name="loginReset"><?= $language["login"]["b-reset"]; ?></button></div>
+						</div>
+					</form>
+				<?php } ?>
+			</div>
+		</div>
+		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+	</body>
 </html>
 <?php $mysqli->close(); ?>

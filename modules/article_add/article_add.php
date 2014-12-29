@@ -1,5 +1,5 @@
 <div class="article-add">
-	<h1 class="pageTitle"><?php echo $language["mod-news-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?= $language["mod_article"]["add-title"]; ?></h1>
 	<?php if (!isset($_POST["save"])) { ?>
 	<form action="" method="post">
 	<div class="separator30"></div>
