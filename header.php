@@ -22,4 +22,7 @@ include "./class/PHPMailer/class.phpmailer.php";
 // OUTROS
 include "./functions.php";
 
-$language = parse_ini_file("./languages/".$configuration["language"].".ini");
+$language = parse_ini_file(
+	sprintf("./languages/%s.ini", $configuration["language"]),
+	true
+);

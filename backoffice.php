@@ -108,8 +108,8 @@ if ($pg == "logout") {
             <div id="header"></div>
             <div id="container">
                 <div id="title-bar">
-                    <div id="site-title"><a href="<?= $configuration["path-bo"] ?>/0/"><?= $configuration["site-name"]; ?></a></div>
-                    <div id="menu-title"><?= $language["system"]["menu"]; ?></div>
+                    <div id="site-title"><a href="<?= $configuration["path-bo"] ?>/0/"><?= $configuration["site-name"] ?></a></div>
+                    <div id="menu-title"><?= $language["system"]["menu"] ?></div>
                 </div>
                 <div id="page">
 					<?php
