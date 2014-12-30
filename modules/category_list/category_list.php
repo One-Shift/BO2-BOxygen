@@ -39,7 +39,7 @@
 						$category["category_type"],
 						$published,
 						$configuration["path-bo"],
-						$language["template"]["are-you-sure"]
+						$language["template"]["areyousure"]
 					),
 					file_get_contents($configuration["path-bo"]."/modules/category_list/templates-e/line.html")
 				);
