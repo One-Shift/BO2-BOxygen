@@ -72,7 +72,7 @@ if ($account["login"]) { // verificar se está autenticado
 
 		// -- files
 		case "controller-files":
-			include "./modules/controller-files/controller_files.php";
+			include "./modules/controller_files/controller_files.php";
 			break;
 		// -- Session
 		case "logout":
