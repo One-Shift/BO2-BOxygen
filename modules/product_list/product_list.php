@@ -26,7 +26,7 @@
 			?>
 
 		</select>
-		<a href="<?= $configuration["path-bo"] ?>/0/product-add" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/product-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 	<table class="db-list">
 		<tr>
@@ -67,7 +67,7 @@
 					$configuration["path-bo"],
 					$language["template"]["are-you-sure"]
 				),
-				file_get_contents($configuration["path-bo"])
+				file_get_contents("./modules/product_list/templates-e/line.html")
 			);
 
 			  $i_last = $product["id"];
@@ -75,7 +75,7 @@
 	  ?>
 	</table>
 	<div class="button-area">
-		<a href="<?= $configuration["path-bo"] ?>/0/product-add" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/product-add/" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 

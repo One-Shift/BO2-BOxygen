@@ -56,8 +56,8 @@
 		<select name="section">
 		<option value="null">Selecione uma Type</option>
 		<?php
-			foreach($configuration["category_sections"] as $section){
-				printf("<option value=\"%s\">%s</option>", $section, $language[$section]);
+			foreach ($configuration["category_sections"] as $section){
+				printf("<option value=\"%s\">%s</option>", $section, $language["sections"][$section]);
 			}
 		?>
 		</select>
@@ -70,10 +70,12 @@
 	</div>
 
 	<div class="bottom-area">
-	  <input type="checkbox" name="published" value="1"/> Publicado
-	  </br>
-	  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
-	  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
+		<input type="checkbox" name="published" value="1"/> Publicado
+
+		<div class="separator30"></div>
+
+		<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+		<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 	</div>
 
 	</form>

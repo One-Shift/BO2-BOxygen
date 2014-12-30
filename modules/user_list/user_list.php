@@ -18,15 +18,25 @@
 		</tr>
 		<?php
 			foreach($user_list as $user){
-				print
-				'<tr>'.
-				'<td>'.$user['id'].'</td>'.
-				'<td>'.$user['name'].'</td>'.
-				'<td>'.$user['email'].'</td>'.
-				'<td>'.$user['rank'].'</td>'.
-				'<td><a  class="orange" href="'.$configuration["path-bo"].'/0/user-edit/'.$user['id'].'" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a  class="red" href="'.$configuration["path-bo"].'/0/user-edit/'.$user['id'].'" title="delete"><i class="fa fa-trash"></i></a>
-</td>'.
-				'</tr>';
+				print str_replace(
+					array(
+						"{c2r-id}",
+						"{c2r-name}",
+						"{c2r-email}",
+						"{c2r-rank}",
+						"{c2r-path-bo}",
+						"{c2r-confirm}"
+					),
+					array(
+						$user["id"],
+						$user["name"],
+						$user["email"],
+						$user["rank"],
+						$configuration["path-bo"],
+						$language["template"]["areyousure"]
+					),
+					file_get_contents("./modules/user_list/templates-e/line.html")
+				);
 			}
 		?>
 	</table>

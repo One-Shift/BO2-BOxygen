@@ -1,15 +1,9 @@
 <div class="product-add">
-	<h1 class="pageTitle"><?= $language["mod-product-add-title"]; ?></h1>
+	<h1 class="pageTitle"><?= $language["mod_product"]["add-title"]; ?></h1>
 	<?php
 	if (!isset($_POST["save"])) {
 	?>
 	<form action="" method="post">
-		<div class="separator30"></div>
-		<div>
-			<span id="label">Referencia</span>
-			<input type="text" name="reference"/>
-		</div>
-		<div class="separator30"></div>
 		<div <?php if (!$configuration["lang_1_state"]) {echo "style=\"display: none;\"";} ?>>
 			<h2>Lingua 1</h2>
 			<span id="label">Artigo</span>
@@ -81,7 +75,11 @@
 			<button id="code_spr" type="button">[spr]</button> <button id="code_slash" type="button">[/]</button>
 			<div class="separator30"></div>
 		</div>
-
+		<div>
+			<span id="label">Referencia</span>
+			<input type="text" name="reference"/>
+			<div class="separator30"></div>
+		</div>
 		<div>
 			<span id="label">Price</span>
 			<input type="text" step="any" placeholder="ex.: 1.23" name="price"/>

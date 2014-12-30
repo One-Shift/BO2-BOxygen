@@ -1,18 +1,12 @@
 <div class="product-edit">
 	<?php if($id !== null){ ?>
-		<h1 class="pageTitle"><?= $language["mod-product-edit-title"]; ?></h1>
+		<h1 class="pageTitle"><?= $language["mod_product"]["edit-title"]; ?></h1>
 		<?php if (!isset($_POST["save"])) {
 			$product = new product();
 			$product->setId($id);
 			$item = $product->returnOneProduct();
 		?>
 		<form action="" method="post">
-			<div class="separator30"></div>
-			<div>
-				<span id="label">Referencia</span>
-				<input type="text" name="reference" value="<?= $item["reference"] ?>" />
-			</div>
-			<div class="separator30"></div>
 			<div <?php if (!$configuration["lang_1_state"]) {echo "style=\"display: none;\"";} ?>>
 				<h2>Lingua 1</h2>
 				<span id="label">Artigo</span>
@@ -101,7 +95,11 @@
 				<button id="code_spr" type="button">[spr]</button> <button id="code_slash" type="button">[/]</button>
 				<div class="separator30"></div>
 			</div>
-
+			<div>
+				<span id="label">Referencia</span>
+				<input type="text" name="reference" value="<?= $item["reference"] ?>" />
+				<div class="separator30"></div>
+			</div>
 			<div>
 				<span id="label">Price</span>
 				<input type="number" step="any" placeholder="ex.: 1.23" name="price" value="<?= $item["price"]; ?>" />

@@ -2,15 +2,13 @@
 <?php 
 	if($id !== null){
 ?>
-		<h1 class="pageTitle"><?php echo $language["mod-category-edit-title"]; ?></h1>
+		<h1 class="pageTitle"><?= $language["mod_category"]["edit-title"]; ?></h1>
 		<?php if (!isset($_POST["save"])) {
 			$object_category = new category();
 			$object_category->setId(intval($id));
 			$category = $object_category->returnOneCategory();
 		?>
 		<form action="" method="post">
-			<div class="separator30"></div>
-
 			<div <?php if (!$configuration["lang_1_state"]) {echo "style=\"display: none;\"";} ?>>
 				<h2>Lingua 1</h2>
 				<span id="label">Categoria</span>
@@ -64,10 +62,13 @@
 				<select name="category_type">
 				<option value="null">Selecione uma Type</option>
 				<?php
-					foreach ($configuration["category_sections"] as $category_type) {
-						if ($category["category_type"] == $category_type) {$selected = "SELECTED";} else {$selected = null;}
-						printf("<option %s value=\"%s\">%s</option>", $selected, $category_type, $category_type);
-						unset($category_type);
+					foreach ($configuration["category_sections"] as $section) {
+						if ($category["category_type"] == $section) {
+							$selected = "SELECTED";
+						} else {
+							$selected = null;
+						}
+						printf("<option %s value=\"%s\">%s</option>", $selected, $section, $language["sections"][$section]);
 					}
 				?>
 				</select>
@@ -76,7 +77,7 @@
 			</div>
 
 			<span id="label">Lista de ficheiros</span>
-			<?= returnFilesList($category["id"],"category") ?>
+			<?= returnFilesList($category["id"], "category") ?>
 
 			<div class="separator30"></div>
 
@@ -85,7 +86,6 @@
 				print " ";
 				print returnDocsUploader("DOCS Uploader", $category["id"], "category", 290, 350);
 			?>
-
 
 			<div class="separator30"></div>
 

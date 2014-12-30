@@ -34,7 +34,6 @@
 						"{c2r-title}",
 						"{c2r-category}",
 						"{c2r-published}",
-						"{c2r-published}",
 						"{c2r-path-bo}",
 						"{c2r-confirm}"
 					), 
@@ -47,7 +46,7 @@
 						$configuration["path-bo"],
 						$language["template"]["areyousure"]
 					), 
-					file_get_contents($configuration["path-bo"]."/modules/article_list/templats-e/line.html")
+					file_get_contents("./modules/article_list/templates-e/line.html")
 				);
 		}
 

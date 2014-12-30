@@ -17,7 +17,7 @@ $configuration = [
 	"BO2-name" => "BO2 / BOxygen",
 	"language" => "en",
 	"secret-key" => "GJTBpKregE9WgXc",
-	"category_sections" => array("products", "articles"),
+	"category_sections" => ["products", "articles"],
 	// MySql configuration
 	"mysql-user" => "username",
 	"mysql-password" => "password",

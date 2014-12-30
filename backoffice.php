@@ -96,7 +96,7 @@ if ($pg == "logout") {
 		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
 
 		<script type="text/javascript">
-			var path_bo = "<?= print $configuration["path-bo"] ?>";
+			var path_bo = "<?= $configuration["path-bo"] ?>";
 		</script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
