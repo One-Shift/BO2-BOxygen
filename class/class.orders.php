@@ -25,8 +25,8 @@ class orders {
 		$this->user_id = $w;
 	}
 
-	public function setCart($ba = null, $da = null, $l = []) {
-		if (count($l) > 0) {
+	public function setCart($ba = null, $da = null, $l = [], $p = null) {
+		if (count($l) <= 0) {
 			return false;
 		}
 
@@ -45,7 +45,7 @@ class orders {
 							 $item["vat"]
 							);
 			$total += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]);
-			$vat += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100)
+			$vat += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100);
 		}
 
 		// remover o último \n
@@ -54,7 +54,7 @@ class orders {
 		}
 
 		// gravar a informação na variavel
-		$this->cart = sprintf($toSave_template, $ba, $da, $list, $total, $vat);
+		$this->cart = sprintf($toSave_template, $ba, $da, $list, $total, $vat, $p);
 
 		return true;
 	}
@@ -67,7 +67,7 @@ class orders {
 		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
-	public function insert($u, $c) {
+	public function insert() {
 		global $configuration, $mysqli;
 
 		$query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update);
