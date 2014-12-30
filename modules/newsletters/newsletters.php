@@ -56,8 +56,9 @@ $newsletters_list = $object_newsletters->returnAllregistries();
 					$active,
 					$configuration["path-bo"]
 				),
-				file_get_contents($configuration["path-bo"]."/modules/newsletters/templates-e/line.html")
+				file_get_contents("./modules/newsletters/templates-e/line.html")
 			);
+		}
 		?>
 	</table>
 
