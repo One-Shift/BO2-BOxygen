@@ -78,7 +78,7 @@ header("Content-Type: text/html; charset=utf-8");
 				if (!isset($_REQUEST["tp"]) && !isset($_REQUEST["vl"])) {
 
 					print "<table>";
-
+					// selecionar imagens na base de dados
 					$query_i = sprintf("SELECT * FROM %s_images WHERE id_ass = '%s' AND module = '%s'", $configuration["mysql-prefix"], $id, $_GET["mdl"]);
 					$source_i = $mysqli->query($query_i);
 
@@ -92,6 +92,7 @@ header("Content-Type: text/html; charset=utf-8");
 								'</tr>';
 					}
 
+					// selecionar documentos na base de dados
 					$query_d = sprintf("SELECT * FROM %s_documents WHERE id_ass = '%s' AND module = '%s'", $configuration['mysql-prefix'], $id, $_GET["mdl"]);
 					$source_d = $mysqli->query($query_d);
 
@@ -113,7 +114,7 @@ header("Content-Type: text/html; charset=utf-8");
 				} else {
 
 					// em caso de ser imagem
-					if ($_REQUEST["tp"] == "img") {
+					if ($_GET["tp"] == "img") {
 						$query_i_1 = sprintf("SELECT * FROM %s_images WHERE id = '%s' AND module = '%s' LIMIT 1", $configuration['mysql-prefix'], intval($_REQUEST["vl"]), $_GET["mdl"]);
 						$source_i_1 = $mysqli->query($query_i_1);
 						$data_i_1 = $source_i_1->fetch_assoc();
@@ -126,7 +127,7 @@ header("Content-Type: text/html; charset=utf-8");
 							print "<p>Erro encontrado ao tentar imprimir</p>";
 						}
 					// em caso de ser documento (ex.: PDF)
-					} else if ($_REQUEST["tp"] == "doc") {
+					} else if ($_GET["tp"] == "doc") {
 						$query_d_1 = sprintf("SELECT * FROM %s_documents WHERE id = '%s' AND module = '%s' LIMIT 1", $configuration['mysql-prefix'], intval($_REQUEST["vl"]), $_GET["mdl"]);
 						$source_d_1 = $mysqli->query($query_d_1);
 						$data_d_1 = $source_d_1->fetch_assoc();
