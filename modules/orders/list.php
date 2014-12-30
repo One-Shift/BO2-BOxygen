@@ -41,10 +41,11 @@
 				$order["date_update"],
 				$published,
 				$configuration["path-bo"],
-				$language["template"]["are-you-sure"]
+				$language["template"]["areyousure"]
 			),
-			$configuration["path-bo"]."./modules/orders/templates-e/line.html"
+			file_get_contents("./modules/orders/templates-e/line.html")
 		);
+	}
 	?>
 </table>
 

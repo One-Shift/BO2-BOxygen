@@ -1,0 +1,48 @@
+<table class="db-list">
+    <tr>
+        <th colspan="6">Utilizador</th>
+    </tr>
+    <tr>
+        <td colspan="3">{c2r-user}</td>
+        <td colspan="3">{c2r-code}</td>
+    </tr>
+    <tr>
+        <th colspan="6">Morada de Faturação</th>
+    </tr>
+    <tr>
+        <td colspan="6">{c2r-address-1}</td>
+    </tr>
+    <tr>
+        <th colspan="6">Morada de Entrega</th>
+    </tr>
+    <tr>
+        <td colspan="6">{c2r-address-2}</td>
+	</tr>
+	<tr>
+        <th colspan="6">Método de Pagamento</th>
+    </tr>
+    <tr>
+        <td colspan="6" class="tacenter">{c2r-payment}</td>
+    </tr>
+    <tr>
+        <th>id</th>
+        <th>#</th>
+        <th>Produto</th>
+        <th>Qtd</th>
+        <th>Valor</th>
+        <th>IVA</th>
+    </tr>
+    {c2r-lines}
+	<tr>
+        <th colspan="6">&nbsp;</th>
+    </tr>
+    <tr>
+        <td colspan="6">IVA: {c2r-vat}</td>
+    </tr>
+    <tr>
+        <td colspan="6">Total s/ IVA: {c2r-total}</td>
+    </tr>
+    <tr>
+        <td colspan="6">Total c/ IVA: {c2r-total2}</td>
+    </tr>
+</table>

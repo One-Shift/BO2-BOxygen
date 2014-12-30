@@ -65,7 +65,7 @@ class orders {
     public function returnAllOrders() {
         global $configuration, $mysqli;
 
-        $query[0] = sprintf("SELECT * FROM %s_orders WHERE true", $configuration["mysql-prefix"]);
+        $query[0] = sprintf("SELECT * FROM %s_orders WHERE true ORDER BY id DESC", $configuration["mysql-prefix"]);
         $source[0] = $mysqli->query($query[0]);
 
         $toReturn = array();
@@ -108,6 +108,8 @@ class orders {
         // separador de valores
         $toReturn["price"] = explode("\n", $tmp[2]); // 0 -> valor sem iva, 1 -> valor do iva
         $toReturn["price"][3] = $toReturn["price"][1] + $toReturn["price"][2]; // soma de valor + iva
+
+		$toReturn["store"] = $tmp[3];
 
         return $toReturn;
     }
