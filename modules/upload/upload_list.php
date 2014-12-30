@@ -20,17 +20,17 @@ header("Content-Type: text/html; charset=utf-8");
 
 			div#toolbar {
 				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
+				bottom: 0;
+				right: 0;
 				height: 30px;
 				background: rgba(0,0,0,0.85);
 				color: white;
 				line-height: 30px;
 				padding: 0 5px 0 5px;
+				text-align: right;
 			}
 
-			div#toolbar button {
+			div#toolbar a {
 				background: transparent;
 				border: none;
 				color: white;
@@ -38,8 +38,8 @@ header("Content-Type: text/html; charset=utf-8");
 				line-height: 30px;
 			}
 
-			div#toolbar button:hover {
-				color: orange;
+			div#toolbar a i {
+				 line-height: 180%;
 			}
 
 			table {
@@ -59,11 +59,41 @@ header("Content-Type: text/html; charset=utf-8");
 			.spacer30 {
 				height: 30px;
 			}
+
+			a.green, button.green {
+				background: none repeat scroll 0 0 rgb(78, 189, 74);
+				border: 0 none;
+				border-radius: 2px;
+				box-sizing: border-box;
+				color: #fff;
+				cursor: pointer;
+				display: inline-block;
+				height: 33px;
+				line-height: 33px;
+				padding: 0 16px;
+				text-shadow: 0 1px rgba(0, 0, 0, 0.08);
+			}
+
+			a.red, button.red {
+				background: none repeat scroll 0 0 rgb(238, 79, 61);
+				border: 0 none;
+				border-radius: 2px;
+				box-sizing: border-box;
+				color: #fff;
+				cursor: pointer;
+				display: inline-block;
+				height: 33px;
+				line-height: 33px;
+				padding: 0 16px;
+				text-shadow: 0 1px rgba(0, 0, 0, 0.08);
+			}
+
+			a.red i, button.red i, a.green i, button.green i {
+				line-height: 250%
+			}
 		</style>
 	</head>
 	<body>
-
-		<div class="spacer30"></div>
 		<?php
 		// SÓ ENTRA NO UPLOADER SE O COOKIE AINDA EXISTIR
 		// O UTILIZADORE TERÁ DE TER CUIDADO COM O TEMPO DE SESSÃO
@@ -73,7 +103,17 @@ header("Content-Type: text/html; charset=utf-8");
 
 			if (isset($_COOKIE[$configuration["cookie"]])) {
 
-				print file_get_contents("./templates-e/topbar.html");
+				print str_replace(
+					array(
+						"{c2r-module}",
+						"{c2r-id}"
+					),
+					array(
+						$module,
+						$id
+					),
+					file_get_contents("./templates-e/topbar.html")
+				);
 
 				if (!isset($_REQUEST["tp"]) && !isset($_REQUEST["vl"])) {
 
@@ -83,13 +123,27 @@ header("Content-Type: text/html; charset=utf-8");
 					$source_i = $mysqli->query($query_i);
 
 					while ($data_i = $source_i->fetch_assoc()) {
-						print
-								'<tr>' .
-								'<td><input type="radio" name="item" value="' . $data_i['id'] . '.img"/></td>' .
-								'<td title="Alt_2: ' . $data_i['alt_2'] . '">' . $data_i['alt_1'] . '</td>' .
-								'<td>' . $data_i['file'] . '</td>' .
-								'<td><img src="./../../site-assets/images/icon_computer.png" alt="see" onclick="popUp(\'./../../../u-img/' . $data_i['file'] . '\',\'640\',\'480\');"/></td>' .
-								'</tr>';
+						print str_replace(
+							array(
+								"{c2r-module}",
+								"{c2r-id}",
+								"{c2r-file-id}",
+								"{c2r-code}",
+								"{c2r-alt}",
+								"{c2r-file}",
+								"{c2r-type}",
+							),
+							array(
+								$module,
+								$id,
+								$data_i['id'],
+								$data_i['alt_2'],
+								$data_i['alt_1'],
+								"./../../../u-img/".$data_i['file'],
+								"img"
+							),
+							file_get_contents("./templates-e/line.html")
+						);
 					}
 
 					// selecionar documentos na base de dados
@@ -97,13 +151,34 @@ header("Content-Type: text/html; charset=utf-8");
 					$source_d = $mysqli->query($query_d);
 
 					while ($data_d = $source_d->fetch_assoc()) {
+
+						print str_replace(
+							array(
+								"{c2r-id}",
+								"{c2r-code}",
+								"{c2r-alt}",
+								"{c2r-file}",
+								"{c2r-type}",
+							),
+							array(
+								$data_d['id'],
+								null,
+								$data_d['file'],
+								$data_d['file'],
+								"img"
+							),
+							file_get_contents("./templates-e/line.html")
+						);
+
+						/*
 						print
 								'<tr>' .
 								'<td><input type="radio" name="item" value="' . $data_d['id'] . '.doc"/></td>' .
 								'<td>' . $data_d['alt'] . '</td>' .
 								'<td>' . $data_d['file'] . '</td>' .
-								'<td><img src="./../../site-assets/images/icon_computer.png" alt="see" onclick="popUp(\'./../../../u-docs/' . $data_d['file'] . '\',\'640\',\'480\');"/></td>' .
+								'<td><i class="fa fa-desktop"></i> <img src="./../../site-assets/images/icon_computer.png" alt="see" onclick="popUp(\'./../../../u-docs/' . $data_d['file'] . '\',\'640\',\'480\');"/></td>' .
 								'</tr>';
+						*/
 					}
 
 					if ($source_i->num_rows == 0 && $source_d->num_rows == 0) {
@@ -150,7 +225,9 @@ header("Content-Type: text/html; charset=utf-8");
 			print "<p>The module can\'t be initialized!</p>";
 		}
 		?>
+		<div class="spacer30"></div>
 		<script>
+			/*
 			var id = <?= $_GET["i"] ?>; // get ID
 			var module = <?= $_GET["mdl"] ?>; // get MODULE
 
@@ -168,7 +245,14 @@ header("Content-Type: text/html; charset=utf-8");
 			$('#update').on('click', function () {
 				goTo('./upload_list.php?mdl=' + module + '&i=' + id);
 			});
+			*/
 
+			$(document).ready(function() {
+				$("a[alt=view]").on("click", function() {
+					popUp($(this).attr("href"), '640', '480');
+					return false;
+					});
+				});
 		</script>
 	</body>
 </html>
