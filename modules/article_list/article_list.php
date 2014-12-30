@@ -45,7 +45,7 @@
 						$category["name_1"],
 						$published,
 						$configuration["path-bo"],
-						$language["template"]["are-you-sure"]
+						$language["template"]["areyousure"]
 					), 
 					file_get_contents($configuration["path-bo"]."/modules/article_list/templats-e/line.html")
 				);
