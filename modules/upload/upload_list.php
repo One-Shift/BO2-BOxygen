@@ -165,7 +165,7 @@ header("Content-Type: text/html; charset=utf-8");
 								null,
 								$data_d['file'],
 								$data_d['file'],
-								"img"
+								"doc"
 							),
 							file_get_contents("./templates-e/line.html")
 						);
