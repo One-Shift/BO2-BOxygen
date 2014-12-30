@@ -2,116 +2,104 @@
 
 class orders {
 
-    protected $id;
-    protected $user_id;
-    protected $cart;
-    protected $date;
-    protected $date_update;
-    protected $status = false;
+	protected $id;
+	protected $user_id;
+	protected $cart;
+	protected $date;
+	protected $date_update;
+	protected $status = false;
 
-    public function __construct() {
-        
-    }
+	public function __construct() {
 
-    public function setContent() {
-        
-    }
+	}
 
-    public function setId($i) {
-        $this->id = $i;
-    }
+	public function setContent() {
 
-    public function setUserId($w) {
-        $this->user_id = $w;
-    }
+	}
 
-    public function setDate($d = null) {
-        $this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-    }
+	public function setId($i) {
+		$this->id = $i;
+	}
 
-    public function setDateUpdate($d = null) {
-        $this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-    }
+	public function setUserId($w) {
+		$this->user_id = $w;
+	}
 
-    public function insert($u, $c) {
-        global $configuration, $mysqli;
+	public function setDate($d = null) {
+		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+	}
 
-        $query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $u, $c, $this->date, $this->date_update);
+	public function setDateUpdate($d = null) {
+		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+	}
 
-        return $mysqli->query($query[0]);
-    }
+	public function insert($u, $c) {
+		global $configuration, $mysqli;
 
-    public function update() {
-        global $configuration, $mysqli;
-    }
+		$query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $u, $c, $this->date, $this->date_update);
 
-    public function delete() {
-        global $configuration, $mysqli;
-    }
+		return $mysqli->query($query[0]);
+	}
 
-    public function returnObject() {
-        return array();
-    }
+	public function update() {
+		global $configuration, $mysqli;
+	}
 
-    public function returnOneOrder() {
-        global $configuration, $mysqli;
+	public function delete() {
+		global $configuration, $mysqli;
+	}
 
-        $query[0] = sprintf("SELECT * FROM %s_orders WHERE id = '%s'", $configuration["mysql-prefix"], $this->id);
-        $source[0] = $mysqli->query($query[0]);
+	public function returnObject() {
+		return array();
+	}
 
-        return $source[0]->fetch_assoc();
-    }
+	public function returnOneOrder() {
+		global $configuration, $mysqli;
 
-    public function returnAllOrders() {
-        global $configuration, $mysqli;
+		$query[0] = sprintf("SELECT * FROM %s_orders WHERE id = '%s'", $configuration["mysql-prefix"], $this->id);
+		$source[0] = $mysqli->query($query[0]);
 
-        $query[0] = sprintf("SELECT * FROM %s_orders WHERE true ORDER BY id DESC", $configuration["mysql-prefix"]);
-        $source[0] = $mysqli->query($query[0]);
+		return $source[0]->fetch_assoc();
+	}
 
-        $toReturn = array();
-        $i = 0;
-		
-        if ($source[0]->num_rows > 0) { // verificar se é returnado pelo menos 1 
-            while ($data[0] = $source[0]->fetch_assoc()) {
-                $toReturn[$i] = $data[0];
-                $i++;
-            }
-        } else {
-            return false;
-        }
+	public function returnAllOrders() {
+		global $configuration, $mysqli;
 
-        return $toReturn;
-    }
+		$query[0] = sprintf("SELECT * FROM %s_orders WHERE true ORDER BY id DESC", $configuration["mysql-prefix"]);
+		$source[0] = $mysqli->query($query[0]);
 
-    public function cartToArray($cart) {
-        // seprador por áreas
-        $tmp = explode("[spr]", $cart);
+		$toReturn = array();
+		$i = 0;
 
-        // seprador de endereços
-        $toReturn["address"] = explode("\n", $tmp[0]);
+		if ($source[0]->num_rows > 0) { // verificar se é returnado pelo menos 1
+			while ($data[0] = $source[0]->fetch_assoc()) {
+				$toReturn[$i] = $data[0];
+				$i++;
+			}
+		} else {
+			return [];
+		}
 
-        // separador de compras
-        $toReturn["list"] = explode("\n", $tmp[1]);
+		return $toReturn;
+	}
 
-        $toReturn["list"][0] = null; // evitar conteudo desconhecido do index 0
-        $toReturn["list"] = array_filter($toReturn["list"]); // filtro para eliminar todos os elementos desnecessários do array
+	public function cartToArray($cart) {
+		$tmp = explode("[spr]", $cart); // 0 - moradas, 1 - lista, 2 - preços, 3 - metodos de pagamento
 
-        $i = 0;
-        $tmpList = null;
+		// criação da lista
+		$tmpList = explode("\n", $tmp[1]);
+		$i = 0;
 
-        foreach ($toReturn["list"] as $item) {
-            $tmpList[$i] = explode("[/]", $item); // separação do item pelo [/]
-            $i++;
-        }
+		foreach ($tmpList as $line) {
+			$toReturn["products"][$i] = explode("[/]", $line); // 0 - id, 1 - quantidade, 2 - valor, 3 - iva em %
+			$i++;
+		}
 
-        $toReturn["list"] = $tmpList; // 0 -> id do produto, 1 -> quantidade, 2 -> valor, 3 -> iva
-        // separador de valores
-        $toReturn["price"] = explode("\n", $tmp[2]); // 0 -> valor sem iva, 1 -> valor do iva
-        $toReturn["price"][3] = $toReturn["price"][1] + $toReturn["price"][2]; // soma de valor + iva
+		$toReturn["address"] = explode("[/]", $tmp[0]); // 0 - morada faturação, 1 - morada entrega
+		$toReturn["price"] = explode("[/]", $tmp[2]); // 0 - valor total s/ iva, 1 - valor do iva
+		$toReturn["payment"] = $tmp["3"];
 
-		$toReturn["store"] = $tmp[3];
-
-        return $toReturn;
-    }
+		return $toReturn;
+	}
 
 }

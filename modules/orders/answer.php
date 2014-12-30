@@ -35,7 +35,7 @@
 						
 			// criar a lista de items selecionados para esta compra
 			$list = "";
-			foreach ($cart["list"] as $item) {
+			foreach ($cart["products"] as $item) {
 				// pesquisar por informções de produto
 				$product = new product();
 				$product->setId($item[0]);
@@ -43,11 +43,29 @@
 
 				// calcular valor com IVA
 				// valor na altura da compra
-				$value_w_vat = $item[2] * (($product["vat"] / 100) + 1);
+				$value_w_vat = $item[2] * (($item["3"] / 100) + 1);
 				
 				$list .= str_replace(
-						array("{c2r-id}", "{c2r-pathbo}", "{c2r-ref}", "{c2r-name}", "{c2r-qtd}", "{c2r-value}", "{c2r-vat}"), 
-						array($item[0], $configuration["path-bo"], $product["reference"], $product["title_1"], $item[1], number_format($value_w_vat, 2, ".", " "), $item[3]), $itemTemplate);
+						array(
+							"{c2r-id}",
+							"{c2r-ref}",
+							"{c2r-name}",
+							"{c2r-qtd}",
+							"{c2r-value}",
+							"{c2r-vat}",
+							"{c2r-pathbo}"
+						),
+						array(
+							$item[0],
+							$product["reference"],
+							$product["title_1"],
+							$item[1],
+							number_format($value_w_vat, 2, ".", " ")." €",
+							$item[3]." %",
+							$configuration["path-bo"]
+						),
+					$itemTemplate
+				);
 			}
 
 			$tableTemplate = str_replace(
@@ -65,13 +83,13 @@
 					array(
 						$userData["name"], 
 						$codeToPrint, 
-						$cart["address"][0], 
-						$cart["address"][1], 
-						$cart["store"],
+						$cart["address"][0], //faturaçã
+						$cart["address"][1], // entrega
+						$cart["payment"],
 						$list, 
-						number_format($cart["price"][2], 2, ".", " "),
-						number_format($cart["price"][1], 2, ".", " "),
-						number_format($cart["price"][3], 2, ".", " ")
+						number_format($cart["price"][1], 2, ".", " "), // iva
+						number_format($cart["price"][0], 2, ".", " "), // total
+						number_format(($cart["price"][0] + $cart["price"][1]), 2, ".", " ") // total + iva
 						), 
 					$tableTemplate
 					);
