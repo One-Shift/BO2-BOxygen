@@ -65,7 +65,7 @@
 					$category["name_1"],
 					$published,
 					$configuration["path-bo"],
-					$language["template"]["are-you-sure"]
+					$language["template"]["areyousure"]
 				),
 				file_get_contents("./modules/product_list/templates-e/line.html")
 			);
