@@ -25,6 +25,40 @@ class orders {
 		$this->user_id = $w;
 	}
 
+	public function setCart($ba = null, $da = null, $l = []) {
+		if (count($l) > 0) {
+			return false;
+		}
+
+		$product_template = "%s[/]%s[/]%s[/]%s\n"; // template para info do produto
+		$toSave_template = "%s[/]%s[spr]%s[spr]%s[/]%s[spr]%s";
+
+		$total = 0;
+		$vat = 0;
+		$list = null; // lista compilada
+		foreach ($l as $item) {
+			$list .= sprintf($product_template,
+							 $item["id"],
+							 $item["quantity"],
+							 $item["id"],
+							 (($item["discount"] !== 0) ? $item["price"] : $item["discount"]),
+							 $item["vat"]
+							);
+			$total += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]);
+			$vat += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100)
+		}
+
+		// remover o último \n
+		if (strlen($list) > 2) {
+			$list = substr($list, 0, -2);
+		}
+
+		// gravar a informação na variavel
+		$this->cart = sprintf($toSave_template, $ba, $da, $list, $total, $vat);
+
+		return true;
+	}
+
 	public function setDate($d = null) {
 		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
 	}
@@ -36,7 +70,7 @@ class orders {
 	public function insert($u, $c) {
 		global $configuration, $mysqli;
 
-		$query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $u, $c, $this->date, $this->date_update);
+		$query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update);
 
 		return $mysqli->query($query[0]);
 	}
