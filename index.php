@@ -19,7 +19,7 @@ if (!isset($_COOKIE[$configuration["cookie"]])) {
 
 			// caso exista 1 registo, inicia o processo de criação de sessão
 			if ($nr == 1) {
-				$data = $source->fetch_array(MYSQLI_ASSOC);
+				$data = $source->fetch_assoc();
 				// criar o cookie com os dados de sessão
 				if (setcookie($configuration["cookie"], $data["id"] . "." . $data["password"], time() + ($configuration["cookie-time"] * 60))) {
 					// login efectuado com sucesso
