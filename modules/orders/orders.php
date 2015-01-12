@@ -1,7 +1,7 @@
 <div class="orders">
     <?php
     if ($a != null) {
-        switch ($_GET["a"]) {
+        switch ($a) {
             case "enable": break;
             case "disable": break;
             case "answer": include "./modules/orders/answer.php";
