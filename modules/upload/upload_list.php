@@ -154,17 +154,21 @@ header("Content-Type: text/html; charset=utf-8");
 
 						print str_replace(
 							array(
+								"{c2r-module}",
 								"{c2r-id}",
+								"{c2r-file-id}",
 								"{c2r-code}",
 								"{c2r-alt}",
 								"{c2r-file}",
 								"{c2r-type}",
 							),
 							array(
+								$module,
+								$id,
 								$data_d['id'],
 								null,
 								$data_d['file'],
-								$data_d['file'],
+								"./../../../u-docs/".$data_d['file'],
 								"doc"
 							),
 							file_get_contents("./templates-e/line.html")
