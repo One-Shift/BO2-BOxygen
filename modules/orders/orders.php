@@ -1,6 +1,6 @@
 <div class="orders">
     <?php
-    if (isset($_GET["a"]) && !empty($_GET["a"])) {
+    if ($a != null) {
         switch ($_GET["a"]) {
             case "enable": break;
             case "disable": break;
