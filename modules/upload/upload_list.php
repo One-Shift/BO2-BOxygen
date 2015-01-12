@@ -231,26 +231,6 @@ header("Content-Type: text/html; charset=utf-8");
 		?>
 		<div class="spacer30"></div>
 		<script>
-			/*
-			var id = <?= $_GET["i"] ?>; // get ID
-			var module = <?= $_GET["mdl"] ?>; // get MODULE
-
-			$('#delete').on('click', function () {
-				if ($('input[type=radio]:checked').val() != null) {
-					if (confirm('Are You Sure?')) { // confirmar a ação
-						var code = $('input[type=radio]:checked').val().split('.');
-						goTo('<?= $_SERVER["REQUEST_URI"] ?>&tp=' + code[1] + '&vl=' + code[0]);
-					}
-				} else {
-					alert('Seleccione um ficheiro!'); // aviso ao utilizador
-					return false;
-				}
-			});
-			$('#update').on('click', function () {
-				goTo('./upload_list.php?mdl=' + module + '&i=' + id);
-			});
-			*/
-
 			$(document).ready(function() {
 				$("a[alt=view]").on("click", function() {
 					popUp($(this).attr("href"), '640', '480');
