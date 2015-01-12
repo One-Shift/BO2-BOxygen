@@ -4,7 +4,7 @@
 ?>
 <h1 class="pageTitle">Lista de Encomendas</h1>
 <div class="button-area">
-	<a href="<?= $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>
+	<!-- button area here -->
 </div>
 <table class="db-list">
 	<tr>
@@ -50,5 +50,5 @@
 </table>
 
 <div class="button-area">
-	<a href="<?= $configuration["path-bo"] ?>/0/orders/0/list" class="green"><i class="fa fa-plus"></i></a>
+	<!-- button area here -->
 </div>
