@@ -10,6 +10,12 @@ v1.1.0b 20140520
 
 O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com poucos conhecimentos de programação ou para programadores mais avançados poderem se dedicar mais ao front-end.
 
+## Requisitos mínimos
+
+* Apache 2.0
+* PHP 5.4
+* MySQL 5.5
+
 ## Principais funcionalidades
 
 * [adicionar/editar/eliminar] Utilizadores
