@@ -140,7 +140,7 @@ class article {
 		global $configuration;
 		global $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_articles WHERE true", $configuration['mysql-prefix']);
+		$query = sprintf("SELECT * FROM %s_articles WHERE true ORDER BY id ASC", $configuration['mysql-prefix']);
 		$source = $mysqli->query($query);
 
 		$toReturn = array();
