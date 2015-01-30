@@ -75,9 +75,8 @@ class article {
 		global $configuration;
 		global $mysqli;
 
-		$query = "INSERT INTO " . $configuration['mysql-prefix'] . "_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, date_update, published, onhome)" .
-				"VALUES ('" . $mysqli->real_escape_string($this->title_1) . "', '" . $mysqli->real_escape_string($this->content_1) . "', '" . ($this->title_2) . "', '" . $mysqli->real_escape_string($this->content_2) . "', '" . $mysqli->real_escape_string($this->title_3) . "', '" . $mysqli->real_escape_string($this->content_3) . "', '" . $mysqli->real_escape_string($this->title_4) . "', '" . $mysqli->real_escape_string($this->content_4) . "',  '" . $mysqli->real_escape_string($this->title_5) . "', '" . $mysqli->real_escape_string($this->content_5) . "', '" . $mysqli->real_escape_string($this->title_6) . "', '" . $mysqli->real_escape_string($this->content_6) . "','" . $mysqli->real_escape_string($this->code) . "', '" . $this->user_id . "', '" . $this->category_id . "', '" . $this->date . "', '" . $this->date_update . "', '" . $this->published . "', '" . $this->onhome . "')";
-
+		$query = sprintf("INSERT INTO %s_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, published, onhome) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",$configuration['mysql-prefix'],$mysqli->real_escape_string($this->title_1),$mysqli->real_escape_string($this->content_1),$mysqli->real_escape_string($this->title_2),$mysqli->real_escape_string($this->content_2),$mysqli->real_escape_string($this->title_3),$mysqli->real_escape_string($this->content_3),$mysqli->real_escape_string($this->title_4),$mysqli->real_escape_string($this->content_4),$mysqli->real_escape_string($this->title_5),$mysqli->real_escape_string($this->content_5),$mysqli->real_escape_string($this->title_6),$mysqli->real_escape_string($this->content_6),$mysqli->real_escape_string($this->code),$this->user_id,$this->category_id,$this->date,$this->published,$this->onhome);
+		
 		$toReturn = $mysqli->query($query);
 
 		$this->id = $mysqli->insert_id;
