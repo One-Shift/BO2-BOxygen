@@ -1,5 +1,5 @@
 <?php
-include "./header.php";
+include "header.php";
 
 $showForm = true;
 $showError = false;
@@ -144,7 +144,9 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 				<?php } ?>
 			</div>
 		</div>
+		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<?php } ?>
 	</body>
 </html>
 <?php $mysqli->close(); ?>
