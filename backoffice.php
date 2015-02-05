@@ -1,6 +1,6 @@
 <?php
 
-include "./header.php";
+include "header.php";
 
 //get user
 if (isset($_COOKIE[$configuration["cookie"]])) {
@@ -113,7 +113,9 @@ if ($pg == "logout") {
         </script>
 	</head>
 	<body>
+		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<?php } ?>
 		<div id="site">
 			<div id="header"></div>
 			<div id="container">
@@ -158,6 +160,8 @@ if ($pg == "logout") {
 			<div id="copyright"><a href="http://www.nexus-pt.eu/" target="_blank">NexuS-Pt , work team</a> | <a target="_blank" href="https://github.com/NexuS-Pt/BO2-BOxygen">GitHub</a> | <a target="_blank" href="http://www.nexus-pt.eu/fm/">Fórum</a></div>
 			<div id="c"><span>©</span> <?= date('Y'); ?></div>
 		</div>
+		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<?php } ?>
 	</body>
 </html>
