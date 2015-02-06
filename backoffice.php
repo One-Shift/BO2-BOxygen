@@ -101,16 +101,15 @@ if ($pg == "logout") {
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-36909778-11', 'auto');
-          ga('send', 'pageview');
-
-        </script>
+			ga('create', 'UA-36909778-11', 'auto');
+			ga('send', 'pageview');
+		</script>
 	</head>
 	<body>
 		<?php if ($configuration["pub"]) { ?>
@@ -131,7 +130,7 @@ if ($pg == "logout") {
 				<div id="menu">
 					<?php
 					if ($account["login"]) {
-						$menu = file_get_contents("./modules/menu/menu.php");
+						$menu = file_get_contents("modules/menu/menu.php");
 						$menu = str_replace(
 								array(
 									"{c2r-menu-users}",
