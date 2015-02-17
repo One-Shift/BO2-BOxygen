@@ -73,7 +73,7 @@
 
 		<div>
 			<span id="label">Data</span>
-			<input type="date" name="date_update" value="<?= $article["date_update"] ?>"/>
+			<input type="text" name="date_update" value="<?= $article["date_update"] ?>"/>
 
 			<div class="separator30"></div>
 		</div>
