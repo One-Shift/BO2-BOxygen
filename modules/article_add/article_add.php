@@ -67,7 +67,7 @@
 	<div>
 		<h2 class="sectionTitle">Data</h2>
 		<span id="label">Data</span>
-		<input type="date" name="date" value="<?php print date("Y-m-d H:i:s"); ?>"/>
+		<input type="text" name="date" value="<?= date("Y-m-d H:i:s"); ?>"/>
 
 		<div class="separator30"></div>
 	</div>
