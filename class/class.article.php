@@ -24,7 +24,7 @@ class article {
 	protected $onhome = false;
 
 	public function __construct() {
-		
+
 	}
 
 	public function setContent($t_1, $c_1, $t_2, $c_2, $t_3, $c_3, $t_4, $c_4, $t_5, $c_5, $t_6, $c_6, $c) {
@@ -75,8 +75,29 @@ class article {
 		global $configuration;
 		global $mysqli;
 
-		$query = sprintf("INSERT INTO %s_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, published, onhome) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",$configuration['mysql-prefix'],$mysqli->real_escape_string($this->title_1),$mysqli->real_escape_string($this->content_1),$mysqli->real_escape_string($this->title_2),$mysqli->real_escape_string($this->content_2),$mysqli->real_escape_string($this->title_3),$mysqli->real_escape_string($this->content_3),$mysqli->real_escape_string($this->title_4),$mysqli->real_escape_string($this->content_4),$mysqli->real_escape_string($this->title_5),$mysqli->real_escape_string($this->content_5),$mysqli->real_escape_string($this->title_6),$mysqli->real_escape_string($this->content_6),$mysqli->real_escape_string($this->code),$this->user_id,$this->category_id,$this->date,$this->published,$this->onhome);
-		
+		$query = sprintf("INSERT INTO %s_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, published, onhome) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+		$configuration['mysql-prefix'],
+		$mysqli->real_escape_string($this->title_1),
+		$mysqli->real_escape_string($this->content_1),
+		$mysqli->real_escape_string($this->title_2),
+		$mysqli->real_escape_string($this->content_2),
+		$mysqli->real_escape_string($this->title_3),
+		$mysqli->real_escape_string($this->content_3),
+		$mysqli->real_escape_string($this->title_4),
+		$mysqli->real_escape_string($this->content_4),
+		$mysqli->real_escape_string($this->title_5),
+		$mysqli->real_escape_string($this->content_5),
+		$mysqli->real_escape_string($this->title_6),
+		$mysqli->real_escape_string($this->content_6),
+		$mysqli->real_escape_string($this->code),
+		$this->user_id,
+		$this->category_id,
+		$this->date,
+		$this->date_update,
+		$this->published,
+		$this->onhome
+		);
+
 		$toReturn = $mysqli->query($query);
 
 		$this->id = $mysqli->insert_id;
@@ -88,7 +109,26 @@ class article {
 		global $configuration;
 		global $mysqli;
 
-		$query = sprintf("UPDATE %s_articles SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s', title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], $mysqli->real_escape_string($this->title_1), $mysqli->real_escape_string($this->content_1), $mysqli->real_escape_string($this->title_2), $mysqli->real_escape_string($this->content_2), $mysqli->real_escape_string($this->title_3), $mysqli->real_escape_string($this->content_3), $mysqli->real_escape_string($this->title_4), $mysqli->real_escape_string($this->content_4), $mysqli->real_escape_string($this->title_5), $mysqli->real_escape_string($this->content_5), $mysqli->real_escape_string($this->title_6), $mysqli->real_escape_string($this->content_6), $mysqli->real_escape_string($this->code), $this->category_id, $this->date_update, $this->published, $this->onhome, $this->id);
+		$query = sprintf("UPDATE %s_articles SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s', title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'",
+		$configuration['mysql-prefix'],
+		$mysqli->real_escape_string($this->title_1),
+		$mysqli->real_escape_string($this->content_1),
+		$mysqli->real_escape_string($this->title_2),
+		$mysqli->real_escape_string($this->content_2),
+		$mysqli->real_escape_string($this->title_3),
+		$mysqli->real_escape_string($this->content_3),
+		$mysqli->real_escape_string($this->title_4),
+		$mysqli->real_escape_string($this->content_4),
+		$mysqli->real_escape_string($this->title_5),
+		$mysqli->real_escape_string($this->content_5),
+		$mysqli->real_escape_string($this->title_6),
+		$mysqli->real_escape_string($this->content_6),
+		$mysqli->real_escape_string($this->code),
+		$this->category_id,
+		$this->date_update,
+		$this->published,
+		$this->onhome,
+		$this->id);
 
 		return $mysqli->query($query);
 	}
@@ -132,7 +172,7 @@ class article {
 		$query = sprintf("SELECT * FROM %s_articles WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
 
-		return $source->fetch_array(MYSQLI_ASSOC);
+		return $source->fetch_assoc();
 	}
 
 	public function returnAllArticles() {
@@ -145,7 +185,7 @@ class article {
 		$toReturn = array();
 		$i = 0;
 
-		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+		while ($data = $source->fetch_assoc()) {
 			$toReturn[$i] = $data;
 			$i++;
 		}
@@ -163,7 +203,7 @@ class article {
 		$toReturn = array();
 		$i = 0;
 
-		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+		while ($data = $source->fetch_assoc()) {
 			$toReturn[$i] = $data;
 			$i++;
 		}
@@ -181,7 +221,7 @@ class article {
 		$toReturn = array();
 		$i = 0;
 
-		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+		while ($data = $source->fetch_assoc()) {
 			$toReturn[$i] = $data;
 			$i++;
 		}
