@@ -1,17 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-@import url("./font-awesome.min.css");
+@import "font-awesome.min.css";
 
-@import url("./body-style.css");
-@import url("./frames-style.css");
+@import "body-style.css";
+@import "frames-style.css";
 
-@import url("./article-add.css");
-@import url("./article-list.css");
+@import "article-add.css";
+@import "article-list.css";
 
-@import url("./product-list.css");
+@import "product-list.css";
 
-@import url("./user-list.css");
+@import "user-list.css";
 
-@import url("./category-list.css");
+@import "category-list.css";
 
 html {
     min-height: 100%;
@@ -21,7 +21,7 @@ body {
     width: 900px;
     margin: 0 auto 50px;
     background-color: rgb(75,75,75);
-    background: url('./../images/bg.jpg') center fixed;
+    background: url('../images/bg.jpg') center fixed;
     font-family: "Lato", "Lucida Grande", Verdana, Arial, sans-serif;
 }
 
@@ -43,13 +43,13 @@ a {
 
 #login #header {
     height: 118px;
-    background-image: url(./../images/logo.png);
+    background-image: url(../images/logo.png);
     background-position: center bottom;
     background-repeat: no-repeat;
 }
 
 #login #container #sucess {
-    background-image: url(./../images/Check-icon.png);
+    background-image: url(../images/Check-icon.png);
     background-position: 7px center;
     background-repeat: no-repeat;
     line-height: 48px;
@@ -60,7 +60,7 @@ a {
 
 #login #container #error {
     background-color: pink;
-    background-image: url(./../images/Delete-icon.png);
+    background-image: url(../images/Delete-icon.png);
     background-position: 7px center;
     background-repeat: no-repeat;
     line-height: 48px;
@@ -92,7 +92,7 @@ a {
     display: inline-block;
     width: 100%;
     border-top: 1px solid #CCC;
-    background-image: url(./../images/buttonsLoginBackground.png);
+    background-image: url(../images/buttonsLoginBackground.png);
     background-position: center bottom;
     background-repeat: no-repeat;
 }
@@ -133,7 +133,7 @@ a {
 
 #site #header {
     height: 118px;
-    background-image: url(./../images/logoBO2.png);
+    background-image: url(../images/logoBO2.png);
     background-color: rgb(34, 34, 34);
     background-position: center bottom;
     background-repeat: no-repeat;
