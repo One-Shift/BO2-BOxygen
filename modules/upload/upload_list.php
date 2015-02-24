@@ -41,7 +41,7 @@ header("Content-Type: text/html; charset=utf-8");
 			}
 
 			div#toolbar a i {
-				 line-height: 31%;
+				 line-height: 31px;
 			}
 
 			table {
