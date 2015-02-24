@@ -20,14 +20,16 @@ header("Content-Type: text/html; charset=utf-8");
 
 			div#toolbar {
 				position: fixed;
-				bottom: 0;
-				right: 0;
+				bottom: 2px;
+				right: 2px;
 				height: 30px;
 				background: rgba(0,0,0,0.85);
 				color: white;
 				line-height: 30px;
 				padding: 0 5px 0 5px;
-				text-align: right;
+				border-radius: 2px;
+				min-width: 20px;
+				text-align: center;
 			}
 
 			div#toolbar a {
@@ -39,7 +41,7 @@ header("Content-Type: text/html; charset=utf-8");
 			}
 
 			div#toolbar a i {
-				 line-height: 180%;
+				 line-height: 31%;
 			}
 
 			table {
