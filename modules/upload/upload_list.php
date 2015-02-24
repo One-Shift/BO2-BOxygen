@@ -166,23 +166,13 @@ header("Content-Type: text/html; charset=utf-8");
 								$module,
 								$id,
 								$data_d['id'],
-								null,
+								$data_d["alt_2"],
 								$data_d['file'],
 								"./../../../u-docs/".$data_d['file'],
 								"doc"
 							),
 							file_get_contents("./templates-e/line.html")
 						);
-
-						/*
-						print
-								'<tr>' .
-								'<td><input type="radio" name="item" value="' . $data_d['id'] . '.doc"/></td>' .
-								'<td>' . $data_d['alt'] . '</td>' .
-								'<td>' . $data_d['file'] . '</td>' .
-								'<td><i class="fa fa-desktop"></i> <img src="./../../site-assets/images/icon_computer.png" alt="see" onclick="popUp(\'./../../../u-docs/' . $data_d['file'] . '\',\'640\',\'480\');"/></td>' .
-								'</tr>';
-						*/
 					}
 
 					if ($source_i->num_rows == 0 && $source_d->num_rows == 0) {
