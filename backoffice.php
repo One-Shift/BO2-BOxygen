@@ -9,7 +9,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s')", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager");
 	$source = $mysqli->query($query);
 	$nr = $source->num_rows;
-	
+
 	if ($nr == 1) {
 		$account["name"] = $account[0];
 		$account["password"] = $account[1];
@@ -124,7 +124,7 @@ if ($pg == "logout") {
 				</div>
 				<div id="page">
 					<?php
-					include "./includes.php";
+					include "includes.php";
 					?>
 				</div>
 				<div id="menu">
