@@ -1,8 +1,8 @@
 <?php
 
-include "./../../configuration.php";
-include "./../../connect.php";
-include sprintf("./../../languages/%s.php", $configuration["language"]);
+include "../../configuration.php";
+include "../../connect.php";
+$language = parse_ini_file(sprintf("../../languages/%s.ini", $configuration["language"]), true);
 
 header("Content-Type: text/html; charset=utf-8");
 
@@ -112,7 +112,7 @@ header("Content-Type: text/html; charset=utf-8");
 						$module,
 						$id
 					),
-					file_get_contents("./templates-e/topbar.html")
+					file_get_contents("templates-e/topbar.html")
 				);
 
 				if (!isset($_REQUEST["tp"]) && !isset($_REQUEST["vl"])) {
@@ -139,10 +139,10 @@ header("Content-Type: text/html; charset=utf-8");
 								$data_i['id'],
 								$data_i['alt_2'],
 								$data_i['alt_1'],
-								"./../../../u-img/".$data_i['file'],
+								"../../../u-img/".$data_i['file'],
 								"img"
 							),
-							file_get_contents("./templates-e/line.html")
+							file_get_contents("templates-e/line.html")
 						);
 					}
 
@@ -167,11 +167,11 @@ header("Content-Type: text/html; charset=utf-8");
 								$id,
 								$data_d['id'],
 								$data_d["alt_2"],
-								$data_d['file'],
-								"./../../../u-docs/".$data_d['file'],
+								$data_d['alt_1'],
+								"../../../u-docs/".$data_d['file'],
 								"doc"
 							),
-							file_get_contents("./templates-e/line.html")
+							file_get_contents("templates-e/line.html")
 						);
 					}
 
@@ -190,7 +190,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 						$query_i_2 = sprintf("DELETE FROM %s_images WHERE id = '%s'", $configuration["mysql-prefix"], $data_i_1["id"]);
 						if ($mysqli->query($query_i_2)) {
-							unlink("./../../../u-img/" . $data_i_1["file"]) or die();
+							unlink("../../../u-img/" . $data_i_1["file"]) or die();
 							print "<p>Ficheiro Apagado com Sucesso</p>";
 						} else {
 							print "<p>Erro encontrado ao tentar imprimir</p>";
@@ -203,7 +203,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 						$query_d_2 = sprintf("DELETE FROM %s_documents WHERE id = '%s'", $configuration["mysql-prefix"], $data_d_1["id"]);
 						if ($mysqli->query($query_d_2)) {
-							unlink("./../../../u-docs/" . $data_d_1["file"]) or die();
+							unlink("../../../u-docs/" . $data_d_1["file"]) or die();
 							print "<p>Ficheiro Apagado com Sucesso</p>";
 						} else {
 							print "<p>Erro encontrado ao tentar imprimir</p>";
