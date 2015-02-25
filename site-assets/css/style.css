@@ -82,6 +82,7 @@ a {
     border: none;
     border-radius: 15px;
     text-align: center;
+    outline: 0;
 }
 
 #login #container #fields div input[name=loginUsername] {}
