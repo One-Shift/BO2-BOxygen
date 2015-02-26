@@ -40,7 +40,7 @@
 					array(
 						$article["id"],
 						$article["date_update"],
-						$article["title_1"],
+						strip_tags($article["title_1"]),
 						$category["name_1"],
 						$published,
 						$configuration["path-bo"],
