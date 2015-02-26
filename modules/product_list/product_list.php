@@ -62,7 +62,7 @@
 				array(
 					$product["id"],
 					$product["title_1"],
-					$category["name_1"],
+					strip_tags($category["name_1"]),
 					$published,
 					$configuration["path-bo"],
 					$language["template"]["areyousure"]
