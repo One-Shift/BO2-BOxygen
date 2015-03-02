@@ -21,7 +21,7 @@ class newsletters {
 		$this->email = $e;
 	}
 
-	public function setCode($c = $this->email) {
+	public function setCode($c = null) {
 		$this->code = sha1(md5(sha1(md5(time() . "_" . $c))));
 	}
 
