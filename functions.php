@@ -79,8 +79,7 @@ function clean($string) {
 }
 
 /* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
-
-function minifyHTML($buffer) {
+function minifyPage($buffer) {
 	$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
 
 	$replace = array('>', '<', '\\1');
@@ -88,6 +87,18 @@ function minifyHTML($buffer) {
 	if (preg_match("/\<html/i", $buffer) == 1 && preg_match("/\<\/html\>/i", $buffer) == 1) {
 		$buffer = preg_replace($search, $replace, $buffer);
 	}
+
+	$buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
+
+	return $buffer;
+}
+
+function minifyHTML($buffer) {
+	$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
+
+	$replace = array('>', '<', '\\1');
+
+	$buffer = preg_replace($search, $replace, $buffer);
 
 	$buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
 
