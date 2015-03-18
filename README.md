@@ -35,6 +35,10 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 * Gestor de Documentos carregados
 * Gestor de Imagens carregados
 
+## Aviso
+Se está a desenvolver um website com suporte a browsers como IE8 ou enterior, por favor não usar a minificação de código. O mesmo deve ser respeitado para a tentativa de adicionar código expecifico para IE, usando <!--[if (IE 8)]> <![endif]--> , como exemplo.
+
+
 Novas sugestões poderão ser enviadas para o endereço [geral@nexus-pt.eu](mailto:geral@nexus-pt.eu)
 
 
