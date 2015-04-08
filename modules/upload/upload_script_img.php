@@ -1,7 +1,6 @@
 <?php
 include '../../configuration.php';
 include '../../connect.php';
-//include '../../languages/' . $configuration['language'] . '.php';
 
 $language = parse_ini_file(
     sprintf("../../languages/%s.ini", $configuration["language"]),
