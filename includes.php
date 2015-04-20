@@ -31,6 +31,7 @@ if ($account["login"]) { // verificar se está autenticado
 		case "product-list":
 			include "./modules/product_list/product_list.php";
 			break;
+		// -- Orders	
 		case "orders": include "./modules/orders/orders.php";
 			break;
 		// -- Categories
