@@ -70,9 +70,10 @@ header('Content-Type: text/html; charset=utf-8');
 			if (isset($_COOKIE[$configuration['cookie']])) {
 				if (!isset($_REQUEST['submit'])) {
 
+					// search for allowed file types on Database
 					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image'", $configuration['mysql-prefix']);
 					$source = $mysqli->query($query);
-					while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+					while ($data = $source->fetch_assoc()) {
 						if (!isset($allowedFormats)) {
 							$allowedFormats = $data['extension'];
 						} else {
@@ -95,6 +96,7 @@ header('Content-Type: text/html; charset=utf-8');
 							'<blockquote>Alloowed Formats: ' . $allowedFormats . '</blockquote>' .
 							'</form>';
 				} else {
+					// verification if the file uploaded have permission to be save
 					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'", $configuration['mysql-prefix'], $_FILES['file']['type']);
 					$source = $mysqli->query($query);
 					$nr = $source->num_rows;
@@ -105,30 +107,30 @@ header('Content-Type: text/html; charset=utf-8');
 						$data = $source->fetch_array(MYSQLI_ASSOC);
 						$time = time();
 						$fileName = $time . '.' . $data['extension'];
-						$filePath = './../../../u-img/' . $fileName;
+						$filePath = '../../../u-img/' . $fileName;
 
 						$query = sprintf("INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')", $configuration['mysql-prefix'], $fileName, $alt_1, $alt_2, $module, $id, date('Y-m-d H:i:s', $time));
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
 							if ($mysqli->query($query)) {
-								print '<p>File saved with sucess!</p>';
+								print "<p>File saved with sucess!</p>";
 								print '<img class="thumb" alt="thumb" src="' . $filePath . '"/>';
-								print '<button onclick="goTo(\'' . $_SERVER["REQUEST_URI"] . '\');">Adicionar Mais</button>';
+								print "<button onclick=\"goTo('" . $_SERVER["REQUEST_URI"] . "');\">Adicionar Mais</button>";
 							} else {
-								print '<p>Error Announce! The system can\'t save this entry on BD for unkown reason</p>';
+								print "<p>Error Announce! The system can't save this entry on BD for unkown reason</p>";
 							}
 						} else {
-							print '<p>Error Announce! The system can\'t save this file for unkown reason!</p>';
+							print "<p>Error Announce! The system can't save this file for unkown reason!</p>";
 						}
 					} else {
-						print '<p>Formato não conhecido pelo sistema!</p>';
+						print "<p>File type are not allowed on ower system!</p>";
 					}
 				}
 			} else {
-				print '<p>Please login first!</p>';
+				print "<p>Please login first!</p>";
 			}
 		} else {
-			print '<p>The module can\'t be initialized!</p>';
+			print "<p>The module can't be initialized!</p>";
 		}
 		?>
 	</body>
