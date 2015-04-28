@@ -95,9 +95,10 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 		<meta name="author-code" content="#someone#" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
 
 		<link href="http://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/custom.css" />
 
 		<script type="text/javascript">
 			var path_bo = "<?= $configuration["path-bo"] ?>";
