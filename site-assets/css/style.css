@@ -284,10 +284,17 @@ body #footer #c span {
 }
 
 iframe.ads {
+<<<<<<< HEAD
 	border: none;
 	width: 728px;
 	height: 90px;
 	margin: 5px 86px;
+=======
+    border: none;
+    width: 738px;
+    height: 130px;
+    margin: 5px 86px;
+>>>>>>> origin/master
 }
 
 /* class here */
