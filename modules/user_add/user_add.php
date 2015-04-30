@@ -21,7 +21,7 @@
 		<div class="separator30"></div>
 
 		<div class="bottom-area">
-			  <button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() == $('input[name=confirm_password]').val() && $('input[name=password]').val() != '' && $('input[name=confirm_password]').val() != '') {return true;} else {alert('Passowrds não coincidem!'); return false;}"><i class="fa fa-floppy-o"></i></button>
+			  <button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() == $('input[name=confirm_password]').val() && $('input[name=password]').val() != '' && $('input[name=confirm_password]').val() != '') {return true;} else {alert('Passwords não coincidem!'); return false;}"><i class="fa fa-floppy-o"></i></button>
 			  <button class="red" title="cancel" type="reset" name="cancel"><i class="fa fa-times"></i></button>
 		</div>
 	</form>
