@@ -136,14 +136,10 @@ a.grey:hover, button.grey:hover {
 #site #container #page select {
 	display: block;
 	min-width: 100%;
-	border: 1px solid #CCCCCC;
-	background-color: transparent;
-	margin-bottom: 5px;
-	display: block;
 	width: 100%;
 	height: 33px;
 	line-height: 17px;
-	margin: 0px;
+	margin: 0 0 5px;
 	padding: 6px 6px 6px 9px;
 	color: rgb(98, 98, 98);
 	background: rgb(245, 245, 245);
