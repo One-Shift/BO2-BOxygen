@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `prefix_cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
+  `content` text,
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   PRIMARY KEY (`id`)
