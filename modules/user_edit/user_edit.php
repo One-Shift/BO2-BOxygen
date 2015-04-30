@@ -50,6 +50,7 @@
 			$user->setId($id);
 			$tmp = $user->returnOneUser();
 			$user->setUsername($tmp["name"]);
+			$user->setRank($_POST["rank"]);
 
 			if (!empty($_POST["password"]) || !empty($_POST["confirm_password"])) { // verificar se pelo menos um dos campos foi preenchido
 				if ($_POST["password"] === $_POST["confirm_password"]){
