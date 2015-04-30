@@ -100,13 +100,13 @@
 			$_REQUEST["title_6"],
 			$_REQUEST["content_6"],
 			$_REQUEST["code"]
-			);
+		);
 
 		$object_category->setUserId($account["name"]);
 		$object_category->setDate();
 		$object_category->setDateUpdate();
-		$object_category->setPublished($_REQUEST["published"]);
-		$object_category->setCategoryType($_REQUEST["section"]);
+		$object_category->setPublished($_POST["published"]);
+		$object_category->setCategoryType($_POST["section"]);
 
 		if ($object_category->insert()) {
 			print $language["actions"]["success"];
