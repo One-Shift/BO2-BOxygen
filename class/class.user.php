@@ -9,9 +9,7 @@ class user {
 	protected $rank;
 	protected $code;
 
-	public function __construct() {
-		
-	}
+	public function __construct() {}
 
 	public function setUsername($u) {
 		$this->username = $u;
@@ -48,8 +46,7 @@ class user {
 	}
 
 	public function insert() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("INSERT INTO %s_users (name, password, email, rank, code) 
                 VALUES ('%s','%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code);
@@ -62,8 +59,7 @@ class user {
 	}
 
 	public function update() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s' 
             WHERE id = '%s'", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->id);
@@ -72,8 +68,7 @@ class user {
 	}
 
 	public function delete() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("DELETE FROM %s_users WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
@@ -81,17 +76,16 @@ class user {
 	}
 
 	public function returnObject() {
-		return array(
+		return [
 			"name" => $this->username,
 			"password" => $this->password,
 			"email" => $this->email,
 			"rank" => $this->rank
-		);
+		];
 	}
 
 	public function returnOneUser() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
@@ -100,8 +94,7 @@ class user {
 	}
 
 	public function existUserByName() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->username);
 		$source = $mysqli->query($query);
@@ -110,8 +103,7 @@ class user {
 	}
 
 	public function returnAllUsers() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE true", $configuration['mysql-prefix']);
 		$source = $mysqli->query($query);
