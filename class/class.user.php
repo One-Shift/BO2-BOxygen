@@ -90,7 +90,7 @@ class user {
 		$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
 
-		return $source->fetch_array(MYSQLI_ASSOC);
+		return $source->fetch_assoc();
 	}
 
 	public function existUserByName() {
@@ -108,10 +108,10 @@ class user {
 		$query = sprintf("SELECT * FROM %s_users WHERE true", $configuration['mysql-prefix']);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
-		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+		while ($data = $source->fetch_assoc()) {
 			$toReturn[$i] = $data;
 			$i++;
 		}
