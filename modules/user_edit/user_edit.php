@@ -10,7 +10,6 @@
 		<span id="label">Rank</span>
 		<select name="rank">
 			<option value="null">Selecione um rank de utilizador</option>
-			<option value="owner" <?php if($tmp["rank"] == "owner") print "SELECTED";?> >Owner</option>
 			<option value="manager" <?php if($tmp["rank"] == "manager") print "SELECTED";?> >Manager</option>
 			<option value="member" <?php if($tmp["rank"] == "member") print "SELECTED";?> >Member</option>
 		</select>
@@ -53,7 +52,7 @@
 			$user->setUsername($tmp["name"]);
 
 			if (!empty($_POST["password"]) || !empty($_POST["confirm_password"])) { // verificar se pelo menos um dos campos foi preenchido
-				if ($_POST["password"] == $_POST["confirm_password"]){
+				if ($_POST["password"] === $_POST["confirm_password"]){
 					$user->setPassword($_POST["password"]);
 				} else {
 					print "Passwords erradas";
