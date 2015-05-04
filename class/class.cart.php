@@ -1,9 +1,17 @@
 <?php
 
 class cart {
-
+	protected $quantity;
 	protected $date;
 	protected $date_update;
+
+	public function __construct() {
+
+	}
+
+	public function setQuantity($q = 1) {
+		$this->quantity = $q;
+	}
 
 	public function setDate($d = null) {
 		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
@@ -11,10 +19,6 @@ class cart {
 
 	public function setDateUpdate($d = null) {
 		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
-
-	public function __construct() {
-
 	}
 
 	public function add($u, $i, $c = null) {
@@ -26,7 +30,10 @@ class cart {
 		if ($source[1]->num_rows > 0) {
 			return $this->addQuantity($u, $i);
 		} else {
-			$query[0] = sprintf("INSERT INTO %s_cart (user_id, product_id, content, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $u, $i, $c, $this->date, $this->date_update);
+			$query[0] = sprintf(
+				"INSERT INTO %s_cart (user_id, product_id, quantity, content, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+				$configuration["mysql-prefix"], $u, $i, $this->quantity, $c, $this->date, $this->date_update
+			);
 
 			return $mysqli->query($query[0]);
 		}
