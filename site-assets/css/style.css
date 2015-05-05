@@ -317,6 +317,7 @@ iframe.ads {
 	padding-left: 7px;
 	margin-bottom: 7px;
 	font-weight: 400;
+	text-transform: capitalize;
 }
 
 .taleft {
