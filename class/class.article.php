@@ -72,10 +72,9 @@ class article {
 	}
 
 	public function insert() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
-		$query = sprintf("INSERT INTO %s_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, published, onhome) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+		$query = sprintf("INSERT INTO %s_articles (title_1, content_1, title_2, content_2, title_3, content_3, title_4, content_4, title_5, content_5, title_6, content_6, code, user_id, category_id, date, date_update, published, onhome) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
 		$configuration['mysql-prefix'],
 		$mysqli->real_escape_string($this->title_1),
 		$mysqli->real_escape_string($this->content_1),
@@ -106,8 +105,7 @@ class article {
 	}
 
 	public function update() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_articles SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s', title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s' WHERE id = '%s'",
 		$configuration['mysql-prefix'],
@@ -134,8 +132,7 @@ class article {
 	}
 
 	public function delete() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("DELETE FROM %s_articles WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
@@ -143,7 +140,7 @@ class article {
 	}
 
 	public function returnObject() {
-		return array(
+		return [
 			'title_1' => $this->title_1,
 			'content_1' => $this->content_1,
 			'title_2' => $this->title_2,
@@ -162,12 +159,11 @@ class article {
 			'published' => $this->published,
 			'onHome' => $this->onHome,
 			'code' => $this->code
-		);
+		];
 	}
 
 	public function returnOneArticle() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_articles WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
@@ -176,8 +172,7 @@ class article {
 	}
 
 	public function returnAllArticles() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_articles WHERE true ORDER BY id ASC", $configuration['mysql-prefix']);
 		$source = $mysqli->query($query);
@@ -194,8 +189,7 @@ class article {
 	}
 
 	public function returnImages($order) {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_images WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
 		$source = $mysqli->query($query);
@@ -212,8 +206,7 @@ class article {
 	}
 
 	public function returnDocs($order) {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("SELECT * FROM %s_documents WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
 		$source = $mysqli->query($query);
@@ -230,8 +223,7 @@ class article {
 	}
 
 	public function increasePriority() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_articles SET priority += 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
@@ -239,8 +231,7 @@ class article {
 	}
 
 	public function decreasePriority() {
-		global $configuration;
-		global $mysqli;
+		global $configuration, $mysqli;
 
 		$query = sprintf("UPDATE %s_articles SET priority -= 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
 
