@@ -1,4 +1,4 @@
-<h1 class="pageTitle">Article Del</h1>
+<h1 class="pageTitle"><?= $language["mod_article"]["delete_title"]; ?></h1>
 <?php
 	if ($id !== null) {
 		$object_article = new article();

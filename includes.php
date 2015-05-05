@@ -6,17 +6,7 @@ if ($account["login"]) { // verificar se está autenticado
 			include "./modules/home/home.php";
 			break;
 		// -- Article
-		case "article-add":
-			include "./modules/article_add/article_add.php";
-			break;
-		case "article-edit":
-			include "./modules/article_edit/article_edit.php";
-			break;
-		case "article-del":
-			include "./modules/article_del/article_del.php";
-			break;
-		case "article-list":
-			include "./modules/article_list/article_list.php";
+		case "article": include "./modules/article/article.php";
 			break;
 		// -- Products
 		case "product-add":
