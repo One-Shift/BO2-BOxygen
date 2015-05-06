@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
   `published` tinyint(1) DEFAULT NULL,
   `onhome` tinyint(1) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
+  `ordering` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `prefix_categories` (
   `user_id` int(11) DEFAULT NULL,
   `code` text,
   `published` tinyint(1) DEFAULT NULL,
+  `ordering` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `fk_prefix_categories_prefix_articles` (`id`),
   KEY `fk_prefix_categories_prefix_products1` (`id`)
@@ -148,6 +150,7 @@ CREATE TABLE IF NOT EXISTS `prefix_products` (
   `published` tinyint(1) DEFAULT NULL,
   `onhome` tinyint(1) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
+  `ordering` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
