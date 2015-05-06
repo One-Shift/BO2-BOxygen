@@ -8,6 +8,7 @@ class user {
 	protected $email;
 	protected $rank;
 	protected $code;
+	protected $status;
 
 	public function __construct() {}
 
@@ -24,11 +25,15 @@ class user {
 	}
 
 	public function setId($i) {
-		$this->id = $i;
+		$this->id = (int)$i;
 	}
 
 	public function setEmail($e) {
 		$this->email = $e;
+	}
+
+	public function setStatus($s) {
+		$this->status = (bool)$s;
 	}
 
 	public function setRank($r) {
