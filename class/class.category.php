@@ -74,7 +74,29 @@ class category {
 	public function insert() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("INSERT INTO %s_categories (name_1, description_1, name_2, description_2, name_3, description_3, name_4, description_4, name_5, description_5, name_6, description_6, code, category_type, date, date_update, user_id, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $configuration['mysql-prefix'], $mysqli->real_escape_string($this->name_1), $mysqli->real_escape_string($this->description_1), $mysqli->real_escape_string($this->name_2), $mysqli->real_escape_string($this->description_2), $mysqli->real_escape_string($this->name_3), $mysqli->real_escape_string($this->description_3), $mysqli->real_escape_string($this->name_4), $mysqli->real_escape_string($this->description_4), $mysqli->real_escape_string($this->name_5), $mysqli->real_escape_string($this->description_5), $mysqli->real_escape_string($this->name_6), $mysqli->real_escape_string($this->description_6), $mysqli->real_escape_string($this->code), $this->category_type, $this->date, $this->date_update, $this->user_id, $this->published);
+		$query = sprintf(
+			"INSERT INTO %s_categories (name_1, description_1, name_2, description_2, name_3, description_3, name_4, description_4, name_5, description_5, name_6, description_6, code, category_type, date, date_update, user_id, published, ordering) VALUES ('%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			$configuration['mysql-prefix'],
+			$mysqli->real_escape_string($this->name_1),
+			$mysqli->real_escape_string($this->description_1),
+			$mysqli->real_escape_string($this->name_2),
+			$mysqli->real_escape_string($this->description_2),
+			$mysqli->real_escape_string($this->name_3),
+			$mysqli->real_escape_string($this->description_3),
+			$mysqli->real_escape_string($this->name_4),
+			$mysqli->real_escape_string($this->description_4),
+			$mysqli->real_escape_string($this->name_5),
+			$mysqli->real_escape_string($this->description_5),
+			$mysqli->real_escape_string($this->name_6),
+			$mysqli->real_escape_string($this->description_6),
+			$mysqli->real_escape_string($this->code),
+			$this->category_type,
+			$this->date,
+			$this->date_update,
+			$this->user_id,
+			$this->published,
+			$this->ordering
+		);
 
 		$toReturn = $mysqli->query($query);
 
@@ -86,7 +108,30 @@ class category {
 	public function update() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_categories SET name_1 = '%s', description_1 = '%s', name_2 = '%s', description_2 = '%s', name_3 = '%s', description_3 = '%s', name_4 = '%s', description_4 = '%s', name_5 = '%s', description_5 = '%s', name_6 = '%s', description_6 = '%s', category_type = '%s', date = '%s', date_update = '%s', user_id = '%s', code = '%s', published = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], $mysqli->real_escape_string($this->name_1), $mysqli->real_escape_string($this->description_1), $mysqli->real_escape_string($this->name_2), $mysqli->real_escape_string($this->description_2), $mysqli->real_escape_string($this->name_3), $mysqli->real_escape_string($this->description_3), $mysqli->real_escape_string($this->name_4), $mysqli->real_escape_string($this->description_4), $mysqli->real_escape_string($this->name_5), $mysqli->real_escape_string($this->description_5), $mysqli->real_escape_string($this->name_6), $mysqli->real_escape_string($this->description_6), $mysqli->real_escape_string($this->category_type), $this->date, $this->date_update, $mysqli->real_escape_string($this->user_id), $mysqli->real_escape_string($this->code), $this->published, $this->id);
+		$query = sprintf(
+			"UPDATE %s_categories SET name_1 = '%s', description_1 = '%s', name_2 = '%s', description_2 = '%s', name_3 = '%s', description_3 = '%s', name_4 = '%s', description_4 = '%s', name_5 = '%s', description_5 = '%s', name_6 = '%s', description_6 = '%s', category_type = '%s', date = '%s', date_update = '%s', user_id = '%s', code = '%s', published = '%s', ordering = '%s' WHERE id = '%s'",
+			$configuration['mysql-prefix'],
+			$mysqli->real_escape_string($this->name_1),
+			$mysqli->real_escape_string($this->description_1),
+			$mysqli->real_escape_string($this->name_2),
+			$mysqli->real_escape_string($this->description_2),
+			$mysqli->real_escape_string($this->name_3),
+			$mysqli->real_escape_string($this->description_3),
+			$mysqli->real_escape_string($this->name_4),
+			$mysqli->real_escape_string($this->description_4),
+			$mysqli->real_escape_string($this->name_5),
+			$mysqli->real_escape_string($this->description_5),
+			$mysqli->real_escape_string($this->name_6),
+			$mysqli->real_escape_string($this->description_6),
+			$mysqli->real_escape_string($this->category_type),
+			$this->date,
+			$this->date_update,
+			$mysqli->real_escape_string($this->user_id),
+			$mysqli->real_escape_string($this->code),
+			$this->published,
+			$this->ordering,
+			$this->id
+		);
 
 		return $mysqli->query($query);
 	}
