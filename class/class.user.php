@@ -53,8 +53,8 @@ class user {
 	public function insert() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("INSERT INTO %s_users (name, password, email, rank, code) 
-                VALUES ('%s','%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code);
+		$query = sprintf("INSERT INTO %s_users (name, password, email, rank, code, status)
+                VALUES ('%s','%s','%s','%s','%s','%s')", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->status);
 
 		$toReturn = $mysqli->query($query);
 
@@ -66,8 +66,8 @@ class user {
 	public function update() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s' 
-            WHERE id = '%s'", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->id);
+		$query = sprintf("UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s'
+            WHERE id = '%s'", $configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->status, $this->id);
 
 		return $mysqli->query($query);
 	}
@@ -85,7 +85,8 @@ class user {
 			"name" => $this->username,
 			"password" => $this->password,
 			"email" => $this->email,
-			"rank" => $this->rank
+			"rank" => $this->rank,
+			"status" => $this->status
 		];
 	}
 
