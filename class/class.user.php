@@ -155,3 +155,4 @@ class user {
 		}
 		return false;
 	}
+}
