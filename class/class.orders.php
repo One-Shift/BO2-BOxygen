@@ -30,31 +30,18 @@ class orders {
 			return false;
 		}
 
-		$product_template = "%s[/]%s[/]%s[/]%s\n"; // template para info do produto
-		$toSave_template = "%s[/]%s[spr]%s[spr]%s[/]%s[spr]%s";
-
 		$total = 0;
 		$vat = 0;
-		$list = null; // lista compilada
+		$list = null; // compiled list
 		foreach ($l as $item) {
-			$list .= sprintf($product_template,
-							 $item["id"],
-							 $item["quantity"],
-							 $item["id"],
-							 (($item["discount"] !== 0) ? $item["price"] : $item["discount"]),
-							 $item["vat"]
-							);
+			$list .= "\n\t<product>\n\t\t<id>".$item["id"]."</id>\n\t\t<quantity>".$item["quantity"]."</quantity>\n\t\t<content>".$item["content"]."</content>\n\t\t<price>".$item["id"]."</price>\n\t\t<vat>".$item["vat"]."</vat>\n\t\t<discount>".(($item["discount"] !== 0) ? $item["price"] : $item["discount"])."</discount>\n\t</product>";
+
 			$total += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]);
 			$vat += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100);
 		}
 
-		// remover o último \n
-		if (strlen($list) > 2) {
-			$list = substr($list, 0, -2);
-		}
-
-		// gravar a informação na variavel
-		$this->cart = sprintf($toSave_template, $ba, $da, $list, $total, $vat, $p);
+		// save info in var
+		$this->cart = "<address>\n\t<invoice>$ba</invoice>\n\t<send>$da</send>\n</address>\n<shopping-list>$list</shopping-list>\n<bill>\n\t<total>$total</total>\n\t<vat>$vat</vat>\n</bill>\n<payment>$p</payment>";
 
 		return true;
 	}
