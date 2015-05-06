@@ -65,9 +65,15 @@
 	</div>
 
 	<div>
-		<h2 class="sectionTitle"><?= $language["form"]["label_date"]; ?></h2>
 		<span id="label"><?= $language["form"]["label_date"]; ?></span>
 		<input type="text" name="date" value="<?= date("Y-m-d H:i:s"); ?>"/>
+
+		<div class="separator30"></div>
+	</div>
+
+	<div>
+		<span id="label"><?= $language["form"]["label_order"]; ?></span>
+		<input type="text" name="order"/>
 
 		<div class="separator30"></div>
 	</div>
@@ -126,6 +132,7 @@
 		$article->setDateUpdate($_POST['date']);
 		$article->setPublished($_POST['published']);
 		$article->setonHome($_POST['onhome']);
+		$article->setOrdering($_POST['order']);
 
 		if ($article->insert()) {
 			print $language["actions"]["success"];
