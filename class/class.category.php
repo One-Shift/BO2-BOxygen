@@ -21,6 +21,7 @@ class category {
 	protected $user_id;
 	protected $code;
 	protected $published = false;
+	protected $ordering = 1;
 
 	public function __construct() {
 
@@ -64,6 +65,10 @@ class category {
 
 	public function setDateUpdate($d = null) {
 		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+	}
+
+	public function setOrdering($o) {
+		$this->ordering = $o;
 	}
 
 	public function insert() {

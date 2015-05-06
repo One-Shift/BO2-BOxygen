@@ -27,6 +27,7 @@ class product {
 	protected $date_update;
 	protected $published = false;
 	protected $onhome = false;
+	protected $ordering = 1;
 
 	public function __construct() {
 		
@@ -94,6 +95,10 @@ class product {
 
 	public function setonHome($h) {
 		$this->onhome = $h;
+	}
+
+	public function setOrdering($o) {
+		$this->ordering = $o;
 	}
 
 	public function insert() {
