@@ -78,6 +78,14 @@
 			<div class="separator30"></div>
 		</div>
 
+		<div>
+			<span id="label"><?= $language["form"]["label_order"]; ?></span>
+			<input type="text" name="order" value="<?= $article["ordering"]; ?>"/>
+
+			<div class="separator30"></div>
+		</div>
+
+
 		<span id="label"><?= $language["form"]["label_category"]; ?></span>
 		<?php
 
@@ -150,6 +158,7 @@
 			$article->setDateUpdate($_POST["date_update"]);
 			$article->setPublished($_POST["published"]);
 			$article->setonHome($_POST["onhome"]);
+			$article->setOrdering($_POST['order']);
 
 			if ($article->update()) {
 				print $language["actions"]["success"];
