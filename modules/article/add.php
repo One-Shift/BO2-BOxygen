@@ -141,7 +141,7 @@
 	?>
 			<div class="separator30"></div>
 
-			<span id="label">Lista de ficheiros</span>
+			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 			<?= returnFilesList($id, "article"); ?>
 
 			<div class="separator30"></div>
