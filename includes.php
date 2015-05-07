@@ -21,21 +21,13 @@ if ($account["login"]) { // verificar se está autenticado
 		case "product-list":
 			include "./modules/product_list/product_list.php";
 			break;
-		// -- Orders	
-		case "orders": include "./modules/orders/orders.php";
+		// -- Orders
+		case "orders":
+			include "./modules/orders/orders.php";
 			break;
 		// -- Categories
-		case "category-add":
-			include "./modules/category_add/category_add.php";
-			break;
-		case "category-edit":
-			include "./modules/category_edit/category_edit.php";
-			break;
-		case "category-del":
-			include "./modules/category_del/category_del.php";
-			break;
-		case "category-list":
-			include "./modules/category_list/category_list.php";
+		case "category":
+			include "./modules/category/category.php";
 			break;
 		// -- User Info
 		case "user-add":
