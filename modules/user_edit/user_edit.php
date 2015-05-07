@@ -21,6 +21,12 @@
 		<input type="password" name="password"/>
 		<span id="label">Confirme a password</span>
 		<input type="password" name="confirm_password"/>
+		<span id="label">Status</span>
+		<select name="status">
+			<option value="null">Select one</option>
+			<option value="1" <?php if($tmp["status"] == true) print "SELECTED"; ?>>Enable</option>
+			<option value="0" <?php if($tmp["status"] == false) print "SELECTED"; ?>>Disable</option>
+		</select>
 
 		<div class="separator30"></div>
 
@@ -67,6 +73,7 @@
 
 			$user->setEmail($_POST["email"]);
 			$user->setRank($_POST["rank"]);
+			$user->setStatus((bool)$_POST["status"]);
 
 			if ($user->update()) {
 				print $language["actions"]["success"];

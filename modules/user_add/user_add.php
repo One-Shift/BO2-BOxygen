@@ -17,7 +17,12 @@
 		<input type="password" name="password" />
 		<span id="label">Confirme a password</span>
 		<input type="password" name="confirm_password" />
-
+		<span id="label">Status</span>
+		<select name="status">
+			<option value="null">Select one</option>
+			<option value="1">Enable</option>
+			<option value="0">Disable</option>
+		</select>
 		<div class="separator30"></div>
 
 		<div class="bottom-area">
@@ -33,6 +38,7 @@
 			$user->setPassword($_POST["password"]);
 			$user->setEmail($_POST["email"]);
 			$user->setRank($_POST["rank"]);
+			$user->setStatus((bool)$_POST["status"]);
 
 			if ($user->existUserByName() == 0){
 				if ($user->insert()){
