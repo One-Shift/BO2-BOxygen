@@ -14,16 +14,23 @@
 			<th>Nome</th>
 			<th>Email</th>
 			<th>Rank</th>
+			<th>Status</th>
 			<th>Sel.</th>
 		</tr>
 		<?php
 			foreach($user_list as $user){
+				if ($user["status"]) {
+					$enable = sprintf("<img src=\"%s/site-assets/images/icon_on.png\" alt=\"on\" title=\"publicado\"/>", $configuration["path-bo"]);
+				} else {
+					$enable = sprintf("<img src=\"%s/site-assets/images/icon_off.png\" alt=\"off\"  title=\"não publicado\"/>", $configuration["path-bo"]);
+				}
 				print str_replace(
 					array(
 						"{c2r-id}",
 						"{c2r-name}",
 						"{c2r-email}",
 						"{c2r-rank}",
+						"{c2r-status}",
 						"{c2r-path-bo}",
 						"{c2r-confirm}"
 					),
@@ -32,6 +39,7 @@
 						$user["name"],
 						$user["email"],
 						$user["rank"],
+						$enable,
 						$configuration["path-bo"],
 						$language["template"]["areyousure"]
 					),
