@@ -6,7 +6,7 @@ include "header.php";
 if (isset($_COOKIE[$configuration["cookie"]])) {
 	$account = explode(".", $_COOKIE[$configuration["cookie"]]);
 
-	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s')", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager");
+	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s') AND status = '%s'", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager", '1');
 	$source = $mysqli->query($query);
 	$nr = $source->num_rows;
 
