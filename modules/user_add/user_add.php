@@ -43,6 +43,21 @@
 			if ($user->existUserByName() == 0){
 				if ($user->insert()){
 					print $language["actions"]["success"];
+
+					$id = $mysqli->insert_id;
+	?>
+			<div class="separator30"></div>
+
+			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
+			<?= returnFilesList($id, "user"); ?>
+
+			<div class="separator30"></div>
+
+			<?php
+				print returnImgUploader("IMG Uploader", $id, "user",290,350);
+				print " ";
+				print returnDocsUploader("DOCS Uploader", $id, "user",290,350);
+
 				} else {
 					print $language["actions"]["failure"];
 				}
