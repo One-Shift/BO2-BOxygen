@@ -2,7 +2,7 @@
 	$object_article = new article();
 	$article_list = $object_article->returnAllArticles();
 ?>
-<h1 class="pageTitle">Article List</h1>
+<h1 class="pageTitle"><?= $language["mod_article"]["list_title"]?></h1>
 <div class="article-list">
 	<div class="button-area">
 		<a href="<?= $configuration["path-bo"] ?>/0/article/0/add" class="green"><i class="fa fa-plus"></i></a>
