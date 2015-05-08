@@ -11,7 +11,7 @@
 	<table class="db-list">
 		<tr>
 			<th><?= $language["mod_user"]["table_id"]?></th>
-			<th><?= $language["mod_user"]["table_name"]?>e</th>
+			<th><?= $language["mod_user"]["table_name"]?></th>
 			<th><?= $language["mod_user"]["table_email"]?></th>
 			<th><?= $language["mod_user"]["table_rank"]?></th>
 			<th><?= $language["mod_user"]["table_status"]?></th>

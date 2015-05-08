@@ -137,8 +137,8 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 							<div id="password"><input type="password" name="loginPassword" placeholder="password"></div>
 						</div>
 						<div id="buttons">
-							<div id="buttonlogin"><button type="submit" name="loginSubmit"><?= $language["login"]["b-login"]; ?></button></div>
-							<div id="buttonreset"><button type="reset" name="loginReset"><?= $language["login"]["b-reset"]; ?></button></div>
+							<div id="buttonlogin"><button type="submit" name="loginSubmit"><?= $language["login"]["b_login"]; ?></button></div>
+							<div id="buttonreset"><button type="reset" name="loginReset"><?= $language["login"]["b_reset"]; ?></button></div>
 						</div>
 					</form>
 				<?php } ?>
