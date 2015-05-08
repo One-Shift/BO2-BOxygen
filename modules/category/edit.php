@@ -60,7 +60,7 @@
 			<div>
 				<span id="label"><?= $language["form"]["label_section"]; ?></span>
 				<select name="category_type">
-				<option value="null"><?= $language["form"]["label_sel_section"]; ?></option>
+				<option value="null"><?= $language["form"]["label_section_sel"]; ?></option>
 				<?php
 					foreach ($configuration["category_sections"] as $section) {
 						if ($category["category_type"] == $section) {
