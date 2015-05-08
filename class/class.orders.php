@@ -36,8 +36,8 @@ class orders {
 		foreach ($l as $item) {
 			$list .= "\n\t<product>\n\t\t<id>".$item["id"]."</id>\n\t\t<quantity>".$item["quantity"]."</quantity>\n\t\t<content>".$item["content"]."</content>\n\t\t<price>".$item["id"]."</price>\n\t\t<vat>".$item["vat"]."</vat>\n\t\t<discount>".(($item["discount"] !== 0) ? $item["price"] : $item["discount"])."</discount>\n\t</product>";
 
-			$total += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]);
-			$vat += (($item["discount"] !== 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100);
+			$total += (($item["discount"] != 0) ? $item["price"] : $item["discount"]);
+			$vat += (($item["discount"] != 0) ? $item["price"] : $item["discount"]) * ($item["vat"] / 100);
 		}
 
 		// save info in var
@@ -47,19 +47,22 @@ class orders {
 	}
 
 	public function setDate($d = null) {
-		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+		$this->date = ($d != null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
 	public function setDateUpdate($d = null) {
-		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+		$this->date_update = ($d != null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
 	public function insert() {
 		global $configuration, $mysqli;
 
-		$query[0] = sprintf("INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')", $configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update);
+		$query = sprintf(
+			"INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')",
+			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update
+		);
 
-		return $mysqli->query($query[0]);
+		return $mysqli->query($query);
 	}
 
 	public function update() {
@@ -77,24 +80,30 @@ class orders {
 	public function returnOneOrder() {
 		global $configuration, $mysqli;
 
-		$query[0] = sprintf("SELECT * FROM %s_orders WHERE id = '%s'", $configuration["mysql-prefix"], $this->id);
-		$source[0] = $mysqli->query($query[0]);
+		$query = sprintf(
+			"SELECT * FROM %s_orders WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->id
+		);
+		$source = $mysqli->query($query);
 
-		return $source[0]->fetch_assoc();
+		return $source->fetch_assoc();
 	}
 
 	public function returnAllOrders() {
 		global $configuration, $mysqli;
 
-		$query[0] = sprintf("SELECT * FROM %s_orders WHERE true ORDER BY id DESC", $configuration["mysql-prefix"]);
-		$source[0] = $mysqli->query($query[0]);
+		$query = sprintf(
+			"SELECT * FROM %s_orders WHERE true ORDER BY id DESC",
+			$configuration["mysql-prefix"]
+		);
+		$source = $mysqli->query($query);
 
 		$toReturn = array();
 		$i = 0;
 
-		if ($source[0]->num_rows > 0) { // verificar se é returnado pelo menos 1
-			while ($data[0] = $source[0]->fetch_assoc()) {
-				$toReturn[$i] = $data[0];
+		if ($source->num_rows > 0) { // verificar se é returnado pelo menos 1
+			while ($data = $source->fetch_assoc()) {
+				$toReturn[$i] = $data;
 				$i++;
 			}
 		} else {
