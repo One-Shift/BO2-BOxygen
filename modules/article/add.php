@@ -80,7 +80,7 @@
 
 	<span id="label"><?= $language["form"]["label_category"]; ?></span>
 	<select name="category">
-		<option value="null"><?= $language["form"]["label_sel_category"]; ?></option>
+		<option value="null"><?= $language["form"]["label_category_sel"]; ?></option>
 	<?php
 		$category = new category();
 
