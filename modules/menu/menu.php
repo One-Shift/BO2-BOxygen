@@ -1,7 +1,7 @@
 <a href="{c2r-path-bo}/0/user/">{c2r-menu-users}</a>
 <a href="{c2r-path-bo}/0/category/">{c2r-menu-categories}</a>
 <a href="{c2r-path-bo}/0/article/">{c2r-menu-articles}</a>
-<a href="{c2r-path-bo}/0/product-list/">{c2r-menu-products}</a>
+<a href="{c2r-path-bo}/0/product/">{c2r-menu-products}</a>
 <a href="{c2r-path-bo}/0/orders/">{c2r-menu-order}</a>
 <a href="{c2r-path-bo}/0/newsletters/">{c2r-menu-newsletters}</a>
 <a href="{c2r-path-bo}/0/controller-files/">{c2r-menu-controller-files}</a>

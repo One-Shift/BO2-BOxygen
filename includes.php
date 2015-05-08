@@ -8,18 +8,8 @@ if ($account["login"]) { // verificar se está autenticado
 		// -- Article
 		case "article": include "./modules/article/article.php";
 			break;
-		// -- Products
-		case "product-add":
-			include "./modules/product_add/product_add.php";
-			break;
-		case "product-edit":
-			include "./modules/product_edit/product_edit.php";
-			break;
-		case "product-del":
-			include "./modules/product_del/product_del.php";
-			break;
-		case "product-list":
-			include "./modules/product_list/product_list.php";
+		// -- Product
+		case "product": include "./modules/product/product.php";
 			break;
 		// -- Orders
 		case "orders":
