@@ -1,4 +1,4 @@
-<h1 class="pageTitle">User Del</h1>
+<h1 class="pageTitle"><?= $language["mod_user"]["delete_title"]?></h1>
 <?php
 	if ($id !== null) {
 		$user = new user();
@@ -12,7 +12,7 @@
 				print  $language["actions"]["failure"];
 			}
 		} else {
-			print $language["mod_user"]["owner-delete-failure"];
+			print $language["mod_user"]["owner_delete_failure"];
 		}
 	}else{
 		print  $language["actions"]["error"];

@@ -2,22 +2,23 @@
 	$object_user = new user();
 	$user_list = $object_user->returnAllUsers();
 ?>
-<h1 class="pageTitle">User List</h1>
+<h1 class="pageTitle"><?= $language["mod_user"]["list_title"]?></h1>
 <div class="user-list">
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/user-add/" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?php print $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
-    
+
 	<table class="db-list">
 		<tr>
-			<th>#</th>
-			<th>Nome</th>
-			<th>Email</th>
-			<th>Rank</th>
-			<th>Status</th>
-			<th>Sel.</th>
+			<th><?= $language["mod_user"]["table_id"]?></th>
+			<th><?= $language["mod_user"]["table_name"]?>e</th>
+			<th><?= $language["mod_user"]["table_email"]?></th>
+			<th><?= $language["mod_user"]["table_rank"]?></th>
+			<th><?= $language["mod_user"]["table_status"]?></th>
+			<th><?= $language["mod_user"]["table_sel"]?></th>
 		</tr>
 		<?php
+		if (count($user_list) != 0) {
 			foreach($user_list as $user){
 				if ($user["status"]) {
 					$enable = sprintf("<img src=\"%s/site-assets/images/icon_on.png\" alt=\"on\" title=\"publicado\"/>", $configuration["path-bo"]);
@@ -43,14 +44,21 @@
 						$configuration["path-bo"],
 						$language["template"]["areyousure"]
 					),
-					file_get_contents("./modules/user_list/templates-e/line.html")
+					file_get_contents("./modules/user/templates-e/line.html")
 				);
 			}
+		}else {
+			print str_replace(
+					"{c2r-noresults}",
+					$language["template"]["noresults"],
+					file_get_contents("./modules/user/templates-e/line-noresults.html")
+				);
+		}
 		?>
 	</table>
-    
+
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/user-add/" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?php print $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 
 </div>

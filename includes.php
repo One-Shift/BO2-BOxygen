@@ -29,18 +29,9 @@ if ($account["login"]) { // verificar se está autenticado
 		case "category":
 			include "./modules/category/category.php";
 			break;
-		// -- User Info
-		case "user-add":
-			include "./modules/user_add/user_add.php";
-			break;
-		case "user-edit":
-			include "./modules/user_edit/user_edit.php";
-			break;
-		case "user-del":
-			include "./modules/user_del/user_del.php";
-			break;
-		case "user-list":
-			include "./modules/user_list/user_list.php";
+		// -- User
+		case "user":
+			include "./modules/user/user.php";
 			break;
 		// -- Newsletters
 		case "newsletters":

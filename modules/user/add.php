@@ -1,32 +1,32 @@
-<h1 class="pageTitle"><?= $language["mod_user"]["add-title"]; ?></h1>
+<h1 class="pageTitle"><?= $language["mod_user"]["add_title"]; ?></h1>
 	<?php
 	if (!isset($_POST["save"])) {
 	?>
 	<form method="post">
-		<span id="label">Rank</span>
+		<span id="label"><?= $language["form"]["label_rank"]; ?></span>
 		<select name="rank">
-			<option value="null">Selecione um rank de utilizador</option>
-			<option value="manager">Mananger</option>
-			<option value="member">Member</option>
+			<option value="null"><?= $language["form"]["label_rank_sel"]; ?></option>
+			<option value="manager"><?= $language["form"]["label_rank_sel_manager"]; ?></option>
+			<option value="member"><?= $language["form"]["label_rank_sel_member"]; ?></option>
 		</select>
-		<span id="label">Nome</span>
+		<span id="label"><?= $language["form"]["label_name"]; ?></span>
 		<input type="text" name="username" />
-		<span id="label">E-Mail</span>
+		<span id="label"><?= $language["form"]["label_email"]; ?></span>
 		<input type="email" name="email" />
-		<span id="label">Password</span>
+		<span id="label"><?= $language["form"]["label_password"]; ?></span>
 		<input type="password" name="password" />
-		<span id="label">Confirme a password</span>
+		<span id="label"><?= $language["form"]["label_password_re"]; ?></span>
 		<input type="password" name="confirm_password" />
-		<span id="label">Status</span>
+		<span id="label"><?= $language["form"]["label_status"]; ?></span>
 		<select name="status">
-			<option value="null">Select one</option>
-			<option value="1">Enable</option>
-			<option value="0">Disable</option>
+			<option value="null"><?= $language["form"]["label_status_sel"]; ?></option>
+			<option value="1"><?= $language["form"]["label_status_sel_enable"]; ?></option>
+			<option value="0"><?= $language["form"]["label_status_sel_disable"]; ?></option>
 		</select>
 		<div class="separator30"></div>
 
 		<div class="bottom-area">
-			  <button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() == $('input[name=confirm_password]').val() && $('input[name=password]').val() != '' && $('input[name=confirm_password]').val() != '') {return true;} else {alert('Passwords não coincidem!'); return false;}"><i class="fa fa-floppy-o"></i></button>
+			  <button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() == $('input[name=confirm_password]').val() && $('input[name=password]').val() != '' && $('input[name=confirm_password]').val() != '') {return true;} else {alert('<?= $language["form"]["label_password_error"]; ?>'); return false;}"><i class="fa fa-floppy-o"></i></button>
 			  <button class="red" title="cancel" type="reset" name="cancel"><i class="fa fa-times"></i></button>
 		</div>
 	</form>
@@ -62,10 +62,10 @@
 					print $language["actions"]["failure"];
 				}
 			} else {
-				print "O username ja existe";
+				print $language["form"]["label_name_duplicated"];
 			}
 		} else {
-			print "Email invalido";
+			print $language["form"]["label_email_invalid"];
 			print "<script type=\"text/javascript\">setTimeout(goBack(),2000);</script>";
 		}
 	}
