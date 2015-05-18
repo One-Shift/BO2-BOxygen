@@ -108,8 +108,9 @@ header('Content-Type: text/html; charset=utf-8');
 						$fileName = $time . '.' . $data['extension'];
 						$filePath = '../../../u-docs/' . $fileName;
 
-						$query = sprintf("INSERT INTO %s_documents (file, alt_1, alt_2, module, priority, id_ass, date)' .
-								' VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')", $configuration['mysql-prefix'], $fileName, $alt_2, $module, $id, date('Y-m-d H:i:s', $time));
+						$query = sprintf("INSERT INTO %s_documents (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')",
+										 $configuration['mysql-prefix'], $fileName, $alt, $alt_2, $module, $id, date('Y-m-d H:i:s', $time)
+										);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
 							if ($mysqli->query($query)) {
