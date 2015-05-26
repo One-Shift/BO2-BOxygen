@@ -27,7 +27,8 @@
 			<option value="1" <?php if($tmp["status"] == true) print "SELECTED"; ?>><?= $language["form"]["label_status_sel_enable"]; ?></option>
 			<option value="0" <?php if($tmp["status"] == false) print "SELECTED"; ?>><?= $language["form"]["label_status_sel_disable"]; ?></option>
 		</select>
-
+		<span id="label"><?= $language["form"]["label_code"]; ?></span>
+		<textarea name="code"><?= $tmp["code"]; ?></textarea>
 		<div class="separator30"></div>
 
 		<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
@@ -74,6 +75,7 @@
 			$user->setEmail($_POST["email"]);
 			$user->setRank($_POST["rank"]);
 			$user->setStatus((bool)$_POST["status"]);
+			$user->setCode($_POST["code"]);
 
 			if ($user->update()) {
 				print $language["actions"]["success"];

@@ -23,6 +23,8 @@
 			<option value="1"><?= $language["form"]["label_status_sel_enable"]; ?></option>
 			<option value="0"><?= $language["form"]["label_status_sel_disable"]; ?></option>
 		</select>
+		<span id="label"><?= $language["form"]["label_code"]; ?></span>
+		<textarea name="code"></textarea>
 		<div class="separator30"></div>
 
 		<div class="bottom-area">
@@ -39,6 +41,7 @@
 			$user->setEmail($_POST["email"]);
 			$user->setRank($_POST["rank"]);
 			$user->setStatus((bool)$_POST["status"]);
+			$user->setCode($_POST["code"]);
 
 			if ($user->existUserByName() == 0){
 				if ($user->insert()){
