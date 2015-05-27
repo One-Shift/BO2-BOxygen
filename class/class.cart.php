@@ -1,16 +1,29 @@
 <?php
 
 class cart {
+	protected $id;
+	protected $product_id;
 	protected $quantity;
+	protected $user_id;
 	protected $date;
 	protected $date_update;
 
-	public function __construct() {
+	public function __construct() {}
 
+	public function setId($i) {
+		$this->id = $i;
+	}
+
+	public function setProduct($p) {
+		$this->product_id = $p;
 	}
 
 	public function setQuantity($q = 1) {
 		$this->quantity = $q;
+	}
+
+	public function setUser($u) {
+		$this->user_id = $u;
 	}
 
 	public function setDate($d = null) {
