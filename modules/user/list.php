@@ -5,7 +5,7 @@
 <h1 class="pageTitle"><?= $language["mod_user"]["list_title"]?></h1>
 <div class="user-list">
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 
 	<table class="db-list">
@@ -44,21 +44,21 @@
 						$configuration["path-bo"],
 						$language["template"]["areyousure"]
 					),
-					file_get_contents("./modules/user/templates-e/line.html")
+					file_get_contents("modules/user/templates-e/line.html")
 				);
 			}
 		}else {
 			print str_replace(
 					"{c2r-noresults}",
 					$language["template"]["noresults"],
-					file_get_contents("./modules/user/templates-e/line-noresults.html")
+					file_get_contents("modules/user/templates-e/line-noresults.html")
 				);
 		}
 		?>
 	</table>
 
 	<div class="button-area">
-		<a href="<?php print $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/user/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 
 </div>
