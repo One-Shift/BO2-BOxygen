@@ -69,7 +69,7 @@
 			} else if (empty($_POST["password"]) && empty($_POST["confirm_password"])) { // verificar se ambos os campos estão vazios
 				$user->setOldPassword($tmp["password"]);
 			} else {
-				print "ola";
+				print $language["form"]["label_password_error"];
 			}
 
 			$user->setEmail($_POST["email"]);
