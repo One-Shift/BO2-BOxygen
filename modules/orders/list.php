@@ -44,14 +44,14 @@
 					$configuration["path-bo"],
 					$language["template"]["areyousure"]
 				),
-				file_get_contents("./modules/orders/templates-e/line.html")
+				file_get_contents("modules/orders/templates-e/line.html")
 			);
 		}
 	} else {
 		print str_replace(
 				"{c2r-noresults}", 
 				$language["template"]["noresults"],
-				file_get_contents("./modules/orders/templates-e/answer-line-noresults.html")
+				file_get_contents("modules/orders/templates-e/answer-line-noresults.html")
 			);
 	}
 	?>
