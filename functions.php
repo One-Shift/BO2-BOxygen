@@ -131,3 +131,10 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts 
 
 	return $url;
 }
+
+function getValueByTAG ($tag, $searchOn) {
+	$pattern = "/<".$tag.">(.*?)<\/".$tag.">/s";
+	preg_match_all($pattern, $searchOn, $result, PREG_PATTERN_ORDER);
+
+	return $result;
+}
