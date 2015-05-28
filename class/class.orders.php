@@ -114,20 +114,59 @@ class orders {
 	}
 
 	public function cartToArray($cart) {
-		$tmp = explode("[spr]", $cart); // 0 - moradas, 1 - lista, 2 - preços, 3 - metodos de pagamento
+		$toReturn = null;
 
-		// criação da lista
-		$tmpList = explode("\n", $tmp[1]);
+		/* ADDRESS BEGIN */
+		$address = getValueByTAG("address", $cart);
+
+		$invoice = getValueByTAG("invoice", $address[1][0]);
+		$send = getValueByTAG("send", $address[1][0]);
+
+		$toReturn["invoice"] = $invoice[1][0];
+		$toReturn["send"] = $send[1][0];
+		/* ADDRESS END */
+		/* PRODUCT LIST BEGIN */
+		$shopping_list = getValueByTAG("shopping-list", $cart);
+		$shopping_list = $shopping_list[0][0];
+
+		$tmp = getValueByTAG("product", $shopping_list);
+
+		$products = null;
 		$i = 0;
 
-		foreach ($tmpList as $line) {
-			$toReturn["products"][$i] = explode("[/]", $line); // 0 - id, 1 - quantidade, 2 - valor, 3 - iva em %
+		foreach ($tmp[1] as $product) {
+			$tmp_id = getValueByTAG("id", $product);
+			$tmp_quantity = getValueByTAG("quantity", $product);
+			$tmp_content = getValueByTAG("content", $product);
+			$tmp_price = getValueByTAG("price", $product);
+			$tmp_vat = getValueByTAG("vat", $product);
+			$tmp_discount = getValueByTAG("discount", $product);
+
+			$products[$i] = [
+				"id" => $tmp_id[1][0],
+				"quantity" => (int)$tmp_quantity[1][0],
+				"content" => $tmp_content[1][0],
+				"price" => $tmp_price[1][0],
+				"vat" => $tmp_vat[1][0],
+				"discount" => $tmp_discount[1][0]
+			];
+
 			$i++;
 		}
+		$toReturn["products"] = $products;
+		/* PRODUCT LIST END */
+		/* FINAL DATA BEGIN */
+		$bill = getValueByTAG("bill", $buy);
+		$total = getValueByTAG("total",$bill[1][0]);
+		$vat = getValueByTAG("vat",$bill[1][0]);
 
-		$toReturn["address"] = explode("[/]", $tmp[0]); // 0 - morada faturação, 1 - morada entrega
-		$toReturn["price"] = explode("[/]", $tmp[2]); // 0 - valor total s/ iva, 1 - valor do iva
-		$toReturn["payment"] = $tmp["3"];
+		$toReturn["total"] = $total[1][0];
+		$toReturn["vat"] = $vat[1][0];
+		/* FINAL DATA END */
+		/* PAYMENT BEGIN*/
+		$payment = getValueByTAG("payment", $buy);
+		$toReturn["payment"] = $payment[1][0];
+		/* PAYMENT END */
 
 		return $toReturn;
 	}
