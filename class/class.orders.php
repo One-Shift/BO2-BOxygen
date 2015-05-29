@@ -54,6 +54,10 @@ class orders {
 		$this->date_update = ($d != null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
+	public function setStatus($s) {
+		$this->status = $s;
+	}
+
 	public function insert() {
 		global $configuration, $mysqli;
 
@@ -67,14 +71,28 @@ class orders {
 
 	public function update() {
 		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"UPDATE %s_orders SET user_id = '%s', cart = '%s', date = '%s', date_update = '%s', status = '%s' WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->user_id
+		);
+
+		return $mysqli->query($query);
 	}
 
 	public function delete() {
 		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"DELETE FROM %s_orders WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->id, $this->cart, $this->date, $this->date_update, $this->status
+		);
+
+		return $mysqli->query($query);
 	}
 
 	public function returnObject() {
-		return array();
+		return [];
 	}
 
 	public function returnOneOrder() {
