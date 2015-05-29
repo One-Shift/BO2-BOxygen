@@ -7,7 +7,7 @@ class orders {
 	protected $cart;
 	protected $date;
 	protected $date_update;
-	protected $status = false;
+	protected $status = 0;
 
 	public function __construct() {
 
@@ -55,7 +55,7 @@ class orders {
 	}
 
 	public function setStatus($s) {
-		$this->status = $s;
+		$this->status = (int)$s;
 	}
 
 	public function insert() {
@@ -74,7 +74,7 @@ class orders {
 
 		$query = sprintf(
 			"UPDATE %s_orders SET user_id = '%s', cart = '%s', date = '%s', date_update = '%s', status = '%s' WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->user_id
+			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update, $this->status
 		);
 
 		return $mysqli->query($query);
@@ -85,7 +85,18 @@ class orders {
 
 		$query = sprintf(
 			"DELETE FROM %s_orders WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->id, $this->cart, $this->date, $this->date_update, $this->status
+			$configuration["mysql-prefix"], $this->id
+		);
+
+		return $mysqli->query($query);
+	}
+
+	public function updateStatusById() {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"UPDATE %s_orders SET status = '%s' WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->status,  $this->id
 		);
 
 		return $mysqli->query($query);
