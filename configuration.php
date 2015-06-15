@@ -4,7 +4,6 @@ $configuration = [
 	// System
 	"minify" => true,
 	"pub" => true,
-	"timezone" => "Europe/Lisbon",
 	// Site info
 	"site-name" => " :: versão demo :: ",
 	"site-slogan" => "",

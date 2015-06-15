@@ -1,7 +1,4 @@
 <?php
-if ($configuration["timezone"] != false) {
-	date_default_timezone_set($configuration["timezone"]);
-}
 
 // CONFIGURAÇÕES
 include "configuration.php";
