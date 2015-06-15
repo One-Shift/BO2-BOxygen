@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set($configuration["timezone"]);
+
 // CONFIGURAÇÕES
 include "configuration.php";
 include "connect.php";
