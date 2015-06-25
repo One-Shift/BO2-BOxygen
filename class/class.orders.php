@@ -5,6 +5,7 @@ class orders {
 	protected $id;
 	protected $user_id;
 	protected $cart;
+	protected $code;
 	protected $date;
 	protected $date_update;
 	protected $status = 0;
@@ -46,6 +47,10 @@ class orders {
 		return true;
 	}
 
+	public function setCode ($d) {
+		$this->code = $c;
+	}
+
 	public function setDate($d = null) {
 		$this->date = ($d != null) ? $d : date("Y-m-d H:i:s", time());
 	}
@@ -62,8 +67,8 @@ class orders {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"INSERT INTO %s_orders (user_id, cart, date, date_update) VALUES ('%s', '%s', '%s', '%s')",
-			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update
+			"INSERT INTO %s_orders (user_id, cart, code, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s')",
+			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->code, $this->date, $this->date_update
 		);
 
 		return $mysqli->query($query);
@@ -73,8 +78,8 @@ class orders {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"UPDATE %s_orders SET user_id = '%s', cart = '%s', date = '%s', date_update = '%s', status = '%s' WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->date, $this->date_update, $this->status
+			"UPDATE %s_orders SET user_id = '%s', cart = '%s', code = '%s', date = '%s', date_update = '%s', status = '%s' WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->user_id, $this->cart, $this->code, $this->date, $this->date_update, $this->status
 		);
 
 		return $mysqli->query($query);
