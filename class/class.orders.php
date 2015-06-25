@@ -47,7 +47,7 @@ class orders {
 		return true;
 	}
 
-	public function setCode ($d) {
+	public function setCode ($c) {
 		$this->code = $c;
 	}
 
