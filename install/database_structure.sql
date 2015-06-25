@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `prefix_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `cart` text CHARACTER SET utf8 NOT NULL,
+  `code` text,
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   `status` int(11) NOT NULL,
