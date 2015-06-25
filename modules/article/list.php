@@ -1,6 +1,9 @@
 <?php
 	$object_article = new article();
 	$article_list = $object_article->returnAllArticles();
+
+	$line = file_get_contents("modules/article/templates-e/line.html");
+	$line_noresult = file_get_contents("modules/article/templates-e/line-noresults.html");
 ?>
 <h1 class="pageTitle"><?= $language["mod_article"]["list_title"]?></h1>
 <div class="article-list">
@@ -47,14 +50,14 @@
 							$configuration["path-bo"],
 							$language["template"]["areyousure"]
 						),
-						file_get_contents("./modules/article/templates-e/line.html")
+						$line
 					);
 			}
 		}else {
 			print str_replace(
 					"{c2r-noresults}",
 					$language["template"]["noresults"],
-					file_get_contents("./modules/article/templates-e/line-noresults.html")
+					$line_noresult
 				);
 		}
 
