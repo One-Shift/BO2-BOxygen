@@ -18,10 +18,10 @@
 			<option><?= $language["form"]["label_category_sel"]?></option>
 			<?php
 				$object_category = new category();
-				$category_list = $object_category->returnCategories(sprintf("WHERE category_type = '%s' ORDER BY %s ASC", $configuration["category_sections"][0], "name_1"));
+				$category_list = $object_category->returnCategories(sprintf("WHERE category_type = '%s' ORDER BY %s", $configuration["category_sections"][0], "ordering ASC, id ASC"));
 
 				foreach($category_list as $category){
-					printf("<option value=\"%s\">%s</option>", $category["id"], $category["name_1"]);
+					printf("<option value=\"%s\" %s>%s</option>", $category["id"], ($category["id"] == $id) ? "active" : null, $category["name_1"]);
 				}
 			?>
 
