@@ -4,6 +4,7 @@ $configuration = [
 	// System
 	"minify" => true,
 	"pub" => true,
+	"restricted" => true,
 	// Site info
 	"site-name" => " :: versão demo :: ",
 	"site-slogan" => "",
