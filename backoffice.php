@@ -16,6 +16,14 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 		unset($account[0]);
 		unset($account[1]);
 		$account["login"] = true;
+		$userData = $source->fetch_assoc();
+
+		if($configuration["restricted"]){
+			if($userData["rank"] == "owner"){
+				$configuration["restricted"] = false;
+			}
+		}
+		unset($userData);
 	} else {
 		$account["login"] = false;
 		setcookie($configuration['cookie'], null, time() - 3600);
@@ -44,6 +52,7 @@ if (isset($_GET["a"]) && !empty($_GET["a"])) {
 } else {
 	$a = null;
 }
+
 
 //logout
 $logout = false;

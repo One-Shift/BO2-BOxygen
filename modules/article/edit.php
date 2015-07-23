@@ -8,6 +8,10 @@
 		$object_article = new article();
 		$object_article->setId($id);
 		$article = $object_article->returnOneArticle();
+
+		if($configuration["restricted"] && $account["name"] != $article["user_id"]){
+			print $language["actions"]["failure"];
+		}else{
 		?>
 		<div class="separator30"></div>
 
@@ -138,6 +142,7 @@
 
 		</form>
 <?php
+		}
 		} else {
 			$article = new article();
 			$article->setId($id);

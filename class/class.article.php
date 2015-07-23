@@ -177,18 +177,34 @@ class article {
 	}
 
 	public function returnOneArticle() {
-		global $configuration, $mysqli;
+		global $configuration, $mysqli, $account;
 
-		$query = sprintf("SELECT * FROM %s_articles WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
+		if(!$configuration["restricted"]){
+			$block = null;
+		}else{
+			$block = sprintf("AND user_id = '%s'", $account["name"]);
+		}
+
+		$query = sprintf("SELECT * FROM %s_articles WHERE id = '%s' %s LIMIT 1", $configuration['mysql-prefix'], $this->id, $block);
 		$source = $mysqli->query($query);
 
 		return $source->fetch_assoc();
 	}
 
 	public function returnAllArticles() {
-		global $configuration, $mysqli;
+		global $configuration, $mysqli, $account;
 
-		$query = sprintf("SELECT * FROM %s_articles WHERE true ORDER BY id ASC", $configuration['mysql-prefix']);
+		if(!$configuration["restricted"]){
+			$block = "true";
+		}else{
+			$block = sprintf("user_id = '%s'", $account["name"]);
+		}
+
+		$query = sprintf(
+			"SELECT * FROM %s_articles WHERE %s ORDER BY id ASC",
+			$configuration['mysql-prefix'],
+			$block
+		);
 		$source = $mysqli->query($query);
 
 		$toReturn = array();
