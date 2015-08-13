@@ -79,20 +79,18 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 		<meta name="msapplication-TileImage" content="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_144.png" />
 		<!-- end favicon -->
 
-		<meta property="og:site_name" content="{c2r-sitename}" />
+		<meta property="og:site_name" content="<?= $configuration["BO2-name"]; ?>" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="<?= $configuration["path-bo"] ?>" />
 		<meta property="og:image" content="<?= $configuration["path-bo"] ?>/site-assets/favicon/favicon_128.png" />
-		<meta property="og:title" content="{c2r-sitename}" />
-		<meta property="og:description" content="{c2r-description}" />
+		<meta property="og:title" content="<?= $configuration["BO2-name"]; ?>" />
+		<meta property="og:description" content="<?= $language["system"]["description"] ?>" />
 
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
-		<meta name="keywords" content="{c2r-keywords}" />
-		<meta name="description" content="{c2r-description}" />
+		<meta name="description" content="<?= $language["system"]["description"] ?>" />
 		<meta name="robots" content="index" />
 		<meta name="author" content="NexuS-Pt, work team" />
-		<meta name="author-code" content="#someone#" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
