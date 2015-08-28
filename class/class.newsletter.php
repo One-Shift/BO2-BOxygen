@@ -10,7 +10,7 @@ class newsletters {
 	protected $state;
 
 	public function __construct() {
-		
+
 	}
 
 	public function setId($i) {
