@@ -103,8 +103,8 @@ header('Content-Type: text/html; charset=utf-8');
 					$nr = $source->num_rows;
 
 					if ($nr > 0) {
-						$alt_1 = $mysqli->real_escape_string(utf8_decode(strip_tags($_REQUEST['alt_1'])));
-						$alt_2 = $mysqli->real_escape_string(utf8_decode(strip_tags($_REQUEST['alt_2'])));
+						$alt_1 = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_1']));
+						$alt_2 = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_2']));
 						$data = $source->fetch_array(MYSQLI_ASSOC);
 						$time = time();
 						$fileName = $time . '.' . $data['extension'];
