@@ -122,7 +122,8 @@
 					<button type="submit" name="orderstate" class="green" value="0"><?= $language["mod_order"][0] ?></button>
 					<button type="submit" name="orderstate" class="green" value="1"><?= $language["mod_order"][1] ?></button>
 					<button type="submit" name="orderstate" class="green" value="2"><?= $language["mod_order"][2] ?></button>
-					<button type="submit" name="orderstate" class="red" value="3"><?= $language["mod_order"][3] ?></button>
+					<button type="submit" name="orderstate" class="green" value="3"><?= $language["mod_order"][3] ?></button>
+					<button type="submit" name="orderstate" class="red" value="10"><?= $language["mod_order"][10] ?></button>
 				</div>
 			</form>
 <?php
