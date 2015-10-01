@@ -5,6 +5,7 @@
 <a href="{c2r-path-bo}/0/orders/">{c2r-menu-order}</a>
 <a href="{c2r-path-bo}/0/newsletters/">{c2r-menu-newsletters}</a>
 <a href="{c2r-path-bo}/0/controller-files/">{c2r-menu-controller-files}</a>
+<a href="{c2r-path-bo}/0/vcard/">{c2r-menu-vcard}</a>
 
 <h3>{c2r-menu-account}</h3>
 <a href="{c2r-path-bo}/0/">{c2r-menu-begin}</a>

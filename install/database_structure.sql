@@ -176,3 +176,14 @@ CREATE TABLE IF NOT EXISTS `prefix_variables` (
   `value` varchar(50) CHARACTER SET utf8 NOT NULL,
   UNIQUE KEY `variable` (`variable`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `prefix_vcard` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `data` text NOT NULL,
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
+  `published` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
