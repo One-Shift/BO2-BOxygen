@@ -15,6 +15,7 @@ include "class/class.orders.php";
 include "class/class.product.php";
 include "class/class.search.php";
 include "class/class.user.php";
+include "class/class.vcard.php";
 
 //PHPMailer
 include "class/PHPMailer/class.phpmailer.php";
