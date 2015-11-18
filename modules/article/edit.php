@@ -77,7 +77,7 @@
 
 		<div>
 			<span id="label"><?= $language["form"]["label_date"]; ?></span>
-			<input type="text" name="date_update" value="<?= $article["date_update"]; ?>"/>
+			<input type="text" name="date" value="<?= $article["date"]; ?>"/>
 
 			<div class="separator30"></div>
 		</div>
@@ -160,7 +160,8 @@
 				$_POST["code"]
 			);
 			$article->setCategory($_POST["category"]);
-			$article->setDateUpdate($_POST["date_update"]);
+			$article->setDate($_POST["date"]);
+			$article->setDateUpdate(date("Y-m-d H:i:s", time()));
 			$article->setPublished($_POST["published"]);
 			$article->setonHome($_POST["onhome"]);
 			$article->setOrdering($_POST['order']);
