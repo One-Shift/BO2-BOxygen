@@ -120,7 +120,7 @@
 
 			<div>
 		<span id="label"><?= $language["form"]["label_date"]; ?></span>
-		<input type="text" name="date_update" value="<?= date("Y-m-d H:i:s"); ?>"/>
+		<input type="text" name="date" value="<?= $item["date"]; ?>"/>
 
 		<div class="separator30"></div>
 	</div>
@@ -184,7 +184,8 @@
 			$product->setDiscount($_POST["discount"]);
 
 			$product->setCategory($_POST["category"]);
-			$product->setDateUpdate($_POST["date_update"]);
+			$product->setDate($_POST["date"]);
+			$product->setDateUpdate(date("Y-m-d H:i:s", time()));
 			$product->setService($service);
 			$product->setPublished($published);
 			$product->setonHome($onhome);
