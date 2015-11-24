@@ -23,7 +23,7 @@ function returnEditor($textareanema, $content = "<div><br/><div>") {
 			. "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>", $textareanema, $textareanema, $content, $textareanema);
 }
 
-function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
+function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = array()) {
 	global $configuration;
 
 	$fName = $configuration["site-name"];
@@ -41,7 +41,8 @@ function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
 	$mail->Password = $configuration["mail-password"];
 	$mail->SetFrom($from, $fName . ' : ' . $lName);
 	$mail->Subject = $subject;
-	$mail->AddAddress($to, "User");
+	$mail->AddAddress($to);
+	$mail->AddReplyTo($replyTo);
 	$mail->MsgHTML($message);
 
 	if (count($attach) > 0) {
