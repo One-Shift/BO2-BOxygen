@@ -1,14 +1,14 @@
 <?php
-include '../../configuration.php';
-include '../../connect.php';
+include "../../configuration.php";
+include "../../connect.php";
 
 $language = parse_ini_file(
 	sprintf("../../languages/%s.ini", $configuration["language"]),
 	true
 );
 
-header('Content-Type: text/html; charset=utf-8');
-?>  
+header("Content-Type: text/html; charset=utf-8");
+?>
 <html>
 	<head>
 		<title>DOCS Uploader</title>
@@ -32,7 +32,7 @@ header('Content-Type: text/html; charset=utf-8');
 			}
 
 			button {
-				background: url('../../site-assets/images/bg-shade-light.png');
+				background: url("../../site-assets/images/bg-shade-light.png");
 				border: 1px solid rgb(221, 221, 221);
 				line-height: 25px;
 				padding-left: 5px;
@@ -64,49 +64,48 @@ header('Content-Type: text/html; charset=utf-8');
 		<?php
 		// SÓ ENTRA NO UPLOADER SE O COOKIE AINDA EXISTIR
 		// O UTILIZADORE TERÁ DE TER CUIDADO COM O TEMPO DE SESSÃO
-		if (isset($_REQUEST['mdl']) && isset($_REQUEST['i']) && !empty($_REQUEST['mdl']) && !empty($_REQUEST['i'])) {
-			$module = $mysqli->real_escape_string($_REQUEST['mdl']);
-			$id = $mysqli->real_escape_string(intval($_REQUEST['i']));
+		if (isset($_GET["mdl"]) && isset($_GET["i"]) && !empty($_GET["mdl"]) && !empty($_GET["i"])) {
+			$module = $mysqli->real_escape_string($_GET["mdl"]);
+			$id = $mysqli->real_escape_string(intval($_GET["i"]));
 
-			if (isset($_COOKIE[$configuration['cookie']])) {
-				if (!isset($_REQUEST['submit'])) {
+			if (isset($_COOKIE[$configuration["cookie"]])) {
+				if (!isset($_REQUEST["submit"])) {
 
 					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'document'", $configuration['mysql-prefix']);
 					$source = $mysqli->query($query);
 					while ($data = $source->fetch_assoc()) {
 						if (!isset($allowedFormats)) {
-							$allowedFormats = $data['extension'];
+							$allowedFormats = $data["extension"];
 						} else {
-							$allowedFormats .= ' ' . $data['extension'];
+							$allowedFormats .= " ".$data["extension"];
 						}
 					}
 
 					print
-							'<form method="post" enctype="multipart/form-data">' .
-							'<label>Alt _1:</label>' .
-							'<input type="text" name="alt_1" maxlength="255"/>' .
-							'<div class="spacer30"></div>' .
-							'<label>Code:</label>' .
-							'<textarea name="alt_2"></textarea>' .
-							'<div class="spacer30"></div>' .
-							'<label>File:</label>' .
-							'<input type="file" name="file"/>' .
-							'<div class="spacer30"></div>' .
-							'<button type="submit" name="submit" onclick="if ($(\'input[type=file]\').val() != \'\' && $(\'input[name=alt_1]\').val() != \'\') {return true;} else {alert(\'Preencha o campo ALT! Seleccione um Ficheiro!\'); return false} return false;">Submit</button>' .
-							'<blockquote>Alloowed Formats: ' . $allowedFormats . '</blockquote>' .
-							'</form>';
+							"<form method=\"post\" enctype=\"multipart/form-data\">".
+							"<label>Alt _1:</label>".
+							"<input type=\"text\" name=\"alt_1\" maxlength=\"255\"/>".
+							"<div class=\"spacer30\"></div>".
+							"<label>Code:</label>".
+							"<textarea name=\"alt_2\"></textarea>".
+							"<div class=\"spacer30\"></div>".
+							"<label>File:</label>".
+							"<input type=\"file\" name=\"file\"/>".
+							"<div class=\"spacer30\"></div>".
+							"<button type=\"submit\" name=\"submit\" onclick=\"if ($(\'input[type=file]\').val() != \'\' && $(\'input[name=alt_1]\').val() != \'\') {return true;} else {alert(\'Preencha o campo ALT! Seleccione um Ficheiro!\'); return false} return false;\">Submit</button>".
+							"<blockquote>Alloowed Formats:".$allowedFormats."</blockquote>".
+							"</form>";
 				} else {
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'document' AND type = '%s'", $configuration['mysql-prefix'], $_FILES['file']['type']);
+					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'document' AND type = '%s'", $configuration["mysql-prefix"], $_FILES["file"]["type"]);
 					$source = $mysqli->query($query);
-					$nr = $source->num_rows;
 
-					if ($nr > 0) {
-						$alt = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_1']));
-						$alt_2 = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_2']));
+					if ($source->num_rows > 0) {
+						$alt = $mysqli->real_escape_string($_POST["alt_1"]);
+						$alt_2 = $mysqli->real_escape_string($_POST["alt_2"]);
 						$data = $source->fetch_assoc();
 						$time = time();
-						$fileName = $time . '.' . $data['extension'];
-						$filePath = '../../../u-docs/' . $fileName;
+						$fileName = $time.".".$data["extension"];
+						$filePath = "../../../u-docs/" . $fileName;
 
 						$query = sprintf("INSERT INTO %s_documents (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')",
 										 $configuration['mysql-prefix'], $fileName, $alt, $alt_2, $module, $id, date('Y-m-d H:i:s', $time)
@@ -114,24 +113,24 @@ header('Content-Type: text/html; charset=utf-8');
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
 							if ($mysqli->query($query)) {
-								print '<p>File saved with sucess!</p>';
-								print '<button onclick="goTo(\'' . $filePath . '\');">Uploaded File (' . $_FILES['file']['name'] . ')</button>';
-								print '<button onclick="goTo(\'' . $_SERVER["REQUEST_URI"] . '\');">Adicionar Mais</button>';
+								print "<p>File saved with sucess!</p>";
+								print "<button onclick=\"goTo('".$filePath."');\">Uploaded File (".$_FILES["file"]["name"].")</button>";
+								print "<button onclick=\"goTo('".$_SERVER["REQUEST_URI"]."');\">Adicionar Mais</button>";
 							} else {
-								print '<p>Error Announce! The system can\'t save this entry on BD for unkown reason!</p>';
+								print "<p>Error Announce! The system can't save this entry on BD for unkown reason!</p>";
 							}
 						} else {
-							print '<p>Error Announce! The system can\'t save this file for unkown reason!</p>';
+							print "<p>Error Announce! The system can\'t save this file for unkown reason!</p>";
 						}
 					} else {
-						print '<p>Formato não conhecido pelo sistema!</p>';
+						print "<p>Formato não conhecido pelo sistema!</p>";
 					}
 				}
 			} else {
-				print '<p>Please login first!</p>';
+				print "<p>Please login first!</p>";
 			}
 		} else {
-			print '<p>The module can\'t be initialized!</p>';
+			print "<p>The module can\'t be initialized!</p>";
 		}
 		?>
 	</body>

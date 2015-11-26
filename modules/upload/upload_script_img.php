@@ -1,6 +1,6 @@
 <?php
-include '../../configuration.php';
-include '../../connect.php';
+include "../../configuration.php";
+include "../../connect.php";
 
 $language = parse_ini_file(
 	sprintf("../../languages/%s.ini", $configuration["language"]),
@@ -32,7 +32,7 @@ header('Content-Type: text/html; charset=utf-8');
 			}
 
 			button {
-				background: url('../../site-assets/images/bg-shade-light.png');
+				background: url("../../site-assets/images/bg-shade-light.png");
 				border: 1px solid rgb(221, 221, 221);
 				line-height: 25px;
 				padding-left: 5px;
@@ -64,59 +64,58 @@ header('Content-Type: text/html; charset=utf-8');
 		<?php
 		// SÓ ENTRA NO UPLOADER SE O COOKIE AINDA EXISTIR
 		// O UTILIZADORE TERÁ DE TER CUIDADO COM O TEMPO DE SESSÃO
-		if (isset($_REQUEST['mdl']) && isset($_REQUEST['i']) && !empty($_REQUEST['mdl']) && !empty($_REQUEST['i'])) {
-			$module = $mysqli->real_escape_string($_REQUEST['mdl']);
-			$id = $mysqli->real_escape_string(intval($_REQUEST['i']));
+		if (isset($_GET["mdl"]) && isset($_GET["i"]) && !empty($_GET["mdl"]) && !empty($_GET["i"])) {
+			$module = $mysqli->real_escape_string($_GET["mdl"]);
+			$id = $mysqli->real_escape_string(intval($_GET["i"]));
 
-			if (isset($_COOKIE[$configuration['cookie']])) {
-				if (!isset($_REQUEST['submit'])) {
+			if (isset($_COOKIE[$configuration["cookie"]])) {
+				if (!isset($_POST["submit"])) {
 
 					// search for allowed file types on Database
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image'", $configuration['mysql-prefix']);
+					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image'", $configuration["mysql-prefix"]);
 					$source = $mysqli->query($query);
 					while ($data = $source->fetch_assoc()) {
 						if (!isset($allowedFormats)) {
-							$allowedFormats = $data['extension'];
+							$allowedFormats = $data["extension"];
 						} else {
-							$allowedFormats .= ' ' . $data['extension'];
+							$allowedFormats .= " ".$data["extension"];
 						}
 					}
 
 					print
-							'<form method="post" enctype="multipart/form-data">' .
-							'<label>Alt _1:</label>' .
-							'<input type="text" name="alt_1" maxlength="255"/>' .
-							'<div class="spacer30"></div>' .
-							'<label>Code:</label>' .
-							'<textarea name="alt_2"></textarea>' .
-							'<div class="spacer30"></div>' .
-							'<label>File:</label>' .
-							'<input type="file" name="file"/>' .
-							'<div class="spacer30"></div>' .
-							'<button type="submit" name="submit" onclick="if ($(\'input[type=file]\').val() != \'\' && $(\'input[name=alt_1]\').val() != \'\') {return true;} else {alert(\'Preencha o campo ALT! Seleccione um Ficheiro!\'); return false} return false;">Submit</button>' .
-							'<blockquote>Alloowed Formats: ' . $allowedFormats . '</blockquote>' .
-							'</form>';
+							"<form method=\"post\" enctype=\"multipart/form-data\">".
+							"<label>Alt _1:</label>".
+							"<input type=\"text\" name=\"alt_1\" maxlength=\"255\" />".
+							"<div class=\"spacer30\"></div>".
+							"<label>Code:</label>".
+							"<textarea name=\"alt_2\"></textarea>".
+							"<div class=\"spacer30\"></div>".
+							"<label>File:</label>".
+							"<input type=\"file\" name=\"file\" />".
+							"<div class=\"spacer30\"></div>".
+							"<button type=\"submit\" name=\"submit\" onclick=\"if ($('input[type=file]').val() != '' && $('input[name=alt_1]').val() != '') {return true;} else {alert('Preencha o campo ALT! Seleccione um Ficheiro!'); return false} return false;\">Submit</button>".
+							"<blockquote>Alloowed Formats: ".$allowedFormats."</blockquote>".
+							"</form>";
 				} else {
 					// verification if the file uploaded have permission to be save
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'", $configuration['mysql-prefix'], $_FILES['file']['type']);
+					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'", $configuration["mysql-prefix"], $_FILES["file"]["type"]);
 					$source = $mysqli->query($query);
-					$nr = $source->num_rows;
 
-					if ($nr > 0) {
-						$alt_1 = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_1']));
-						$alt_2 = $mysqli->real_escape_string(utf8_decode($_REQUEST['alt_2']));
-						$data = $source->fetch_array(MYSQLI_ASSOC);
+					if ($source->num_rows > 0) {
+						$alt_1 = $mysqli->real_escape_string(utf8_decode($_POST["alt_1"]));
+						$alt_2 = $mysqli->real_escape_string(utf8_decode($_POST["alt_2"]));
+						$data = $source->fetch_assoc();
 						$time = time();
-						$fileName = $time . '.' . $data['extension'];
-						$filePath = '../../../u-img/' . $fileName;
+						$fileName = $time.".".$data["extension"];
+						$filePath = "../../../u-img/".$fileName;
 
-						$query = sprintf("INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')", $configuration['mysql-prefix'], $fileName, $alt_1, $alt_2, $module, $id, date('Y-m-d H:i:s', $time));
+						$query = sprintf("INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')", $configuration['mysql-prefix'], $fileName, $alt_1, $alt_2, $module, $id, date("Y-m-d H:i:s", $time));
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
 							if ($mysqli->query($query)) {
 								print "<p>File saved with sucess!</p>";
-								print '<img class="thumb" alt="thumb" src="' . $filePath . '"/>';
-								print "<button onclick=\"goTo('" . $_SERVER["REQUEST_URI"] . "');\">Adicionar Mais</button>";
+								print "<img class=\"thumb\" alt=\"thumb\" src=\"".$filePath."\" />";
+								print "<button onclick=\"goTo('".$_SERVER["REQUEST_URI"]."');\">Adicionar Mais</button>";
 							} else {
 								print "<p>Error Announce! The system can't save this entry on BD for unkown reason</p>";
 							}
