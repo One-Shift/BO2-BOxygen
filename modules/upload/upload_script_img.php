@@ -7,7 +7,7 @@ $language = parse_ini_file(
 	true
 );
 
-header('Content-Type: text/html; charset=utf-8');
+header("Content-Type: text/html; charset=utf-8");
 ?>
 <html>
 	<head>
@@ -72,7 +72,10 @@ header('Content-Type: text/html; charset=utf-8');
 				if (!isset($_POST["submit"])) {
 
 					// search for allowed file types on Database
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image'", $configuration["mysql-prefix"]);
+					$query = sprintf(
+						"SELECT * FROM %s_files_type WHERE upload_format = 'image'",
+						$configuration["mysql-prefix"]
+					);
 					$source = $mysqli->query($query);
 					while ($data = $source->fetch_assoc()) {
 						if (!isset($allowedFormats)) {
@@ -98,7 +101,10 @@ header('Content-Type: text/html; charset=utf-8');
 							"</form>";
 				} else {
 					// verification if the file uploaded have permission to be save
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'", $configuration["mysql-prefix"], $_FILES["file"]["type"]);
+					$query = sprintf(
+						"SELECT * FROM %s_files_type WHERE upload_format = 'image' AND type = '%s'",
+						$configuration["mysql-prefix"], $_FILES["file"]["type"]
+					);
 					$source = $mysqli->query($query);
 
 					if ($source->num_rows > 0) {
@@ -109,7 +115,10 @@ header('Content-Type: text/html; charset=utf-8');
 						$fileName = $time.".".$data["extension"];
 						$filePath = "../../../u-img/".$fileName;
 
-						$query = sprintf("INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')", $configuration['mysql-prefix'], $fileName, $alt_1, $alt_2, $module, $id, date("Y-m-d H:i:s", $time));
+						$query = sprintf(
+							"INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')",
+							$configuration["mysql-prefix"], $fileName, $alt_1, $alt_2, $module, $id, date("Y-m-d H:i:s", $time)
+						);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
 							if ($mysqli->query($query)) {
