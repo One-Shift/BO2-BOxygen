@@ -1,6 +1,6 @@
 <?php
 
-class newsletters {
+class newsletter {
 
 	protected $id;
 	protected $email;
@@ -36,7 +36,10 @@ class newsletters {
 	public function insert() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("INSERT INTO %s_newsletters (email, code, date) VALUES ('%s','%s','%s')", $configuration['mysql-prefix'], $this->email, $this->code, $this->date);
+		$query = sprintf(
+			"INSERT INTO %s_newsletters (email, code, date) VALUES ('%s','%s','%s')",
+			$configuration['mysql-prefix'], $this->email, $this->code, $this->date
+		);
 
 		$toReturn = $mysqli->query($query);
 
@@ -48,7 +51,10 @@ class newsletters {
 	public function update() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_newsletters SET email = '%s', code = '%s', date_update = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], $this->email, $this->code, $this->date_update, $this->id);
+		$query = sprintf(
+			"UPDATE %s_newsletters SET email = '%s', code = '%s', date_update = '%s' WHERE id = '%s'",
+			$configuration['mysql-prefix'], $this->email, $this->code, $this->date_update, $this->id
+		);
 
 		return $mysqli->query($query);
 	}
@@ -56,7 +62,10 @@ class newsletters {
 	public function delete() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("DELETE FROM %s_newsletters WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+		$query = sprintf(
+			"DELETE FROM %s_newsletters WHERE id = '%s'",
+			$configuration['mysql-prefix'], $this->id
+		);
 
 		return $mysqli->query($query);
 	}
@@ -73,7 +82,10 @@ class newsletters {
 	public function returnOneRegistry() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_newsletters WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
+		$query = sprintf(
+			"SELECT * FROM %s_newsletters WHERE id = '%s' LIMIT 1",
+			$configuration['mysql-prefix'], $this->id
+		);
 		$source = $mysqli->query($query);
 
 		if ($source->num_rows > 0) {
@@ -86,7 +98,10 @@ class newsletters {
 	public function returnOneRegistryByEmail() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->email);
+		$query = sprintf(
+			"SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1",
+			$configuration['mysql-prefix'], $this->email
+		);
 		$source = $mysqli->query($query);
 
 		if ($source->num_rows > 0) {
@@ -99,7 +114,10 @@ class newsletters {
 	public function existRegistryByEmail() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->email);
+		$query = sprintf(
+			"SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1",
+			$configuration['mysql-prefix'], $this->email
+		);
 		$source = $mysqli->query($query);
 
 		return $source->num_rows;
@@ -108,7 +126,10 @@ class newsletters {
 	public function existRegistryByCode() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_newsletters WHERE code = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->code);
+		$query = sprintf(
+			"SELECT * FROM %s_newsletters WHERE code = '%s' LIMIT 1",
+			$configuration['mysql-prefix'], $this->code
+		);
 		$source = $mysqli->query($query);
 
 		return $source->num_rows;
@@ -117,7 +138,10 @@ class newsletters {
 	public function returnAllRegistries() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_newsletters WHERE true", $configuration['mysql-prefix']);
+		$query = sprintf(
+			"SELECT * FROM %s_newsletters WHERE true",
+			$configuration['mysql-prefix']
+		);
 		$source = $mysqli->query($query);
 
 		$toReturn = array();
@@ -134,14 +158,20 @@ class newsletters {
 	public function enable() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], true, $this->id);
+		$query = sprintf(
+			"UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'",
+			$configuration['mysql-prefix'], true, $this->id
+		);
 		return $mysqli->query($query);
 	}
 
 	public function disable() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'", $configuration['mysql-prefix'], false, $this->id);
+		$query = sprintf(
+			"UPDATE %s_newsletters SET active = '%s' WHERE id = '%s'",
+			$configuration['mysql-prefix'], false, $this->id
+		);
 		return $mysqli->query($query);
 	}
 

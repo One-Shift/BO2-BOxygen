@@ -20,7 +20,7 @@ $newsletters_list = $object_newsletters->returnAllregistries();
 <h1 class="pageTitle">Newsletter Subscriptions</h1>
 <div class="category-list">
 	<div class="button-area">
-		<a href="<?= $configuration["path-bo"] ?>/0/newsletters-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/newsletter-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
 	</div>
 
 	<table class="db-list">
@@ -63,6 +63,6 @@ $newsletters_list = $object_newsletters->returnAllregistries();
 	</table>
 
 	<div class="button-area">
-		<a href="<?= $configuration["path-bo"] ?>/0/newsletters-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
+		<a href="<?= $configuration["path-bo"] ?>/0/newsletter-export/" class="grey" title="export"><i class="fa fa-download"></i></a>
 	</div>
 </div>

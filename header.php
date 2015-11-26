@@ -11,7 +11,7 @@ include "class/class.category.php";
 include "class/class.GibberishAES.php";
 include "class/class.history.php";
 include "class/class.newsletter.php";
-include "class/class.orders.php";
+include "class/class.order.php";
 include "class/class.product.php";
 include "class/class.search.php";
 include "class/class.user.php";

@@ -49,7 +49,7 @@
 		}
 	} else {
 		print str_replace(
-				"{c2r-noresults}", 
+				"{c2r-noresults}",
 				$language["template"]["noresults"],
 				file_get_contents("modules/orders/templates-e/answer-line-noresults.html")
 			);

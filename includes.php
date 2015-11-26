@@ -3,48 +3,48 @@
 if ($account["login"]) { // verificar se está autenticado
 	switch ($pg) {
 		case "home":
-			include "./modules/home/home.php";
+			include "modules/home/home.php";
 			break;
 		// -- Article
-		case "article": include "./modules/article/article.php";
+		case "article": include "modules/article/article.php";
 			break;
 		// -- Product
-		case "product": include "./modules/product/product.php";
+		case "product": include "modules/product/product.php";
 			break;
 		// -- Orders
-		case "orders":
-			include "./modules/orders/orders.php";
+		case "order":
+			include "modules/order/order.php";
 			break;
 		// -- Categories
 		case "category":
-			include "./modules/category/category.php";
+			include "modules/category/category.php";
 			break;
 		// -- User
 		case "user":
-			include "./modules/user/user.php";
+			include "modules/user/user.php";
 			break;
 		// -- Newsletters
-		case "newsletters":
-			include "./modules/newsletters/newsletters.php";
+		case "newsletter":
+			include "modules/newsletter/newsletter.php";
 			break;
 		case "newsletters-enable":
-			include "./modules/newsletters/newsletters.php";
+			include "modules/newsletter/newsletter.php";
 			break;
 		case "newsletters-disable":
-			include "./modules/newsletters/newsletters.php";
+			include "modules/newsletter/newsletter.php";
 			break;
 
 		// -- files
-		case "controller-files":
-			include "./modules/controller_files/controller_files.php";
+		case "controller-file":
+			include "modules/controller-file/controller-files.php";
 			break;
 		// -- Session
 		case "logout":
-			include "./modules/logout/logout.php";
+			include "modules/logout/logout.php";
 			break;
 
 		default:
-			include "./modules/not_found/not-found.php";
+			include "modules/not-found/not-found.php";
 			break;
 	}
 } else {

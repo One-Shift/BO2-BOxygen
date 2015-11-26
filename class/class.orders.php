@@ -1,6 +1,6 @@
 <?php
 
-class orders {
+class order {
 
 	protected $id;
 	protected $user_id;
