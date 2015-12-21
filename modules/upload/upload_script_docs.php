@@ -114,7 +114,7 @@ header("Content-Type: text/html; charset=utf-8");
 						$filePath = "../../../u-files/" . $fileName;
 
 						$query = sprintf(
-							"INSERT INTO %s_files (file, type, description, code, module, priority, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '0', '%s', '%s', '%s')",
+							"INSERT INTO %s_files (file, type, description, code, module, ordering, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '0', '%s', '%s', '%s')",
 							$configuration["mysql-prefix"], $fileName, "document", $description, $code, $module, $id, $userData["id"], date("Y-m-d H:i:s", $time)
 						);
 

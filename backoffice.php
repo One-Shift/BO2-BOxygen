@@ -120,8 +120,12 @@ include "header.php";
 			<div id="wrap"></div>
 		</div>
 		<div id="footer">
-			<div id="copyright"><a href="http://www.nexus-pt.eu/" target="_blank">NexuS-Pt , work team</a> | <a target="_blank" href="https://github.com/NexuS-Pt/BO2-BOxygen">GitHub</a> | <a target="_blank" href="http://www.nexus-pt.eu/fm/">Fórum</a></div>
-			<div id="c"><span>©</span> <?= date('Y'); ?></div>
+			<div id="copyright">
+				<a href="http://www.nexus-pt.eu/" target="_blank">NexuS-Pt , work team</a> | <a target="_blank" href="https://github.com/NexuS-Pt/BO2-BOxygen">GitHub</a> | <a target="_blank" href="http://www.nexus-pt.eu/fm/">Fórum</a> | <a>You are using version <?= $configuration["BO2-version"]; ?> <?= $configuration["BO2-subversion"]; ?></a>
+			</div>
+			<div id="c">
+				<span>©</span> <?= date('Y'); ?>
+			</div>
 		</div>
 		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
