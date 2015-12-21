@@ -2,6 +2,7 @@
 
 include "../../configuration.php";
 include "../../connect.php";
+
 $language = parse_ini_file(sprintf("../../languages/%s.ini", $configuration["language"]), true);
 
 header("Content-Type: text/html; charset=utf-8");
@@ -121,12 +122,15 @@ header("Content-Type: text/html; charset=utf-8");
 
 					print "<table>";
 					// selecionar imagens na base de dados
-					$query_i = sprintf("SELECT * FROM %s_images WHERE id_ass = '%s' AND module = '%s'", $configuration["mysql-prefix"], $id, $_GET["mdl"]);
+					$query_i = sprintf(
+						"SELECT * FROM %s_files WHERE id_ass = '%s' AND module = '%s'",
+						$configuration["mysql-prefix"], $id, $_GET["mdl"]
+					);
 					$source_i = $mysqli->query($query_i);
 
 					while ($data_i = $source_i->fetch_assoc()) {
 						print str_replace(
-							array(
+							[
 								"{c2r-module}",
 								"{c2r-id}",
 								"{c2r-file-id}",
@@ -134,84 +138,40 @@ header("Content-Type: text/html; charset=utf-8");
 								"{c2r-alt}",
 								"{c2r-file}",
 								"{c2r-type}",
-							),
-							array(
+							],
+							[
 								$module,
 								$id,
 								$data_i['id'],
-								$data_i['alt_2'],
-								$data_i['alt_1'],
-								"../../../u-img/".$data_i['file'],
+								$data_i['code'],
+								$data_i['description'],
+								"../../../u-files/".$data_i['file'],
 								"img"
-							),
+							],
 							file_get_contents("templates-e/line.html")
 						);
 					}
-
-					// selecionar documentos na base de dados
-					$query_d = sprintf("SELECT * FROM %s_documents WHERE id_ass = '%s' AND module = '%s'", $configuration['mysql-prefix'], $id, $_GET["mdl"]);
-					$source_d = $mysqli->query($query_d);
-
-					while ($data_d = $source_d->fetch_assoc()) {
-
-						print str_replace(
-							array(
-								"{c2r-module}",
-								"{c2r-id}",
-								"{c2r-file-id}",
-								"{c2r-code}",
-								"{c2r-alt}",
-								"{c2r-file}",
-								"{c2r-type}",
-							),
-							array(
-								$module,
-								$id,
-								$data_d['id'],
-								$data_d["alt_2"],
-								$data_d['alt_1'],
-								"../../../u-docs/".$data_d['file'],
-								"doc"
-							),
-							file_get_contents("templates-e/line.html")
-						);
-					}
-
-					if ($source_i->num_rows == 0 && $source_d->num_rows == 0) {
-						print "<tr><td>No results found</td></tr>";
-					}
-
 					print '</table>';
 				} else {
-
-					// em caso de ser imagem
-					if ($_GET["tp"] == "img") {
-						$query_i_1 = sprintf("SELECT * FROM %s_images WHERE id = '%s' AND module = '%s' LIMIT 1", $configuration['mysql-prefix'], intval($_REQUEST["vl"]), $_GET["mdl"]);
+					if ($_GET["tp"] == "file") {
+						$query_i_1 = sprintf(
+							"SELECT * FROM %s_files WHERE id = '%s' AND module = '%s' LIMIT 1",
+							$configuration['mysql-prefix'], intval($_REQUEST["vl"]), $_GET["mdl"]
+						);
 						$source_i_1 = $mysqli->query($query_i_1);
 						$data_i_1 = $source_i_1->fetch_assoc();
 
-						$query_i_2 = sprintf("DELETE FROM %s_images WHERE id = '%s'", $configuration["mysql-prefix"], $data_i_1["id"]);
+						$query_i_2 = sprintf(
+							"DELETE FROM %s_files WHERE id = '%s'",
+							$configuration["mysql-prefix"],
+							$data_i_1["id"]
+						);
 						if ($mysqli->query($query_i_2)) {
-							unlink("../../../u-img/" . $data_i_1["file"]) or die();
+							unlink("../../../u-files/" . $data_i_1["file"]) or die();
 							print "<p>Ficheiro Apagado com Sucesso</p>";
 						} else {
 							print "<p>Erro encontrado ao tentar imprimir</p>";
 						}
-					// em caso de ser documento (ex.: PDF)
-					} else if ($_GET["tp"] == "doc") {
-						$query_d_1 = sprintf("SELECT * FROM %s_documents WHERE id = '%s' AND module = '%s' LIMIT 1", $configuration['mysql-prefix'], intval($_REQUEST["vl"]), $_GET["mdl"]);
-						$source_d_1 = $mysqli->query($query_d_1);
-						$data_d_1 = $source_d_1->fetch_assoc();
-
-						$query_d_2 = sprintf("DELETE FROM %s_documents WHERE id = '%s'", $configuration["mysql-prefix"], $data_d_1["id"]);
-						if ($mysqli->query($query_d_2)) {
-							unlink("../../../u-docs/" . $data_d_1["file"]) or die();
-							print "<p>Ficheiro Apagado com Sucesso</p>";
-						} else {
-							print "<p>Erro encontrado ao tentar imprimir</p>";
-						}
-					} else {
-						print "<p>Erro encontrado ao tentar apagar o ficheiro pretendido!</p>";
 					}
 				}
 			} else {
@@ -223,12 +183,17 @@ header("Content-Type: text/html; charset=utf-8");
 		?>
 		<div class="spacer30"></div>
 		<script>
-			$(document).ready(function() {
-				$("a[alt=view]").on("click", function() {
-					popUp($(this).attr("href"), '640', '480');
-					return false;
-					});
-				});
+			$(document).ready(
+				function() {
+					$("a[alt=view]").on(
+						"click",
+						function() {
+							popUp($(this).attr("href"), '640', '480');
+							return false;
+						}
+					);
+				}
+			);
 		</script>
 	</body>
 </html>

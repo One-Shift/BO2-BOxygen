@@ -30,7 +30,7 @@ class product {
 	protected $ordering = 1;
 
 	public function __construct() {
-		
+
 	}
 
 	public function setContent($t_1, $c_1, $t_2, $c_2, $t_3, $c_3, $t_4, $c_4, $t_5, $c_5, $t_6, $c_6, $c) {
@@ -133,7 +133,7 @@ class product {
 			$this->onhome,
 			$this->ordering
 		);
-		
+
 		$toReturn = $mysqli->query($query);
 
 		$this->id = $mysqli->insert_id;

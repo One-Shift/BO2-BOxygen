@@ -1,13 +1,13 @@
 <?php
 
-class image {
-
+class file {
 	protected $id;
 	protected $file;
-	protected $alt_1;
-	protected $alt_2;
+	protected $description;
+	protected $type;
+	protected $code;
 	protected $module;
-	protected $priority;
+	protected $ordering;
 	protected $id_ass;
 	protected $user_id;
 	protected $date;
@@ -15,7 +15,7 @@ class image {
 	public function __construct() {}
 
 	public function setId($i) {
-		$this->id = $i;
+		$this->id = (int)$i;
 	}
 
 	public function setFile ($f) {
@@ -23,23 +23,27 @@ class image {
 	}
 
 	public function setDescription ($d) {
-		$this->alt_1 = $d;
+		$this->description = $d;
 	}
 
 	public function setCode ($c) {
-		$this->alt_2 = $c;
+		$this->code = $c;
 	}
 
 	public function setModule ($m) {
 		$this->module = $m;
 	}
 
-	public function setPriority ($p) {
-		$this->priority = $p;
+	public function setOrdering ($p) {
+		$this->ordering = (int)$p;
 	}
 
 	public function setIdAss ($ia) {
-		$this->id_ass = $ia;
+		$this->id_ass = (int)$ia;
+	}
+
+	public function setUserId ($u) {
+		$this->user_id = (int)$u;
 	}
 
 	public function setDate($d = null) {
@@ -50,8 +54,8 @@ class image {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-			$configuration["mysql-prefix"], $this->file, $this->alt_1, $this->alt_2, $this->priority, $this->id_ass, $this->user_id, $this->date
+			"INSERT INTO %s_files (file, description, type, code, module, ordering, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			$configuration["mysql-prefix"], $this->file, $this->description, $this->type, $this->code, $this->module, $this->ordering, $this->id_ass, $this->user_id, $this->date
 		);
 
 		$toReturn = $mysqli->query($query);
@@ -65,8 +69,8 @@ class image {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"UPDATE %s_images SET file = '%s' AND alt_1 = '%s' AND alt_2 = '%s' AND module = '%s' AND priority = '%s' AND id_ass = '%s' AND user_id = '%s' AND date = '%s' WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->file, $this->alt_1, $this->alt_2, $this->priority, $this->id_ass, $this->user_id, $this->date, $this->id
+			"UPDATE %s_files SET description = '%s', code = '%s', ordering = '%s', id_ass = '%s' WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->description, $this->code, $this->ordering, $this->id_ass, $this->id
 		);
 
 		return $mysqli->query($query);
@@ -76,158 +80,74 @@ class image {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"DELETE FROM %s_images WHERE id = '%s'",
-			$configuration['mysql-prefix'], $this->id
-		);
-
-		return $mysqli->query($query);
-	}
-
-	public function returnOneImg() {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"SELECT * FROM %s_images WHERE id = '%s' LIMIT 1",
+			"DELETE FROM %s_files WHERE id = '%s'",
 			$configuration["mysql-prefix"], $this->id
 		);
-		$source = $mysqli->query($query);
-
-		return $source->fetch_assoc();
-	}
-
-	public function returnAllImgs () {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"SELECT * FROM %s_images WHERE id_ass = '%s' AND module = '%s'",
-			$configuration["mysql-prefix"], $this->id_ass, $this->module
-		);
-		$source = $mysqli->query($query);
-
-		$toReturn = array();
-		$i = 0;
-
-		while ($data = $source->fetch_assoc()) {
-			$toReturn[$i] = $data;
-			$i++;
-		}
-
-		return $toReturn;
-	}
-}
-
-class document {
-
-	protected $id;
-	protected $file;
-	protected $alt_1;
-	protected $alt_2;
-	protected $module;
-	protected $priority;
-	protected $id_ass;
-	protected $user_id;
-	protected $date;
-
-	public function __construct() {}
-
-	public function setId($i) {
-		$this->id = $i;
-	}
-
-	public function setFile ($f) {
-		$this->file = $f;
-	}
-
-	public function setDescription ($d) {
-		$this->alt_1 = $d;
-	}
-
-	public function setCode ($c) {
-		$this->alt_2 = $c;
-	}
-
-	public function setModule ($m) {
-		$this->module = $m;
-	}
-
-	public function setPriority ($p) {
-		$this->priority = $p;
-	}
-
-	public function setIdAss ($ia) {
-		$this->id_ass = $ia;
-	}
-
-	public function setDate($d = null) {
-		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
-
-	public function insert () {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"INSERT INTO %s_documents (file, alt_1, alt_2, module, priority, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-			$configuration["mysql-prefix"], $this->file, $this->alt_1, $this->alt_2, $this->priority, $this->id_ass, $this->user_id, $this->date
-		);
-
-		$toReturn = $mysqli->query($query);
-
-		$this->id = $mysqli->insert_id;
-
-		return $toReturn;
-	}
-
-	public function update () {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"UPDATE %s_documents SET file = '%s' AND alt_1 = '%s' AND alt_2 = '%s' AND module = '%s' AND priority = '%s' AND id_ass = '%s' AND user_id = '%s' AND date = '%s' WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->file, $this->alt_1, $this->alt_2, $this->priority, $this->id_ass, $this->user_id, $this->date, $this->id
-		);
 
 		return $mysqli->query($query);
 	}
 
-	public function delete () {
+	public function returnFiles ($limit = null) {
 		global $configuration, $mysqli;
 
-		$query = sprintf(
-			"DELETE FROM %s_documents WHERE id = '%s'",
-			$configuration['mysql-prefix'], $this->id
-		);
+		$query = null;
 
-		return $mysqli->query($query);
-	}
-
-	public function returnOneImg() {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"SELECT * FROM %s_documents WHERE id = '%s' LIMIT 1",
-			$configuration["mysql-prefix"], $this->id
-		);
-		$source = $mysqli->query($query);
-
-		return $source->fetch_assoc();
-	}
-
-	public function returnAllImgs () {
-		global $configuration, $mysqli;
-
-		$query = sprintf(
-			"SELECT * FROM %s_documents WHERE id_ass = '%s' AND module = '%s'",
-			$configuration["mysql-prefix"], $this->id_ass, $this->module
-		);
-		$source = $mysqli->query($query);
-
-		$toReturn = array();
-		$i = 0;
-
-		while ($data = $source->fetch_assoc()) {
-			$toReturn[$i] = $data;
-			$i++;
+		if ($this->id_ass != null && $this->type != null && $this->module != null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass = '%s' AND type = '%s' AND module = '%s' %s",
+				$configuration["mysql-prefix"], $this->id_ass, $this->type, $this->module, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass != null && $this->type != null && $this->module == null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass = '%s' AND type = '%s' %s",
+				$configuration["mysql-prefix"], $this->id_ass, $this->type, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass != null && $this->type == null && $this->module != null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass = '%s' AND module = '%s' %s",
+				$configuration["mysql-prefix"], $this->id_ass, $this->module, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass == null && $this->type != null && $this->module != null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE type = '%s' AND module = '%s' %s",
+				$configuration["mysql-prefix"], $this->type, $this->module, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass != null && $this->type == null && $this->module == null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass = '%s' %s",
+				$configuration["mysql-prefix"], $this->id_ass, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass == null && $this->type == null && $this->module != null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE module = '%s' %s",
+				$configuration["mysql-prefix"], $this->module, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else if ($this->id_ass == null && $this->type != null && $this->module == null) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE type = '%s' %s",
+				$configuration["mysql-prefix"], $this->type, ($limit != null) ? "LIMIT ".$limit : null
+			);
+		} else {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE TRUE %s",
+				$configuration["mysql-prefix"], ($limit != null) ? "LIMIT ".$limit : null
+			);
 		}
 
-		return $toReturn;
+		if ($query != null) {
+			$source = $mysqli->query($query);
+
+			$toReturn = array();
+			$i = 0;
+
+			while ($data = $source->fetch_assoc()) {
+				$toReturn[$i] = $data;
+				$i++;
+			}
+
+			return $toReturn;
+		}
+		return FALSE;
 	}
+
 }

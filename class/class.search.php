@@ -10,7 +10,7 @@ class search {
 	protected $date_update;
 
 	public function __construct() {
-		
+
 	}
 
 	public function setDate($d = null) {

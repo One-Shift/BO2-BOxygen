@@ -15,15 +15,16 @@
 #site #container #page input[type=number],
 #site #container #page input[type=date] {
 	display: block;
-	min-width: 650px; max-width: 650px;
-	margin: 0 0 5px; padding: 0px 8px;
+	width: calc(100% - 32px);
+	margin: 0 0 10px;
+	padding: 0px 15px;
 	vertical-align: top;
 	height: 33px;
 	line-height: 19px;
 	border-radius: 2px;
 	color: rgb(60, 60, 60);
 	background: none repeat scroll 0% 0% white;
-	border: 2px solid rgb(217, 217, 217);
+	border: 1px solid rgb(217, 217, 217);
 	outline: medium none;
 }
 
@@ -148,15 +149,16 @@ a.grey:hover, button.grey:hover {
 
 #site #container #page textarea {
 	display: block;
-	min-width: 650px; max-width: 650px;
+	width: calc(100% - 32px);
 	min-height: 200px;
 	max-height: 300px;
-	margin: 0 0 5px; padding: 4px 8px;
+	margin: 0 0 5px;
+	padding: 4px 15px;
 	vertical-align: top;
 	border-radius: 2px;
 	color: rgb(60, 60, 60);
 	background: none repeat scroll 0% 0% white;
-	border: 2px solid rgb(217, 217, 217);
+	border: 1px solid rgb(217, 217, 217);
 	outline: medium none;
 }
 
@@ -175,8 +177,7 @@ a.grey:hover, button.grey:hover {
 
 #site #container #page iframe {
 	display: block;
-	min-width: 100%;
-	max-width: 100%;
+	width: calc(100% - 2px);
 	overflow-y: auto;
 	border: 1px solid #CCCCCC;
 	margin-bottom: 5px;
@@ -184,7 +185,7 @@ a.grey:hover, button.grey:hover {
 	border-radius: 2px;
 	color: rgb(60, 60, 60);
 	background: none repeat scroll 0% 0% white;
-	border: 2px solid rgb(217, 217, 217);
+	border: 1px solid rgb(217, 217, 217);
 	outline: medium none;
 }
 

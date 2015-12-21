@@ -6,10 +6,12 @@ if ($account["login"]) { // verificar se está autenticado
 			include "modules/home/home.php";
 			break;
 		// -- Article
-		case "article": include "modules/article/article.php";
+		case "article":
+			include "modules/article/article.php";
 			break;
 		// -- Product
-		case "product": include "modules/product/product.php";
+		case "product":
+			include "modules/product/product.php";
 			break;
 		// -- Orders
 		case "order":
@@ -27,16 +29,19 @@ if ($account["login"]) { // verificar se está autenticado
 		case "newsletter":
 			include "modules/newsletter/newsletter.php";
 			break;
-		case "newsletters-enable":
+		case "newsletter-enable":
 			include "modules/newsletter/newsletter.php";
 			break;
-		case "newsletters-disable":
+		case "newsletter-disable":
 			include "modules/newsletter/newsletter.php";
 			break;
-
-		// -- files
+		// -- VCARD
+		case "vcard":
+			include "modules/vcard/vcard.php";
+			break;
+		// -- FILES
 		case "controller-file":
-			include "modules/controller-file/controller-files.php";
+			include "modules/controller-file/controller-file.php";
 			break;
 		// -- Session
 		case "logout":
@@ -48,5 +53,5 @@ if ($account["login"]) { // verificar se está autenticado
 			break;
 	}
 } else {
-	printf("<script>goTo('%s');</script>", $configuration["path-bo"]);
+	header(sprintf("Location: %s", $configuration["path-bo"]));
 }

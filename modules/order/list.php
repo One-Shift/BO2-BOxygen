@@ -1,5 +1,5 @@
 <?php
-	$object_orders = new orders();
+	$object_orders = new order();
 	$orders_list = $object_orders->returnAllOrders();
 ?>
 <h1 class="pageTitle">Lista de Encomendas</h1>

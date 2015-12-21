@@ -22,9 +22,9 @@
 			foreach ($vcard_list as $vcard) {
 
 				if ($vcard["published"]) {
-					$published = sprintf("<img src=\"%s/site-assets/images/icon_on.png\" alt=\"on\" title=\"publicado\"/>", $configuration["path-bo"]);
+					$published = "<i class=\"fa fa-check-circle\"></i>";
 				} else {
-					$published = sprintf("<img src=\"%s/site-assets/images/icon_off.png\" alt=\"off\"  title=\"não publicado\"/>", $configuration["path-bo"]);
+					$published = "<i class=\"fa fa-circle\"></i>";
 				}
 
 				print str_replace(
@@ -47,12 +47,12 @@
 						$line
 					);
 			}
-		}else {
+		} else {
 			print str_replace(
-					"{c2r-noresults}",
-					$language["template"]["noresults"],
-					$line_noresult
-				);
+				"{c2r-noresults}",
+				$language["template"]["noresults"],
+				$line_noresult
+			);
 		}
 
 	  ?>

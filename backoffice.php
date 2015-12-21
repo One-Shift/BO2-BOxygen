@@ -2,67 +2,6 @@
 
 include "header.php";
 
-//get user
-if (isset($_COOKIE[$configuration["cookie"]])) {
-	$account = explode(".", $_COOKIE[$configuration["cookie"]]);
-
-	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s') AND status = '%s'", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager", '1');
-	$source = $mysqli->query($query);
-	$nr = $source->num_rows;
-
-	if ($nr == 1) {
-		$account["name"] = $account[0];
-		$account["password"] = $account[1];
-		unset($account[0]);
-		unset($account[1]);
-		$account["login"] = true;
-		$userData = $source->fetch_assoc();
-
-		if($configuration["restricted"]){
-			if($userData["rank"] == "owner"){
-				$configuration["restricted"] = false;
-			}
-		}
-		unset($userData);
-	} else {
-		$account["login"] = false;
-		setcookie($configuration['cookie'], null, time() - 3600);
-	}
-} else {
-	$account["login"] = false;
-}
-
-//get page
-if (isset($_GET["pg"])) {
-	$pg = $_GET["pg"];
-} else {
-	$pg = "home";
-}
-
-// controlador de ID
-if (isset($_GET["i"]) && !empty($_GET["i"])) {
-	$id = intval($_GET["i"]);
-} else {
-	$id = null;
-}
-
-// controlador de acção
-if (isset($_GET["a"]) && !empty($_GET["a"])) {
-	$a = $mysqli->real_escape_string($_GET["a"]);
-} else {
-	$a = null;
-}
-
-
-//logout
-$logout = false;
-if ($pg == "logout") {
-	if (isset($_COOKIE[$configuration["cookie"]])) {
-		setcookie($configuration["cookie"], null, time() - 3600);
-		$logout = true;
-	}
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,18 +38,31 @@ if ($pg == "logout") {
 		<meta name="robots" content="index" />
 		<meta name="author" content="NexuS-Pt, work team" />
 
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!-- CACHE -->
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<!-- FONT AWESOME -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
+
 		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/custom.css" />
 
 		<script type="text/javascript">
 			var path_bo = "<?= $configuration["path-bo"] ?>";
 		</script>
+		<!-- JQUERY -->
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
-		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script>
+		<!-- EDITOR -->
+		<script src="//cdn.ckeditor.com/4.5.6/full/ckeditor.js"></script>
+		<!-- <script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script> -->
+
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

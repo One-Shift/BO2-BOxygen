@@ -11,17 +11,29 @@ if (!isset($_COOKIE[$configuration["cookie"]])) {
 	if (isset($_POST["loginSubmit"])) {
 		// codigo para efectuar o login
 		// verifica se o loginUsername e loginPassword foram preenchidos correctamente
-		if (!empty($_POST["loginUsername"]) && !empty($_POST["loginPassword"])) {
+		if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 			// procurar na base de dados se existe uma entrada com os dados introduzidos
-			$query = sprintf("SELECT * FROM %s_users WHERE name = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager') AND status = '%s'", $configuration["mysql-prefix"], $mysqli->real_escape_string($_POST["loginUsername"]), sha1(md5(sha1(md5($_POST["loginPassword"])))), '1');
+			$query = sprintf(
+				"SELECT * FROM %s_users WHERE email = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager') AND status = '%s'",
+				$configuration["mysql-prefix"], $mysqli->real_escape_string($_POST["email"]), sha1(md5(sha1(md5($_POST["password"])))), '1'
+			);
 			$source = $mysqli->query($query);
 			$nr = $source->num_rows;
 
 			// caso exista 1 registo, inicia o processo de criação de sessão
 			if ($nr == 1) {
 				$data = $source->fetch_assoc();
+
+				$cookieData = sprintf(
+					"%s.%s",
+					$data["id"], $data["password"]
+				);
+				$time = time() + ($configuration["cookie-time"] * 60);
+
 				// criar o cookie com os dados de sessão
-				if (setcookie($configuration["cookie"], $data["id"] . "." . $data["password"], time() + ($configuration["cookie-time"] * 60))) {
+				if (
+					setcookie($configuration["cookie"], $cookieData, $time, $configuration["path-bo"])
+				) {
 					// login efectuado com sucesso
 					$showForm = false;
 					$showError = false;
@@ -123,17 +135,23 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 			<div id="container">
 				<?php
 				if ($showSucess) {
-					printf("<div id=\"sucess\" onClick=\"goTo('./backoffice.php');\">%s</div><script>setTimeout(function(){goTo('./backoffice.php');},1000);</script>", $language["login"]["sucess"]);
+					printf(
+						"<div id=\"sucess\"><i class=\"fa fa-thumbs-up\"></i> %s</div><script>setTimeout(function(){goTo('./backoffice.php');}, 1500);</script>",
+						$language["login"]["sucess"]
+					);
 				}
 				if ($showError) {
-					printf("<div id=\"error\">%s</div>", $language["login"]["error"]);
+					printf(
+						"<div id=\"error\"><i class=\"fa fa-thumbs-down\"></i> %s</div>",
+						$language["login"]["error"]
+					);
 				}
 				?>
 				<?php if ($showForm) { ?>
 					<form action="./index.php" method="post" name="loginForm">
 						<div id="fields">
-							<div id="username"><input type="text" name="loginUsername" placeholder="username"></div>
-							<div id="password"><input type="password" name="loginPassword" placeholder="password"></div>
+							<div id="username"><input type="email" name="email" placeholder="Email Address" required=""></div>
+							<div id="password"><input type="password" name="password" placeholder="password" required=""></div>
 						</div>
 						<div id="buttons">
 							<div id="buttonlogin"><button type="submit" name="loginSubmit"><?= $language["login"]["b_login"]; ?></button></div>

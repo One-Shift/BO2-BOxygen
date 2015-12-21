@@ -13,7 +13,7 @@
 			print $language["actions"]["failure"];
 		}else{
 		?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
         <!-- -->
         <div>
@@ -142,12 +142,12 @@
     	</div>
         <!-- -->
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
 		<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 		<?= returnFilesList($vcard["id"], "vcard"); ?>
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
 		<?php
 			print returnImgUploader("IMG Uploader", $vcard["id"], "vcard", 290, 350);
@@ -155,12 +155,12 @@
 			print returnDocsUploader("DOCS Uploader", $vcard["id"], "vcard", 290, 350);
 		?>
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
 		<div>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"><?= $vcard["code"]; ?></textarea>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 		</div>
 
 		<div class="bottom-area">

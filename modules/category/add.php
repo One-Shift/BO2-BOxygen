@@ -9,7 +9,7 @@
 		<input type="text" name="title_1"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_1"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_2_state"]) {echo "style=\"display: none;\"";} ?>>
@@ -18,7 +18,7 @@
 		<input type="text" name="title_2"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_2"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_3_state"]) {echo "style=\"display: none;\"";} ?>>
@@ -27,7 +27,7 @@
 		<input type="text" name="title_3"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_3"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_4_state"]) {echo "style=\"display: none;\"";} ?>>
@@ -36,7 +36,7 @@
 		<input type="text" name="title_4"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_4"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_5_state"]) {echo "style=\"display: none;\"";} ?>>
@@ -45,7 +45,7 @@
 		<input type="text" name="title_5"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_5"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_6_state"]) {echo "style=\"display: none;\"";} ?>>
@@ -54,7 +54,7 @@
 		<input type="text" name="title_6"/>
 		<span id="label"><?= $language["form"]["label_description"]; ?></span>
 		<?php print returnEditor("content_6"); ?>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div>
@@ -67,32 +67,34 @@
 			}
 		?>
 		</select>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 	<div>
 		<span id="label"><?= $language["form"]["label_date"]; ?></span>
 		<input type="text" name="date" value="<?= date("Y-m-d H:i:s"); ?>"/>
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div>
 		<span id="label"><?= $language["form"]["label_order"]; ?></span>
 		<input type="text" name="order"/>
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"></textarea>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 	</div>
 
 	<div class="bottom-area">
-		<input type="checkbox" name="published" value="1"/> <?= $language["form"]["label_published"]; ?>
+		<label>
+			<input type="checkbox" name="published" value="1"/> <?= $language["form"]["label_published"]; ?>
+		</label>
 
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
 		<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 		<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
@@ -133,12 +135,12 @@
 			print $language["actions"]["success"];
 			$id = $mysqli->insert_id;
 	?>
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 			<?= returnFilesList($id, "category"); ?>
 
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<?php
 				print returnImgUploader("IMG Uploader", $id, "category",290,350);

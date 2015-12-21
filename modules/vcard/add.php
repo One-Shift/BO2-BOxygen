@@ -1,7 +1,7 @@
 <div class="article-add">
 	<?php if (!isset($_POST["save"])) { ?>
 	<form action="" method="post">
-    	<div class="separator30"></div>
+    	<div class="spacer30"></div>
 
     	<div>
     		<span id="label">Name</span>
@@ -125,10 +125,13 @@
     		<input type="text" name="c_in"/>
     	</div>
 
+		<div class="spacer30"></div>
+
     	<div class="bottom-area">
-            <input type="checkbox" name="published" value="1"/> <?= $language["form"]["label_published"]; ?>
-            </br>
-            </br>
+            <label><input type="checkbox" name="published" value="1"/> <?= $language["form"]["label_published"]; ?></label>
+
+			<div class="spacer30"></div>
+
             <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
             <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
     	</div>
@@ -222,12 +225,12 @@
 
 			$id = $mysqli->insert_id;
 	?>
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 			<?= returnFilesList($id, "vcard"); ?>
 
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<?php
 				print returnImgUploader("IMG Uploader", $id, "vcard", 290, 350);

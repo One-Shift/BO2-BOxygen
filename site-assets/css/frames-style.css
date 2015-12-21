@@ -35,14 +35,14 @@
 #iframe span#label {
 	display: block;
 	padding-left:10px;
-	padding-right: 10px; 
+	padding-right: 10px;
 	border-radius: 3px 3px 0 0;
 	border-top: 1px solid #CCC;
 	border-left: 1px solid #CCC;
 	border-right: 1px solid #CCC;
 	background-color: rgb(240,240,240);
 	color: grey;
-	
+
 }
 
 #iframe input[type=checkbox] {}
@@ -71,7 +71,7 @@
 	margin-top: -5px;
 	margin-bottom: 5px;
 	padding-left:10px;
-	padding-right: 10px; 
+	padding-right: 10px;
 	border-radius: 0 0 3px 3px;
 	border-bottom: 1px solid #CCC;
 	border-left: 1px solid #CCC;

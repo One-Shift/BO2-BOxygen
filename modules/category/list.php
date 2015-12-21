@@ -20,9 +20,9 @@
 		if (count($category_list) != 0) {
 			foreach ($category_list as $category) {
 				if ($category['published']) {
-					$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_on.png\" alt=\"on\" />";
+					$published = "<i class=\"fa fa-check-circle\"></i>";
 				} else {
-					$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_off.png\" alt=\"off\" />";
+					$published = "<i class=\"fa fa-circle\"></i>";
 				}
 
 				print str_replace(

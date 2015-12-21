@@ -71,7 +71,10 @@ header("Content-Type: text/html; charset=utf-8");
 			if (isset($_COOKIE[$configuration["cookie"]])) {
 				if (!isset($_REQUEST["submit"])) {
 
-					$query = sprintf("SELECT * FROM %s_files_type WHERE upload_format = 'document'", $configuration["mysql-prefix"]);
+					$query = sprintf(
+						"SELECT * FROM %s_files_type WHERE upload_format = 'document'",
+						$configuration["mysql-prefix"]
+					);
 					$source = $mysqli->query($query);
 					while ($data = $source->fetch_assoc()) {
 						if (!isset($allowedFormats)) {
@@ -83,11 +86,11 @@ header("Content-Type: text/html; charset=utf-8");
 
 					print
 							"<form method=\"post\" enctype=\"multipart/form-data\">".
-							"<label>Alt _1:</label>".
-							"<input type=\"text\" name=\"alt_1\" maxlength=\"255\" />".
+							"<label>Description:</label>".
+							"<input type=\"text\" name=\"description\" maxlength=\"255\" />".
 							"<div class=\"spacer30\"></div>".
 							"<label>Code:</label>".
-							"<textarea name=\"alt_2\"></textarea>".
+							"<textarea name=\"code\"></textarea>".
 							"<div class=\"spacer30\"></div>".
 							"<label>File:</label>".
 							"<input type=\"file\" name=\"file\" />".
@@ -103,16 +106,16 @@ header("Content-Type: text/html; charset=utf-8");
 					$source = $mysqli->query($query);
 
 					if ($source->num_rows > 0) {
-						$alt = $mysqli->real_escape_string($_POST["alt_1"]);
-						$alt_2 = $mysqli->real_escape_string($_POST["alt_2"]);
+						$description = $mysqli->real_escape_string($_POST["description"]);
+						$code = $mysqli->real_escape_string($_POST["code"]);
 						$data = $source->fetch_assoc();
 						$time = time();
 						$fileName = $time.".".$data["extension"];
-						$filePath = "../../../u-docs/" . $fileName;
+						$filePath = "../../../u-files/" . $fileName;
 
 						$query = sprintf(
-							"INSERT INTO %s_documents (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')",
-							$configuration["mysql-prefix"], $fileName, $alt, $alt_2, $module, $id, date("Y-m-d H:i:s", $time)
+							"INSERT INTO %s_files (file, type, description, code, module, priority, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '0', '%s', '%s', '%s')",
+							$configuration["mysql-prefix"], $fileName, "document", $description, $code, $module, $id, $userData["id"], date("Y-m-d H:i:s", $time)
 						);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
@@ -124,7 +127,7 @@ header("Content-Type: text/html; charset=utf-8");
 								print "<p>Error Announce! The system can't save this entry on BD for unkown reason!</p>";
 							}
 						} else {
-							print "<p>Error Announce! The system can\'t save this file for unkown reason!</p>";
+							print "<p>Error Announce! The system can't save this file for unkown reason!</p>";
 						}
 					} else {
 						print "<p>Formato não conhecido pelo sistema!</p>";

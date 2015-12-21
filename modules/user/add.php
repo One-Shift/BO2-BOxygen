@@ -25,7 +25,7 @@
 		</select>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"></textarea>
-		<div class="separator30"></div>
+		<div class="spacer30"></div>
 
 		<div class="bottom-area">
 			  <button class="green" title="save" type="submit" name="save" onclick="if ($('input[name=password]').val() == $('input[name=confirm_password]').val() && $('input[name=password]').val() != '' && $('input[name=confirm_password]').val() != '') {return true;} else {alert('<?= $language["form"]["label_password_error"]; ?>'); return false;}"><i class="fa fa-floppy-o"></i></button>
@@ -49,12 +49,12 @@
 
 					$id = $mysqli->insert_id;
 	?>
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 			<?= returnFilesList($id, "user"); ?>
 
-			<div class="separator30"></div>
+			<div class="spacer30"></div>
 
 			<?php
 				print returnImgUploader("IMG Uploader", $id, "user",290,350);

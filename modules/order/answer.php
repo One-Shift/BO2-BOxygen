@@ -4,7 +4,7 @@
 		<?php
 			/* -- */
 			if (isset($_POST["orderstate"])) {
-				$order = new orders();
+				$order = new order();
 				$order->setId($id);
 				$order->setStatus($_POST["orderstate"]);
 				$order->updateStatusById();

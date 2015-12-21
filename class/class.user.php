@@ -121,6 +121,18 @@ class user {
 		return $source->num_rows;
 	}
 
+	public function existUserByEmail() {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_users WHERE email = '%s' LIMIT 1",
+			$configuration['mysql-prefix'], $this->email
+		);
+		$source = $mysqli->query($query);
+
+		return $source->num_rows;
+	}
+
 	public function returnAllUsers() {
 		global $configuration, $mysqli;
 

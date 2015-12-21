@@ -12,12 +12,23 @@
 
 @import "category-list.css";
 
+@import "cke.css";
+
+.spacer150 { height: 150px; }
+.spacer120 { height: 120px; }
+.spacer90 { height: 90px; }
+.spacer60 { height: 60px; }
+.spacer30 { height: 30px; }
+.spacer15 { height: 15px; }
+
+
 html {
 	min-height: 100%;
 }
 
 body {
-	width: 900px;
+	max-width: 1170px;
+	padding: 0 15px 0;
 	margin: 0 auto 50px;
 	background-color: rgb(75,75,75);
 	background: url('../images/bg.jpg') center fixed;
@@ -139,7 +150,7 @@ img {
 	height: 118px;
 	background-image: url(../images/logoBO2.png);
 	background-color: rgb(34, 34, 34);
-	background-position: center bottom;
+	background-position: left bottom;
 	background-repeat: no-repeat;
 }
 
@@ -147,7 +158,7 @@ img {
 	background-repeat: repeat-x;
 	background-position: left top;
 	display: inline-block;
-	width: 900px;
+	max-width: 100%;
 	margin: 1px 0 0 0;
 }
 
@@ -180,7 +191,7 @@ img {
 
 #site #container #title-bar #menu-title {
 	float: right;
-	width: 175px;
+	width: 310px;
 	padding-left: 15px;
 	padding-right: 10px;
 	color: #fff;
@@ -188,21 +199,17 @@ img {
 
 #site #container #page {
 	float: left;
-	width: 670px;
-	margin: 10px 0 0 0; padding: 10px;
+	width: 805px;
+	margin-top: 10px;
+	padding: 15px;
 	background-color: rgb(255,255,255);
 	font-size: 10pt;
-}
-
-#site #container #page div.separator30 {
-	display: block;
-	height: 30px;
 }
 
 #site #container #menu {
 	float: right;
 	margin: 10px 0 0 0;
-	width: 200px;
+	width: 320px;
 	font-size: 10pt;
 }
 
@@ -213,7 +220,7 @@ img {
 	font-size: 1.4em;
 	text-transform: uppercase;
 	padding: 1rem;
-	margin: 10px 0 10px;
+	margin: 15px 0 15px;
 }
 
 #site #container #menu a {
@@ -288,9 +295,10 @@ body #footer #c span {
 
 iframe.ads {
 	border: none;
-	width: 738px;
+	width: 768px;
 	height: 130px;
-	margin: 5px 86px;
+	margin: 5px auto;
+	display: block;
 }
 
 /* class here */
@@ -301,7 +309,7 @@ iframe.ads {
 	font-size: 13pt;
 	font-weight: 400;
 	line-height: 30px;
-	margin: -10px -10px 10px;
+	margin:-15px -15px 0;
 	padding: 7px;
 	text-align: center;
 	border: 0px;

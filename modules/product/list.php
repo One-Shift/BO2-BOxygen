@@ -45,9 +45,9 @@
 			$category = $object_category->returnOneCategory();
 
 			if ($product['published']) {
-				$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_on.png\" alt=\"on\" />";
+				$published = "<i class=\"fa fa-check-circle\"></i>";
 			} else {
-				$published = "<img src=\"{c2r-path-bo}/site-assets/images/icon_off.png\" alt=\"off\" />";
+				$published = "<i class=\"fa fa-circle\"></i>";
 			}
 
 			print str_replace(
@@ -86,4 +86,3 @@
 		<a href="<?= $configuration["path-bo"] ?>/0/product/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
-

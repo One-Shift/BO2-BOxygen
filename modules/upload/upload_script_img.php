@@ -2,6 +2,36 @@
 include "../../configuration.php";
 include "../../connect.php";
 
+//get user
+if (isset($_COOKIE[$configuration["cookie"]])) {
+	$account = explode(".", $_COOKIE[$configuration["cookie"]]);
+
+	$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = '%s' OR rank = '%s') AND status = '%s'", $configuration["mysql-prefix"], $account[0], $account[1], "owner", "manager", '1');
+	$source = $mysqli->query($query);
+	$nr = $source->num_rows;
+
+	if ($nr == 1) {
+		$account["name"] = $account[0];
+		$account["password"] = $account[1];
+		unset($account[0]);
+		unset($account[1]);
+		$account["login"] = true;
+		$userData = $source->fetch_assoc();
+
+		if($configuration["restricted"]){
+			if($userData["rank"] == "owner"){
+				$configuration["restricted"] = false;
+			}
+		}
+		unset($userData);
+	} else {
+		$account["login"] = false;
+		setcookie($configuration['cookie'], null, time() - 3600);
+	}
+} else {
+	$account["login"] = false;
+}
+
 $language = parse_ini_file(
 	sprintf("../../languages/%s.ini", $configuration["language"]),
 	true
@@ -87,11 +117,11 @@ header("Content-Type: text/html; charset=utf-8");
 
 					print
 							"<form method=\"post\" enctype=\"multipart/form-data\">".
-							"<label>Alt _1:</label>".
-							"<input type=\"text\" name=\"alt_1\" maxlength=\"255\" />".
+							"<label>Description:</label>".
+							"<input type=\"text\" name=\"description\" maxlength=\"255\" />".
 							"<div class=\"spacer30\"></div>".
 							"<label>Code:</label>".
-							"<textarea name=\"alt_2\"></textarea>".
+							"<textarea name=\"code\"></textarea>".
 							"<div class=\"spacer30\"></div>".
 							"<label>File:</label>".
 							"<input type=\"file\" name=\"file\" />".
@@ -108,16 +138,16 @@ header("Content-Type: text/html; charset=utf-8");
 					$source = $mysqli->query($query);
 
 					if ($source->num_rows > 0) {
-						$alt_1 = $mysqli->real_escape_string(utf8_decode($_POST["alt_1"]));
-						$alt_2 = $mysqli->real_escape_string(utf8_decode($_POST["alt_2"]));
+						$description = $mysqli->real_escape_string(utf8_decode($_POST["description"]));
+						$code = $mysqli->real_escape_string(utf8_decode($_POST["code"]));
 						$data = $source->fetch_assoc();
 						$time = time();
 						$fileName = $time.".".$data["extension"];
-						$filePath = "../../../u-img/".$fileName;
+						$filePath = "../../../u-files/".$fileName;
 
 						$query = sprintf(
-							"INSERT INTO %s_images (file, alt_1, alt_2, module, priority, id_ass, date) VALUES ('%s', '%s', '%s', '%s', '0', '%s', '%s')",
-							$configuration["mysql-prefix"], $fileName, $alt_1, $alt_2, $module, $id, date("Y-m-d H:i:s", $time)
+							"INSERT INTO %s_files (file, type, description, code, module, priority, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '0', '%s', '%s', '%s')",
+							$configuration["mysql-prefix"], $fileName, "image", $description, $code, $module, $id, $userData["id"], date("Y-m-d H:i:s", $time)
 						);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {

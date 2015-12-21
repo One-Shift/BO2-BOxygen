@@ -21,9 +21,9 @@
 		if (count($user_list) != 0) {
 			foreach($user_list as $user){
 				if ($user["status"]) {
-					$enable = sprintf("<img src=\"%s/site-assets/images/icon_on.png\" alt=\"on\" title=\"publicado\"/>", $configuration["path-bo"]);
+					$enable = "<i class=\"fa fa-check-circle\"></i>";
 				} else {
-					$enable = sprintf("<img src=\"%s/site-assets/images/icon_off.png\" alt=\"off\"  title=\"não publicado\"/>", $configuration["path-bo"]);
+					$enable = "<i class=\"fa fa-circle\"></i>";
 				}
 				print str_replace(
 					array(
