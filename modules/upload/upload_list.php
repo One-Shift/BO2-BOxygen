@@ -135,6 +135,7 @@ header("Content-Type: text/html; charset=utf-8");
 								"{c2r-id}",
 								"{c2r-file-id}",
 								"{c2r-code}",
+								"{c2r-icon-type}",
 								"{c2r-alt}",
 								"{c2r-file}",
 								"{c2r-type}",
@@ -144,6 +145,7 @@ header("Content-Type: text/html; charset=utf-8");
 								$id,
 								$data_i['id'],
 								$data_i['code'],
+								($data_i["type"] == "image") ? "<i class=\"fa fa-picture-o\"></i>" : "<i class=\"fa fa-file\"></i>",
 								$data_i['description'],
 								"../../../u-files/".$data_i['file'],
 								"img"
