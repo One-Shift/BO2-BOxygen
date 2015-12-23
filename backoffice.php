@@ -74,7 +74,7 @@ include "header.php";
 			ga('send', 'pageview');
 		</script>
 	</head>
-	<body>
+	<body style="background-image: url('<?= file_get_contents("http://api.nexus-pt.eu/bo2-image-server/") ?>');">
 		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
 		<?php } ?>
