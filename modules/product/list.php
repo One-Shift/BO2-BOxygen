@@ -4,7 +4,7 @@
 	}
 </script>
 <?php
-	if($id === null) {
+	if($id == null) {
 		$id = 0;
 	}
 
@@ -44,7 +44,7 @@
 			$object_category->setId($product["category_id"]);
 			$category = $object_category->returnOneCategory();
 
-			if ($product['published']) {
+			if ($product["published"]) {
 				$published = "<i class=\"fa fa-check-circle\"></i>";
 			} else {
 				$published = "<i class=\"fa fa-circle\"></i>";
@@ -67,7 +67,7 @@
 					$configuration["path-bo"],
 					$language["template"]["areyousure"]
 				),
-				file_get_contents("./modules/product/templates-e/line.html")
+				file_get_contents("modules/product/templates-e/line.html")
 			);
 
 			  $i_last = $product["id"];
@@ -76,7 +76,7 @@
 			print str_replace(
 					"{c2r-noresults}",
 					$language["template"]["noresults"],
-					file_get_contents("./modules/product/templates-e/line-noresults.html")
+					file_get_contents("modules/product/templates-e/line-noresults.html")
 				);
 		}
 
