@@ -136,7 +136,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 				<?php
 				if ($showSucess) {
 					printf(
-						"<div id=\"sucess\"><i class=\"fa fa-thumbs-up\"></i> %s</div><script>setTimeout(function(){goTo('./backoffice.php');}, 1500);</script>",
+						"<div id=\"sucess\"><i class=\"fa fa-thumbs-up\"></i> %s</div><script>setTimeout(function(){goTo('./0/');}, 1500);</script>",
 						$language["login"]["sucess"]
 					);
 				}
