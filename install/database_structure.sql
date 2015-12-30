@@ -61,18 +61,19 @@ CREATE TABLE IF NOT EXISTS `prefix_categories` (
   KEY `fk_prefix_categories_prefix_products1` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `prefix_documents` (
+CREATE TABLE IF NOT EXISTS `prefix_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file` varchar(255) DEFAULT NULL,
-  `alt_1` varchar(255) DEFAULT NULL,
-  `alt_2` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `type` enum('image','document') NOT NULL,
+  `code` text,
   `module` varchar(255) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL,
+  `ordering` int(11) DEFAULT NULL,
   `id_ass` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='<' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `prefix_files_type` (
   `type` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -88,19 +89,6 @@ CREATE TABLE IF NOT EXISTS `prefix_history` (
   `descrition` text CHARACTER SET utf8,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS `prefix_images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file` varchar(255) DEFAULT NULL,
-  `alt_1` varchar(255) DEFAULT NULL,
-  `alt_2` varchar(255) DEFAULT NULL,
-  `module` varchar(255) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL,
-  `id_ass` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `prefix_newsletters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
