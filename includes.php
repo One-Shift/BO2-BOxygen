@@ -53,5 +53,5 @@ if ($account["login"]) { // verificar se está autenticado
 			break;
 	}
 } else {
-	header(sprintf("Location: %s", $configuration["path-bo"]));
+	printf("<script>window.location=\"%s\"</script>", $configuration["path-bo"]);
 }
