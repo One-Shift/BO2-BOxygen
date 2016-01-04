@@ -53,7 +53,6 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 				$configuration["restricted"] = false;
 			}
 		}
-		unset($userData);
 	} else {
 		$account["login"] = false;
 		setcookie($configuration['cookie'], null, time() - 3600);
