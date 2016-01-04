@@ -29,12 +29,6 @@ if ($account["login"]) { // verificar se está autenticado
 		case "newsletter":
 			include "modules/newsletter/newsletter.php";
 			break;
-		case "newsletter-enable":
-			include "modules/newsletter/newsletter.php";
-			break;
-		case "newsletter-disable":
-			include "modules/newsletter/newsletter.php";
-			break;
 		// -- VCARD
 		case "vcard":
 			include "modules/vcard/vcard.php";
