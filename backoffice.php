@@ -95,7 +95,7 @@ include "header.php";
 					if ($account["login"]) {
 						$menu = file_get_contents("modules/menu/menu.php");
 						$menu = str_replace(
-								array(
+								[
 									"{c2r-menu-users}",
 									"{c2r-menu-categories}",
 									"{c2r-menu-articles}",
@@ -107,7 +107,7 @@ include "header.php";
 									"{c2r-menu-account}",
 									"{c2r-menu-begin}",
 									"{c2r-menu-logout}"
-								),
+								],
 							$language["menu"],
 							$menu
 						);
