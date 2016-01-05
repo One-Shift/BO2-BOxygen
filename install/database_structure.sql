@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `prefix_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `descrition` text CHARACTER SET utf8,
+  `description` text CHARACTER SET utf8,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
