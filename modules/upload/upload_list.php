@@ -148,7 +148,7 @@ header("Content-Type: text/html; charset=utf-8");
 								($data_i["type"] == "image") ? "<i class=\"fa fa-picture-o\"></i>" : "<i class=\"fa fa-file\"></i>",
 								$data_i['description'],
 								"../../../u-files/".$data_i['file'],
-								"img"
+								"file"
 							],
 							file_get_contents("templates-e/line.html")
 						);
