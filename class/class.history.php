@@ -5,6 +5,8 @@ class history {
 	protected $module;
 	protected $user_id;
 	protected $description;
+	protected $date;
+	protected $date_update;
 
 	public function __construct() {
 
@@ -24,6 +26,14 @@ class history {
 
 	public function setDescription($d) {
 		$this->description = $d;
+	}
+
+		public function setDate($d = null) {
+		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
+	}
+
+	public function setDateUpdate($d = null) {
+		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
 	}
 
 	public function insert() {
