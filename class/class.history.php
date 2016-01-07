@@ -40,8 +40,8 @@ class history {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"INSERT INTO %s_history (module, user_id, description) VALUES ('%s', '%s', '%s')",
-			$configuration["mysql-prefix"], $this->module, $this->user_id, $this->description
+			"INSERT INTO %s_history (module, user_id, description, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s')",
+			$configuration["mysql-prefix"], $this->module, $this->user_id, $this->description, $this->date, $this->date_update
 		);
 
 		$toReturn = $mysqli->query($query);
@@ -55,8 +55,8 @@ class history {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"UPDATE %s_history SET module = '%s', user_id = '%s', description = '%s' WHERE id = '%s'",
-			$configuration["mysql-prefix"], $this->module, $this->user_id, $this->description, $this->id
+			"UPDATE %s_history SET module = '%s', user_id = '%s', description = '%s' WHERE id = '%s', date = '%s', date_update = '%s'",
+			$configuration["mysql-prefix"], $this->module, $this->user_id, $this->description, $this->id, $this->date, $this->date_update
 		);
 
 		return $mysqli->query($query);
