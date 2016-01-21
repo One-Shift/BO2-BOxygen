@@ -114,7 +114,7 @@
 	</div>
 
 		<div class="bottom-area">
-			<labekl><input type="checkbox" name="service" /> <?= $language["form"]["label_service"]; ?></label>
+			<label><input type="checkbox" name="service" /> <?= $language["form"]["label_service"]; ?></label>
 			<br>
 			<label><input type="checkbox" name="published" /> <?= $language["form"]["label_published"]; ?></label>
 			</br>
