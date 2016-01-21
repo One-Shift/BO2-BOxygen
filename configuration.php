@@ -14,8 +14,8 @@ $configuration = [
 	"path" => "Path-here ex.: /new or /old",
 	// back-end info
 	"path-bo" => "Path-above + bo folder ex.: /new/backoffice",
-	"BO2-version" => "1.1.0",
-	"BO2-subversion" => "d",
+	"BO2-version" => "1.2.0",
+	"BO2-subversion" => "r5",
 	"BO2-name" => "BO2 / BOxygen",
 	"language" => "en",
 	"secret-key" => "GJTBpKregE9WgXc",
