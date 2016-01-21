@@ -35,6 +35,7 @@ $configuration = [
 	"mail-username" => "your@email.here",
 	"mail-password" => "yourpassword",
 	"mail-secure" => "connection-type eg.: plain",
+	"mail-support" => "geral@nexus-pt.eu",
 	// Languages
 	"lang_1_state" => true,
 	"lang_1_acronym" => "pt",
