@@ -26,6 +26,10 @@ class file {
 		$this->description = $d;
 	}
 
+	public function setType ($t) {
+		$this->type = $t;
+	}
+
 	public function setCode ($c) {
 		$this->code = $c;
 	}
