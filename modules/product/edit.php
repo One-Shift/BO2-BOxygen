@@ -133,12 +133,14 @@
 	</div>
 
 			<div class="bottom-area">
-				<input type="checkbox" <?php if ($item["service"]) { print "checked=\"yes\"";} ?> name="service" /> <?= $language["form"]["label_service"]; ?>
+				<label><input type="checkbox" <?php if ($item["service"]) { print "checked=\"yes\"";} ?> name="service" /> <?= $language["form"]["label_service"]; ?></label>
 				<br />
-				<input type="checkbox" <?php if ($item["published"]) { print "checked=\"yes\"";} ?> name="published" /> <?= $language["form"]["label_published"]; ?>
+				<label><input type="checkbox" <?php if ($item["published"]) { print "checked=\"yes\"";} ?> name="published" /> <?= $language["form"]["label_published"]; ?></label>
 				<br />
-				<input type="checkbox" <?php if ($item["onhome"]) { print "checked=\"yes\"";} ?>  name="onhome" /> <?= $language["form"]["label_on_home"]; ?>
-				<br />
+				<label><input type="checkbox" <?php if ($item["onhome"]) { print "checked=\"yes\"";} ?>  name="onhome" /> <?= $language["form"]["label_on_home"]; ?></label>
+
+				<div class="spacer30"></div>
+
 				<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 				<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 			</div>
