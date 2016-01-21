@@ -105,7 +105,9 @@
 		<label><input type="checkbox" name="published" value="1"/> <?= $language["form"]["label_published"]; ?></label>
 		</br>
 		<label><input type="checkbox" name="onhome" value="1"/> <?= $language["form"]["label_on_home"]; ?></label>
-		</br>
+
+		<div class="spacer30"></div>
+
 		<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 		<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 	</div>

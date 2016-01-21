@@ -132,12 +132,14 @@
 		</div>
 
 		<div class="bottom-area">
-		  <input type="checkbox" <?php if ($article["published"]) { print "checked=\"yes\"";} ?> name="published"/> <?= $language["form"]["label_published"]; ?>
-		  </br>
-		  <input type="checkbox" <?php if ($article["onhome"]) { print "checked=\"yes\"";} ?>  name="onhome"/> <?= $language["form"]["label_on_home"]; ?>
-		  </br>
-		  <button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
-		  <button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
+			<label><input type="checkbox" <?php if ($article["published"]) { print "checked=\"yes\"";} ?> name="published"/> <?= $language["form"]["label_published"]; ?></label>
+			</br>
+			<label><input type="checkbox" <?php if ($article["onhome"]) { print "checked=\"yes\"";} ?>  name="onhome"/> <?= $language["form"]["label_on_home"]; ?></label>
+
+			<div class="spacer30"></div>
+
+			<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
+			<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
 		</div>
 
 		</form>
