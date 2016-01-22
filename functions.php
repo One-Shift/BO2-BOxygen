@@ -50,7 +50,7 @@ function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = array()
 	$mail->SMTPSecure = $configuration["mail-secure"];
 	$mail->Username = $configuration["mail-username"]; // SMTP account username example
 	$mail->Password = $configuration["mail-password"];
-	$mail->SetFrom($from, $fName . ' : ' . $lName);
+	$mail->SetFrom($from, $fName . ' ' . $lName);
 	$mail->Subject = $subject;
 	$mail->AddAddress($to);
 	$mail->AddReplyTo($replyTo);
