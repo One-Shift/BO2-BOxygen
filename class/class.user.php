@@ -1,13 +1,13 @@
 <?php
 
 class user {
-
 	protected $id;
 	protected $username;
 	protected $password;
 	protected $email;
 	protected $rank;
 	protected $code;
+	protected $stringcode;
 	protected $status;
 
 	public function __construct() {}
@@ -49,13 +49,17 @@ class user {
 	public function setCode($c) {
 		$this->code = $c;
 	}
+	
+	public function setStringCode($s) {
+		$this->stringcode = $s;
+	}
 
 	public function insert() {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"INSERT INTO %s_users (name, password, email, rank, code, status) VALUES ('%s','%s','%s','%s','%s','%s')",
-			$configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->status
+			"INSERT INTO %s_users (name, password, email, rank, code, stringcode, status) VALUES ('%s','%s','%s','%s','%s','%s','%s')",
+			$configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->stringcode, $this->status
 		);
 
 		$toReturn = $mysqli->query($query);
@@ -69,8 +73,8 @@ class user {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s' WHERE id = '%s'",
-			$configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->status, $this->id
+			"UPDATE %s_users SET name = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', stringcode = '%s', status = '%s' WHERE id = '%s'",
+			$configuration['mysql-prefix'], $this->username, $this->password, $this->email, $this->rank, $this->code, $this->stringcode, $this->status, $this->id
 		);
 
 		return $mysqli->query($query);
