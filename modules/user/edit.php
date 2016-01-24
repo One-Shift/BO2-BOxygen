@@ -29,6 +29,8 @@
 		</select>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"><?= $tmp["code"]; ?></textarea>
+		<span id="label">StringCode</span>
+		<input type="text" name="stringcode" value="<?= $tmp["stringcode"]; ?>"/>
 		<div class="spacer30"></div>
 
 		<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
@@ -76,6 +78,7 @@
 			$user->setRank($_POST["rank"]);
 			$user->setStatus((bool)$_POST["status"]);
 			$user->setCode($_POST["code"]);
+			$user->setStringCode($_POST["stringcode"]);
 
 			if ($user->update()) {
 				print $language["actions"]["success"];

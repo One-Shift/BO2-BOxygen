@@ -42,6 +42,7 @@
 			$user->setRank($_POST["rank"]);
 			$user->setStatus((bool)$_POST["status"]);
 			$user->setCode($_POST["code"]);
+            $user->setStringCode(md5($_POST["email"].date()));
 
 			if ($user->existUserByName() == 0){
 				if ($user->insert()){
