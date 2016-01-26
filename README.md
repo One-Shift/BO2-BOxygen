@@ -1,4 +1,4 @@
-[Imgur](http://i.imgur.com/n9u1foQ.jpg)
+![Imgur](http://i.imgur.com/n9u1foQ.jpg)
 
 BO2 || BOxygen
 ===
