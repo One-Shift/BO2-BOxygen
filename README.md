@@ -47,8 +47,7 @@ Se está a desenvolver um website com suporte a browsers como IE8 ou enterior, p
 Novas sugestões poderão ser enviadas para o endereço [geral@nexus-pt.eu](mailto:geral@nexus-pt.eu)
 
 ## Galeria
-<img src="http://i.imgur.com/1wefGGC.jpg" width="222px" >
-![Login](http://i.imgur.com/1wefGGC.jpg | width=100) ![Home Page](http://i.imgur.com/Rr1lEgQ.jpg =222x222) ![Add Article](http://i.imgur.com/f3kP8h1.jpg =222x222) ![Edit Users](http://i.imgur.com/oRNjvSK.jpg =222x222)
+<img src="http://i.imgur.com/1wefGGC.jpg" width="222px" alt="Login" title="Login" > <img src="http://i.imgur.com/Rr1lEgQ.jpg" width="222px" alt="Home Page" title="Home Page" > <img src="http://i.imgur.com/f3kP8h1.jpg" width="222px" alt="Add Article" title="Add Article" > <img src="http://i.imgur.com/oRNjvSK.jpg" width="222px" alt="Edit Users" title="Edit Users" >
 
 
 
