@@ -21,7 +21,7 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 
 ## DEMO
 
-[Clica aqui para aceder | Click Here to Access](http://bo2.nexus-pt.eu)
+-> [Clica aqui para aceder | Click Here to Access](http://bo2.nexus-pt.eu) <-
 
 ## Requisitos mínimos
 
