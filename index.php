@@ -150,7 +150,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 				<?php if ($showForm) { ?>
 					<form action="./index.php" method="post" name="loginForm">
 						<div id="fields">
-							<div id="username"><input type="email" name="email" placeholder="Email Address" required=""></div>
+							<div id="username"><input type="email" name="email" placeholder="Email Address" required="" autofocus></div>
 							<div id="password"><input type="password" name="password" placeholder="password" required=""></div>
 						</div>
 						<div id="buttons">
