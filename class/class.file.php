@@ -91,6 +91,19 @@ class file {
 		return $mysqli->query($query);
 	}
 
+	public function returnOneFile () {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_files WHERE id = '%s'",
+			$configuration["mysql-prefix"], $this->id
+		);
+
+		$source = $mysqli->query($query);
+
+		return $source->fetch_assoc();
+	}
+
 	public function returnFiles ($limit = null) {
 		global $configuration, $mysqli;
 
