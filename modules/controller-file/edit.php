@@ -7,12 +7,11 @@
 		<?php
 		$object_file = new file();
 		$object_file->setId($id);
-		$file = $object_file->returnFiles(1);
-        $file = $file[0];
+		$file = $object_file->returnOneFile();
 
-		if($configuration["restricted"] && $account["name"] != $file["user_id"]){
+		if ($configuration["restricted"] && $account["name"] != $file["user_id"]) {
 			print $language["actions"]["failure"];
-		}else{
+		} else {
 		?>
 		<div class="spacer30"></div>
 
