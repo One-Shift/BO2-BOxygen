@@ -93,10 +93,13 @@ class user {
 
 	public function returnObject() {
 		return [
+			"id" => $this->id,
 			"name" => $this->username,
 			"password" => $this->password,
 			"email" => $this->email,
 			"rank" => $this->rank,
+			"code" => $this->code,
+			"stringcode" => $this->stringcode,
 			"status" => $this->status
 		];
 	}
