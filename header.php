@@ -55,7 +55,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 		}
 	} else {
 		$account["login"] = false;
-		setcookie($configuration['cookie'], null, time() - 3600);
+		setcookie($configuration['cookie'], null, time() - 3600, $configuration["path-bo"]."/");
 	}
 } else {
 	$account["login"] = false;
