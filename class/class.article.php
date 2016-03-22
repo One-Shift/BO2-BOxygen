@@ -115,7 +115,7 @@ class article {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"UPDATE %s_articles SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s', title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', category_id = '%s', date_update = '%s', published = '%s', onhome = '%s', ordering = '%s' WHERE id = '%s'",
+			"UPDATE %s_articles SET title_1 = '%s', content_1 = '%s', title_2 = '%s', content_2 = '%s', title_3 = '%s', content_3 = '%s', title_4 = '%s', content_4 = '%s', title_5 = '%s', content_5 = '%s', title_6 = '%s', content_6 = '%s', code = '%s', category_id = '%s', update = '%s', date_update = '%s', published = '%s', onhome = '%s', ordering = '%s' WHERE id = '%s'",
 			$configuration['mysql-prefix'],
 			$mysqli->real_escape_string($this->title_1),
 			$mysqli->real_escape_string($this->content_1),
@@ -131,6 +131,7 @@ class article {
 			$mysqli->real_escape_string($this->content_6),
 			$mysqli->real_escape_string($this->code),
 			$this->category_id,
+			$this->date,
 			$this->date_update,
 			$this->published,
 			$this->onhome,
