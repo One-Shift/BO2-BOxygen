@@ -218,6 +218,26 @@ class article {
 
 		return $toReturn;
 	}
+    
+	public function returnArticles($part_of_query) {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_articles %s",
+			$configuration['mysql-prefix'], $part_of_query
+		);
+		$source = $mysqli->query($query);
+
+		$toReturn = array();
+		$i = 0;
+
+		while ($data = $source->fetch_assoc()) {
+			$toReturn[$i] = $data;
+			$i++;
+		}
+
+		return $toReturn;
+	}
 
 	public function returnImages($order) {
 		global $configuration, $mysqli;
