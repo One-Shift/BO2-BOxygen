@@ -1,13 +1,35 @@
+<script>
+	function otherCategory(variable) {
+		goTo('<?= $configuration["path-bo"] ?>/0/article/' + $(variable).val());
+	}
+</script>
 <?php
-	$object_article = new article();
-	$article_list = $object_article->returnAllArticles();
+	if($id == null) {
+		$id = 0;
+	}
 
+	$object_article = new article();
+	$article_list = $object_article->returnArticles(sprintf("WHERE category_id = %s ORDER BY %s ASC", $id, "title_1"));
+             	
 	$line = file_get_contents("modules/article/templates-e/line.html");
 	$line_noresult = file_get_contents("modules/article/templates-e/line-noresults.html");
+
 ?>
 <h1 class="pageTitle"><?= $language["mod_article"]["list_title"]?></h1>
 <div class="article-list">
 	<div class="button-area">
+		<select id="category" onchange="otherCategory(this);">
+			<option><?= $language["form"]["label_category_sel"]?></option>
+			<?php
+				$object_category = new category();
+				$category_list = $object_category->returnCategories(sprintf("WHERE category_type = '%s' ORDER BY %s", $configuration["category_sections"][1], "ordering ASC, id ASC"));
+
+				foreach($category_list as $category){
+					printf("<option value=\"%s\" %s>%s</option>", $category["id"], ($category["id"] == $id) ? "active" : null, $category["name_1"]);
+				}
+			?>
+
+		</select>
 		<a href="<?= $configuration["path-bo"] ?>/0/article/0/add" class="green"><i class="fa fa-plus"></i></a>
 	</div>
 	<table class="db-list">
