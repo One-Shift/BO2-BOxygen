@@ -15,7 +15,7 @@
 	}
 
 	$object_article = new article();
-	$article_list = $object_article->returnArticles(sprintf("WHERE category_id = %s %s ORDER BY %s ASC", $id, $block, "title_1"));
+	$article_list = $object_article->returnArticles(sprintf("WHERE category_id = %s %s ORDER BY %s", $id, $block, "date ASC"));
              	
 	$line = file_get_contents("modules/article/templates-e/line.html");
 	$line_noresult = file_get_contents("modules/article/templates-e/line-noresults.html");
