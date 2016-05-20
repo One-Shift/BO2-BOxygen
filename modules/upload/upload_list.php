@@ -14,6 +14,7 @@ header("Content-Type: text/html; charset=utf-8");
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<?= file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html") ?>
 		<style type="text/css">
 			* {
 				font-family: Sans-Serif;
@@ -120,6 +121,8 @@ header("Content-Type: text/html; charset=utf-8");
 
 				if (!isset($_REQUEST["tp"]) && !isset($_REQUEST["vl"])) {
 
+					$line_tpl = file_get_contents("templates-e/line.html");
+
 					print "<table>";
 					// selecionar imagens na base de dados
 					$query_i = sprintf(
@@ -150,7 +153,7 @@ header("Content-Type: text/html; charset=utf-8");
 								"../../../u-files/".$data_i['file'],
 								"file"
 							],
-							file_get_contents("templates-e/line.html")
+							$line_tpl
 						);
 					}
 					print '</table>';

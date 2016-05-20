@@ -45,6 +45,7 @@ header("Content-Type: text/html; charset=utf-8");
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<?= file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html") ?>
 		<style type="text/css">
 			* {
 				font-family: Sans-Serif;
@@ -139,7 +140,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 						$query = sprintf(
 							"INSERT INTO %s_files (file, type, description, code, module, ordering, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-							$configuration["mysql-prefix"], $fileName, "image", $description, $code, $module, $id, intval($_POST["ordering"]), $userData["id"], date("Y-m-d H:i:s", $time)
+							$configuration["mysql-prefix"], $fileName, "image", $description, $code, $module, intval($_POST["ordering"]), $id, $userData["id"], date("Y-m-d H:i:s", $time)
 						);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
