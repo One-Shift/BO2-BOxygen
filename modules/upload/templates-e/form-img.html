@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	<div class="spacer15"></div>
+	<div class="row">
+		<div class="col-md-12">
+			<form method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Description</label>
+					<input type="text" name="alt_1" maxlength="255" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Code</label>
+					<textarea name="alt_2" class="form-control" rows="3"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Sort</label>
+					<input type="text" name="ordering" maxlength="255" class="form-control" />
+					 <p class="help-block">INT numbers only, eg. 10</p>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">File</label>
+					<input type="file" name="file" />
+				</div>
+				<button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>
+				<p><blockquote class="btn-block">Alloowed Formats: {c2r-allowedFormats}</blockquote></p>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	$("body").on(
+		"click",
+		"form button[name=submit]",
+		function () {
+			if ($('input[type=file]').val() != '' && $('input[name=alt_1]').val() != '') {
+				return true;
+			} else {
+				alert('Preencha o campo ALT! Seleccione um Ficheiro!');
+				return false;
+			}
+			return false;
+		}
+	);
+</script>

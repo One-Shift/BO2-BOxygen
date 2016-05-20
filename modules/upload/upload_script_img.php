@@ -115,20 +115,12 @@ header("Content-Type: text/html; charset=utf-8");
 						}
 					}
 
-					print
-							"<form method=\"post\" enctype=\"multipart/form-data\">".
-							"<label>Description:</label>".
-							"<input type=\"text\" name=\"description\" maxlength=\"255\" />".
-							"<div class=\"spacer30\"></div>".
-							"<label>Code:</label>".
-							"<textarea name=\"code\"></textarea>".
-							"<div class=\"spacer30\"></div>".
-							"<label>File:</label>".
-							"<input type=\"file\" name=\"file\" />".
-							"<div class=\"spacer30\"></div>".
-							"<button type=\"submit\" name=\"submit\" onclick=\"if ($('input[type=file]').val() != '' && $('input[name=alt_1]').val() != '') {return true;} else {alert('Preencha o campo ALT! Seleccione um Ficheiro!'); return false} return false;\">Submit</button>".
-							"<blockquote>Alloowed Formats: ".$allowedFormats."</blockquote>".
-							"</form>";
+					print str_replace(
+						"{c2r-allowedFormats}",
+						$allowedFormats,
+						file_get_contents("templates-e/form-img.html")
+					);
+
 				} else {
 					// verification if the file uploaded have permission to be save
 					$query = sprintf(
@@ -146,8 +138,8 @@ header("Content-Type: text/html; charset=utf-8");
 						$filePath = "../../../u-files/".$fileName;
 
 						$query = sprintf(
-							"INSERT INTO %s_files (file, type, description, code, module, ordering, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '0', '%s', '%s', '%s')",
-							$configuration["mysql-prefix"], $fileName, "image", $description, $code, $module, $id, $userData["id"], date("Y-m-d H:i:s", $time)
+							"INSERT INTO %s_files (file, type, description, code, module, ordering, id_ass, user_id, date) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+							$configuration["mysql-prefix"], $fileName, "image", $description, $code, $module, $id, intval($_POST["ordering"]), $userData["id"], date("Y-m-d H:i:s", $time)
 						);
 
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
