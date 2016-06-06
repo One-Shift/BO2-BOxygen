@@ -4,21 +4,21 @@
 		<div class="col-md-12">
 			<form method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Description</label>
-					<input type="text" name="alt_1" maxlength="255" class="form-control" />
+					<label for="inputDescription">Description</label>
+					<input type="text" name="description" maxlength="255" class="form-control" id="inputDescription" />
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Code</label>
-					<textarea name="alt_2" class="form-control" rows="3"></textarea>
+					<label for="inputCode">Code</label>
+					<textarea name="code" class="form-control" rows="3" id="inputCode"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Sort</label>
-					<input type="text" name="ordering" maxlength="255" class="form-control" />
+					<label for="inputSort">Sort</label>
+					<input type="text" name="ordering" maxlength="255" class="form-control" id="inputSort" />
 					 <p class="help-block">INT numbers only, eg. 10</p>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">File</label>
-					<input type="file" name="file" />
+					<label for="inputFile">File</label>
+					<input type="file" name="file" id="inputFile" />
 				</div>
 				<button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>
 				<p><blockquote class="btn-block">Alloowed Formats: {c2r-allowedFormats}</blockquote></p>
