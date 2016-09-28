@@ -148,5 +148,8 @@ function getValueByTAG ($tag, $searchOn) {
 	$pattern = "/<".$tag.">(.*?)<\/".$tag.">/s";
 	preg_match_all($pattern, $searchOn, $result, PREG_PATTERN_ORDER);
 
-	return $result;
+	if (count($result[1]) == 1) {
+		return $result[1][0];
+	}
+	return $result[1];
 }

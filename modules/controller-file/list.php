@@ -8,6 +8,9 @@
 <h1 class="pageTitle"><?= $language["mod_files"]["list_title"]?></h1>
 <div class="spacer15"></div>
 <div class="article-list">
+	<div class="button-area">
+		<a href="<?= $configuration["path-bo"] ?>/0/controller-file/0/add" class="green"><i class="fa fa-plus"></i></a>
+	</div>
 	<table class="db-list">
 	  <tr>
 		<th><?= $language["mod_files"]["table_id"] ?></th>
@@ -44,12 +47,15 @@
 			}
 		}else {
 			print str_replace(
-					"{c2r-noresults}",
-					$language["template"]["noresults"],
-					$line_noresult
-				);
+				"{c2r-noresults}",
+				$language["template"]["noresults"],
+				$line_noresult
+			);
 		}
 
 	  ?>
 	</table>
+	<div class="button-area">
+		<a href="<?= $configuration["path-bo"] ?>/0/controller-file/0/add" class="green"><i class="fa fa-plus"></i></a>
+	</div>
 </div>

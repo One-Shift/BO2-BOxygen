@@ -100,19 +100,20 @@
 				<input type="text" name="reference" value="<?= $item["reference"] ?>" />
 				<div class="spacer30"></div>
 			</div>
-			<div>
+
+			<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 				<span id="label"><?= $language["form"]["label_price"]; ?></span>
 				<input type="number" step="any" placeholder="ex.: 1.23" name="price" value="<?= $item["price"]; ?>" />
 				<div class="spacer30"></div>
 			</div>
 
-			<div>
+			<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 				<span id="label"><?= $language["form"]["label_vat"]; ?></span>
 				<input type="number" step="any" placeholder="ex.: 23.0" name="vat" value="<?= $item["vat"]; ?>" />
 				<div class="spacer30"></div>
 			</div>
 
-			<div>
+			<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 				<span id="label"><?= $language["form"]["label_discount"]; ?></span>
 				<input type="number" step="any" placeholder="ex.: 1.10" name="discount" value="<?= $item["discount"]; ?>"/>
 				<div class="spacer30"></div>
@@ -199,7 +200,7 @@
 				print $language["actions"]["failure"];
 			}
 		}
-	}else{
+	} else {
 		print $language["actions"]["error"];
 	}
 	?>

@@ -81,19 +81,19 @@
 			<input type="text" name="reference"/>
 			<div class="spacer30"></div>
 		</div>
-		<div>
+		<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 			<span id="label"><?= $language["form"]["label_price"]; ?></span>
 			<input type="text" step="any" placeholder="ex.: 1.23" name="price"/>
 			<div class="spacer30"></div>
 		</div>
 
-		<div>
+		<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 			<span id="label"><?= $language["form"]["label_vat"]; ?></span>
 			<input type="text" step="any" placeholder="ex.: 23.0" name="vat"/>
 			<div class="spacer30"></div>
 		</div>
 
-		<div>
+		<div style="<?= (!$configuration["store"]) ? "display:none" : null ?>">
 			<span id="label"><?= $language["form"]["label_discount"]; ?></span>
 			<input type="text" step="any" placeholder="ex.: 1.10" name="discount"/>
 			<div class="spacer30"></div>
