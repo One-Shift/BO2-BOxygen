@@ -3,7 +3,7 @@
 BO2 || BOxygen
 ===
 
-v1.2.0r4 20160118
+v1.2.0r4 20160118 (Stable version) use this version, download it here! >>> https://github.com/NexuS-Pt/BO2-BOxygen/archive/v1.2.0r4.zip
 
 v1.2.0r3 20160105
 
@@ -13,7 +13,7 @@ v1.1.0d 20141229
 
 v1.1.0d 20140910
 
-v1.1.0c 20140820 (Stable version) use this version, download it here! >>> https://github.com/NexuS-Pt/BO2-BOxygen/archive/v1.2.0r4.zip
+v1.1.0c 20140820
 
 v1.1.0b 20140520
 
