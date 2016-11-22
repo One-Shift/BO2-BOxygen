@@ -21,6 +21,7 @@ $configuration = [
 	"secret-key" => "GJTBpKregE9WgXc",
 	"category_sections" => ["products", "articles"],
 	// MySql configuration
+	"mysql-connect" => false,
 	"mysql-user" => "username",
 	"mysql-password" => "password",
 	"mysql-host" => "127.0.0.1",
