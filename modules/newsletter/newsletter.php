@@ -32,8 +32,8 @@ $newsletters_list = $object_newsletters->returnAllregistries();
 			<th>Sel.</th>
 		</tr>
 		<?php
-		if (count($vcard_list) != 0) {
-			$line = file_get_contents("modules/newsletters/templates-e/line.html");
+		if (count($newsletters_list) != 0) {
+			$line = file_get_contents("modules/newsletter/templates-e/line.html");
 
 			foreach ($newsletters_list as $newsletter_entry) {
 				if ($newsletter_entry["active"]) {
