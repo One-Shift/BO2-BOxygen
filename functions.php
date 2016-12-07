@@ -24,14 +24,6 @@ function returnEditor($textareaname, $content = "<div><br/><div>") {
 		"<script>CKEDITOR.replace('%s');</script>",
 		$textareaname, $content, $textareaname
 	);
-
-	/*
-	return sprintf(
-		"<textarea name=\"%s\" id=\"%s\" style=\"width: 670px;\">%s</textarea>"
-		. "<script type=\"text/javascript\">new nicEditor({fullPanel : true}).panelInstance('%s');</script>",
-		$textareaname, $textareaname, $content, $textareaname
-	);
-	*/
 }
 
 function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = array()) {
