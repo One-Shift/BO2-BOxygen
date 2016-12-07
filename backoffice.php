@@ -57,7 +57,6 @@
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
 		<!-- EDITOR -->
 		<script src="//cdn.ckeditor.com/4.5.6/full/ckeditor.js"></script>
-		<!-- <script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/nicEdit.js"></script> -->
 
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 		<script>
