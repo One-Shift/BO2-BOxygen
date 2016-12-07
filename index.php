@@ -106,8 +106,11 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
+		<!-- FONT AWESOME -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-		<link href="http://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet" type="text/css" />
+		<!-- GOOGLE FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css' />
+
 		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="<?= $configuration["path-bo"] ?>/site-assets/css/custom.css" />
 

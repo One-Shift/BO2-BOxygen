@@ -42,6 +42,7 @@
 		<meta http-equiv="pragma" content="no-cache" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		
 		<!-- FONT AWESOME -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 		<!-- GOOGLE FONTS -->
@@ -55,8 +56,9 @@
 		</script>
 		<!-- JQUERY -->
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/jquery.js"></script>
-		<!-- EDITOR -->
-		<script src="//cdn.ckeditor.com/4.5.6/full/ckeditor.js"></script>
+		<!-- CKEDITOR -->
+		<script src="<?= $configuration["path-bo"] ?>/site-assets/js/ckeditor/ckeditor.js"></script>
+		<script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 
 		<script type="text/javascript" src="<?= $configuration["path-bo"] ?>/site-assets/js/script.js"></script>
 		<script>
