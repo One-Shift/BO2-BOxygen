@@ -130,7 +130,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 			ga('send', 'pageview');
 		</script>
 	</head>
-	<body style="background-image: url('<?= file_get_contents("http://api.nexus-pt.eu/bo2-image-server/") ?>');">
+	<body style="background-image: url('<?= file_get_contents("http://api.one-shift.com/bo2-image-server/") ?>');">
 		<!-- SPACER - ESPAÇO DEIXADO ACIMA DO LOGIN -->
 		<div id="wrapper"></div>
 		<div id="login">

@@ -32,7 +32,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
 		<meta name="robots" content="index" />
-		<meta name="author" content="NexuS-Pt, work team" />
+		<meta name="author" content="One:Shift" />
 
 		<!-- CACHE -->
 		<meta http-equiv="cache-control" content="max-age=0" />
@@ -71,7 +71,7 @@
 			ga('send', 'pageview');
 		</script>
 	</head>
-	<body style="background-image: url('<?= file_get_contents("http://api.nexus-pt.eu/bo2-image-server/") ?>');">
+	<body style="background-image: url('<?= file_get_contents("http://api.one-shift.com/bo2-image-server/") ?>');">
 		<?php if ($configuration["pub"]) { ?>
 		<iframe class="ads" src="http://api.one-shift.com/ads/"></iframe>
 		<?php } ?>
