@@ -118,7 +118,7 @@
 		</div>
 		<div id="footer">
 			<div id="copyright">
-				<a href="http://www.one-shift.eu/" target="_blank">One:Shift</a> | <a target="_blank" href="https://github.com/One-Shift/BO2-BOxygen">GitHub</a> | <a>You are using version <?= $configuration["BO2-version"]; ?> <?= $configuration["BO2-subversion"]; ?></a>
+				<a href="http://www.one-shift.com/" target="_blank">One:Shift</a> | <a target="_blank" href="https://github.com/One-Shift/BO2-BOxygen">GitHub</a> | <a>You are using version <?= $configuration["BO2-version"]; ?> <?= $configuration["BO2-subversion"]; ?></a>
 			</div>
 			<div id="c">
 				<span>©</span> <?= date('Y'); ?>
