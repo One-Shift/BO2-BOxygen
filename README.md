@@ -2,9 +2,11 @@
 
 BO2 || BOxygen
 ===
-v1.2.0r6 20161207
+v1.2.0r7 20170104
 
-v1.2.0r5 20161117 (Stable version) use this version, download it here! >>> https://github.com/One-Shift/BO2-BOxygen/archive/v1.2.0r5.zip
+v1.2.0r6 20161207 (Stable version) use this version, download it here! >>> https://github.com/One-Shift/BO2-BOxygen/archive/v1.2.0r6.zip
+
+v1.2.0r5 20161117
 
 v1.2.0r4 20160118
 
@@ -55,7 +57,7 @@ O BO2 ou BOxygem é um CMS foi desenhado para possibilitar a uma pessoa com pouc
 Se está a desenvolver um website com suporte a browsers como IE8 ou enterior, por favor não usar a minificação de código. O mesmo deve ser respeitado para a tentativa de adicionar código expecifico para IE, usando <!--[if (IE 8)]> <![endif]--> , como exemplo.
 
 
-Novas sugestões poderão ser enviadas para o endereço [geral@nexus-pt.eu](mailto:geral@nexus-pt.eu)
+Novas sugestões poderão ser enviadas para o endereço [hello@one-shift.com](mailto:hello@one-shift.com)
 
 ## Galeria
 <img src="http://i.imgur.com/1wefGGC.jpg" width="218px" alt="Login" title="Login" > <img src="http://i.imgur.com/Rr1lEgQ.jpg" width="218px" alt="Home Page" title="Home Page" > <img src="http://i.imgur.com/f3kP8h1.jpg" width="218px" alt="Add Article" title="Add Article" > <img src="http://i.imgur.com/oRNjvSK.jpg" width="218px" alt="Edit Users" title="Edit Users" >
