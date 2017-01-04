@@ -165,7 +165,7 @@ if (isset($_COOKIE[$configuration["cookie"]])) {
 			</div>
 		</div>
 		<?php if ($configuration["pub"]) { ?>
-		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<iframe class="ads" src="http://api.one-shift.com/ads/"></iframe>
 		<?php } ?>
 	</body>
 </html>

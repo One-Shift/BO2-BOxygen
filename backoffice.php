@@ -42,7 +42,7 @@
 		<meta http-equiv="pragma" content="no-cache" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		
+
 		<!-- FONT AWESOME -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 		<!-- GOOGLE FONTS -->
@@ -73,7 +73,7 @@
 	</head>
 	<body style="background-image: url('<?= file_get_contents("http://api.nexus-pt.eu/bo2-image-server/") ?>');">
 		<?php if ($configuration["pub"]) { ?>
-		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<iframe class="ads" src="http://api.one-shift.com/ads/"></iframe>
 		<?php } ?>
 		<div id="site">
 			<div id="header"></div>
@@ -125,7 +125,7 @@
 			</div>
 		</div>
 		<?php if ($configuration["pub"]) { ?>
-		<iframe class="ads" src="http://www.nexus-pt.eu/ads.php"></iframe>
+		<iframe class="ads" src="http://api.one-shift.com/ads/"></iframe>
 		<?php } ?>
 	</body>
 </html>
