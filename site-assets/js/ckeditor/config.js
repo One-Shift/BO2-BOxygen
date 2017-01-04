@@ -8,7 +8,11 @@ CKEDITOR.editorConfig = function( config ) {
 	config.height = 300;
 	config.toolbarCanCollapse = true;
 
-	config.contentsCss = '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+	config.contentsCss = [
+		'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+		'//one-shift.github.io/BO3/bootstrap-ckeditor/bootstrap.ckeditor.css'
+	];
+
 	config.allowedContent = true;
 
 	config.toolbarGroups = [
