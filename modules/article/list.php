@@ -15,8 +15,15 @@
 	}
 
 	$object_article = new article();
-	$article_list = $object_article->returnArticles(sprintf("WHERE category_id = %s %s ORDER BY %s", $id, $block, "date ASC"));
-             	
+	$article_list = $object_article->returnArticles(
+		sprintf(
+			"WHERE %s %s ORDER BY %s",
+			($id == 0) ? "TRUE" : "category_id = {$id}", 
+			$block,
+			"date ASC"
+		)
+	);
+
 	$line = file_get_contents("modules/article/templates-e/line.html");
 	$line_noresult = file_get_contents("modules/article/templates-e/line-noresults.html");
 
@@ -28,7 +35,7 @@
 			<option><?= $language["form"]["label_category_sel"]?></option>
 			<?php
 				$object_category = new category();
-				$category_list = $object_category->returnCategories(sprintf("WHERE category_type = '%s' ORDER BY %s", $configuration["category_sections"][1], "ordering ASC, id ASC"));
+				$category_list = $object_category->returnCategories(sprintf("WHERE category_type = '%s' ORDER BY %s", $configuration["category_sections"][1], "ordering ASC, name_1 ASC"));
 
 				foreach($category_list as $category){
 					printf("<option value=\"%s\" %s>%s</option>", $category["id"], ($category["id"] == $id) ? "active" : null, $category["name_1"]);
