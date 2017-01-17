@@ -26,7 +26,7 @@ function returnEditor($textareaname, $content = "<div><br/><div>") {
 	);
 }
 
-function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = array()) {
+function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = []) {
 	global $configuration;
 
 	$mail = new PHPMailer();
