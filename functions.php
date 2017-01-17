@@ -29,36 +29,42 @@ function returnEditor($textareaname, $content = "<div><br/><div>") {
 function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = array()) {
 	global $configuration;
 
-	$fName = $configuration["site-name"];
-	$lName = $configuration["site-slogan"];
-
 	$mail = new PHPMailer();
+
 	$mail->IsSMTP();
 	$mail->CharSet = "UTF-8";
+
+	$mail->Timeout = 15;
+
 	$mail->Host = $configuration["mail-smtp"]; // SMTP server example
-	$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
 	$mail->SMTPAuth = true; // enable SMTP authentication
-	$mail->Port = 25; // set the SMTP port for the GMAIL server
-	$mail->SMTPSecure = $configuration["mail-secure"];
 	$mail->Username = $configuration["mail-username"]; // SMTP account username example
 	$mail->Password = $configuration["mail-password"];
-	$mail->SetFrom($from, $fName . ' ' . $lName);
+	$mail->SMTPSecure = $configuration["mail-secure"];
+	$mail->Port = $configuration["mail-port"]; // set the SMTP port for the GMAIL server
+
+
+	$mail->setFrom($from, "{$configuration["site-name"]}");
+	$mail->addAddress($to);
+	$mail->addReplyTo($replyTo);
+
+	$mail->isHTML(true);
 	$mail->Subject = $subject;
-	$mail->AddAddress($to);
-	$mail->AddReplyTo($replyTo);
-	$mail->MsgHTML($message);
+	$mail->Body = $message;
+
+	$mail->SMTPDebug = 1; // enables SMTP debug information (for testing)
 
 	if (count($attach) > 0) {
 		foreach ($attach as $file) {
-			$mail->addAttachment($file[0],$file[1]);
+			$mail->addAttachment($file[0], $file[1]);
 		}
 	}
 
 	if (!$mail->Send()) {
 		return FALSE;
-	} else {
-		return TRUE;
 	}
+
+	return TRUE;
 }
 
 function generateRandomString($length = 10) {
