@@ -110,6 +110,8 @@ body {
 	background-color: rgb(75,75,75);
 	background: url('../images/bg.jpg') center fixed;
 	font-family: "Lato", "Lucida Grande", Verdana, Arial, sans-serif;
+	background-size: cover;
+	background-position: center;
 }
 
 img {
