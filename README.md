@@ -4,7 +4,7 @@ BO2 || BOxygen
 ===
 v1.2.0r7 20170104
 
-v1.2.0r6 20161207 (Stable version) use this version, download it here! >>> https://github.com/One-Shift/BO2-BOxygen/archive/v1.2.0r6.zip
+v1.2.0r6 20161207 (Stable version) use this version, download it here! >>> https://github.com/One-Shift/BO2-BOxygen/archive/v1.2.0r6.zip (BO2-website-base Stable) >>> https://github.com/One-Shift/BO2-Website-Base/archive/v1.2.zip
 
 v1.2.0r5 20161117
 
