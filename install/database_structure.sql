@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `prefix_articles` (
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `date_update` varchar(255) NOT NULL,
+  `date_update` datetime NOT NULL,
   `published` tinyint(1) DEFAULT NULL,
   `onhome` tinyint(1) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
