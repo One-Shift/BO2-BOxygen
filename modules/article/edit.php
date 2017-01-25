@@ -13,7 +13,7 @@
 			print $language["actions"]["failure"];
 		}else{
 		?>
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 
 		<div <?php if (!$configuration["lang_1_state"]) {print "style=\"display: none;\"";} ?>>
 			<h2 class="sectionTitle"><?= $configuration["lang_1_name"]; ?></h2>
@@ -22,7 +22,7 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_1",$article["content_1"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div <?php if (!$configuration["lang_2_state"]) {print "style=\"display: none;\"";} ?>>
@@ -32,7 +32,7 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_2", $article["content_2"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div <?php if (!$configuration["lang_3_state"]) {print "style=\"display: none;\"";} ?>>
@@ -42,7 +42,7 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_3", $article["content_3"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div <?php if (!$configuration["lang_4_state"]) {print "style=\"display: none;\"";} ?>>
@@ -52,7 +52,7 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_4", $article["content_4"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div <?php if (!$configuration["lang_5_state"]) {print "style=\"display: none;\"";} ?>>
@@ -62,7 +62,7 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_5", $article["content_5"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div <?php if (!$configuration["lang_6_state"]) {print "style=\"display: none;\"";} ?>>
@@ -72,21 +72,21 @@
 			<span id="label"><?= $language["form"]["label_content"]; ?></span>
 			<?= returnEditor("content_6", $article["content_6"]) ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div>
 			<span id="label"><?= $language["form"]["label_date"]; ?></span>
 			<input type="text" name="date" value="<?= $article["date"]; ?>"/>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 		<div>
 			<span id="label"><?= $language["form"]["label_order"]; ?></span>
 			<input type="text" name="order" value="<?= $article["ordering"]; ?>"/>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 		</div>
 
 
@@ -109,12 +109,12 @@
 		?>
 		</select>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 
 		<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 		<?= returnFilesList($article["id"], "article"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 
 		<?php
 			print returnImgUploader("IMG Uploader", $article["id"], "article", 290, 350);
@@ -123,12 +123,12 @@
 		?>
 
 		<?php unset($category); ?>
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 
 		<div>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"><?= $article["code"]; ?></textarea>
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 		</div>
 
 		<div class="bottom-area">
@@ -136,7 +136,7 @@
 			</br>
 			<label><input type="checkbox" <?php if ($article["onhome"]) { print "checked=\"yes\"";} ?>  name="onhome"/> <?= $language["form"]["label_on_home"]; ?></label>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 
 			<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 			<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>

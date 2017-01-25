@@ -2,7 +2,7 @@
 	<h1 class="pageTitle"><?= $language["mod_article"]["add_title"]; ?></h1>
 	<?php if (!isset($_POST["save"])) { ?>
 	<form action="" method="post">
-	<div class="spacer30"></div>
+	<div class="sm-spacer30"></div>
 
 	<div <?php if (!$configuration["lang_1_state"]) {print 'style="display: none;"';} ?>>
 		<h2 class="sectionTitle"><?= $configuration["lang_1_name"]; ?></h2>
@@ -11,7 +11,7 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_1"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_2_state"]) {print 'style="display: none;"';} ?>>
@@ -21,7 +21,7 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_2"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_3_state"]) {print 'style="display: none;"';} ?>>
@@ -31,7 +31,7 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_3"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_4_state"]) {print 'style="display: none;"';} ?>>
@@ -41,7 +41,7 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_4"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_5_state"]) {print 'style="display: none;"';} ?>>
@@ -51,7 +51,7 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_5"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div <?php if (!$configuration["lang_6_state"]) {print 'style="display: none;"';} ?>>
@@ -61,21 +61,21 @@
 		<span id="label"><?= $language["form"]["label_content"]; ?></span>
 		<?= returnEditor("content_6"); ?>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div>
 		<span id="label"><?= $language["form"]["label_date"]; ?></span>
 		<input type="text" name="date" value="<?= date("Y-m-d H:i:s"); ?>"/>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div>
 		<span id="label"><?= $language["form"]["label_order"]; ?></span>
 		<input type="text" name="order"/>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<span id="label"><?= $language["form"]["label_category"]; ?></span>
@@ -93,12 +93,12 @@
 	?>
 	</select>
 
-	<div class="spacer30"></div>
+	<div class="sm-spacer30"></div>
 
 	<div>
 		<span id="label"><?= $language["form"]["label_code"]; ?></span>
 		<textarea name="code"></textarea>
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 	</div>
 
 	<div class="bottom-area">
@@ -106,7 +106,7 @@
 		</br>
 		<label><input type="checkbox" name="onhome" value="1"/> <?= $language["form"]["label_on_home"]; ?></label>
 
-		<div class="spacer30"></div>
+		<div class="sm-spacer30"></div>
 
 		<button class="green" title="save" type="submit" name="save" class="green"><i class="fa fa-floppy-o"></i></button>
 		<button class="red" title="cancel" type="reset" name="cancel" class="red"><i class="fa fa-times"></i></button>
@@ -141,12 +141,12 @@
 
 			$id = $mysqli->insert_id;
 	?>
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 
 			<span id="label"><?= $language["form"]["label_file_list"]; ?></span>
 			<?= returnFilesList($id, "article"); ?>
 
-			<div class="spacer30"></div>
+			<div class="sm-spacer30"></div>
 
 			<?php
 				print returnImgUploader("IMG Uploader", $id, "article",290,350);
