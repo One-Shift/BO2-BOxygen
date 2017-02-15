@@ -52,7 +52,7 @@ function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = []) {
 	$mail->Subject = $subject;
 	$mail->Body = $message;
 
-	$mail->SMTPDebug = 1; // enables SMTP debug information (for testing)
+	$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
 
 	if (count($attach) > 0) {
 		foreach ($attach as $file) {
