@@ -31,13 +31,13 @@ $configuration = [
 	"cookie" => "cookie",
 	"cookie-time" => 320,
 	// SMTP configuration
-	"email" => "geral@nexus-pt.eu",
+	"email" => "hello@one-shift.com",
 	"mail-smtp" => "mail.yourdomain.here",
 	"mail-username" => "your@email.here",
 	"mail-password" => "yourpassword",
 	"mail-secure" => "connection-type eg.: plain",
 	"mail-port" => 25,
-	"mail-support" => "geral@nexus-pt.eu",
+	"mail-support" => "hello@one-shift.com",
 	// Languages
 	"lang_1_state" => true,
 	"lang_1_acronym" => "pt",
