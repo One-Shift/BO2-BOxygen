@@ -131,8 +131,8 @@ header("Content-Type: text/html; charset=utf-8");
 					$source = $mysqli->query($query);
 
 					if ($source->num_rows > 0) {
-						$description = $mysqli->real_escape_string(utf8_decode($_POST["description"]));
-						$code = $mysqli->real_escape_string(utf8_decode($_POST["code"]));
+						$description = $mysqli->real_escape_string($_POST["description"]);
+						$code = $mysqli->real_escape_string($_POST["code"]);
 						$data = $source->fetch_assoc();
 						$time = time();
 						$fileName = $time.".".$data["extension"];
