@@ -196,12 +196,13 @@ class article {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"SELECT * FROM %s_articles WHERE category_id = '%s'",
-			$configuration['mysql-prefix'], $this->category_id
+			"SELECT * FROM %s_articles WHERE category_id = %s",
+			$configuration['mysql-prefix'], 
+			$this->category_id
 		);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_assoc()) {
@@ -217,7 +218,7 @@ class article {
 
 		if(!$configuration["restricted"]){
 			$block = "true";
-		}else{
+		} else {
 			$block = sprintf("user_id = '%s'", $account["name"]);
 		}
 
@@ -228,7 +229,7 @@ class article {
 		);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_assoc()) {
@@ -248,7 +249,7 @@ class article {
 		);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_assoc()) {
@@ -262,10 +263,10 @@ class article {
 	public function returnImages($order) {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_images WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
+		$query = sprintf("SELECT * FROM %s_images WHERE module = '%s' AND id_ass = %s ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_assoc()) {
@@ -279,10 +280,17 @@ class article {
 	public function returnDocs($order) {
 		global $configuration, $mysqli;
 
-		$query = sprintf("SELECT * FROM %s_documents WHERE module = '%s' AND id_ass = '%s' ORDER BY %s %s", $configuration["mysql-prefix"], "article", $this->id, "id", $order);
+		$query = sprintf(
+			"SELECT * FROM %s_documents WHERE module = '%s' AND id_ass = %s ORDER BY %s %s", 
+			$configuration["mysql-prefix"], 
+			"article", 
+			$this->id, 
+			"id", 
+			$order
+		);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_assoc()) {
@@ -296,7 +304,7 @@ class article {
 	public function increasePriority() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_articles SET priority += 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+		$query = sprintf("UPDATE %s_articles SET priority += 1 WHERE id = %s", $configuration['mysql-prefix'], $this->id);
 
 		return $mysqli->query($query);
 	}
@@ -304,7 +312,7 @@ class article {
 	public function decreasePriority() {
 		global $configuration, $mysqli;
 
-		$query = sprintf("UPDATE %s_articles SET priority -= 1 WHERE id = '%s'", $configuration['mysql-prefix'], $this->id);
+		$query = sprintf("UPDATE %s_articles SET priority -= 1 WHERE id = %s", $configuration['mysql-prefix'], $this->id);
 
 		return $mysqli->query($query);
 	}
