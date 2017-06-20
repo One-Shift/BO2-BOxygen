@@ -2,8 +2,9 @@
 	<td width="50px" align="right">{c2r-file-id}</td>
 	<td width="50px" align="center">{c2r-icon-type}</td>
 	<td title="Code: {c2r-code}">{c2r-alt}</td>
-	<td width="100px">
+	<td width="150px">
 		<a href="{c2r-file}" alt="view" title="view" class="green"><i class="fa fa-desktop"></i></a>
+		<button onclick="popUp('{c2r-path-bo}/modules/upload/upload_edit.php?vl={c2r-file-id}&tp={c2r-type}','290','350'); return false;" alt="edit" title="edit" class="orange"><i class="fa fa-pencil-square-o"></i></button>
 		<a href="./upload_list.php?mdl={c2r-module}&i={c2r-id}&tp={c2r-type}&vl={c2r-file-id}" alt="delete" title="delete" class="red"><i class="fa fa-trash"></i></a>
 	</td>
 </tr>

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<div class="spacer15"></div>
+	<div class="row">
+		<div class="col-md-12">
+			<form method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="inputDescription">Description</label>
+					<input type="text" name="description" maxlength="255" class="form-control" id="inputDescription" value="{c2r-value-description}" />
+				</div>
+				<div class="form-group">
+					<label for="inputCode">Code</label>
+					<textarea name="code" class="form-control" rows="3" id="inputCode">{c2r-value-code}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputSort">Sort</label>
+					<input type="text" name="ordering" maxlength="255" class="form-control" id="inputSort" value="{c2r-value-sort}"/>
+					 <p class="help-block">INT numbers only, eg. 10</p>
+				</div>
+				<button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	$("body").on(
+		"click",
+		"form button[name=submit]",
+		function () {
+			if ($('input[name=description]').val() != '') {
+				return true;
+			} else {
+				alert('Preencha o campo ALT!');
+				return false;
+			}
+			return false;
+		}
+	);
+</script>

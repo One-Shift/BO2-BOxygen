@@ -169,6 +169,27 @@ class category {
 		return $toReturn;
 	}
 
+	public function returnSubCategories($main_id) {
+		global $configuration, $mysqli, $lg, $lg_s;
+
+		$query_main = sprintf("SELECT * FROM %s_categories WHERE id = '%s' AND published = %s", $configuration["mysql-prefix"], $main_id, true);
+
+		$source_main = $mysqli->query($query_main);
+		$data_main = $source_main->fetch_assoc();
+
+		$query = sprintf("SELECT * FROM %s_categories WHERE name_%s LIKE '%s'", $configuration['mysql-prefix'], $lg, "{$data_main["name_$lg"]} » %");
+		$source = $mysqli->query($query);
+
+		$toReturn = array();
+		$i = 0;
+
+		while ($data = $source->fetch_object()) {
+			$toReturn[$i] = $data;
+			$i++;
+		}
+		return $toReturn;
+	}
+
 	public function returnCategories($part_of_category) {
 		global $configuration, $mysqli;
 
