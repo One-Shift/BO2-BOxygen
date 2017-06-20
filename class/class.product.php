@@ -267,7 +267,7 @@ class product {
 		global $configuration, $mysqli;
 
 		$query = sprintf(
-			"SELECT * FROM %s_products WHERE category_id = '%s' AND published = '%s'",
+			"SELECT * FROM %s_products WHERE category_id = %s AND published = '%s'",
 			$configuration['mysql-prefix'], $category_id, true
 		);
 		$source = $mysqli->query($query);
