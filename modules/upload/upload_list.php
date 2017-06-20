@@ -64,6 +64,20 @@ header("Content-Type: text/html; charset=utf-8");
 				height: 30px;
 			}
 
+			a.orange, button.orange {
+			background: none repeat scroll 0% 0% rgb(250, 162, 38);
+			border: 0 none;
+			border-radius: 2px;
+			box-sizing: border-box;
+			color: #fff;
+			cursor: pointer;
+			display: inline-block;
+			height: 33px;
+			line-height: 33px;
+			padding: 0 16px;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.08);
+		}
+
 			a.green, button.green {
 				background: none repeat scroll 0 0 rgb(78, 189, 74);
 				border: 0 none;
@@ -92,8 +106,8 @@ header("Content-Type: text/html; charset=utf-8");
 				text-shadow: 0 1px rgba(0, 0, 0, 0.08);
 			}
 
-			a.red i, button.red i, a.green i, button.green i {
-				line-height: 250%
+			a.red i, button.red i, a.green i, button.green i, a.orange i, button.orange i {
+				line-height: 250%;
 			}
 		</style>
 	</head>

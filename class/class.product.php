@@ -263,6 +263,26 @@ class product {
 		return $toReturn;
 	}
 
+	public function returnProductsbyCateogry($category_id) {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_products WHERE category_id = '%s' AND published = '%s'",
+			$configuration['mysql-prefix'], $category_id, true
+		);
+		$source = $mysqli->query($query);
+
+		$toReturn = array();
+		$i = 0;
+
+		while ($data = $source->fetch_assoc()) {
+			$toReturn[$i] = $data;
+			$i++;
+		}
+
+		return $toReturn;
+	}
+
 	public function increasePriority() {
 		global $configuration, $mysqli;
 

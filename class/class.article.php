@@ -192,6 +192,26 @@ class article {
 		return $source->fetch_assoc();
 	}
 
+	public function returnArticlesbyCat() {
+		global $configuration, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_articles WHERE category_id = '%s'",
+			$configuration['mysql-prefix'], $this->category_id
+		);
+		$source = $mysqli->query($query);
+
+		$toReturn = array();
+		$i = 0;
+
+		while ($data = $source->fetch_assoc()) {
+			$toReturn[$i] = $data;
+			$i++;
+		}
+
+		return $toReturn;
+	}
+
 	public function returnAllArticles() {
 		global $configuration, $mysqli, $account;
 
@@ -218,7 +238,7 @@ class article {
 
 		return $toReturn;
 	}
-    
+
 	public function returnArticles($part_of_query) {
 		global $configuration, $mysqli;
 
