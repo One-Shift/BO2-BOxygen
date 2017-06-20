@@ -177,7 +177,7 @@ class category {
 		$source_main = $mysqli->query($query_main);
 		$data_main = $source_main->fetch_assoc();
 
-		$query = sprintf("SELECT * FROM %s_categories WHERE name_%s LIKE '%s'", $configuration['mysql-prefix'], $lg, "{$data_main["name_$lg"]} »%");
+		$query = sprintf("SELECT * FROM %s_categories WHERE name_%s LIKE '%s'", $configuration['mysql-prefix'], $lg, "{$data_main["name_$lg"]} » %");
 		$source = $mysqli->query($query);
 
 		$toReturn = array();
